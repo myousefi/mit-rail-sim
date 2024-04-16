@@ -1,0 +1,3 @@
+name: Sphinx to GitHub Pages
+
+uses: sphinx-notes/pages@3.0
