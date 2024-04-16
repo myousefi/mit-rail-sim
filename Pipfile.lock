@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9acde361d32bee2bc3b46c5e3d2a414cbaed8422fb70bf43707f33292ec4b1fa"
+            "sha256": "b047083fbb72d1effcdc89dcb18d0c27375494feb8c631e5cd8513438b210172"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -1647,6 +1647,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==0.8.4"
+        },
+        "pathlib": {
+            "hashes": [
+                "sha256:6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f",
+                "sha256:f35f95ab8b0f59e6d354090350b44a80a80635d22efdedfa84c7ad1cf0a74147"
+            ],
+            "index": "pypi",
+            "version": "==1.0.1"
         },
         "patsy": {
             "hashes": [
@@ -3718,6 +3726,7 @@
                 "sha256:5bbdbf5b620aba7206d688ed9fc917ecd3d73e15ec1a89647037a09fa3a86e60"
             ],
             "index": "pypi",
+            "markers": null,
             "version": "==8.4.1"
         },
         "pylint": {
