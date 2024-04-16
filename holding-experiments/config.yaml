@@ -1,0 +1,46 @@
+defaults:
+    - override hydra/launcher: joblib
+    - override hydra/sweeper: basic
+
+log_folder_path: ${hydra:runtime.output_dir}
+
+simulation:
+    number_of_replications: 1
+    start_time_of_day: 14
+    end_time_of_day: 19
+
+logger:
+    should_log_trajectories: True
+    log_interval: 25
+
+inspection_time: High
+
+headway_management: False
+holding: True
+station: "UIC-Halsted"
+
+schd: Base
+
+passenger:
+    probability_of_boarding_any_train: 0.0
+
+demand_level: 1.5
+
+headway: 6
+short_turning_rate: 3
+
+short_turning: UIC
+
+max_holding: 180
+min_holding: 60
+
+hydra:
+    run:
+        dir: /Users/moji/Projects/mit_rail_sim/cta_experiments_jan/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    job:
+        chdir: true
+    sweep:
+        dir: /Users/moji/Projects/mit_rail_sim/holding-experiments/${scen}/
+        subdir: ${hydra.job.override_dirname}
+    sweeper:
+        params:

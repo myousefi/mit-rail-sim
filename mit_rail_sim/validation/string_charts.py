@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import datetime
 import functools
 import json
@@ -26,7 +27,7 @@ color_mapping = {
 
 # @functools.lru_cache(maxsize=100, typed=False)
 # Create a disk cache instance
-cache = dc.Cache("/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/")
+cache = dc.Cache(project_root / "mit_rail_sim" / "validation")
 
 
 @cache.memoize(expire=86400)
@@ -64,7 +65,7 @@ def query_from_aws(selected_date):
 
 
 # Loading static data
-with open("/Users/moji/Projects/mit_rail_sim/inputs/infra.json", "r") as f:
+with open(project_root / "inputs" / "infra.json", "r") as f:
     data = json.load(f)
     track_dist = {}
     station_dict = {}

@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import os
 
 import pandas as pd
@@ -82,7 +83,7 @@ class TravelTimeCalculator:
 if __name__ == "__main__":
     calculator = TravelTimeCalculator()
 
-    experiments_root = "/Users/moji/Projects/mit_rail_sim/multirun/2023-08-15/11-30-08"
+    experiments_root = project_root / "multirun" / "2023-08-15" / "11-30-08"
     experiment_directories = [
         os.path.join(experiments_root, d)
         for d in os.listdir(experiments_root)

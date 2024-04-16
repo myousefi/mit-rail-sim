@@ -16,10 +16,12 @@ from mit_rail_sim.dash_app.helpers.data_helpers import load_data
 from mit_rail_sim.dash_app.layout import generate_layout
 from mit_rail_sim.utils import find_free_port
 
+from pathlib import Path
+
 app = dash.Dash(
     __name__,
     external_stylesheets=[dbc.themes.FLATLY],
-    assets_folder="/Users/moji/Projects/mit_rail_sim/mit_rail_sim/dash_app/assets",
+    assets_folder=str(Path(__file__).parent / "assets"),
 )
 
 
@@ -27,7 +29,9 @@ def check_files_exist(directory):
     required_files = ["train_test.csv", "station_test.csv", "passenger_test.csv"]
     for filename in required_files:
         if not os.path.exists(os.path.join(directory, filename)):
-            raise ValueError(f"File {filename} does not exist in the directory {directory}")
+            raise ValueError(
+                f"File {filename} does not exist in the directory {directory}"
+            )
 
 
 @click.command()
@@ -65,7 +69,9 @@ def main(results_dir):
         train_data, station_data, travel_times_data, passenger_data, stations_dict
     )
 
-    arrival_rate_plot_creator = ArrivalRatePlotCreator("data/arrival_rates.csv", stations_dict)
+    arrival_rate_plot_creator = ArrivalRatePlotCreator(
+        "data/arrival_rates.csv", stations_dict
+    )
 
     app.layout = generate_layout(
         plot_creator=plot_creator, analysis=headway_analysis, results_dir=results_dir
@@ -77,7 +83,9 @@ def main(results_dir):
     )
 
     port = find_free_port()
-    print(f"Starting server on port {port}, displaying data from directory {results_dir}")
+    print(
+        f"Starting server on port {port}, displaying data from directory {results_dir}"
+    )
     app.run_server(debug=True, port=port, host="0.0.0.0")
 
 

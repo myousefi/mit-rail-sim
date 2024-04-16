@@ -1,13 +1,14 @@
+from mit_rail_sim.utils import project_root
 import os
 
 import numpy as np
 import pandas as pd
 
-os.chdir("/Users/moji/Projects/mit_rail_sim/mit_rail_sim/dash_app/animation")
+os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 
 # Read the CSV file into a DataFrame
 csv_path = (
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/train_test.csv"
+    project_root / "mit_rail_sim" / "validation" / "simulation_results" / "train_test.csv"
 )
 df = pd.read_csv(csv_path)
 

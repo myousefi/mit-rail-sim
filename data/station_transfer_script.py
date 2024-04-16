@@ -1,14 +1,15 @@
+from mit_rail_sim.utils import project_root
 import json
 
 # Load first file
 with open(
-    "/Users/moji/Projects/mit_rail_sim/data/cta_blue_line_infra/northbound_signal_blocks_and_tracks.json",
+    project_root / "data" / "cta_blue_line_infra" / "northbound_signal_blocks_and_tracks.json",
     "r",
 ) as f:
     data1 = json.load(f)
 
 # Load second file
-with open("/Users/moji/Projects/mit_rail_sim/Before_speed_code_checks.json", "r") as f:
+with open(project_root / "Before_speed_code_checks.json", "r") as f:
     data2 = json.load(f)
 
 # Create a dictionary mapping OBJECTID to STATION in the second file
@@ -26,7 +27,7 @@ for d in data1:
 
 # Save the result back to the first file (or another file if desired)
 with open(
-    "/Users/moji/Projects/mit_rail_sim/data/cta_blue_line_infra/northbound_signal_blocks_and_tracks_corrected_stations.json",
+    project_root / "data" / "cta_blue_line_infra" / "northbound_signal_blocks_and_tracks_corrected_stations.json",
     "w",
 ) as f:
     json.dump(data1, f, indent=4)

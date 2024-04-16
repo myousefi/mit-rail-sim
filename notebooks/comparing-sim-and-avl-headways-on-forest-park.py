@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 # %%
 import pandas as pd
 import plotly.express as px
@@ -31,7 +32,7 @@ df = pd.read_sql(query_text, engine, params={"start_date": "2024-01-01", "end_da
 import glob
 
 # Read all block_test.csv files and concatenate them into one DataFrame
-path = "/Users/moji/Projects/mit_rail_sim/holding-experiments/experiments/*/"
+path = project_root / "holding-experiments" / "experiments" / "*"
 all_files = glob.glob(path + "block_test.csv")
 
 df_list = []

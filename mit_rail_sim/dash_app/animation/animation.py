@@ -1,5 +1,5 @@
+from mit_rail_sim.utils import project_root
 import os
-from datetime import datetime
 
 import geopandas as gpd
 import pandas as pd
@@ -35,12 +35,14 @@ def create_frame_data(time_step_group):
 
 
 # Change directory and load environment variables
-os.chdir("/Users/moji/Projects/mit_rail_sim/mit_rail_sim/dash_app/animation")
+os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
+
 load_dotenv()
+
 MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
 
 # Data preprocessing
-csv_path = "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/animation/train_test.csv"
+csv_path = project_root / "mit_rail_sim" / "animation" / "train_test.csv"
 df = pd.read_csv(csv_path)
 origin_timestamp = pd.Timestamp("2023-04-01 00:00:00")
 df["time_in_seconds"] = pd.to_timedelta(df["time_in_seconds"], unit="s")
@@ -48,7 +50,9 @@ df["adjusted_time"] = origin_timestamp + df["time_in_seconds"]
 
 # Group by and resample the data
 df = (
-    df.groupby(["replication_id", "train_id", pd.Grouper(key="adjusted_time", freq="10S")])
+    df.groupby(
+        ["replication_id", "train_id", pd.Grouper(key="adjusted_time", freq="10S")]
+    )
     .first()
     .reset_index()
 )
@@ -76,11 +80,15 @@ for idx, row in rail_lines_gdf.iterrows():
     geom = row["geometry"]
     x, y = geom.xy
     fig.add_trace(
-        go.Scattermapbox(lat=list(y), lon=list(x), mode="lines", line=dict(width=2), name=name)
+        go.Scattermapbox(
+            lat=list(y), lon=list(x), mode="lines", line=dict(width=2), name=name
+        )
     )
 
 fig.update_layout(
-    mapbox=dict(accesstoken=MAPBOX_TOKEN, center=dict(lat=41.8781, lon=-87.6298), zoom=10),
+    mapbox=dict(
+        accesstoken=MAPBOX_TOKEN, center=dict(lat=41.8781, lon=-87.6298), zoom=10
+    ),
     mapbox_style="light",
 )
 
@@ -90,10 +98,14 @@ train_data_filtered.sort_values(by="time_in_seconds", inplace=True)
 
 # Calculate max_travel_distance
 max_travel_distance = train_data_filtered["total_travelled_distance"].max()
-north_bound_line = rail_lines_gdf[rail_lines_gdf["Name"] == "NorthBound"].geometry.iloc[0]
+north_bound_line = rail_lines_gdf[rail_lines_gdf["Name"] == "NorthBound"].geometry.iloc[
+    0
+]
 
 # Create frames
-frames = train_data_filtered.groupby("time_in_seconds").apply(create_frame_data).tolist()
+frames = (
+    train_data_filtered.groupby("time_in_seconds").apply(create_frame_data).tolist()
+)
 fig.frames = frames
 
 slider_steps = []

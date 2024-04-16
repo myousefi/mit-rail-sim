@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import json
 import unittest
 
@@ -160,8 +161,8 @@ class TestPlotInfrastructure(unittest.TestCase):
             rail_data_json = json.load(f)
 
         with open("calibrated_slow_zones.json") as f:
-            # with open("/Users/moji/Projects/mit_rail_sim/temp_scripts/slow_zones.json") as f:
-            # with open("/Users/moji/Projects/mit_rail_sim/temp_scripts/slow_zones.json") as f:
+            # with open(project_root / "temp_scripts" / "slow_zones.json") as f:
+            # with open(project_root / "temp_scripts" / "slow_zones.json") as f:
             slow_zones_json = json.load(f)
 
         fig, block_alt_segment = self.plot_blocks_and_stations(
@@ -169,7 +170,7 @@ class TestPlotInfrastructure(unittest.TestCase):
         )
 
         track_speed_dict = pd.read_csv(
-            "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/data/track_events_result.csv"
+            project_root / "mit_rail_sim" / "validation" / "data" / "track_events_result.csv"
         )
 
         for index, row in track_speed_dict.iterrows():
@@ -183,7 +184,7 @@ class TestPlotInfrastructure(unittest.TestCase):
                 )
 
         sim_speed_dict = pd.read_csv(
-            "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/block_test_speed.csv"
+            project_root / "mit_rail_sim" / "validation" / "simulation_results" / "block_test_speed.csv"
         )
 
         for index, row in sim_speed_dict.iterrows():
@@ -200,11 +201,11 @@ class TestPlotInfrastructure(unittest.TestCase):
 
     def test_avl_vs_sim_speed_scatter_plot(self):
         sim_speed = pd.read_csv(
-            "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/block_test_speed.csv"
+            project_root / "mit_rail_sim" / "validation" / "simulation_results" / "block_test_speed.csv"
         )
 
         avl_speed = pd.read_csv(
-            "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/data/track_events_result.csv"
+            project_root / "mit_rail_sim" / "validation" / "data" / "track_events_result.csv"
         )
 
         df = (

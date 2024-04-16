@@ -1,6 +1,7 @@
+from mit_rail_sim.utils import project_root
 import json
 
-file_name = "/Users/moji/Projects/mit_rail_sim/file.json"
+file_name = project_root / "file.json"
 
 
 def sanity_check(data):
