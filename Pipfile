@@ -55,3 +55,4 @@ pylama = {extras = ["all"], version = "*"}
 tabulate = "*"
 openpyxl = "*"
 ipykernel = "*"
+rope = "*"
