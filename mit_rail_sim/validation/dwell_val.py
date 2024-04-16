@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import json
 from datetime import datetime, time
 
@@ -186,7 +187,7 @@ if __name__ == "__main__":
     track_df = merged_data.copy()
 
     two_next_scada = {}
-    with open("/Users/moji/Projects/mit_rail_sim/alt_file_northbound_updated.json", "r") as f:
+    with open(project_root / "alt_file_northbound_updated.json", "r") as f:
         blocks = json.load(f)
         for index, block in enumerate(blocks):
             try:
@@ -240,7 +241,7 @@ if __name__ == "__main__":
     simulation_results.dropna(inplace=True)
 
     simulation_results.to_csv(
-        "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/simulation_merged.csv",
+        project_root / "mit_rail_sim" / "validation" / "simulation_results" / "simulation_merged.csv",
         index=False,
     )
     print("saved")

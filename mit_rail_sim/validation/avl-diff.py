@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 from datetime import time
 
 import dash
@@ -130,7 +131,7 @@ def update_heatmap_plot(start_date1, end_date1, start_date2, end_date2):
 if __name__ == "__main__":
     # Data Preparation
     merged_data = pd.read_csv(
-        "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/data/track_events.csv",
+        project_root / "mit_rail_sim" / "validation" / "data" / "track_events.csv",
         parse_dates=["event_time"],
     )
     merged_data["event_datetime"] = pd.to_datetime(merged_data["event_time"])

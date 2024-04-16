@@ -376,3 +376,4 @@ trb_2023/*
 !/holding-experiments/config.yaml
 
 docs/
+refactoring_paths.py

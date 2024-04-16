@@ -8,6 +8,8 @@ from typing import List, Tuple
 import numpy as np
 import scipy.stats as st
 
+from mit_rail_sim.utils import project_root
+
 
 class Schedule:
     # TODO work on the schedule representation
@@ -175,7 +177,9 @@ class GammaScheduleWithShortTurningTwoTerminals(GammaSchedule):
         return dispatch_info
 
 
-class GammaScheduleWithShortTurningTwoTerminalsPMPeak(GammaScheduleWithShortTurningTwoTerminals):
+class GammaScheduleWithShortTurningTwoTerminalsPMPeak(
+    GammaScheduleWithShortTurningTwoTerminals
+):
     import json
 
     # ...
@@ -188,9 +192,7 @@ class GammaScheduleWithShortTurningTwoTerminalsPMPeak(GammaScheduleWithShortTurn
         short_turning_rate: int,
     ):
         self.total_period = total_period
-        self.path_to_params = (
-            "/Users/moji/Projects/mit_rail_sim/inputs/pm_peak_gamma_parameters.json"
-        )
+        self.path_to_params = project_root / "inputs" / "pm_peak_gamma_parameters.json"
 
         with open(self.path_to_params, "r") as file:
             self.params = json.load(file)
@@ -373,7 +375,9 @@ class OHareEmpiricalSchedule:
         elif cta_day_type == "Sunday":
             self.data = self.data[self.data["event_time"].dt.dayofweek == 6]
         else:
-            raise ValueError("Invalid CTA day type. Must be one of 'Weekday', 'Saturday', 'Sunday'")
+            raise ValueError(
+                "Invalid CTA day type. Must be one of 'Weekday', 'Saturday', 'Sunday'"
+            )
 
         self.data = self.data[
             (
@@ -387,7 +391,9 @@ class OHareEmpiricalSchedule:
         self.data = self.data[self.data["headway"].between(*headway_quantiles)]
 
         self.data["interval"] = self.data["event_time"].dt.floor("15min")
-        self.data["interval"] = self.data["interval"] - self.data["interval"].dt.normalize()
+        self.data["interval"] = (
+            self.data["interval"] - self.data["interval"].dt.normalize()
+        )
 
         grouped_data = self.data.groupby(["interval", "qt2_trackid"])
 
@@ -401,14 +407,18 @@ class OHareEmpiricalSchedule:
 
         while current_time < end_time:
             try:
-                current_group = self.grouped_data.get_group((current_time.floor("15min"), 15020))
+                current_group = self.grouped_data.get_group(
+                    (current_time.floor("15min"), 15020)
+                )
 
             except KeyError:
                 current_time += pd.Timedelta(minutes=15)
                 continue
 
             if not current_group.empty:
-                headway = pd.Timedelta(current_group["headway"].sample(1).iloc[0], unit="m")
+                headway = pd.Timedelta(
+                    current_group["headway"].sample(1).iloc[0], unit="m"
+                )
                 current_time += headway
                 departure_time = (current_time).total_seconds()
                 dispatch_info.append((departure_time, 0, "Southbound"))
@@ -423,14 +433,18 @@ class OHareEmpiricalSchedule:
 
         while current_time < end_time:
             try:
-                current_group = self.grouped_data.get_group((current_time.floor("15min"), 11020))
+                current_group = self.grouped_data.get_group(
+                    (current_time.floor("15min"), 11020)
+                )
 
             except KeyError:
                 current_time += pd.Timedelta(minutes=15)
                 continue
 
             if not current_group.empty:
-                headway = pd.Timedelta(current_group["headway"].sample(1).iloc[0], unit="m")
+                headway = pd.Timedelta(
+                    current_group["headway"].sample(1).iloc[0], unit="m"
+                )
                 current_time += headway
                 departure_time = (current_time).total_seconds()
                 dispatch_info.append((departure_time, 0, "Northbound"))
@@ -458,7 +472,8 @@ class OHareEmpiricalSchedule:
         dispatch_info.sort(key=lambda x: x[0])
 
         dispatch_info = [
-            (time - self.start_time_of_day * 3600, _, __) for time, _, __ in dispatch_info
+            (time - self.start_time_of_day * 3600, _, __)
+            for time, _, __ in dispatch_info
         ]
 
         self.dispatch_info = dispatch_info
@@ -467,7 +482,9 @@ class OHareEmpiricalSchedule:
 
 
 class EmpiricalSchedule:
-    def __init__(self, cleaned_data_filepath: str, start_time_of_day: int, end_time_of_day: int):
+    def __init__(
+        self, cleaned_data_filepath: str, start_time_of_day: int, end_time_of_day: int
+    ):
         # TODO Try inverse transform sampling from the empricial cumulative distribution function or fit a theoretical distribution
         self.cleaned_data_filepath = cleaned_data_filepath
         self.start_time_of_day = pd.to_timedelta(f"{start_time_of_day}:00:00")
@@ -541,10 +558,13 @@ class EmpiricalSchedule:
         ]
         # Ensure each timestamp has 'hh:mm:ss' format
         departure_times = [
-            time if len(time.split(":")) == 3 else time + ":00" for time in departure_times
+            time if len(time.split(":")) == 3 else time + ":00"
+            for time in departure_times
         ]
 
-        self.uic_halsted_departure_times = [pd.to_timedelta(time) for time in departure_times]
+        self.uic_halsted_departure_times = [
+            pd.to_timedelta(time) for time in departure_times
+        ]
 
         self.dispatch_info = self.generate_random_dispatch_info()
 
@@ -565,7 +585,9 @@ class EmpiricalSchedule:
         filtered_data["interval"] = filtered_data["event_time"].dt.floor("15min")
 
         headway_quantiles = filtered_data["headway"].quantile([0.05, 0.95])
-        filtered_data = filtered_data[filtered_data["headway"].between(*headway_quantiles)]
+        filtered_data = filtered_data[
+            filtered_data["headway"].between(*headway_quantiles)
+        ]
 
         grouped_data = filtered_data.groupby(["station", "interval"])
 
@@ -603,7 +625,9 @@ class EmpiricalSchedule:
                 continue
 
             if not current_group.empty:
-                headway = pd.Timedelta(current_group["headway"].sample(1).iloc[0], unit="m")
+                headway = pd.Timedelta(
+                    current_group["headway"].sample(1).iloc[0], unit="m"
+                )
                 departure_time = (offset + headway).total_seconds()
                 dispatch_info.append(
                     (departure_time, 0, "Northbound")
@@ -620,7 +644,10 @@ class EmpiricalSchedule:
         dispatch_info = []
 
         for departure_time in self.uic_halsted_departure_times:
-            if departure_time < self.start_time_of_day or departure_time > self.end_time_of_day:
+            if (
+                departure_time < self.start_time_of_day
+                or departure_time > self.end_time_of_day
+            ):
                 continue
 
             # Find entries within 10 minutes proximity of time from departure time
@@ -629,7 +656,8 @@ class EmpiricalSchedule:
 
             # Filter the grouped_data based on proximity to departure time
             current_group = uic_data[
-                (uic_data["event_time"] >= lower_bound) & (uic_data["event_time"] <= upper_bound)
+                (uic_data["event_time"] >= lower_bound)
+                & (uic_data["event_time"] <= upper_bound)
             ]
 
             if not current_group.empty:
@@ -638,9 +666,13 @@ class EmpiricalSchedule:
             else:
                 deviation = pd.Timedelta(0, unit="m")
 
-            modified_departure_time = departure_time + deviation - self.start_time_of_day
+            modified_departure_time = (
+                departure_time + deviation - self.start_time_of_day
+            )
             dt_seconds = modified_departure_time.total_seconds()
-            dispatch_info.append((dt_seconds, 79, "Northbound"))  # 1 for UIC-Halsted block index
+            dispatch_info.append(
+                (dt_seconds, 79, "Northbound")
+            )  # 1 for UIC-Halsted block index
 
         return dispatch_info
 

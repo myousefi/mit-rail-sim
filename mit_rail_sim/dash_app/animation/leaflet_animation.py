@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import os
 from datetime import datetime, timedelta
 
@@ -6,7 +7,7 @@ import geopandas as gpd
 import pandas as pd
 from folium import plugins
 
-os.chdir("/Users/moji/Projects/mit_rail_sim/mit_rail_sim/dash_app/animation")
+os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 
 
 def get_color(number_of_passengers, min_passengers=0, max_passengers=960):
@@ -55,7 +56,7 @@ def generate_feature(row, north_bound_line, max_travel_distance):
 
 
 # Read and preprocess the CSV file into a DataFrame (from the second script)
-csv_path = "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/animation/train_test.csv"
+csv_path = project_root / "mit_rail_sim" / "animation" / "train_test.csv"
 
 df = pd.read_csv(csv_path)
 df["time_in_seconds"] = pd.to_timedelta(df["time_in_seconds"], unit="s")

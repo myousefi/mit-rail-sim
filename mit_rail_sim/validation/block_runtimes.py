@@ -1,10 +1,11 @@
+from mit_rail_sim.utils import project_root
 import json
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
 # Step 1: Create a list of all blocks associated with stations and the blocks that come immediately after them
-with open("/Users/moji/Projects/mit_rail_sim/alt_file_northbound_updated.json", "r") as f:
+with open(project_root / "alt_file_northbound_updated.json", "r") as f:
     data = json.load(f)
     scada_next = {}
     scada_len = {}
@@ -14,7 +15,7 @@ with open("/Users/moji/Projects/mit_rail_sim/alt_file_northbound_updated.json", 
 
 # Load the track_events dataset
 track_events = pd.read_csv(
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/data/track_events.csv",
+    project_root / "mit_rail_sim" / "validation" / "data" / "track_events.csv",
     parse_dates=["event_time"],
 )
 
@@ -75,7 +76,7 @@ result_df = grouped["speed"].mean()
 
 
 sim_df = pd.read_csv(
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/block_test.csv"
+    project_root / "mit_rail_sim" / "validation" / "simulation_results" / "block_test.csv"
 )
 
 sim_df.rename(columns={"block_id": "scada"}, inplace=True)
@@ -95,7 +96,7 @@ def calculate_diff(group):
 sim_df = grouped.apply(calculate_diff)
 
 sim_df.to_csv(
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/block_test_s.csv",
+    project_root / "mit_rail_sim" / "validation" / "simulation_results" / "block_test_s.csv",
     index=False,
 )
 
@@ -112,11 +113,11 @@ grouped = sim_df.groupby("scada", as_index=False)
 sim_df = grouped["speed"].mean()
 
 sim_df.to_csv(
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/block_test_speed.csv",
+    project_root / "mit_rail_sim" / "validation" / "simulation_results" / "block_test_speed.csv",
     index=False,
 )
 # Step 7: Save the results back to a new CSV file
 result_df.to_csv(
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/data/track_events_result.csv",
+    project_root / "mit_rail_sim" / "validation" / "data" / "track_events_result.csv",
     index=False,
 )

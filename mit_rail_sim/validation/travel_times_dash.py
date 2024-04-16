@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 from datetime import datetime, time
 
 import dash
@@ -352,7 +353,7 @@ if __name__ == "__main__":
     simulation_results.dropna(inplace=True)
 
     simulation_results.to_csv(
-        "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/simulation_results/simulation_merged.csv",
+        project_root / "mit_rail_sim" / "validation" / "simulation_results" / "simulation_merged.csv",
         index=False,
     )
     print("saved")

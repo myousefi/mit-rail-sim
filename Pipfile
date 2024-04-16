@@ -40,6 +40,7 @@ ydata-profiling = "*"
 string-charts = {editable = true, path = "./string_charts"}
 sphinx = "*"
 sphinx-book-theme = "*"
+pathlib = "*"
 
 [dev-packages]
 black = "==22.3.0"
@@ -54,3 +55,4 @@ pylama = {extras = ["all"], version = "*"}
 tabulate = "*"
 openpyxl = "*"
 ipykernel = "*"
+rope = "*"

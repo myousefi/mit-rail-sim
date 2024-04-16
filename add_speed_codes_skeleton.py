@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import json
 
 
@@ -22,7 +23,7 @@ def create_block_alt(block):
 
 # import pandas as pd
 
-# df = pd.read_csv("/Users/moji/Projects/mit_rail_sim/temp_scripts/tracks.csv")
+# df = pd.read_csv(project_root / "temp_scripts" / "tracks.csv")
 # df.to_json("./tracks.json", orient="records", indent=4)
 # # Load the JSON file
 # with open("./tracks.json", "r") as file:
@@ -56,7 +57,7 @@ def approx_speed_code(data, index):
     return sc
 
 
-with open("/Users/moji/Projects/mit_rail_sim/alt_file_southbound_updated.json", "r") as file:
+with open(project_root / "alt_file_southbound_updated.json", "r") as file:
     data = json.load(file)
 
 # Iterate over each entry in the JSON data
@@ -69,7 +70,7 @@ for index, entry in enumerate(data):
     entry["STARTSTN"], entry["ENDSTN"] = entry["ENDSTN"], entry["STARTSTN"]
     # swap start and end
 # Save the modified JSON back to the file
-with open("/Users/moji/Projects/mit_rail_sim/alt_file_southbound_updated_.json", "w") as file:
+with open(project_root / "alt_file_southbound_updated_.json", "w") as file:
     json.dump(data, file, indent=4)
 
 print("File has been updated!")

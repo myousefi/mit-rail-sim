@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import json
 
 import click
@@ -16,7 +17,7 @@ color_mapping = {
 
 
 # Loading static data
-with open("/Users/moji/Projects/mit_rail_sim/inputs/infra.json", "r") as f:
+with open(project_root / "inputs" / "infra.json", "r") as f:
     data = json.load(f)
     track_dist = {}
     station_dict = {}
@@ -31,7 +32,7 @@ with open("/Users/moji/Projects/mit_rail_sim/inputs/infra.json", "r") as f:
         distance -= block["DISTANCE"]
         track_dist[block["BLOCK_ALT"]] = distance
 
-with open("/Users/moji/Projects/mit_rail_sim/inputs/infra.json", "r") as f:
+with open(project_root / "inputs" / "infra.json", "r") as f:
     data = json.load(f)
     track_dist = {}
     station_dict = {}
@@ -211,7 +212,7 @@ def get_available_replication_ids(train_data):
 @click.argument(
     "results_dir",
     type=click.Path(exists=True),
-    default="/Users/moji/Projects/mit_rail_sim/cta_experiments_jan/outputs/2024-04-01/13-21-26",
+    default=project_root / "cta_experiments_jan" / "outputs" / "2024-04-01" / "13-21-26",
 )
 @click.option(
     "-r",

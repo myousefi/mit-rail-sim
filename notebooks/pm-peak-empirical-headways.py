@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 # %%
 import numpy as np
 import pandas as pd
@@ -15,7 +16,7 @@ pd.set_option("display.max_columns", 500)
 start_date = "2023-11-13"
 end_date = "2023-12-13"
 # %%
-df = pd.read_csv("/Users/moji/Projects/mit_rail_sim/inputs/ohare-dispatch-info.csv")
+df = pd.read_csv(project_root / "inputs" / "ohare-dispatch-info.csv")
 
 df["event_time"] = df["time"]
 
@@ -120,7 +121,7 @@ parameters = {
 parameters_json = json.dumps(parameters)
 
 # Specify the file path for saving the JSON file
-json_file_path = "/Users/moji/Projects/mit_rail_sim/inputs/pm_peak_gamma_parameters.json"
+json_file_path = project_root / "inputs" / "pm_peak_gamma_parameters.json"
 
 # Save the parameters to the JSON file
 with open(json_file_path, "w") as json_file:

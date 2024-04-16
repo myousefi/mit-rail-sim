@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 from random import randint, seed
 
 from unittest import TestCase
@@ -41,11 +42,11 @@ class CTABlueLineTestCase(TestCase):
 
         self.schedule = WeibullSchedule(
             num_trains=50,
-            path_to_params_json_file="/Users/moji/Projects/mit_rail_sim/weibull_params.json",
+            path_to_params_json_file=project_root / "weibull_params.json",
         )
 
     def test_moving_block_simulation_with_real_data_from_file(self):
-        data = self.data_loader.load_data("/Users/moji/Projects/mit_rail_sim/file.json")
+        data = self.data_loader.load_data(project_root / "file.json")
         slow_zones = self.data_loader.read_slow_zones_from_json("test_slow_zones.json")
 
         logger_context = LoggerContext(
@@ -67,7 +68,7 @@ class CTABlueLineTestCase(TestCase):
         )
 
     def test_simulation_with_real_data_from_file(self):
-        data = self.data_loader.load_data("/Users/moji/Projects/mit_rail_sim/file.json")
+        data = self.data_loader.load_data(project_root / "file.json")
         slow_zones = self.data_loader.read_slow_zones_from_json("test_slow_zones.json")
 
         logger_context = LoggerContext(
