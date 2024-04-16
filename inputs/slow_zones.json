@@ -1,0 +1,952 @@
+[
+    {
+        "block_id": "WC-461",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-452",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-448",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-444",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-437",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "671",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-430",
+        "reduced_speed_limit": 15
+    },
+
+    {
+        "block_id": "WC-401",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-395",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-387",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-381",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-374",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "661",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-333",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-323",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-314",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-302",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-293",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "651",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-259",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-253",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-244",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-239",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-232",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-225",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WC-219",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "641",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-212",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-206",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-199",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-192",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-186",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-178",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-172",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-166",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-225",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-229",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-235",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-244",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-417",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-422",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "111",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-615",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "81",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-625",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-577",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-585",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWC-591",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "115",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WC-350",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-339",
+        "reduced_speed_limit": 35
+    },
+
+    {
+        "block_id": "WC-158",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-151",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-144",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-138",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-130",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-125",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WC-117",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "NWC-270",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "NWC-273",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "NWC-278",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "NWC-281",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "NWC-284",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-199",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-355",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-144",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-298",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-24",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-259",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-432",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-437",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-293",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-17",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-88",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-94",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-125",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-387",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-314",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-323",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-355",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-361",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-225",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-279",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "653",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-166",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-339",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "D191",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-350",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-304",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-448",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-111",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-452",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-401",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-150",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-117",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "673",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-232",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-266",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-138",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-369",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-374",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-214",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-219",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-225",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-293",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-232",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-285",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-304",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-314",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-20",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-192",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "NWD-468",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-432",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-437",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-381",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-395",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-444",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-144",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "D182",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "663",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-323",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "623",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-298",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-273",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-439",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-132",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-298",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-333",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-339",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-304",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-206",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-79",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-11",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "313",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-1",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-5",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-13",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-17",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-75",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-417",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "673",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-8",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-432",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "D110",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-422",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "D100",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWD-113",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-42",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "D26",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-63",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-69",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWD-111",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWD-118",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWD-713",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "323",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-28",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "D5",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "D21",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-17",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "NWD-124",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-35",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "D21",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-24",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "NWD-720",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "LN2-273",
+        "dir": "2",
+        "branch": "LS",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "D9",
+        "dir": "D",
+        "branch": "DS",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-20",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "261",
+        "dir": "2",
+        "branch": "LS",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "WD-44",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "NWD-116",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "NWD-727",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-32",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "LN2-282",
+        "dir": "2",
+        "branch": "LS",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "355",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-42",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-48",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 35
+    },
+    {
+        "block_id": "NWD-128",
+        "dir": "D",
+        "branch": "OH",
+        "reduced_speed_limit": 25
+    },
+    {
+        "block_id": "WD-42",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 15
+    },
+    {
+        "block_id": "WD-52",
+        "dir": "D",
+        "branch": "CN",
+        "reduced_speed_limit": 25
+    }
+]

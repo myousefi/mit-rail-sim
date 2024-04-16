@@ -1,0 +1,20 @@
+# conf/config.yaml
+defaults:
+    - override hydra/launcher: joblib
+
+block_type: FixedBlock
+which_slow_zones: None
+offscan_symptomatic_block_index: None
+offscan_probability: 0.2
+replication_count: 10
+headway: 180
+cv_headway: 0.2
+
+hydra:
+    sweeper:
+        params:
+            which_slow_zones: Current
+            offscan_probability: 0.0,0.5,1.0
+            offscan_symptomatic_block_index: 49
+            headway: 120,140,160,200,240,300,360
+            cv_headway: 0.0,0.2,0.4

@@ -1,0 +1,107 @@
+[
+    {
+        "block_id": "WD-466T",
+        "start_milepost": "470+00",
+        "end_milepost": "465+80",
+        "default_speed_limit": 15,
+        "speed_codes_to_communicate": {
+            "WD-463T": 0,
+            "683T": 0,
+            "WD-452T25": 15,
+            "WD-448": 15,
+            "WD-444": 25
+        },
+
+        "station": {
+            "station_name": "Forest Park",
+            "end_of_platform_milepost": "465+92"
+        }
+    },
+    {
+        "block_id": "WD-463T",
+        "start_milepost": "465+80",
+        "end_milepost": "460+73",
+        "default_speed_limit": 15,
+        "speed_codes_to_communicate": {
+            "683T": 0
+        }
+    },
+
+    {
+        "block_id": "WD-448T",
+        "start_milepost": "452+00",
+        "end_milepost": "447+50",
+        "default_speed_limit": 35,
+        "speed_codes_to_communicate": {
+            "WD-444": 0,
+            "WD-439": 0,
+            "WD-437": 15,
+            "WD-432": 25,
+            "673": 35,
+            "WD-422": 35,
+            "WD-417": 33,
+            "WD-410": 55,
+            "WD-401": 55
+        }
+    },
+    {
+        "block_id": "WD-444",
+        "start_milepost": "447+50",
+        "end_milepost": "443+53",
+        "default_speed_limit": 35,
+        "speed_codes_to_communicate": {
+            "WD-439": 0,
+            "WD-437": 15,
+            "WD-432": 25,
+            "673": 25,
+            "WD-422": 25,
+            "WD-417": 33,
+            "WD-410": 55,
+            "WD-401": 55
+        }
+    },
+    {
+        "block_id": "WD-439",
+        "start_milepost": "443+53",
+        "end_milepost": "439+00",
+        "default_speed_limit": 35,
+        "speed_codes_to_communicate": {
+            "WD-437": 0,
+            "WD-432": 0,
+            "673": 15,
+            "WD-422": 25,
+            "WD-417": 33,
+            "WD-410": 55,
+            "WD-401": 55
+        }
+    },
+    {
+        "block_id": "WD-437T",
+        "start_milepost": "439+00",
+        "end_milepost": "437+43",
+        "default_speed_limit": 35,
+        "speed_codes_to_communicate": {
+            "WD-432": 0,
+            "673": 15,
+            "WD-422": 15,
+            "WD-417": 35,
+            "WD-410": 35,
+            "WD-401": 55,
+            "WD-395": 55
+        }
+    },
+    {
+        "block_id": "WD-432",
+        "start_milepost": "437+43",
+        "end_milepost": "432+15",
+        "default_speed_limit": 55,
+        "speed_codes_to_communicate": {
+            "673": 15,
+            "WD-422": 15,
+            "WD-417": 35,
+            "WD-410": 35,
+            "WD-401": 55,
+            "WD-395": 55
+        }
+    }
+]

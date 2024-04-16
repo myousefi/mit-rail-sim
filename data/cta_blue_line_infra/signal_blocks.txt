@@ -1,0 +1,19 @@
+WD-466T
+start_milepost : 470+00
+end_milepost : 465+80
+default_speed_limit: 15
+speed_codes_to_communicate:
+{
+    WD-463T: 0,
+    683T: 0,
+    WD-452T25: 15,
+    WD-448: 15,
+    WD-444: 25,
+}
+
+station: {
+    station_name: Forest Park,
+    end_of_platform_milepost: 465+92,
+}
+
+

@@ -1,0 +1,48 @@
+{
+	// Place your mit_rail_sim workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+        "Station Snippet": {
+        "scope": "json",
+        "prefix": "station",
+        "body": [
+            "\"STATION\": {",
+            "    \"STATION_NAME\": \"${1:station_name}\",",
+            "    \"END_OF_PLATFORM_MILEPOST\": ${2:milepost}",
+            "}"
+        ],
+        "description": "Snippet for a station object"
+    },
+    "End of Platform Milepost Snippet": {
+        "scope": "json",
+        "prefix": "milepost",
+        "body": [
+            "\"END_OF_PLATFORM_MILEPOST\": ${1:milepost}"
+        ],
+        "description": "Snippet for end of platform milepost"
+    },
+
+    "Speed Codes Snippet": {
+        "scope": "json",
+        "prefix": "speedcodes",
+        "body": [
+            "\"SPEED_CODES_TO_COMMUNICATE\": {",
+            "    \"${1:signal_block_id}\": ${2:speed_code},",
+            "},"
+        ],
+        "description": "Snippet for speed codes to communicate"
+    }
+}
