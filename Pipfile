@@ -37,6 +37,7 @@ jupyter-dash = "*"
 mit-rail-sim = {editable = true, path = "."}
 pandas-profiling = "*"
 ydata-profiling = "*"
+string-charts = {editable = true, path = "./string_charts"}
 
 [dev-packages]
 black = "==22.3.0"
