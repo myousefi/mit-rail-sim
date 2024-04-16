@@ -37,6 +37,8 @@ jupyter-dash = "*"
 mit-rail-sim = {editable = true, path = "."}
 pandas-profiling = "*"
 ydata-profiling = "*"
+sphinx = "*"
+sphinx-book-theme = "*"
 
 [dev-packages]
 black = "==22.3.0"
