@@ -1,0 +1,4 @@
+[submodule "docs"]
+	path = docs
+	url = git@github.com:myousefi/mit-rail-sim-docs.git
+	ignore = all
