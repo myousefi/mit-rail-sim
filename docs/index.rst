@@ -10,6 +10,8 @@ Welcome to MIT RailSim's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   setup_guide
+
 
 
 Indices and tables
