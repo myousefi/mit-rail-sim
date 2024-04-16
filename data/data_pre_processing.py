@@ -1,7 +1,8 @@
+from mit_rail_sim.utils import project_root
 import json
 
 # Load the JSON data
-path = "/Users/moji/Projects/mit_rail_sim/data/cta_blue_line_infra/northbound_signal_blocks_and_tracks_corrected_stations.json"
+path = project_root / "data" / "cta_blue_line_infra" / "northbound_signal_blocks_and_tracks_corrected_stations.json"
 
 with open(path, "r") as file:
     data = json.load(file)

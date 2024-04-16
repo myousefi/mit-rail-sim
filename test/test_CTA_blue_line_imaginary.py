@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import asyncio
 import json
 import os
@@ -104,7 +105,7 @@ class CTABlueLineTestCase(unittest.TestCase):
             simulation.run(7200 * 2)
 
     def test_moving_block_simulation_with_real_data_from_file(self):
-        data = self.load_data("/Users/moji/Projects/mit_rail_sim/file.json")
+        data = self.load_data(project_root / "file.json")
         slow_zones = read_slow_zones_from_json("test_slow_zones.json")
 
         logger_context = LoggerContext(
@@ -124,7 +125,7 @@ class CTABlueLineTestCase(unittest.TestCase):
         )
 
     async def test_simulation_with_real_data_from_file(self):
-        data = self.load_data("/Users/moji/Projects/mit_rail_sim/file.json")
+        data = self.load_data(project_root / "file.json")
         slow_zones = read_slow_zones_from_json("test_slow_zones.json")
 
         logger_context = LoggerContext(

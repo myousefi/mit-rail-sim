@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 # Script to process and save geometries
 import os
 
@@ -6,7 +7,7 @@ from dotenv import load_dotenv
 from shapely.ops import linemerge
 
 # Change directory
-os.chdir("/Users/moji/Projects/mit_rail_sim/mit_rail_sim/dash_app/animation")
+os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 
 # Load environment variables
 load_dotenv()

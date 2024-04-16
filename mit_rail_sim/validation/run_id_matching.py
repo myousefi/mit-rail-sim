@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 # Loading static data
 import json
 from dataclasses import dataclass
@@ -5,7 +6,7 @@ from datetime import timedelta
 
 import pandas as pd
 
-with open("/Users/moji/Projects/mit_rail_sim/alt_file_northbound_updated.json", "r") as f:
+with open(project_root / "alt_file_northbound_updated.json", "r") as f:
     data = json.load(f)
     track_dist = {}
     distance = 0
@@ -14,7 +15,7 @@ with open("/Users/moji/Projects/mit_rail_sim/alt_file_northbound_updated.json", 
         track_dist[block["BLOCK_ALT"]] = distance
 
 df = pd.read_csv(
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/data/track_events.csv",
+    project_root / "mit_rail_sim" / "validation" / "data" / "track_events.csv",
     parse_dates=["event_time"],
     usecols=["event_time", "scada", "run_id"],
 )
@@ -133,4 +134,4 @@ for trip in unmatched_trips:
         valid_trips.append(trip)
         unmatched_trips.remove(trip)
 
-df.to_csv("/Users/moji/Projects/mit_rail_sim/mit_rail_sim/validation/data/sample_split.csv")
+df.to_csv(project_root / "mit_rail_sim" / "validation" / "data" / "sample_split.csv")

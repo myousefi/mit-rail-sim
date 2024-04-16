@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import os
 
 import geopandas as gpd
@@ -34,14 +35,14 @@ def create_frame_data(time_step_group):
 
 
 # Change directory and load environment variables
-os.chdir("/Users/moji/Projects/mit_rail_sim/mit_rail_sim/dash_app/animation")
+os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 
 load_dotenv()
 
 MAPBOX_TOKEN = os.getenv("MAPBOX_TOKEN")
 
 # Data preprocessing
-csv_path = "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/animation/train_test.csv"
+csv_path = project_root / "mit_rail_sim" / "animation" / "train_test.csv"
 df = pd.read_csv(csv_path)
 origin_timestamp = pd.Timestamp("2023-04-01 00:00:00")
 df["time_in_seconds"] = pd.to_timedelta(df["time_in_seconds"], unit="s")

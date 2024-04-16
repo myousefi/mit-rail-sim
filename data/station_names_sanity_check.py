@@ -1,8 +1,9 @@
+from mit_rail_sim.utils import project_root
 import csv
 import json
 
 # Read CSV file and extract unique station names
-with open("/Users/moji/Projects/mit_rail_sim/data/arrival_rates.csv", "r") as csv_file:
+with open(project_root / "data" / "arrival_rates.csv", "r") as csv_file:
     csv_reader = csv.reader(csv_file)
     next(csv_reader)  # Skip the header
     csv_stations = set(row[2] for row in csv_reader)  # Origin stops
@@ -14,7 +15,7 @@ with open("/Users/moji/Projects/mit_rail_sim/data/arrival_rates.csv", "r") as cs
 csv_stations = sorted(list(csv_stations))
 
 # Read JSON file and extract unique station names
-with open("/Users/moji/Projects/mit_rail_sim/file.json", "r") as json_file:
+with open(project_root / "file.json", "r") as json_file:
     json_data = json.load(json_file)
     json_stations = set(item["STATION"]["STATION_NAME"] for item in json_data if "STATION" in item)
 

@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import os
 
 import pandas as pd
@@ -23,7 +24,7 @@ engine = create_engine(f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATAB
 
 # Load station and direction mapping from CSV
 station_direction_df = pd.read_csv(
-    "/Users/moji/Projects/mit_rail_sim/mit_rail_sim/odx_arrival/data/blue_line_stations.csv"
+    project_root / "mit_rail_sim" / "odx_arrival" / "data" / "blue_line_stations.csv"
 )
 
 # Create a dictionary mapping from trackid to station and direction

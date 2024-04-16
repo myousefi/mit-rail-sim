@@ -173,7 +173,7 @@ from mit_rail_sim.utils import project_root
 
 
 @hydra.main(
-    config_path=project_root / "holding-experiments",
+    config_path=str(project_root / "holding-experiments"),
     config_name="config",
 )
 def main(cfg: DictConfig) -> None:
@@ -204,7 +204,13 @@ def main(cfg: DictConfig) -> None:
         log_file_path=f"{log_folder_path}/block_test.csv"
     )
     arrival_rates = ArrivalRate(
-        filename=project_root / "odx_arrival" / "data" / "arrival_rates_Nov.csv",
+        filename=str(
+            project_root
+            / "mit_rail_sim"
+            / "odx_arrival"
+            / "data"
+            / "arrival_rates_Nov.csv"
+        ),
         demand_factor=cfg.demand_level,
     )
 

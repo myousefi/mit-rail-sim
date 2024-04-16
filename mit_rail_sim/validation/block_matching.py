@@ -1,10 +1,11 @@
+from mit_rail_sim.utils import project_root
 import json
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
 # Step 1: Create a list of all blocks associated with stations and the blocks that come immediately after them
-with open("/Users/moji/Projects/mit_rail_sim/alt_file_northbound_updated.json", "r") as f:
+with open(project_root / "alt_file_northbound_updated.json", "r") as f:
     data = json.load(f)
     scada_next = {}
     for i, block in enumerate(data[:-1]):

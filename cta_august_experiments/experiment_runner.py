@@ -1,3 +1,4 @@
+from mit_rail_sim.utils import project_root
 import os
 import shutil
 import sys
@@ -28,7 +29,7 @@ class CTABlueLineSimulator:
     def __init__(self, cfg):
         self.cfg = cfg
         self.arrival_rates = ArrivalRate(
-            filename="/Users/moji/Projects/mit_rail_sim/data/arrival_rates.csv"
+            filename=project_root / "data" / "arrival_rates.csv"
         )
         self.data_loader = DataLoader()
         self.block_factory = BlockFactory(self.arrival_rates)
@@ -49,11 +50,11 @@ class CTABlueLineSimulator:
         )
 
     def run_simulation(self):
-        data = self.data_loader.load_data("/Users/moji/Projects/mit_rail_sim/file.json")
+        data = self.data_loader.load_data(project_root / "file.json")
         slow_zones_file_path = (
-            "/Users/moji/Projects/mit_rail_sim/test_slow_zones_uniform.json"
+            project_root / "test_slow_zones_uniform.json"
             if self.cfg.which_slow_zones == "Uniform"
-            else "/Users/moji/Projects/mit_rail_sim/test_slow_zones.json"
+            else project_root / "test_slow_zones.json"
         )
         slow_zones = (
             self.data_loader.read_slow_zones_from_json(slow_zones_file_path)
