@@ -39,7 +39,9 @@ if TYPE_CHECKING:
 
 import os
 
-PARAMS_FILE_PATH = "/Users/moji/Projects/mit_rail_sim/inputs/insepction_time_distribution.json"
+from mit_rail_sim.utils import project_root
+
+PARAMS_FILE_PATH = project_root / "inputs/insepction_time_distribution.json"
 PARAMS_DICT = None
 
 
@@ -107,7 +109,9 @@ class Path:
 
         for slow_zone in slow_zones:
             try:
-                self.set_block_slow_zone(slow_zone.block_id, slow_zone.reduced_speed_limit)
+                self.set_block_slow_zone(
+                    slow_zone.block_id, slow_zone.reduced_speed_limit
+                )
             except ValueError as e:
                 pass
                 # print(e)
@@ -199,12 +203,16 @@ class Path:
         return sum(block.length for block in self.blocks)
 
     def get_all_stops_ahead(self, block_index: int) -> List[Station]:
-        stops_ahead = [block.station for block in self.blocks[block_index + 1 :] if block.station]
+        stops_ahead = [
+            block.station for block in self.blocks[block_index + 1 :] if block.station
+        ]
         return stops_ahead
 
     def get_all_stops_ahead_which_are_served(self, block_index: int) -> List[Station]:
         stops_ahead = [
-            block.station.name for block in self.blocks[block_index + 1 :] if block.station
+            block.station.name
+            for block in self.blocks[block_index + 1 :]
+            if block.station
         ]
         return stops_ahead
 
@@ -276,7 +284,9 @@ class ShortTurningPath(Path):
         # self.set_up_time_distribution = set_up_time_distribution
         self.direction = self.sb_path.direction
 
-        self.blocks = sb_path.blocks[: sb_path.get_block_index_by_id(sb_juncture_block_id) + 1]
+        self.blocks = sb_path.blocks[
+            : sb_path.get_block_index_by_id(sb_juncture_block_id) + 1
+        ]
 
         short_turning_block = ShortTurningBlock()
         short_turner = ShortTurner()
@@ -294,13 +304,17 @@ class ShortTurningPath(Path):
 
     def get_all_stops_ahead(self, block_index: int) -> List[Station]:
         stops_ahead = [
-            block.station for block in self.sb_path.blocks[block_index + 1 :] if block.station
+            block.station
+            for block in self.sb_path.blocks[block_index + 1 :]
+            if block.station
         ]
         return stops_ahead
 
     def get_all_stops_ahead_which_are_served(self, block_index: int) -> List[Station]:
         stops_ahead = [
-            block.station.name for block in self.blocks[block_index + 1 :] if block.station
+            block.station.name
+            for block in self.blocks[block_index + 1 :]
+            if block.station
         ]
         return stops_ahead
 
@@ -308,7 +322,9 @@ class ShortTurningPath(Path):
         self, current_block_index: int, distance_travelled_in_current_block: float
     ) -> float:
         if current_block_index > len(self.blocks) - 2:
-            return self.nb_path.get_block_by_id(self.nb_juncture_block_id).dist_from_terminal
+            return self.nb_path.get_block_by_id(
+                self.nb_juncture_block_id
+            ).dist_from_terminal
 
         if self.direction == "Northbound":
             return (
@@ -370,7 +386,9 @@ class ShortTurningPath(Path):
         train.distance_travelled_in_current_block = 0.0
 
         train.path = self.nb_path
-        train.starting_block_index = self.nb_path.get_block_index_by_id(self.nb_juncture_block_id)
+        train.starting_block_index = self.nb_path.get_block_index_by_id(
+            self.nb_juncture_block_id
+        )
         train.current_block_index = train.starting_block_index
         train.distance_travelled_in_current_block = 0.0
 
@@ -394,7 +412,9 @@ class ShortTurningAtWestern(Path):
         # self.set_up_time_distribution = set_up_time_distribution
         self.direction = self.sb_path.direction
 
-        self.blocks = sb_path.blocks[: sb_path.get_block_index_by_id(sb_juncture_block_id) + 1]
+        self.blocks = sb_path.blocks[
+            : sb_path.get_block_index_by_id(sb_juncture_block_id) + 1
+        ]
 
         short_turning_block = ShortTurningBlock(length=10)
         short_turner = ShortTurner()
@@ -412,19 +432,25 @@ class ShortTurningAtWestern(Path):
 
     def get_all_stops_ahead(self, block_index: int) -> List[Station]:
         stops_ahead = [
-            block.station for block in self.sb_path.blocks[block_index:] if block.station
+            block.station
+            for block in self.sb_path.blocks[block_index:]
+            if block.station
         ]
         return stops_ahead
 
     def get_all_stops_ahead_which_are_served(self, block_index: int) -> List[Station]:
-        stops_ahead = [block.station.name for block in self.blocks[block_index:] if block.station]
+        stops_ahead = [
+            block.station.name for block in self.blocks[block_index:] if block.station
+        ]
         return stops_ahead
 
     def get_total_travelled_distance(
         self, current_block_index: int, distance_travelled_in_current_block: float
     ) -> float:
         if current_block_index > len(self.blocks) - 2:
-            return self.nb_path.get_block_by_id(self.nb_juncture_block_id).dist_from_terminal
+            return self.nb_path.get_block_by_id(
+                self.nb_juncture_block_id
+            ).dist_from_terminal
 
         if self.direction == "Northbound":
             return (
@@ -473,7 +499,9 @@ class ShortTurningAtWestern(Path):
 
         train.path = self.nb_path
 
-        train.starting_block_index = self.nb_path.get_block_index_by_id(self.nb_juncture_block_id)
+        train.starting_block_index = self.nb_path.get_block_index_by_id(
+            self.nb_juncture_block_id
+        )
         train.current_block_index = train.starting_block_index
         train.distance_travelled_in_current_block = 0.0
 

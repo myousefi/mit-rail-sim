@@ -1,3 +1,4 @@
+import imp
 import json
 import os
 from random import randint
@@ -168,8 +169,11 @@ def create_path_from_data_with_offscan_symptom(
     return paths, signal_control_center
 
 
+from mit_rail_sim.utils import project_root
+
+
 @hydra.main(
-    config_path="/Users/moji/Projects/mit_rail_sim/holding-experiments/",
+    config_path=project_root / "holding-experiments",
     config_name="config",
 )
 def main(cfg: DictConfig) -> None:
@@ -189,19 +193,24 @@ def main(cfg: DictConfig) -> None:
         else NullTrainLogger()
     )
 
-    passenger_logger = PassengerLogger(log_file_path=f"{log_folder_path}/passenger_test.csv")
+    passenger_logger = PassengerLogger(
+        log_file_path=f"{log_folder_path}/passenger_test.csv"
+    )
     station_logger = StationLogger(log_file_path=f"{log_folder_path}/station_test.csv")
-    simulation_logger = SimulationLogger(log_file_path=f"{log_folder_path}/simulation_test.json")
-    block_logger = BlockActivationLogger(log_file_path=f"{log_folder_path}/block_test.csv")
+    simulation_logger = SimulationLogger(
+        log_file_path=f"{log_folder_path}/simulation_test.json"
+    )
+    block_logger = BlockActivationLogger(
+        log_file_path=f"{log_folder_path}/block_test.csv"
+    )
     arrival_rates = ArrivalRate(
-        filename="/Users/moji/Projects/mit_rail_sim/mit_rail_sim/odx_arrival/data/arrival_rates_Nov.csv",
+        filename=project_root / "odx_arrival" / "data" / "arrival_rates_Nov.csv",
         demand_factor=cfg.demand_level,
     )
 
-    data = load_data("/Users/moji/Projects/mit_rail_sim/inputs/infra.json")
-    slow_zones = read_slow_zones_from_json(
-        "/Users/moji/Projects/mit_rail_sim/inputs/slow_zones.json"
-    )
+    data = load_data(project_root / "inputs" / "infra.json")
+
+    slow_zones = read_slow_zones_from_json(project_root / "inputs" / "slow_zones.json")
     logger_context = LoggerContext(
         train_logger=train_logger,
         passenger_logger=passenger_logger,
