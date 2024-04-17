@@ -152,7 +152,9 @@ def update_graph(cv_headway):
 
     # Update x-axis title only for the bottom subplot
     fig.update_xaxes(
-        title_text="Average Dispatching Headway (seconds)", row=len(cv_headway_values), col=1
+        title_text="Average Dispatching Headway (seconds)",
+        row=len(cv_headway_values),
+        col=1,
     )
 
     return fig
