@@ -1,9 +1,9 @@
-import pandas as pd
-import plotly.graph_objects as go
-import plotly.subplots as sp
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.subplots as sp
 from dash.dependencies import Input, Output
 
 # Read the CSV file

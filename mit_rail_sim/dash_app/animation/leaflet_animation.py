@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 import os
 from datetime import datetime, timedelta
 
@@ -6,6 +5,8 @@ import folium
 import geopandas as gpd
 import pandas as pd
 from folium import plugins
+
+from mit_rail_sim.utils import project_root
 
 os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 

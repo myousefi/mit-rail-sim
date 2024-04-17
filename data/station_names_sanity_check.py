@@ -1,6 +1,7 @@
-from mit_rail_sim.utils import project_root
 import csv
 import json
+
+from mit_rail_sim.utils import project_root
 
 # Read CSV file and extract unique station names
 with open(project_root / "data" / "arrival_rates.csv", "r") as csv_file:

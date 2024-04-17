@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 import asyncio
 import json
 import os
@@ -49,6 +48,7 @@ from mit_rail_sim.simulation_engine.utils.logger_utils import (
     SimulationLogger,
     StationLogger,
 )
+from mit_rail_sim.utils import project_root
 
 
 def read_slow_zones_from_json(file_path: str) -> List[SlowZone]:

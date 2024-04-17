@@ -1,17 +1,17 @@
 from typing import Union
 
 from .block import (
-    Block,
-    Terminal,
-    OffScanSymptomaticBlockDecorator,
-    DispatchingBlockDecorator,
     AbstractBlock,
-    MovingBlock,
+    Block,
+    DispatchingBlockDecorator,
     DispatchingMovingBlockDecorator,
+    MovingBlock,
+    OffScanSymptomaticBlockDecorator,
+    Terminal,
 )
+from .moving_control_center import MovingBlockControl
 from .path import Path, SlowZone
 from .signal_control_center import SignalControlCenter
-from .moving_control_center import MovingBlockControl
 from .station import Station
 
 BlockType = Union[Block, MovingBlock]

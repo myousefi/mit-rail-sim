@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 from datetime import datetime, time
 
 import dash
@@ -9,6 +8,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from dash import Dash, Input, Output, State, dcc, html
 from pandas.tseries.holiday import USFederalHolidayCalendar
+
+from mit_rail_sim.utils import project_root
 
 pd.set_option("display.max_columns", 10)
 # Constants

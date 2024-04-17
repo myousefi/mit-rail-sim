@@ -1,6 +1,7 @@
 import unittest
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from scipy.stats import entropy

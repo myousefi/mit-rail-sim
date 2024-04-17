@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 from datetime import time
 
 import dash
@@ -15,7 +14,7 @@ from validation_dash import (
     remove_holidays,
 )
 
-from mit_rail_sim.utils import find_free_port
+from mit_rail_sim.utils import find_free_port, project_root
 
 app = dash.Dash(__name__)
 

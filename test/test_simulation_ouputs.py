@@ -1,7 +1,8 @@
-import pandas as pd
-import numpy as np
-import plotly.express as px
 import unittest
+
+import numpy as np
+import pandas as pd
+import plotly.express as px
 from pandas.api.types import is_numeric_dtype
 
 

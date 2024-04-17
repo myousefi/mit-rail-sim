@@ -1,8 +1,9 @@
-from mit_rail_sim.utils import project_root
 import os
 
 import pandas as pd
 import yaml
+
+from mit_rail_sim.utils import project_root
 
 
 class TravelTimeCalculator:

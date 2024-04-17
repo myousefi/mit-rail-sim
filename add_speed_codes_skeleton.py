@@ -1,5 +1,6 @@
-from mit_rail_sim.utils import project_root
 import json
+
+from mit_rail_sim.utils import project_root
 
 
 # Function to create BLOCK_ALT based on the rules provided

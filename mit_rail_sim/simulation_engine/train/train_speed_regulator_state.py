@@ -3,8 +3,7 @@ from __future__ import annotations
 import math
 from abc import ABC, abstractmethod
 from random import randint
-from typing import Optional, TYPE_CHECKING, Tuple
-
+from typing import TYPE_CHECKING, Optional, Tuple
 
 if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.infrastructure import BlockType

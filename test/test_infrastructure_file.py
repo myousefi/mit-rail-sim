@@ -1,10 +1,11 @@
-from mit_rail_sim.utils import project_root
 import json
 import unittest
 
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+
+from mit_rail_sim.utils import project_root
 
 FIGURE_WIDTH = 10000
 FIGURE_HEIGHT = 1000
@@ -184,7 +185,11 @@ class TestPlotInfrastructure(unittest.TestCase):
                 )
 
         sim_speed_dict = pd.read_csv(
-            project_root / "mit_rail_sim" / "validation" / "simulation_results" / "block_test_speed.csv"
+            project_root
+            / "mit_rail_sim"
+            / "validation"
+            / "simulation_results"
+            / "block_test_speed.csv"
         )
 
         for index, row in sim_speed_dict.iterrows():
@@ -201,7 +206,11 @@ class TestPlotInfrastructure(unittest.TestCase):
 
     def test_avl_vs_sim_speed_scatter_plot(self):
         sim_speed = pd.read_csv(
-            project_root / "mit_rail_sim" / "validation" / "simulation_results" / "block_test_speed.csv"
+            project_root
+            / "mit_rail_sim"
+            / "validation"
+            / "simulation_results"
+            / "block_test_speed.csv"
         )
 
         avl_speed = pd.read_csv(

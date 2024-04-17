@@ -1,5 +1,5 @@
-import unittest
 import json
+import unittest
 
 
 def calculate_absolute_distance(rail_data_json):

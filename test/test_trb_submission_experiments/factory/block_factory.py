@@ -1,10 +1,14 @@
-from typing import Dict, Any, Optional, Union
 from random import randint
+from typing import Any, Dict, Optional, Union
 
 from mit_rail_sim.simulation_engine.infrastructure.block import Block, MovingBlock
-from mit_rail_sim.simulation_engine.infrastructure.moving_control_center import MovingBlockControl
+from mit_rail_sim.simulation_engine.infrastructure.moving_control_center import (
+    MovingBlockControl,
+)
 from mit_rail_sim.simulation_engine.infrastructure.path import Path
-from mit_rail_sim.simulation_engine.infrastructure.signal_control_center import SignalControlCenter
+from mit_rail_sim.simulation_engine.infrastructure.signal_control_center import (
+    SignalControlCenter,
+)
 from mit_rail_sim.simulation_engine.infrastructure.station import Station
 
 
