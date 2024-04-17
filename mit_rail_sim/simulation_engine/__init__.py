@@ -1,6 +1,3 @@
-from . import infrastructure
-from . import passenger
-from . import train
-from . import utils
+from . import infrastructure, passenger, train, utils
 
 __all__ = ["infrastructure", "passenger", "train", "utils"]

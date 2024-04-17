@@ -10,11 +10,7 @@ from mit_rail_sim.simulation_engine.infrastructure import (
     SignalControlCenter,
     Station,
 )
-from mit_rail_sim.simulation_engine.train import (
-    Train,
-    TrainSpeedRegulator,
-)
-
+from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
 from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 

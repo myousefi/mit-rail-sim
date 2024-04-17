@@ -1,5 +1,6 @@
-from mit_rail_sim.utils import project_root
 import json
+
+from mit_rail_sim.utils import project_root
 
 file_name = project_root / "file.json"
 

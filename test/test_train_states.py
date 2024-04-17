@@ -8,22 +8,16 @@ from mit_rail_sim.simulation_engine.infrastructure import (
     SignalControlCenter,
     Station,
 )
-from mit_rail_sim.simulation_engine.train import (
-    Train,
-    TrainSpeedRegulator,
-)
-
-from mit_rail_sim.simulation_engine.utils import TrainLogger
-
+from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
 from mit_rail_sim.simulation_engine.train.train_speed_regulator_state import (
-    KeepingTheSpeedUptoCodeState,
     BrakeNormalToStationState,
+    KeepingTheSpeedUptoCodeState,
 )
-
 from mit_rail_sim.simulation_engine.train.train_state import (
     DwellingAtStationState,
     MovingBetweenStationsState,
 )
+from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 
 class BaseTestCase(unittest.TestCase):

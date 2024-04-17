@@ -9,11 +9,10 @@ from mit_rail_sim.simulation_engine.train.acceleration_profile_function import (
     get_acceleration_factor,
 )
 from mit_rail_sim.simulation_engine.train.train_speed_regulator_state import (
-    TrainSpeedRegulatorState,
-    KeepingTheSpeedUptoCodeState,
     BrakeWithMaximumRateState,
+    KeepingTheSpeedUptoCodeState,
+    TrainSpeedRegulatorState,
 )
-
 
 if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.infrastructure import Station

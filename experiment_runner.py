@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 import os
 import shutil
 import sys
@@ -16,19 +15,18 @@ from mit_rail_sim.simulation_engine.simulation.replication_manager import (
 )
 from mit_rail_sim.simulation_engine.utils.logger_context import LoggerContext
 from mit_rail_sim.simulation_engine.utils.logger_utils import (
+    NullTrainLogger,
     PassengerLogger,
     StationLogger,
     TrainLogger,
-    NullTrainLogger,
 )
+from mit_rail_sim.utils import project_root
 
 
 class CTABlueLineSimulator:
     def __init__(self, cfg):
         self.cfg = cfg
-        self.arrival_rates = ArrivalRate(
-            filename=project_root / "data" / "arrival_rates.csv"
-        )
+        self.arrival_rates = ArrivalRate(filename=project_root / "data" / "arrival_rates.csv")
         self.data_loader = DataLoader()
         self.block_factory = BlockFactory(self.arrival_rates)
         self.current_seed = self.data_loader.load_seed() or randint(0, 2**32 - 1)

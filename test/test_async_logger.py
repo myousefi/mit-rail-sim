@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 import json
 import unittest
 from random import choice, randint, seed, uniform
@@ -32,6 +31,7 @@ from mit_rail_sim.simulation_engine.utils.logger_utils import (
     SimulationLogger,
     StationLogger,
 )
+from mit_rail_sim.utils import project_root
 
 
 def read_slow_zones_from_json(file_path: str) -> List[SlowZone]:
@@ -73,9 +73,7 @@ class CTABlueLineTestCase(unittest.TestCase):
     def test_simulation_with_real_data_from_file(self):
         data = self.load_data(project_root / "inputs" / "infra.json")
 
-        slow_zones = read_slow_zones_from_json(
-            project_root / "inputs" / "slow_zones.json"
-        )
+        slow_zones = read_slow_zones_from_json(project_root / "inputs" / "slow_zones.json")
 
         logger_context = LoggerContext(
             self.train_logger,

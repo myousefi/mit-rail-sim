@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 import functools
 import json
 
@@ -11,7 +10,7 @@ import plotly.io as pio
 from dash import dcc, html
 from dash.dependencies import Input, Output
 
-from mit_rail_sim.utils import engine, find_free_port, text
+from mit_rail_sim.utils import engine, find_free_port, project_root, text
 
 pio.templates.default = "simple_white"
 

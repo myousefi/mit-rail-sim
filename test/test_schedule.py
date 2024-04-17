@@ -9,18 +9,11 @@ from unittest.mock import MagicMock
 import pandas as pd
 import plotly.graph_objects as go
 
-from mit_rail_sim.simulation_engine.infrastructure import (
-    Path,
-)
-from mit_rail_sim.simulation_engine.train import (
-    Train,
-    TrainSpeedRegulator,
-)
-from mit_rail_sim.simulation_engine.utils import (
-    TrainLogger,
-)
-from mit_rail_sim.simulation_engine.simulation.simulation import Simulation
+from mit_rail_sim.simulation_engine.infrastructure import Path
 from mit_rail_sim.simulation_engine.schedule import Schedule
+from mit_rail_sim.simulation_engine.simulation.simulation import Simulation
+from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
+from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 # Import Schedule and Simulation classes here
 

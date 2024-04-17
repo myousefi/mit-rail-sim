@@ -1,14 +1,15 @@
 # Importing required libraries
 from typing import List
+
 import dash
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output
 import pandas as pd
+import plotly.express as px
 import plotly.graph_objs as go
 import plotly.io as pio
-import plotly.express as px
+from dash.dependencies import Input, Output
 
 # Defining the color template
 pio.templates["sophisticated"] = go.layout.Template(
