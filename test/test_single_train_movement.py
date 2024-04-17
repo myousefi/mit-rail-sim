@@ -4,8 +4,8 @@ from test.base_test_case import BaseTestCase, RandomizedBaseTestCase
 import matplotlib.pyplot as plt
 
 from mit_rail_sim.simulation_engine.train import Train
-from mit_rail_sim.simulation_engine.utils import TrainLogger
 from mit_rail_sim.simulation_engine.train.train import NextBlockNotFoundError
+from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 
 class TestTrainMovement(BaseTestCase):

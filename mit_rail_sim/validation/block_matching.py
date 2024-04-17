@@ -1,8 +1,9 @@
-from mit_rail_sim.utils import project_root
 import json
 
 import matplotlib.pyplot as plt
 import pandas as pd
+
+from mit_rail_sim.utils import project_root
 
 # Step 1: Create a list of all blocks associated with stations and the blocks that come immediately after them
 with open(project_root / "alt_file_northbound_updated.json", "r") as f:

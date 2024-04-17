@@ -1,10 +1,11 @@
-from mit_rail_sim.utils import project_root
 # Loading static data
 import json
 from dataclasses import dataclass
 from datetime import timedelta
 
 import pandas as pd
+
+from mit_rail_sim.utils import project_root
 
 with open(project_root / "alt_file_northbound_updated.json", "r") as f:
     data = json.load(f)

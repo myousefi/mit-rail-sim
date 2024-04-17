@@ -193,23 +193,13 @@ def main(cfg: DictConfig) -> None:
         else NullTrainLogger()
     )
 
-    passenger_logger = PassengerLogger(
-        log_file_path=f"{log_folder_path}/passenger_test.csv"
-    )
+    passenger_logger = PassengerLogger(log_file_path=f"{log_folder_path}/passenger_test.csv")
     station_logger = StationLogger(log_file_path=f"{log_folder_path}/station_test.csv")
-    simulation_logger = SimulationLogger(
-        log_file_path=f"{log_folder_path}/simulation_test.json"
-    )
-    block_logger = BlockActivationLogger(
-        log_file_path=f"{log_folder_path}/block_test.csv"
-    )
+    simulation_logger = SimulationLogger(log_file_path=f"{log_folder_path}/simulation_test.json")
+    block_logger = BlockActivationLogger(log_file_path=f"{log_folder_path}/block_test.csv")
     arrival_rates = ArrivalRate(
         filename=str(
-            project_root
-            / "mit_rail_sim"
-            / "odx_arrival"
-            / "data"
-            / "arrival_rates_Nov.csv"
+            project_root / "mit_rail_sim" / "odx_arrival" / "data" / "arrival_rates_Nov.csv"
         ),
         demand_factor=cfg.demand_level,
     )

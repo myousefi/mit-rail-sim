@@ -1,8 +1,9 @@
-from mit_rail_sim.utils import project_root
 # %%
 import pandas as pd
 import plotly.express as px
 import plotly.io as pio
+
+from mit_rail_sim.utils import project_root
 
 pio.templates.default = "simple_white"
 

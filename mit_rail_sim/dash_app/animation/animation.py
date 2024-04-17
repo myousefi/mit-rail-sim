@@ -1,10 +1,11 @@
-from mit_rail_sim.utils import project_root
 import os
 
 import geopandas as gpd
 import pandas as pd
 import plotly.graph_objects as go
 from dotenv import load_dotenv
+
+from mit_rail_sim.utils import project_root
 
 
 # Function to create frame data for each time step
@@ -50,9 +51,7 @@ df["adjusted_time"] = origin_timestamp + df["time_in_seconds"]
 
 # Group by and resample the data
 df = (
-    df.groupby(
-        ["replication_id", "train_id", pd.Grouper(key="adjusted_time", freq="10S")]
-    )
+    df.groupby(["replication_id", "train_id", pd.Grouper(key="adjusted_time", freq="10S")])
     .first()
     .reset_index()
 )
@@ -80,15 +79,11 @@ for idx, row in rail_lines_gdf.iterrows():
     geom = row["geometry"]
     x, y = geom.xy
     fig.add_trace(
-        go.Scattermapbox(
-            lat=list(y), lon=list(x), mode="lines", line=dict(width=2), name=name
-        )
+        go.Scattermapbox(lat=list(y), lon=list(x), mode="lines", line=dict(width=2), name=name)
     )
 
 fig.update_layout(
-    mapbox=dict(
-        accesstoken=MAPBOX_TOKEN, center=dict(lat=41.8781, lon=-87.6298), zoom=10
-    ),
+    mapbox=dict(accesstoken=MAPBOX_TOKEN, center=dict(lat=41.8781, lon=-87.6298), zoom=10),
     mapbox_style="light",
 )
 
@@ -98,14 +93,10 @@ train_data_filtered.sort_values(by="time_in_seconds", inplace=True)
 
 # Calculate max_travel_distance
 max_travel_distance = train_data_filtered["total_travelled_distance"].max()
-north_bound_line = rail_lines_gdf[rail_lines_gdf["Name"] == "NorthBound"].geometry.iloc[
-    0
-]
+north_bound_line = rail_lines_gdf[rail_lines_gdf["Name"] == "NorthBound"].geometry.iloc[0]
 
 # Create frames
-frames = (
-    train_data_filtered.groupby("time_in_seconds").apply(create_frame_data).tolist()
-)
+frames = train_data_filtered.groupby("time_in_seconds").apply(create_frame_data).tolist()
 fig.frames = frames
 
 slider_steps = []

@@ -1,4 +1,3 @@
-from mit_rail_sim.utils import project_root
 # %%
 import numpy as np
 import pandas as pd
@@ -6,6 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 
+from mit_rail_sim.utils import project_root
 from mit_rail_sim.utils.db_con import engine, text
 
 pio.templates.default = "simple_white"

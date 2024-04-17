@@ -1,9 +1,10 @@
-from mit_rail_sim.utils import project_root
 import os
 
 import pandas as pd
 from dotenv import find_dotenv, load_dotenv
 from sqlalchemy import create_engine, text
+
+from mit_rail_sim.utils import project_root
 
 # Load environment variables
 load_dotenv(find_dotenv())

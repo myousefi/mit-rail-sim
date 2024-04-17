@@ -1,5 +1,5 @@
-import unittest
 import json
+import unittest
 from typing import List
 
 from mit_rail_sim.simulation_engine.infrastructure import SlowZone

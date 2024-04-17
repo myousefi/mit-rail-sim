@@ -1,11 +1,11 @@
-import pandas as pd
-import numpy as np
-import plotly.graph_objects as go
-from scipy.stats import entropy
-from dash import Dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+from dash import Dash
+from scipy.stats import entropy
 
 
 class HeadwayAnalysis:

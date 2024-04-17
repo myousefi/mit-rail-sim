@@ -1,5 +1,6 @@
-from mit_rail_sim.utils import project_root
 import json
+
+from mit_rail_sim.utils import project_root
 
 # Load first file
 with open(
@@ -27,7 +28,10 @@ for d in data1:
 
 # Save the result back to the first file (or another file if desired)
 with open(
-    project_root / "data" / "cta_blue_line_infra" / "northbound_signal_blocks_and_tracks_corrected_stations.json",
+    project_root
+    / "data"
+    / "cta_blue_line_infra"
+    / "northbound_signal_blocks_and_tracks_corrected_stations.json",
     "w",
 ) as f:
     json.dump(data1, f, indent=4)

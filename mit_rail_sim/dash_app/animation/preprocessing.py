@@ -1,15 +1,14 @@
-from mit_rail_sim.utils import project_root
 import os
 
 import numpy as np
 import pandas as pd
 
+from mit_rail_sim.utils import project_root
+
 os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 
 # Read the CSV file into a DataFrame
-csv_path = (
-    project_root / "mit_rail_sim" / "validation" / "simulation_results" / "train_test.csv"
-)
+csv_path = project_root / "mit_rail_sim" / "validation" / "simulation_results" / "train_test.csv"
 df = pd.read_csv(csv_path)
 
 # Convert time_in_seconds to a Pandas Timedelta object for resampling

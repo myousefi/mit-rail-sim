@@ -1,6 +1,8 @@
-from mit_rail_sim.utils import project_root
-import pandas as pd
 import json
+
+import pandas as pd
+
+from mit_rail_sim.utils import project_root
 
 # Read the Excel file
 file_path = project_root / "data" / "cta_blue_line_infra" / "BlueLine_Track_Circuit.xlsx"

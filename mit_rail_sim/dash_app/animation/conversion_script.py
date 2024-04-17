@@ -1,10 +1,11 @@
-from mit_rail_sim.utils import project_root
 # Script to process and save geometries
 import os
 
 import geopandas as gpd
 from dotenv import load_dotenv
 from shapely.ops import linemerge
+
+from mit_rail_sim.utils import project_root
 
 # Change directory
 os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
