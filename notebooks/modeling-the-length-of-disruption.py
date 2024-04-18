@@ -78,7 +78,6 @@ ORDER BY
 df = pd.read_sql(query_text, engine, params={"start_date": "2024-01-01", "end_date": "2024-03-01"})
 
 import numpy as np
-
 # %%
 import plotly.express as px
 import plotly.io as pio
