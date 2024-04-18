@@ -1,12 +1,8 @@
-from setuptools import find_packages, setup
+from distutils.core import setup
 
 setup(
     name="string_charts",
     version="0.1.0",
-    packages=find_packages(),
-    entry_points={
-        "console_scripts": [
-            "stch=string_charts.stch:main",
-        ],
-    },
+    packages=["string_charts"],
+    scripts=["string_charts/stch.py"],
 )
