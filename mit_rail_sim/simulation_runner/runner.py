@@ -26,6 +26,7 @@ from mit_rail_sim.simulation_engine.schedule import (
     GammaScheduleWithShortTurningTwoTerminalsPMPeak,
     OHareEmpiricalSchedule,
 )
+
 # Import necessary modules from mit_rail_sim
 from mit_rail_sim.simulation_engine.simulation import ReplicationManager
 from mit_rail_sim.simulation_engine.utils import LoggerContext
