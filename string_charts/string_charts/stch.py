@@ -237,8 +237,8 @@ def get_available_replication_ids(train_data):
     default=project_root
     / "cta_experiments_jan"
     / "outputs"
-    / "2024-04-01"
-    / "13-21-26",
+    / "2024-04-22"
+    / "12-05-13",
 )
 @click.option(
     "-r",
@@ -248,7 +248,7 @@ def get_available_replication_ids(train_data):
     help="Replication ID to display. If not provided, will prompt user to select from available IDs.",
 )
 def main(results_dir, replication_id):
-    block_data = pd.read_csv(results_dir + "/block_test.csv")
+    block_data = pd.read_csv(str(results_dir) + "/block_test.csv")
 
     available_ids = get_available_replication_ids(block_data)
 
@@ -264,7 +264,7 @@ def main(results_dir, replication_id):
 
     block_data = block_data[block_data["replication_id"] == replication_id]
 
-    station_data = pd.read_csv(results_dir + "/station_test.csv")
+    station_data = pd.read_csv(str(results_dir) + "/station_test.csv")
 
     station_data = station_data[station_data["replication_id"] == replication_id]
 

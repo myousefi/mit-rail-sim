@@ -12,6 +12,14 @@ Numerous case studies (see :cite:t:`zhou2020evaluation` and :cite:t:`zhou2022sch
 Features
 --------
 
+1. Detailed modeling of signal systems, including both fixed-block and moving-block, with precise train movement simulations at the individual vehicle level.
+2. Accurate dwell time modeling at stations to reflect real-world scenarios.
+3. Realistic passenger boarding and alighting behaviors.
+4. Implementation of headway-based dispatching to model stochasticities in rail operations.
+5. Comprehensive simulation outputs for thorough analysis.
+6. Multiple visualization tools available for detailed examination of simulation data.
+7. Customizable train movement models to suit various rail systems.
+
 License
 -------
 The project License is yet to be determined. Please contact the development team for more information.

@@ -21,8 +21,8 @@ python-dotenv = "*"
 psycopg2-binary = "*"
 sqlalchemy-redshift = "*"
 mit-rail-sim = {editable = true, path = "."}
-string-charts = {editable = true, path = "./string_charts"}
 pathlib = "*"
+string-charts = {file = "string_charts", editable = true}
 
 [dev-packages]
 nbformat = "*"
