@@ -381,3 +381,5 @@ add_speed_codes_skeleton.old.py
 
 !inputs/arrival_rates_Nov.csv
 refactoring_paths.py
+
+cta-2024/*
