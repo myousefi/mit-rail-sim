@@ -50,6 +50,7 @@ blue_line_schedule_data = [
         "runid": row[0],
         "timepoint_time": row[1],
         "terminal": row[2],
+        "short_turned": row[3],
     }
     for row in blue_line_schedule_results
 ]
