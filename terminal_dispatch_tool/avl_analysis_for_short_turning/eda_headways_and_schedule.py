@@ -52,7 +52,8 @@ ORDER BY
    """
 )
 
-df = pd.read_sql(query_text, engine, params={"start_date": start_date, "end_date": end_date})
+results = engine.execute(query_text, params={"start_date": start_date, "end_date": end_date})
+df = pd.DataFrame(results.fetchall())
 
 # Convert 'event_time' to datetime if it's not already
 df["event_time"] = pd.to_datetime(df["event_time"])
