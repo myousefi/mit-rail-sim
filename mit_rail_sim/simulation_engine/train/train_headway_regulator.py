@@ -17,7 +17,9 @@ class TrainHeadwayRegulator:
             train.simulation.current_time - train.next_block.last_train_visit_time
         )
         following_train = train.path.get_previous_train(train.current_block_index)
-        time_to_following_train = following_train.current_block.headway - time_to_leading_train
+        time_to_following_train = (
+            following_train.current_block.headway - time_to_leading_train
+        )
 
         if time_to_following_train < time_to_leading_train / 2:
             time_to_leading_train = -time_to_following_train
@@ -25,7 +27,9 @@ class TrainHeadwayRegulator:
             following_train = following_train.path.get_previous_train(
                 following_train.current_block_index
             )
-            time_to_following_train = following_train.current_block.headway - time_to_leading_train
+            time_to_following_train = (
+                following_train.current_block.headway - time_to_leading_train
+            )
 
         print(
             f"for Train: {train.train_id} Time to leading train: {time_to_leading_train}, time to following train: {time_to_following_train}"
@@ -46,12 +50,18 @@ class TrainHeadwayRegulatorAtStation:
         time_to_leading_train = (
             train.simulation.current_time - train.next_block.last_train_visit_time
         )
-        following_train = train.path.get_previous_train(train.current_block_index)
-        time_to_following_train = following_train.current_block.headway - time_to_leading_train
+        try:
+            following_train = train.path.get_previous_train(train.current_block_index)
+            time_to_following_train = (
+                following_train.current_block.headway - time_to_leading_train
+            )
 
-        print(
-            f"for Train: {train.train_id} Time to leading train: {time_to_leading_train}, time to following train: {time_to_following_train}"
-        )
+            print(
+                f"for Train: {train.train_id} Time to leading train: {time_to_leading_train}, time to following train: {time_to_following_train}"
+            )
+        except AttributeError as e:
+            print(e)
+            return 0
 
         if time_to_leading_train > time_to_following_train:
             return 0

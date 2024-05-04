@@ -61,7 +61,8 @@ WHERE
 """
 )
 
-df = pd.read_sql(query, engine, params={"version": version})
+results = engine.execute(query, params={"version": version})
+df = pd.DataFrame(results.fetchall())
 
 # %%
 MARKER_ABS_DIST = {

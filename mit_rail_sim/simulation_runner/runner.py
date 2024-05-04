@@ -173,7 +173,7 @@ from mit_rail_sim.utils import project_root
 
 
 @hydra.main(
-    config_path=str(project_root / "holding-experiments"),
+    config_path=str(project_root / "cta-2024"),
     config_name="config",
 )
 def main(cfg: DictConfig) -> None:
@@ -218,15 +218,17 @@ def main(cfg: DictConfig) -> None:
         simulation_logger=simulation_logger,
         block_logger=block_logger,
         warmup_time=3600 * 1.5,
+        start_hour_of_day=cfg.simulation.start_time_of_day,
     )
 
     if schd := cfg.schd:
         if schd == "PM":
             schedule = GammaScheduleWithShortTurningTwoTerminalsPMPeak(
                 nb_cv=0.35,
-                nb_mean=7 * 60,
+                nb_mean=11 * 60,
                 short_turning_rate=2,
                 total_period=6 * 3600,
+                start_hour_of_day=cfg.simulation.start_time_of_day,
             )
         if schd == "Base":
             schedule = GammaScheduleWithShortTurningTwoTerminals(

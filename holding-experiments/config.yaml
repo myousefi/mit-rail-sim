@@ -5,12 +5,12 @@ defaults:
 log_folder_path: ${hydra:runtime.output_dir}
 
 simulation:
-    number_of_replications: 1
+    number_of_replications: 10
     start_time_of_day: 14
     end_time_of_day: 19
 
 logger:
-    should_log_trajectories: True
+    should_log_trajectories: false
     log_interval: 25
 
 inspection_time: High
@@ -19,12 +19,12 @@ headway_management: False
 holding: True
 station: "UIC-Halsted"
 
-schd: Base
+schd: PM
 
 passenger:
     probability_of_boarding_any_train: 0.0
 
-demand_level: 1.5
+demand_level: 1.0
 
 headway: 6
 short_turning_rate: 3

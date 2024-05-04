@@ -3,7 +3,8 @@ import functools
 import json
 
 import dash
-import diskcache as dc
+
+# import diskcache as dc
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -26,40 +27,40 @@ color_mapping = {
 
 # @functools.lru_cache(maxsize=100, typed=False)
 # Create a disk cache instance
-cache = dc.Cache(project_root / "mit_rail_sim" / "validation")
+# cache = dc.Cache(project_root / "mit_rail_sim" / "validation")
 
 
-@cache.memoize(expire=86400)
+# @cache.memoize(expire=86400)
 def query_from_aws(selected_date):
     query_text = text(
         """
-    SELECT
-        event_type,
-        run_id,
-        scada,
-        locationdesc,
-        event_time,
-        deviation,
-        headway,
-        qt2_trackid,
-        action,
-        CASE
-            WHEN dir_id  = 1 THEN 'NB'
-            WHEN dir_id = 5 THEN 'SB'
-        END AS direction
-    FROM
-        cta01.avas_spectrum.qt2_trainevent
-    WHERE
-        line_id = 1
-        AND event_time::date = :selected_date
-    ORDER BY
-        event_time;
-    """
+        SELECT
+            event_type,
+            run_id,
+            scada,
+            locationdesc,
+            event_time,
+            deviation,
+            headway,
+            qt2_trackid,
+            action,
+            CASE
+                WHEN dir_id = 1 THEN 'NB'
+                WHEN dir_id = 5 THEN 'SB'
+            END AS direction
+        FROM
+            cta01.avas_spectrum.qt2_trainevent
+        WHERE
+            line_id = 1
+            AND event_time::date = :selected_date
+        ORDER BY
+            event_time;
+        """
     )
 
-    df = pd.read_sql(query_text, con=engine, params={"selected_date": selected_date})
-
-    print(df.columns)
+    # Ensure that the parameters are passed as a dictionary directly
+    results = engine.execute(query_text, {"selected_date": selected_date})
+    df = pd.DataFrame(results.fetchall(), columns=results.keys())
     return df
 
 
@@ -73,7 +74,9 @@ with open(project_root / "inputs" / "infra.json", "r") as f:
         distance += block["DISTANCE"]
         track_dist[block["BLOCK_ALT"]] = distance
         if "STATION" in block:
-            station_dict[block["STATION"]["STATION_NAME"]] = distance - block["DISTANCE"] / 2
+            station_dict[block["STATION"]["STATION_NAME"]] = (
+                distance - block["DISTANCE"] / 2
+            )
 
     for block in data["Southbound"]:
         distance -= block["DISTANCE"]
@@ -98,7 +101,9 @@ def update_figure(selected_date):
     print(df.info())
 
     # df = df[df["event_time"].dt.date == pd.to_datetime(selected_date).date()]
-    df["event_seconds"] = (df["event_time"] - pd.to_datetime(selected_date)).dt.total_seconds()
+    df["event_seconds"] = (
+        df["event_time"] - pd.to_datetime(selected_date)
+    ).dt.total_seconds()
 
     df = df.sort_values(by="event_seconds")
 
@@ -115,7 +120,11 @@ def update_figure(selected_date):
     # )  # Exclude columns already used in the plot
     df["hover_text"] = df[hover_columns].apply(
         lambda x: "<br>".join(
-            [f"{col}: {val}" for col, val in zip(hover_columns, x.astype(str)) if pd.notna(val)]
+            [
+                f"{col}: {val}"
+                for col, val in zip(hover_columns, x.astype(str))
+                if pd.notna(val)
+            ]
         ),
         axis=1,
     )
@@ -131,9 +140,9 @@ def update_figure(selected_date):
         # Group by direction
         for direction, group_data in run_data.groupby("direction"):
             # Insert NaNs for large gaps
-            group_data["gap"] = (group_data["event_seconds"].diff() > time_gap_threshold) | (
-                abs(group_data["track_dist"].diff()) > dist_gap_threshold
-            )
+            group_data["gap"] = (
+                group_data["event_seconds"].diff() > time_gap_threshold
+            ) | (abs(group_data["track_dist"].diff()) > dist_gap_threshold)
             group_data.loc[group_data["gap"], ["event_seconds", "track_dist"]] = [
                 float("nan"),
                 float("nan"),
@@ -216,7 +225,9 @@ def update_figure(selected_date):
         showlegend=True,
     )
 
-    df["event_seconds"] = (df["event_time"] - pd.to_datetime(selected_date)).dt.total_seconds()
+    df["event_seconds"] = (
+        df["event_time"] - pd.to_datetime(selected_date)
+    ).dt.total_seconds()
 
     # remove y-axis ticks
     fig.update_yaxes(
@@ -228,7 +239,9 @@ def update_figure(selected_date):
         tickvals=[1800 * i for i in range(int(df["event_seconds"].max() / 1800) + 1)],
         ticktext=[
             pd.to_datetime(v, unit="s").strftime("%H:%M:%S")
-            for v in [1800 * i for i in range(int(df["event_seconds"].max() / 1800) + 1)]
+            for v in [
+                1800 * i for i in range(int(df["event_seconds"].max() / 1800) + 1)
+            ]
         ],
         tickangle=-45,
     )

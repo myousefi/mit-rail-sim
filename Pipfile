@@ -23,6 +23,9 @@ sqlalchemy-redshift = "*"
 mit-rail-sim = {editable = true, path = "."}
 pathlib = "*"
 string-charts = {file = "string_charts", editable = true}
+folium = "*"
+geopandas = "*"
+jupyterlab = "*"
 
 [dev-packages]
 nbformat = "*"
