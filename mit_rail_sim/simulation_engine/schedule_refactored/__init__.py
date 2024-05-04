@@ -2,13 +2,16 @@ import json
 from abc import ABC, abstractmethod
 from typing import List, Tuple
 
-from scipy.stats import gamma, weibull_min
+from mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies import GammaDispatchStrategy, \
+    WeibullDispatchStrategy, EmpiricalDispatchStrategy
 
 
 class BaseSchedule(ABC):
-    def __init__(self, params_path):
+    def __init__(self, params_path, start_time_of_day: int, end_time_of_day: int):
         self.params = self.read_params(params_path)
         self.dispatch_strategy = self.get_strategy()
+        self.start_time_of_day = start_time_of_day
+        self.end_time_of_day = end_time_of_day
 
     def read_params(self, path):
         try:
@@ -32,33 +35,9 @@ class BaseSchedule(ABC):
         pass
 
 
-class DispatchStrategy(ABC):
-    @abstractmethod
-    def generate_dispatch_info(self, params):
-        pass
-
-
-class GammaDispatchStrategy(DispatchStrategy):
-    def generate_dispatch_info(self, params):
-        # TODO: Implement gamma dispatch info generation
-        pass
-
-
-class WeibullDispatchStrategy(DispatchStrategy):
-    def generate_dispatch_info(self, params):
-        # TODO: Implement Weibull dispatch info generation
-        pass
-
-
-class EmpiricalDispatchStrategy(DispatchStrategy):
-    def generate_dispatch_info(self, params):
-        # TODO: Implement empirical dispatch info generation
-        pass
-
-
 class GammaSchedule(BaseSchedule):
-    def __init__(self, params_path):
-        super().__init__(params_path)
+    def __init__(self, params_path, start_time_of_day: int, end_time_of_day: int):
+        super().__init__(params_path, start_time_of_day, end_time_of_day)
         self.validate_params()
 
     def validate_params(self):
@@ -80,8 +59,8 @@ class GammaSchedule(BaseSchedule):
 
 
 class WeibullSchedule(BaseSchedule):
-    def __init__(self, params_path):
-        super().__init__(params_path)
+    def __init__(self, params_path, start_time_of_day: int, end_time_of_day: int):
+        super().__init__(params_path, start_time_of_day, end_time_of_day)
         self.validate_params()
 
     def validate_params(self):
@@ -98,44 +77,14 @@ class WeibullSchedule(BaseSchedule):
         pass
 
 
-class OHareEmpiricalSchedule(BaseSchedule):
-    def __init__(self, params_path):
-        super().__init__(params_path)
-        self.validate_params()
-
-    def validate_params(self):
-        required_params = [
-            "file_path",
-            "start_time_of_day",
-            "end_time_of_day",
-            "cta_day_type",
-        ]
-        for param in required_params:
-            if param not in self.params:
-                raise KeyError(f"Missing required parameter: {param}")
-
-    def get_strategy(self):
-        return EmpiricalDispatchStrategy()
-
-    def generate_random_dispatch_info(self) -> List[Tuple[int, int, str]]:
-        # TODO: Implement O'Hare empirical schedule dispatch info generation
-        pass
-
-    def filter_data(self, cta_day_type: str):
-        # TODO: Implement data filtering based on CTA day type
-        pass
-
-
 class EmpiricalSchedule(BaseSchedule):
-    def __init__(self, params_path):
-        super().__init__(params_path)
+    def __init__(self, params_path, start_time_of_day: int, end_time_of_day: int):
+        super().__init__(params_path, start_time_of_day, end_time_of_day)
         self.validate_params()
 
     def validate_params(self):
         required_params = [
             "cleaned_data_filepath",
-            "start_time_of_day",
-            "end_time_of_day",
         ]
         for param in required_params:
             if param not in self.params:
