@@ -34,34 +34,33 @@ color_mapping = {
 def query_from_aws(selected_date):
     query_text = text(
         """
-    SELECT
-        event_type,
-        run_id,
-        scada,
-        locationdesc,
-        event_time,
-        deviation,
-        headway,
-        qt2_trackid,
-        action,
-        CASE
-            WHEN dir_id  = 1 THEN 'NB'
-            WHEN dir_id = 5 THEN 'SB'
-        END AS direction
-    FROM
-        cta01.avas_spectrum.qt2_trainevent
-    WHERE
-        line_id = 1
-        AND event_time::date = :selected_date
-    ORDER BY
-        event_time;
-    """
+        SELECT
+            event_type,
+            run_id,
+            scada,
+            locationdesc,
+            event_time,
+            deviation,
+            headway,
+            qt2_trackid,
+            action,
+            CASE
+                WHEN dir_id = 1 THEN 'NB'
+                WHEN dir_id = 5 THEN 'SB'
+            END AS direction
+        FROM
+            cta01.avas_spectrum.qt2_trainevent
+        WHERE
+            line_id = 1
+            AND event_time::date = :selected_date
+        ORDER BY
+            event_time;
+        """
     )
 
-    results = engine.execute(query_text, params={"selected_date": selected_date})
+    # Ensure that the parameters are passed as a dictionary directly
+    results = engine.execute(query_text, {"selected_date": selected_date})
     df = pd.DataFrame(results.fetchall(), columns=results.keys())
-
-    print(df.columns)
     return df
 
 
