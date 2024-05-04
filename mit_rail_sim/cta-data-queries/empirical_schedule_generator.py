@@ -4,9 +4,9 @@ from datetime import datetime
 from mit_rail_sim.utils.db_con import engine, text
 from mit_rail_sim.utils.root_path import project_root
 
-start_date = "2024-04-07"  # Replace with your desired start date
-end_date = "2024-05-15"  # Replace with your desired end date
-version = 83  # Replace with your desired version
+start_date = "2023-11-13"  # Replace with your desired start date
+end_date = "2024-02-04"  # Replace with your desired end date
+version = 81  # Replace with your desired version
 
 # Read the SQL queries from files
 with open(
@@ -36,7 +36,7 @@ blue_line_schedule_results = engine.execute(
 empirical_schedule_data = [
     {
         "event_time": row[0].isoformat(),
-        "time_in_sec": row[1],
+        "time_in_sec": int(row[1]),
         "runid": row[2],
         "headway": row[3],
         "deviation": row[4],
@@ -45,10 +45,11 @@ empirical_schedule_data = [
     for row in empirical_schedule_results
 ]
 
+
 blue_line_schedule_data = [
     {
         "runid": row[0],
-        "time_in_sec": row[1],
+        "time_in_sec": int(row[1]),
         "terminal": row[2],
         "short_turned": row[3],
     }
