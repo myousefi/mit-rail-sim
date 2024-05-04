@@ -15,10 +15,12 @@ HOST = os.getenv("HOST")
 PORT = os.getenv("PORT")
 DATABASE = os.getenv("DATABASE")
 
-start_date = os.getenv("start_date")
-end_date = os.getenv("end_date")
+start_date = "2024-04-07"
+end_date = "2024-05-01"
 
-engine = create_engine(f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}").connect()
+engine = create_engine(
+    f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+).connect()
 
 query_text = text(
     """
@@ -59,13 +61,15 @@ ORDER BY
    """
 )
 
-df = pd.read_sql(query_text, engine, params={"start_date": start_date, "end_date": end_date})
+results = engine.execute(query_text, {"start_date": start_date, "end_date": end_date})
+
+df = pd.DataFrame(results.fetchall(), columns=results.keys())
 
 # Convert 'event_time' to datetime if it's not already
 df["event_time"] = pd.to_datetime(df["arrival_time_at_uic_halsted_nb"])
 
 df["time_of_day"] = (
-    df["event_time"] - df["event_time"].dt.normalize() + pd.to_datetime("2024-02-13")
+    df["event_time"] - df["event_time"].dt.normalize() + pd.to_datetime("2024-04-07")
 )
 
 # Ensure the data is sorted by event_time
@@ -120,7 +124,9 @@ fig.update_layout(
 
 # Customize the legend
 fig.update_layout(
-    legend=dict(title="Legend", orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    legend=dict(
+        title="Legend", orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1
+    )
 )
 
 import plotly.graph_objs as go
@@ -149,9 +155,7 @@ fig.update_yaxes(showgrid=True, gridcolor="LightGrey")
 fig.show()
 
 html_output = fig.to_html()
-output_file_path = (
-    "/Users/moji/Presentations/One-on-One Meetings/02-26-2024/short_turning_gaps_analysis.html"
-)
+output_file_path = "/Users/moji/Presentations/One-on-One Meetings/02-26-2024/short_turning_gaps_analysis.html"
 with open(output_file_path, "w") as file:
     file.write(html_output)
 

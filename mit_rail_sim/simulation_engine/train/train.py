@@ -119,7 +119,9 @@ class Train:
     def total_travelled_distance_from_dispatch(self) -> float:
         return self.distance_travelled_in_current_block + sum(
             block.length
-            for block in self.path.blocks[self.starting_block_index : self.current_block_index]
+            for block in self.path.blocks[
+                self.starting_block_index : self.current_block_index
+            ]
         )
 
     @property
@@ -135,7 +137,9 @@ class Train:
         try:
             return self.path.blocks[self.current_block_index + 1]
         except IndexError as index_error:
-            raise NextBlockNotFoundError("Next block not found in the path") from index_error
+            raise NextBlockNotFoundError(
+                "Next block not found in the path"
+            ) from index_error
 
     @property
     def distance_to_next_block(self) -> float:
@@ -150,7 +154,12 @@ class Train:
         i = 1
         while distance_to_next_block < SIGHT_DISTANCE:
             try:
-                if self.path.blocks[self.current_block_index + i].current_speed_code(self) == 0.0:
+                if (
+                    self.path.blocks[self.current_block_index + i].current_speed_code(
+                        self
+                    )
+                    == 0.0
+                ):
                     return distance_to_next_block, self.current_block_index + i
 
                 distance_to_next_block += self.next_block.length
@@ -208,7 +217,9 @@ class Train:
                     break
             train_rear_position += block.length
 
-    def distance_traveled_from_the_start_of_block(self, asking_block: BlockType) -> float:
+    def distance_traveled_from_the_start_of_block(
+        self, asking_block: BlockType
+    ) -> float:
         distance = self.distance_travelled_in_current_block
         blocks_list = self.path.blocks[self.current_block_index :: -1]
 
@@ -244,6 +255,8 @@ class Train:
 
 
 class DummyTrain(Train):
+    simulation: Simulation
+
     def log(self) -> None:
         pass
 
@@ -255,6 +268,8 @@ class DummyTrain(Train):
 
 
 class DummyTrainDecorator(DummyTrain):
+    simulation: Simulation
+
     def __init__(self, train: Train):
         # Copy properties from DummyTrain to this
         self.__dict__ = train.__dict__.copy()
