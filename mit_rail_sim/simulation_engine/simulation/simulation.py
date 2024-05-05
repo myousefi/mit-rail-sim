@@ -9,7 +9,9 @@ if TYPE_CHECKING:
         SignalControlCenter,
         MovingBlockControl,
     )
+
     from mit_rail_sim.simulation_engine.schedule import Schedule
+    from mit_rail_sim.simulation_engine.schedule_refactored import BaseSchedule
 
 from mit_rail_sim.simulation_engine.infrastructure import Station
 from mit_rail_sim.simulation_engine.passenger import Passenger
@@ -27,7 +29,7 @@ class Simulation:
 
     def __init__(
         self,
-        schedule: Schedule,
+        schedule: Schedule | BaseSchedule,
         path: Dict[str, Path],
         signal_control_center: MovingBlockControl | SignalControlCenter,
         train_speed_regulator: str,
@@ -76,7 +78,11 @@ class Simulation:
         return
 
     def _create_train(
-        self, starting_block_index: int, dispatching_time: float, path: Path
+        self,
+        starting_block_index: int,
+        dispatching_time: float,
+        path: Path,
+        runid: Optional[str] = None,
     ) -> Train:
         return Train(
             train_speed_regulator=self.train_speed_regulator(
@@ -88,6 +94,7 @@ class Simulation:
             path=path,
             starting_block_index=starting_block_index,
             dispatching_time=dispatching_time,
+            runid=runid,
         )
 
     def _dispatch_trains(self) -> None:
@@ -95,11 +102,11 @@ class Simulation:
             self.schedule.dispatch_info
             and self.current_time >= self.schedule.dispatch_info[0][0]
         ):
-            dispatching_time, starting_block_index, path = (
+            dispatching_time, starting_block_index, path, run_id = (
                 self.schedule.dispatch_info.pop(0)
             )
             new_train = self._create_train(
-                starting_block_index, dispatching_time, self.paths[path]
+                starting_block_index, dispatching_time, self.paths[path], run_id
             )
             self.trains.append(new_train)
 

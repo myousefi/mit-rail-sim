@@ -42,9 +42,10 @@ class Train:
         path: Path,
         starting_block_index: int = 0,
         dispatching_time: Optional[float] = None,
+        runid: Optional[str] = None,
         # simulation: Simulation,
     ):
-        self.train_id = Train.generate_train_id()
+        self.train_id = runid if runid else Train.generate_train_id()
 
         self.steps_since_last_log: int = 0  # Added steps_since_last_log attribute
 
