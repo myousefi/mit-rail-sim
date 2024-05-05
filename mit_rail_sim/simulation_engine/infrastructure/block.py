@@ -42,7 +42,9 @@ class AbstractBlock(ABC):
         self.dist_from_terminal: Optional[float] = None
 
         if self.station and self.station.location_relative_to_block > self.length:
-            raise ValueError(f"Station location is greater than block length. {self.station.name}")
+            raise ValueError(
+                f"Station location is greater than block length. {self.station.name}"
+            )
 
     @property
     @abstractmethod
@@ -101,7 +103,9 @@ class Block(AbstractBlock):
         if self.current_train is not None and self.current_train != requesting_train:
             return 0.0
 
-        communicated_min_speed = min(self.communicated_speed_codes.values(), default=float("inf"))
+        communicated_min_speed = min(
+            self.communicated_speed_codes.values(), default=float("inf")
+        )
 
         return min(
             self.default_speed_code,
@@ -253,7 +257,8 @@ class DispatchingMovingBlockDecorator(MovingBlock):
     def ready_to_dispatch(self, train: Train) -> bool:
         return (
             self.is_it_clear_to_dispatch()
-            and train.simulation.current_time > self.last_train_visit_time + self.dispatch_margin
+            and train.simulation.current_time
+            > self.last_train_visit_time + self.dispatch_margin
         )
 
     def activate(self, entering_train: Train) -> None:
@@ -293,7 +298,9 @@ class OffScanSymptomaticBlockDecorator(Block):
         if self.current_train == requesting_train and self._is_symptomatic:
             return 0.0
 
-        communicated_min_speed = min(self.communicated_speed_codes.values(), default=float("inf"))
+        communicated_min_speed = min(
+            self.communicated_speed_codes.values(), default=float("inf")
+        )
 
         return min(
             self.default_speed_code,
@@ -340,7 +347,8 @@ class DispatchingBlockDecorator(Block):
     def ready_to_dispatch(self, train: Train) -> bool:
         return (
             self.is_it_clear_to_dispatch()
-            and train.simulation.current_time > self.last_train_visit_time + self.dispatch_margin
+            and train.simulation.current_time
+            > self.last_train_visit_time + self.dispatch_margin
         )
 
     def activate(self, entering_train: Train) -> None:
@@ -370,15 +378,17 @@ class Terminal(Block):
 
     def activate(self, entering_train: Train) -> None:
         if entering_train.path.direction == "Southbound":
-            if self.is_the_first_southbound_arrived:
-                entering_train.simulation.schedule.remove_all_northbound_trains()
-                self.is_the_first_southbound_arrived = False
+            try:
+                if self.is_the_first_southbound_arrived:
+                    entering_train.simulation.schedule.remove_all_northbound_trains()
+                    self.is_the_first_southbound_arrived = False
 
-            entering_train.simulation.schedule.add_train(
-                time=entering_train.simulation.current_time + random.uniform(5 * 60, 10 * 60),
-                direction="Northbound",
-            )
-
+                entering_train.simulation.schedule.adjust_next_departure(
+                    arrival_time=entering_train.simulation.current_time,
+                    arriving_train=entering_train,
+                )
+            except AttributeError as e:
+                raise e
         entering_train.delete()
 
 

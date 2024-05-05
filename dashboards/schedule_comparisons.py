@@ -77,17 +77,18 @@ def fetch_data(version):
         WHERE version = {version}
         AND ctadaymap = 1
     ),
-    shortt AS (
+    blue_line_runs AS (
         SELECT DISTINCT runid
         FROM schd
         WHERE timepointid SIMILAR TO '%(MgnMTS|FstPk|UICH|OHARE)%'
     )
     SELECT *
     FROM schd
-    WHERE runid IN (SELECT runid FROM shortt);
+    WHERE runid IN (SELECT runid FROM blue_line_runs);
         """
     )
-    schd = pd.read_sql(query, engine)
+    results = engine.execute(query)
+    schd = pd.DataFrame(results.fetchall())
 
     df = schd
     schd["short_turned"] = False
@@ -161,14 +162,19 @@ def fetch_data(version):
     sorted_stations = reversed(sorted_stations)
 
     station_to_category = {
-        station: i for i, station in enumerate([tp[:-1] for tp in sorted_stations if tp[-1] == "N"])
+        station: i
+        for i, station in enumerate(
+            [tp[:-1] for tp in sorted_stations if tp[-1] == "N"]
+        )
     }
 
     # Apply the mapping to the 'timepoint' column to create a new categorical column
     schd["timepoint_category"] = schd["timepoint"].map(station_to_category)
 
     # Ensure the 'time' column is in the correct format (timedelta or datetime)
-    schd["time"] = pd.to_timedelta(schd["schd_time"], unit="s") + pd.Timestamp("1970/01/01")
+    schd["time"] = pd.to_timedelta(schd["schd_time"], unit="s") + pd.Timestamp(
+        "1970/01/01"
+    )
     schd.sort_values(by=["time"], inplace=True)
 
     sorted_run_ids = schd["runid"][schd["runid"] != "None"].unique()

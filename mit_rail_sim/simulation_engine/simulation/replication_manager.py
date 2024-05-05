@@ -43,11 +43,15 @@ class ReplicationManager:
         seed_numbers: Optional[List[int]] = None,
     ) -> None:
         with self.logger_context:
-            for seed_number in self.seed_numbers if seed_numbers is None else seed_numbers:
+            for seed_number in (
+                self.seed_numbers if seed_numbers is None else seed_numbers
+            ):
                 random.seed(seed_number)
                 schedule.generate_random_dispatch_info()
 
-                path, signal_control_center = path_initializer_function(data, slow_zones)
+                path, signal_control_center = path_initializer_function(
+                    data, slow_zones
+                )
 
                 simulation = Simulation(
                     schedule=schedule,
@@ -61,10 +65,12 @@ class ReplicationManager:
                 simulation.replication_id = seed_number
                 simulation_context = SimulationContext(simulation)
 
-                try:
-                    with simulation_context:
-                        simulation.run()
-                except Exception as e:
-                    warnings.warn(f"Exception {e} raised during replication {seed_number}")
-                    self.seed_numbers.append(random.randint(0, 2**32 - 1))
-                    continue
+                # try:
+                with simulation_context:
+                    simulation.run()
+                # except Exception as e:
+                #     warnings.warn(
+                #         f"Exception {e} raised during replication {seed_number}"
+                #     )
+                #     self.seed_numbers.append(random.randint(0, 2**32 - 1))
+                #     continue

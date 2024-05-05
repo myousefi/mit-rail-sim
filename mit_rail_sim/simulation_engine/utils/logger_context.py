@@ -4,7 +4,11 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.utils import BlockActivationLogger
-    from mit_rail_sim.simulation_engine.utils import TrainLogger, PassengerLogger, StationLogger
+    from mit_rail_sim.simulation_engine.utils import (
+        TrainLogger,
+        PassengerLogger,
+        StationLogger,
+    )
     from mit_rail_sim.simulation_engine.utils.logger_utils import SimulationLogger
 
 from mit_rail_sim.simulation_engine.infrastructure import Block, Station
@@ -22,7 +26,9 @@ class LoggerContext:
         simulation_logger: SimulationLogger,
         block_logger: BlockActivationLogger,
         warmup_time=0,
+        start_hour_of_day: int = None,
     ):
+        warmup_time = warmup_time + start_hour_of_day * 3600
         self.train_logger = train_logger.set_warmup_time(warmup_time)
         self.passenger_logger = passenger_logger.set_warmup_time(warmup_time)
         self.station_logger = station_logger.set_warmup_time(warmup_time)
