@@ -11,7 +11,7 @@ pio.templates.default = "simple_white"
 
 # %%
 # Read the station file
-station_file_path = "/Users/moji/Projects/mit_rail_sim/cta-2024/outputs/2024-04-25/12-58-58/station_test.csv"
+station_file_path = "/Users/moji/Projects/mit_rail_sim/cta-2024/outputs/2024-05-05/12-09-32/station_test.csv"
 df = pd.read_csv(station_file_path)
 
 # Filter the data for Harlem (Forest Park) station
@@ -35,7 +35,7 @@ fig.add_trace(
 
 fig.update_layout(
     title_text="Histogram of Headways at Harlem (Forest Park Branch)",
-    xaxis_title="Headway (seconds)",
+    xaxis_title="Headway (minutes)",
     yaxis_title="Percent",
     bargap=0.1,
     bargroupgap=0.2,
@@ -69,7 +69,7 @@ query_text = text(
     """
 )
 
-result = engine.execute(query_text, start_date="2023-12-01", end_date="2023-12-15")
+result = engine.execute(query_text, start_date="2024-04-07", end_date="2024-05-15")
 harlem_data_avl = pd.DataFrame(result.fetchall(), columns=result.keys())
 
 # %%
