@@ -1,26 +1,22 @@
+from copy import deepcopy
 import json
 from abc import ABC, abstractmethod
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
-from mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies import GammaDispatchStrategy, \
-    WeibullDispatchStrategy, EmpiricalDispatchStrategy
+from mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies import (
+    GammaDispatchStrategy,
+    WeibullDispatchStrategy,
+    EmpiricalDispatchStrategy,
+)
 
 
 class BaseSchedule(ABC):
-    def __init__(self, params_path, start_time_of_day: int, end_time_of_day: int):
-        self.params = self.read_params(params_path)
-        self.dispatch_strategy = self.get_strategy()
+    def __init__(self, file_path, start_time_of_day: int, end_time_of_day: int):
+        self.file_path = file_path
         self.start_time_of_day = start_time_of_day
         self.end_time_of_day = end_time_of_day
 
-    def read_params(self, path):
-        try:
-            with open(path, "r") as file:
-                return json.load(file)
-        except FileNotFoundError:
-            raise FileNotFoundError(f"The file {path} was not found.")
-        except json.JSONDecodeError:
-            raise json.JSONDecodeError(f"Could not decode JSON from the file {path}.")
+        self.dispatch_info: Optional[List[Tuple[float, int, str, str]]] = None
 
     @abstractmethod
     def get_strategy(self):
@@ -32,12 +28,12 @@ class BaseSchedule(ABC):
 
     # TODO: Implement copy method
     def copy(self):
-        pass
+        return deepcopy(self)
 
 
 class GammaSchedule(BaseSchedule):
-    def __init__(self, params_path, start_time_of_day: int, end_time_of_day: int):
-        super().__init__(params_path, start_time_of_day, end_time_of_day)
+    def __init__(self, file_path, start_time_of_day: int, end_time_of_day: int):
+        super().__init__(file_path, start_time_of_day, end_time_of_day)
         self.validate_params()
 
     def validate_params(self):

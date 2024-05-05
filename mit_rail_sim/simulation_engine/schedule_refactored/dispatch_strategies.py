@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class DispatchStrategy(ABC):
     @abstractmethod
-    def generate_dispatch_info(self, params):
+    def generate_dispatch_info(self):
         pass
 
 

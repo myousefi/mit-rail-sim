@@ -385,8 +385,7 @@ class Terminal(Block):
 
                 entering_train.simulation.schedule.adjust_next_departure(
                     arrival_time=entering_train.simulation.current_time,
-                    direction="Northbound",
-                    path=entering_train.simulation.paths["Northbound"],
+                    arriving_train=entering_train,
                 )
             except AttributeError as e:
                 raise e
