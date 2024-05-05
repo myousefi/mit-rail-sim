@@ -208,7 +208,12 @@ def main(cfg: DictConfig) -> None:
         log_file_path=f"{log_folder_path}/block_test.csv"
     )
     arrival_rates = ArrivalRate(
-        filename=str(project_root / "inputs" / "arrival_rates_Nov.csv"),
+        filename=str(
+            project_root
+            / "inputs"
+            / "demand"
+            / "odx_imputed_demand_2024-04-07_2024-05-30.csv"
+        ),
         demand_factor=cfg.demand_level,
     )
 
