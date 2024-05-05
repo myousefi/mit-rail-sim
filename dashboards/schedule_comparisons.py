@@ -77,14 +77,14 @@ def fetch_data(version):
         WHERE version = {version}
         AND ctadaymap = 1
     ),
-    shortt AS (
+    blue_line_runs AS (
         SELECT DISTINCT runid
         FROM schd
         WHERE timepointid SIMILAR TO '%(MgnMTS|FstPk|UICH|OHARE)%'
     )
     SELECT *
     FROM schd
-    WHERE runid IN (SELECT runid FROM shortt);
+    WHERE runid IN (SELECT runid FROM blue_line_runs);
         """
     )
     results = engine.execute(query)
