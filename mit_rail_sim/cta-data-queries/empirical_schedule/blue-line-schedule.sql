@@ -21,7 +21,8 @@ ohare_mgn_short_turned AS (
     FROM schd o
     LEFT JOIN schd m ON o.runid = m.runid
         AND m.timepointid = 'MgnMTS'
-        AND m.timepoint_time >= o.timepoint_time - 2 * 3600
+        AND m.timepoint_time <= o.timepoint_time + 3600
+        AND m.timepoint_time > o.timepoint_time
     WHERE o.timepointid = 'OHareS'
         AND o.runid IN (SELECT runid FROM blue_line_runs)
 ),
@@ -35,7 +36,8 @@ fstpk_fos_short_turned AS (
     FROM schd f
     LEFT JOIN schd s ON f.runid = s.runid
         AND s.timepointid = 'FosMTN'
-        AND s.timepoint_time >= f.timepoint_time - 2 * 3600
+        AND s.timepoint_time <= f.timepoint_time + 3600
+        AND s.timepoint_time > f.timepoint_time
     WHERE f.timepointid = 'FstPkN'
         AND f.runid IN (SELECT runid FROM blue_line_runs)
 )

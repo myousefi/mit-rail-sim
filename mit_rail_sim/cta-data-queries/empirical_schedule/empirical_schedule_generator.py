@@ -4,18 +4,28 @@ from datetime import datetime
 from mit_rail_sim.utils.db_con import engine, text
 from mit_rail_sim.utils.root_path import project_root
 
-start_date = "2023-11-13"  # Replace with your desired start date
-end_date = "2024-02-04"  # Replace with your desired end date
-version = 81  # Replace with your desired version
+start_date = "2024-04-07"  # Replace with your desired start date
+end_date = "2024-05-15"  # Replace with your desired end date
+version = 83  # Replace with your desired version
 
 # Read the SQL queries from files
 with open(
-    project_root / "mit_rail_sim" / "cta-data-queries" / "empirical-schedule.sql", "r"
+    project_root
+    / "mit_rail_sim"
+    / "cta-data-queries"
+    / "empirical_schedule"
+    / "empirical-schedule.sql",
+    "r",
 ) as file:
     empirical_schedule_query = text(file.read())
 
 with open(
-    project_root / "mit_rail_sim" / "cta-data-queries" / "blue-line-schedule.sql", "r"
+    project_root
+    / "mit_rail_sim"
+    / "cta-data-queries"
+    / "empirical_schedule"
+    / "blue-line-schedule.sql",
+    "r",
 ) as file:
     blue_line_schedule_query = text(file.read())
 
