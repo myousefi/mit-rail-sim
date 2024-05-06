@@ -377,18 +377,18 @@ class Terminal(Block):
         return self.speed_code_for_terminal
 
     def activate(self, entering_train: Train) -> None:
-        if entering_train.path.direction == "Southbound":
-            try:
-                if self.is_the_first_southbound_arrived:
-                    entering_train.simulation.schedule.remove_all_northbound_trains()
-                    self.is_the_first_southbound_arrived = False
+        # if entering_train.path.direction == "Southbound":
+        #     try:
+        #         if self.is_the_first_southbound_arrived:
+        #             entering_train.simulation.schedule.remove_all_northbound_trains()
+        #             self.is_the_first_southbound_arrived = False
 
-                entering_train.simulation.schedule.adjust_next_departure(
-                    arrival_time=entering_train.simulation.current_time,
-                    arriving_train=entering_train,
-                )
-            except AttributeError as e:
-                raise e
+        #         entering_train.simulation.schedule.adjust_next_departure(
+        #             arrival_time=entering_train.simulation.current_time,
+        #             arriving_train=entering_train,
+        #         )
+        #     except AttributeError as e:
+        #         raise e
         entering_train.delete()
 
 
