@@ -256,11 +256,12 @@ def main(results_dir, replication_id):
         if len(available_ids) == 1:
             replication_id = available_ids[0]
         else:
-            replication_id = click.prompt(
+            replication_number = click.prompt(
                 "Select replication ID",
-                type=click.Choice(available_ids),
-                default=available_ids[0],
+                type=click.Choice([str(i) for i in range(len(available_ids))]),
+                default="0",
             )
+            replication_id = available_ids[int(replication_number)]
 
     block_data = block_data[block_data["replication_id"] == replication_id]
 
