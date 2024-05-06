@@ -15,19 +15,6 @@ class OHareEmpiricalSchedule(BaseSchedule):
         with open(self.file_path, "r") as file:
             self.data = json.load(file)
 
-        self.scheduled_forest_park_departures: List[Tuple[float, int, str, str]] = [
-            (
-                scheduled_dispatch["time_in_sec"],
-                0,
-                "Northbound"
-                if not scheduled_dispatch["short_turned"]
-                else "Notimplemented",
-                scheduled_dispatch["runid"],
-            )
-            for scheduled_dispatch in self.data["blue_line_schedule"]
-            if scheduled_dispatch["terminal"] == "Forest Park"
-        ]
-
         self.validate_params()
 
         self.dispatch_strategy = self.get_strategy()
@@ -46,7 +33,21 @@ class OHareEmpiricalSchedule(BaseSchedule):
         return OHareEmpiricalDispatchStrategy(self)
 
     def generate_random_dispatch_info(self):
-        return self.dispatch_strategy.generate_random_dispatch_info()
+        self.scheduled_forest_park_departures: List[Tuple[float, int, str, str]] = [
+            (
+                scheduled_dispatch["time_in_sec"],
+                0,
+                "Northbound"
+                if not scheduled_dispatch["short_turned"]
+                else "Notimplemented",
+                scheduled_dispatch["runid"],
+            )
+            for scheduled_dispatch in self.data["blue_line_schedule"]
+            if scheduled_dispatch["terminal"] == "Forest Park"
+        ]
+
+        self.dispatch_info = self.dispatch_strategy.generate_random_dispatch_info()
+        return self.dispatch_info
 
     def remove_all_northbound_trains(self) -> None:
         """Remove all northbound trains from the schedule."""
@@ -66,24 +67,21 @@ class OHareEmpiricalSchedule(BaseSchedule):
         import bisect
 
         if arriving_train.path.direction == "Southbound":
-            index = bisect.bisect_right(
-                self.scheduled_forest_park_departures, arrival_time, key=lambda x: x[0]
+            while self.scheduled_forest_park_departures[0][0] < arrival_time:
+                self.scheduled_forest_park_departures.pop(0)
+
+            next_scheduled_departure = self.scheduled_forest_park_departures.pop(0)
+
+            departure_time = max(
+                arrival_time + arriving_to_dispatch_margin,
+                next_scheduled_departure[0],
             )
-            if index < len(self.scheduled_forest_park_departures):
-                next_scheduled_departure = list(
-                    self.scheduled_forest_park_departures[index]
-                )
 
-                departure_time = max(
-                    arrival_time + arriving_to_dispatch_margin,
-                    next_scheduled_departure[0],
-                )
-
-                bisect.insort(
-                    self.dispatch_info,
-                    tuple((departure_time, *next_scheduled_departure[1:])),
-                    key=lambda x: x[0],
-                )
+            bisect.insort(
+                self.dispatch_info,
+                tuple((departure_time, *next_scheduled_departure[1:])),
+                key=lambda x: x[0],
+            )
 
 
 class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
@@ -98,7 +96,7 @@ class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
             self.empirical_schedule_data,
             self.blue_line_schedule_data,
             on="time_in_sec",
-            by="runid",
+            # by="runid",
             direction="nearest",
         )
 
@@ -120,6 +118,11 @@ class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
         dispatch_info = []
 
         for direction in self.empirical_schedule_data["direction"].unique():
+            i = 0
+            schedule = self.blue_line_schedule_data[
+                self.blue_line_schedule_data["terminal"]
+                == ("O-Hare" if direction == "Southbound" else "Forest Park")
+            ]
             current_time = self.start_time_of_day
             data = self.empirical_schedule_data[
                 self.empirical_schedule_data["direction"] == direction
@@ -141,7 +144,15 @@ class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
                     runid = sample_dispatch["runid"].values[0]
                     short_turned = sample_dispatch["short_turned"].values[0]
 
-                    path = "ShortTurning" if short_turned else direction
+                    try:
+                        path = (
+                            "ShortTurning"
+                            if schedule.iloc[i]["short_turned"]
+                            else direction
+                        )
+                        i += 1
+                    except IndexError:
+                        path = direction
 
                     dispatch_info.append((current_time, 0, path, runid))
                 else:
