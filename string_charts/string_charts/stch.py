@@ -170,7 +170,10 @@ def update_figure(block_data, station_data):
     max_applied_holding = station_data["applied_holding"].max()
 
     for _, row in station_data[station_data["applied_holding"] > 0].iterrows():
-        closest_block = block_data[block_data["train_id"] == row["train_id"]]
+        closest_block = block_data[
+            (block_data["train_id"] == row["train_id"])
+            & (block_data["direction"] == row["direction"])
+        ]
         closest_block["time_diff"] = abs(
             closest_block["time_in_seconds"] - row["time_in_seconds"]
         )
@@ -188,7 +191,7 @@ def update_figure(block_data, station_data):
                 ),
                 showlegend=False,
                 hoverinfo="text",
-                hovertext=f"Applied Holding: {row['applied_holding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
+                hovertext=f"Applied Holding: {row['applied_holding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']} {row['direction']} </br>",
             )
         )
 
@@ -197,9 +200,13 @@ def update_figure(block_data, station_data):
     ].max()
     for _, row in station_data[
         (station_data["number_of_passengers_on_platform_after_stop"] > 0)
-        & (station_data["direction"] == "Northbound")
+        & (station_data["number_of_passengers_on_train_after_stop"] == 960)
+        # & (station_data["direction"] == "Northbound")
     ].iterrows():
-        closest_block = block_data[block_data["train_id"] == row["train_id"]]
+        closest_block = block_data[
+            (block_data["train_id"] == row["train_id"])
+            & (block_data["direction"] == row["direction"])
+        ]
         closest_block["time_diff"] = abs(
             closest_block["time_in_seconds"] - row["time_in_seconds"]
         )
