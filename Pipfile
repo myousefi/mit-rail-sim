@@ -26,6 +26,7 @@ string-charts = {file = "string_charts", editable = true}
 folium = "*"
 geopandas = "*"
 jupyterlab = "*"
+kaleido = "*"
 
 [dev-packages]
 nbformat = "*"
