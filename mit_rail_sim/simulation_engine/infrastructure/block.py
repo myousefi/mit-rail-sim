@@ -82,7 +82,7 @@ class Block(AbstractBlock):
         self._last_train_visit_time: float = -float("inf")
         self._id_of_last_train: Optional[str] = None
 
-        self.headway: float = 0.0
+        self.headway: float = float("inf")
 
     @property
     def id_of_last_train(self) -> Optional[str]:
