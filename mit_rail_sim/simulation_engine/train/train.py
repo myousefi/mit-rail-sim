@@ -143,6 +143,16 @@ class Train:
             ) from index_error
 
     @property
+    def first_block_after_station(self) -> Optional[BlockType]:
+        for i in range(self.current_block_index + 1, len(self.path.blocks)):
+            if self.path.blocks[i].station is not None:
+                if i + 1 < len(self.path.blocks):
+                    return self.path.blocks[i + 1]
+                else:
+                    return None
+        return None
+
+    @property
     def distance_to_next_block(self) -> float:
         return self.current_block.length - self.distance_travelled_in_current_block
 
