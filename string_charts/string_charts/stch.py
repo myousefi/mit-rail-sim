@@ -199,8 +199,9 @@ def update_figure(block_data, station_data):
         "number_of_passengers_on_platform_after_stop"
     ].max()
     for _, row in station_data[
-        (station_data["number_of_passengers_on_platform_after_stop"] > 0)
-        & (station_data["number_of_passengers_on_train_after_stop"] == 960)
+        station_data["denied_boarding"] > 0
+        # (station_data["number_of_passengers_on_platform_after_stop"] > 0)
+        # & (station_data["number_of_passengers_on_train_after_stop"] > 960)
         # & (station_data["direction"] == "Northbound")
     ].iterrows():
         closest_block = block_data[
@@ -218,15 +219,13 @@ def update_figure(block_data, station_data):
                 mode="markers",
                 marker=dict(
                     symbol="square",
-                    size=row["number_of_passengers_on_platform_after_stop"]
-                    / max_denied_boarding
-                    * 20,
+                    size=row["denied_boarding"] / max_denied_boarding * 20,
                     color="rgba(0, 0, 255, 0.5)",
                     line=dict(color="black", width=2),
                 ),
                 showlegend=False,
                 hoverinfo="text",
-                hovertext=f"Denied Boarding: {row['number_of_passengers_on_platform_after_stop']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
+                hovertext=f"Denied Boarding: {row['denied_boarding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
             )
         )
 
