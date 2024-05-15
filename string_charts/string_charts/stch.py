@@ -170,7 +170,10 @@ def update_figure(block_data, station_data):
     max_applied_holding = station_data["applied_holding"].max()
 
     for _, row in station_data[station_data["applied_holding"] > 0].iterrows():
-        closest_block = block_data[block_data["train_id"] == row["train_id"]]
+        closest_block = block_data[
+            (block_data["train_id"] == row["train_id"])
+            & (block_data["direction"] == row["direction"])
+        ]
         closest_block["time_diff"] = abs(
             closest_block["time_in_seconds"] - row["time_in_seconds"]
         )
@@ -188,7 +191,7 @@ def update_figure(block_data, station_data):
                 ),
                 showlegend=False,
                 hoverinfo="text",
-                hovertext=f"Applied Holding: {row['applied_holding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
+                hovertext=f"Applied Holding: {row['applied_holding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']} {row['direction']} </br>",
             )
         )
 
@@ -196,10 +199,15 @@ def update_figure(block_data, station_data):
         "number_of_passengers_on_platform_after_stop"
     ].max()
     for _, row in station_data[
-        (station_data["number_of_passengers_on_platform_after_stop"] > 0)
-        & (station_data["direction"] == "Northbound")
+        station_data["denied_boarding"] > 0
+        # (station_data["number_of_passengers_on_platform_after_stop"] > 0)
+        # & (station_data["number_of_passengers_on_train_after_stop"] > 960)
+        # & (station_data["direction"] == "Northbound")
     ].iterrows():
-        closest_block = block_data[block_data["train_id"] == row["train_id"]]
+        closest_block = block_data[
+            (block_data["train_id"] == row["train_id"])
+            & (block_data["direction"] == row["direction"])
+        ]
         closest_block["time_diff"] = abs(
             closest_block["time_in_seconds"] - row["time_in_seconds"]
         )
@@ -211,15 +219,13 @@ def update_figure(block_data, station_data):
                 mode="markers",
                 marker=dict(
                     symbol="square",
-                    size=row["number_of_passengers_on_platform_after_stop"]
-                    / max_denied_boarding
-                    * 20,
+                    size=row["denied_boarding"] / max_denied_boarding * 20,
                     color="rgba(0, 0, 255, 0.5)",
                     line=dict(color="black", width=2),
                 ),
                 showlegend=False,
                 hoverinfo="text",
-                hovertext=f"Denied Boarding: {row['number_of_passengers_on_platform_after_stop']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
+                hovertext=f"Denied Boarding: {row['denied_boarding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
             )
         )
 
@@ -256,11 +262,12 @@ def main(results_dir, replication_id):
         if len(available_ids) == 1:
             replication_id = available_ids[0]
         else:
-            replication_id = click.prompt(
+            replication_number = click.prompt(
                 "Select replication ID",
-                type=click.Choice(available_ids),
-                default=available_ids[0],
+                type=click.Choice([str(i) for i in range(len(available_ids))]),
+                default="0",
             )
+            replication_id = available_ids[int(replication_number)]
 
     block_data = block_data[block_data["replication_id"] == replication_id]
 

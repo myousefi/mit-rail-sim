@@ -94,7 +94,7 @@ class Simulation:
             path=path,
             starting_block_index=starting_block_index,
             dispatching_time=dispatching_time,
-            runid=runid,
+            # runid=runid,
         )
 
     def _dispatch_trains(self) -> None:

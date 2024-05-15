@@ -80,8 +80,17 @@ class Block(AbstractBlock):
         self.speed_codes_to_communicate = speed_codes_to_communicate or {}
         self.communicated_speed_codes: Dict[str, float] = {}
         self._last_train_visit_time: float = -float("inf")
+        self._id_of_last_train: Optional[str] = None
 
-        self.headway: float = 0.0
+        self.headway: float = float("inf")
+
+    @property
+    def id_of_last_train(self) -> Optional[str]:
+        return self._id_of_last_train
+
+    @id_of_last_train.setter
+    def id_of_last_train(self, value: Optional[str]) -> None:
+        self._id_of_last_train = value
 
     @property
     def last_train_visit_time(self) -> float:
@@ -151,6 +160,7 @@ class Block(AbstractBlock):
             self.block_logger.log_block_activation(self, entering_train)
 
         self.last_train_visit_time = entering_train.simulation.current_time
+        self.id_of_last_train = entering_train.train_id
 
         entering_train.train_speed_regulator.update_desired_speed()
 
@@ -377,18 +387,18 @@ class Terminal(Block):
         return self.speed_code_for_terminal
 
     def activate(self, entering_train: Train) -> None:
-        if entering_train.path.direction == "Southbound":
-            try:
-                if self.is_the_first_southbound_arrived:
-                    entering_train.simulation.schedule.remove_all_northbound_trains()
-                    self.is_the_first_southbound_arrived = False
+        # if entering_train.path.direction == "Southbound":
+        #     try:
+        #         if self.is_the_first_southbound_arrived:
+        #             entering_train.simulation.schedule.remove_all_northbound_trains()
+        #             self.is_the_first_southbound_arrived = False
 
-                entering_train.simulation.schedule.adjust_next_departure(
-                    arrival_time=entering_train.simulation.current_time,
-                    arriving_train=entering_train,
-                )
-            except AttributeError as e:
-                raise e
+        #         entering_train.simulation.schedule.adjust_next_departure(
+        #             arrival_time=entering_train.simulation.current_time,
+        #             arriving_train=entering_train,
+        #         )
+        #     except AttributeError as e:
+        #         raise e
         entering_train.delete()
 
 

@@ -1,26 +1,26 @@
 # %%
-# %%
-import os
+# import os
 
 import pandas as pd
 import plotly.express as px
-from dotenv import find_dotenv, load_dotenv
-from sqlalchemy import create_engine, text
+# from dotenv import find_dotenv, load_dotenv
+# from sqlalchemy import create_engine, text
 
-load_dotenv(find_dotenv())
+from mit_rail_sim.utils.db_con import text, engine
+# load_dotenv(find_dotenv())
 
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
-HOST = os.getenv("HOST")
-PORT = os.getenv("PORT")
-DATABASE = os.getenv("DATABASE")
+# USERNAME = os.getenv("USERNAME")
+# PASSWORD = os.getenv("PASSWORD")
+# HOST = os.getenv("HOST")
+# PORT = os.getenv("PORT")
+# DATABASE = os.getenv("DATABASE")
 
 start_date = "2024-04-07"
 end_date = "2024-05-01"
 
-engine = create_engine(
-    f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
-).connect()
+# engine = create_engine(
+#     f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+# ).connect()
 
 query_text = text(
     """
@@ -34,8 +34,8 @@ WITH NB_Arrivals AS (
     FROM
         avas_spectrum.qt2_trainevent
     WHERE
-        scada = 'wc011t' -- UIC-Halsted NB Arrival
-        AND event_time::date BETWEEN '2024-02-13' AND '2024-02-26'
+        scada = 'wc005t' -- UIC-Halsted NB Arrival
+        AND event_time::date BETWEEN :start_date AND :end_date
         AND EXTRACT(DOW FROM event_time) BETWEEN 1 AND 5
         AND run_id LIKE 'B%'
 )
@@ -101,13 +101,28 @@ fig.show()
 # %%
 df["headway_ratio"] = df["forward_headway"] / df["backward_headway"]
 
+# Filter out entries with forward or backward headway less than 30 seconds
+df = df[
+    (df["forward_headway"] >= pd.Timedelta(seconds=30))
+    & (df["backward_headway"] >= pd.Timedelta(seconds=30))
+]
+
+# Apply IQR outlier filtering on headway_ratio
+Q1 = df["headway_ratio"].quantile(0.25)
+Q3 = df["headway_ratio"].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+df = df[(df["headway_ratio"] >= lower_bound) & (df["headway_ratio"] <= upper_bound)]
+
+
 fig = px.scatter(
     df,
     x="time_of_day",
     y="headway_ratio",
     hover_data=df.columns,
     color="deviation",
-    color_continuous_scale=px.colors.diverging.Geyser,  # symmetric color scale
+    color_continuous_scale=px.colors.diverging.RdBu,  # symmetric color scale
     color_continuous_midpoint=0,  # centering the color scale around zero
 )
 
@@ -116,7 +131,7 @@ fig.update_layout(
     title="Short Turning Gaps Analysis",
     xaxis_title="Time of Day",
     yaxis_title="Headway Ratio (Forward/Backward)",
-    plot_bgcolor="white",
+    plot_bgcolor="black",
     margin=dict(l=50, r=50, t=50, b=50),
     height=600,
     width=800,
@@ -138,7 +153,7 @@ fig.add_trace(
         y=[1] * len(df),
         mode="lines",
         name="Perfect Line",
-        line=dict(color="black", width=2, dash="dash"),
+        line=dict(color="white", width=2, dash="dash"),
     )
 )
 fig.update_yaxes(type="log")
@@ -152,7 +167,7 @@ fig.update_xaxes(
 )
 fig.update_yaxes(showgrid=True, gridcolor="LightGrey")
 
-fig.show()
+fig.show(renderer="browser")
 
 html_output = fig.to_html()
 output_file_path = "/Users/moji/Presentations/One-on-One Meetings/02-26-2024/short_turning_gaps_analysis.html"

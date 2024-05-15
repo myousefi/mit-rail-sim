@@ -208,12 +208,13 @@ def main(cfg: DictConfig) -> None:
         log_file_path=f"{log_folder_path}/block_test.csv"
     )
     arrival_rates = ArrivalRate(
-        filename=str(
-            project_root
-            / "inputs"
-            / "demand"
-            / "odx_imputed_demand_2024-04-07_2024-05-30.csv"
-        ),
+        # filename=str(
+        #     project_root
+        #     / "inputs"
+        #     / "demand"
+        #     / "odx_imputed_demand_2024-04-07_2024-05-30.csv"
+        # ),
+        filename=cfg.demand_file,
         demand_factor=cfg.demand_level,
     )
 
@@ -231,7 +232,8 @@ def main(cfg: DictConfig) -> None:
     )
 
     schedule = OHareEmpiricalSchedule(
-        file_path=project_root / "inputs" / "schedules" / "empirical_schedule_83.json",
+        # file_path=project_root / "inputs" / "schedules" / "empirical_schedule_83.json",
+        file_path=cfg.schedule_file,
         start_time_of_day=cfg.simulation.start_time_of_day * 3600,
         end_time_of_day=cfg.simulation.end_time_of_day * 3600,
     )
@@ -289,7 +291,8 @@ def main(cfg: DictConfig) -> None:
         path_initializer_function=fixed_arrival_rates_function,
         data=data,
         slow_zones=slow_zones,
-        total_time=5 * 3600,
+        total_time=(cfg.simulation.end_time_of_day - cfg.simulation.start_time_of_day)
+        * 3600,
         start_hour=cfg.simulation.start_time_of_day,
     )
 

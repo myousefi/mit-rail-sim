@@ -65,12 +65,12 @@ class ReplicationManager:
                 simulation.replication_id = seed_number
                 simulation_context = SimulationContext(simulation)
 
-                # try:
-                with simulation_context:
-                    simulation.run()
-                # except Exception as e:
-                #     warnings.warn(
-                #         f"Exception {e} raised during replication {seed_number}"
-                #     )
-                #     self.seed_numbers.append(random.randint(0, 2**32 - 1))
-                #     continue
+                try:
+                    with simulation_context:
+                        simulation.run()
+                except Exception as e:
+                    warnings.warn(
+                        f"Exception {e} raised during replication {seed_number}"
+                    )
+                    self.seed_numbers.append(random.randint(0, 2**32 - 1))
+                    continue

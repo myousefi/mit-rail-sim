@@ -47,14 +47,30 @@ class TrainHeadwayRegulatorAtStation:
         self.min_holding = min_holding
 
     def suggested_holding(self, train: Train) -> float:
+        leading_train_id = train.next_block.id_of_last_train
         time_to_leading_train = (
             train.simulation.current_time - train.next_block.last_train_visit_time
+            # train.next_block.headway
         )
         try:
             following_train = train.path.get_previous_train(train.current_block_index)
-            time_to_following_train = (
-                following_train.current_block.headway - time_to_leading_train
-            )
+            if following_train.next_block.id_of_last_train == train.train_id:
+                time_to_following_train = (
+                    train.simulation.current_time
+                    - following_train.next_block.last_train_visit_time
+                )
+
+            elif following_train.next_block.id_of_last_train == leading_train_id:
+                time_to_following_train = (
+                    train.simulation.current_time
+                    - following_train.next_block.last_train_visit_time
+                    - time_to_leading_train
+                )
+            else:
+                Warning(
+                    f"Train seuqence error for train {train.train_id} at block {train.next_block.block_alt_name} at time {train.simulation.current_time}"
+                )
+                return 0
 
             print(
                 f"for Train: {train.train_id} Time to leading train: {time_to_leading_train}, time to following train: {time_to_following_train}"
