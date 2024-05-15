@@ -74,13 +74,18 @@ class DwellingAtStationState(TrainState):
         if cfg := config_handler.get_config():
             if cfg.holding:
                 if self.station.name == cfg.station:
-                    if self.station.direction == "Northbound":
-                        head_reg = TrainHeadwayRegulatorAtStationInformedByCrowding(
+                    if self.station.direction == (
+                        "Northbound" if cfg.schd == "PM" else "Southbound"
+                    ):
+                        head_reg = TrainHeadwayRegulatorAtStation(
                             cfg.max_holding, cfg.min_holding
                         )
                         self.rec_holding = head_reg.suggested_holding(self.train)
                         # self.dwell_time = max(self.dwell_time, rec_holding)
 
+                        print(
+                            f"Hodling for {self.rec_holding} at {cfg.station}-{self.station.direction}"
+                        )
         # self.rec_holding = (
         #     self.rec_holding if self.rec_holding > cfg.minimum_holding_time else 0
         # )
