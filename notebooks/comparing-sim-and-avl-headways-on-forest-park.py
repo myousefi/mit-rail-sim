@@ -27,7 +27,8 @@ query_text = text(
 """
 )
 
-df = pd.read_sql(query_text, engine, params={"start_date": "2024-01-01", "end_date": "2024-03-01"})
+results = engine.execute(query_text, params={"start_date": "2024-01-01", "end_date": "2024-03-01"})
+df = pd.DataFrame(results.fetchall())
 
 # %%
 import glob

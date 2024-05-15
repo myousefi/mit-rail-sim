@@ -20,12 +20,17 @@ from mit_rail_sim.simulation_engine.infrastructure.path import (
     ShortTurningPath,
 )
 from mit_rail_sim.simulation_engine.passenger import ArrivalRate
-from mit_rail_sim.simulation_engine.schedule import (
-    GammaScheduleWithShortTurning,
-    GammaScheduleWithShortTurningTwoTerminals,
-    GammaScheduleWithShortTurningTwoTerminalsPMPeak,
+# from mit_rail_sim.simulation_engine.schedule import (
+#     GammaScheduleWithShortTurning,
+#     GammaScheduleWithShortTurningTwoTerminals,
+#     GammaScheduleWithShortTurningTwoTerminalsPMPeak,
+#     OHareEmpiricalSchedule,
+# )
+
+from mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule import (
     OHareEmpiricalSchedule,
 )
+
 # Import necessary modules from mit_rail_sim
 from mit_rail_sim.simulation_engine.simulation import ReplicationManager
 from mit_rail_sim.simulation_engine.utils import LoggerContext
@@ -172,7 +177,7 @@ from mit_rail_sim.utils import project_root
 
 
 @hydra.main(
-    config_path=str(project_root / "holding-experiments"),
+    config_path=str(project_root / "cta-2024"),
     config_name="config",
 )
 def main(cfg: DictConfig) -> None:
@@ -203,7 +208,13 @@ def main(cfg: DictConfig) -> None:
         log_file_path=f"{log_folder_path}/block_test.csv"
     )
     arrival_rates = ArrivalRate(
-        filename=str(project_root / "inputs" / "arrival_rates_Nov.csv"),
+        # filename=str(
+        #     project_root
+        #     / "inputs"
+        #     / "demand"
+        #     / "odx_imputed_demand_2024-04-07_2024-05-30.csv"
+        # ),
+        filename=cfg.demand_file,
         demand_factor=cfg.demand_level,
     )
 
@@ -217,43 +228,51 @@ def main(cfg: DictConfig) -> None:
         simulation_logger=simulation_logger,
         block_logger=block_logger,
         warmup_time=3600 * 1.5,
+        start_hour_of_day=cfg.simulation.start_time_of_day,
     )
 
-    if schd := cfg.schd:
-        if schd == "PM":
-            schedule = GammaScheduleWithShortTurningTwoTerminalsPMPeak(
-                nb_cv=0.35,
-                nb_mean=7 * 60,
-                short_turning_rate=2,
-                total_period=6 * 3600,
-            )
-        if schd == "Base":
-            schedule = GammaScheduleWithShortTurningTwoTerminals(
-                nb_cv=0.2,
-                nb_mean=9,
-                sb_cv=0.35,
-                sb_mean=6,
-                total_period=6 * 3600,
-                short_turning_rate=3,
-            )
-        if schd == "Alt-H":
-            schedule = GammaScheduleWithShortTurningTwoTerminals(
-                nb_cv=0.2,
-                nb_mean=11,
-                sb_cv=0.35,
-                sb_mean=5.5,
-                total_period=6 * 3600,
-                short_turning_rate=2,
-            )
-        elif schd == "Alt-L":
-            schedule = GammaScheduleWithShortTurningTwoTerminals(
-                nb_cv=0.2,
-                nb_mean=12,
-                sb_cv=0.35,
-                sb_mean=6,
-                total_period=6 * 3600,
-                short_turning_rate=2,
-            )
+    schedule = OHareEmpiricalSchedule(
+        # file_path=project_root / "inputs" / "schedules" / "empirical_schedule_83.json",
+        file_path=cfg.schedule_file,
+        start_time_of_day=cfg.simulation.start_time_of_day * 3600,
+        end_time_of_day=cfg.simulation.end_time_of_day * 3600,
+    )
+    # if schd := cfg.schd:
+    #     if schd == "PM":
+    #         schedule = GammaScheduleWithShortTurningTwoTerminalsPMPeak(
+    #             nb_cv=0.35,
+    #             nb_mean=11 * 60,
+    #             short_turning_rate=2,
+    #             total_period=6 * 3600,
+    #             start_hour_of_day=cfg.simulation.start_time_of_day,
+    #         )
+    #     if schd == "Base":
+    #         schedule = GammaScheduleWithShortTurningTwoTerminals(
+    #             nb_cv=0.2,
+    #             nb_mean=9,
+    #             sb_cv=0.35,
+    #             sb_mean=6,
+    #             total_period=6 * 3600,
+    #             short_turning_rate=3,
+    #         )
+    #     if schd == "Alt-H":
+    #         schedule = GammaScheduleWithShortTurningTwoTerminals(
+    #             nb_cv=0.2,
+    #             nb_mean=11,
+    #             sb_cv=0.35,
+    #             sb_mean=5.5,
+    #             total_period=6 * 3600,
+    #             short_turning_rate=2,
+    #         )
+    #     elif schd == "Alt-L":
+    #         schedule = GammaScheduleWithShortTurningTwoTerminals(
+    #             nb_cv=0.2,
+    #             nb_mean=12,
+    #             sb_cv=0.35,
+    #             sb_mean=6,
+    #             total_period=6 * 3600,
+    #             short_turning_rate=2,
+    #         )
 
     replication_manager = ReplicationManager(
         number_of_replications=cfg.simulation.number_of_replications,
@@ -272,7 +291,8 @@ def main(cfg: DictConfig) -> None:
         path_initializer_function=fixed_arrival_rates_function,
         data=data,
         slow_zones=slow_zones,
-        total_time=5 * 3600,
+        total_time=(cfg.simulation.end_time_of_day - cfg.simulation.start_time_of_day)
+        * 3600,
         start_hour=cfg.simulation.start_time_of_day,
     )
 

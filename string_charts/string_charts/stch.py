@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import json
 
 import click
@@ -27,7 +29,9 @@ with open(project_root / "inputs" / "infra.json", "r") as f:
         distance += block["DISTANCE"]
         track_dist[block["BLOCK_ALT"]] = distance
         if "STATION" in block:
-            station_dict[block["STATION"]["STATION_NAME"]] = distance - block["DISTANCE"] / 2
+            station_dict[block["STATION"]["STATION_NAME"]] = (
+                distance - block["DISTANCE"] / 2
+            )
 
     for block in data["Southbound"]:
         distance -= block["DISTANCE"]
@@ -42,7 +46,9 @@ with open(project_root / "inputs" / "infra.json", "r") as f:
         distance += block["DISTANCE"]
         track_dist[block["BLOCK_ALT"]] = distance
         if "STATION" in block:
-            station_dict[block["STATION"]["STATION_NAME"]] = distance - block["DISTANCE"] / 2
+            station_dict[block["STATION"]["STATION_NAME"]] = (
+                distance - block["DISTANCE"] / 2
+            )
 
     for block in data["Southbound"]:
         distance -= block["DISTANCE"]
@@ -65,7 +71,11 @@ def update_figure(block_data, station_data):
     # )  # Exclude columns already used in the plot
     block_data["hover_text"] = block_data[hover_columns].apply(
         lambda x: "<br>".join(
-            [f"{col}: {val}" for col, val in zip(hover_columns, x.astype(str)) if pd.notna(val)]
+            [
+                f"{col}: {val}"
+                for col, val in zip(hover_columns, x.astype(str))
+                if pd.notna(val)
+            ]
         ),
         axis=1,
     )
@@ -81,9 +91,9 @@ def update_figure(block_data, station_data):
         # Group by direction
         for direction, group_data in run_data.groupby("direction"):
             # Insert NaNs for large gaps
-            group_data["gap"] = (group_data["time_in_seconds"].diff() > time_gap_threshold) | (
-                abs(group_data["track_dist"].diff()) > dist_gap_threshold
-            )
+            group_data["gap"] = (
+                group_data["time_in_seconds"].diff() > time_gap_threshold
+            ) | (abs(group_data["track_dist"].diff()) > dist_gap_threshold)
             group_data.loc[group_data["gap"], ["time_in_seconds", "track_dist"]] = [
                 float("nan"),
                 float("nan"),
@@ -143,10 +153,15 @@ def update_figure(block_data, station_data):
     )
 
     fig.update_xaxes(
-        tickvals=[1800 * i for i in range(int(block_data["time_in_seconds"].max() / 1800) + 1)],
+        tickvals=[
+            1800 * i for i in range(int(block_data["time_in_seconds"].max() / 1800) + 1)
+        ],
         ticktext=[
             pd.to_datetime(v, unit="s").strftime("%H:%M:%S")
-            for v in [1800 * i for i in range(int(block_data["time_in_seconds"].max() / 1800) + 1)]
+            for v in [
+                1800 * i
+                for i in range(int(block_data["time_in_seconds"].max() / 1800) + 1)
+            ]
         ],
         tickangle=-45,
     )
@@ -155,8 +170,13 @@ def update_figure(block_data, station_data):
     max_applied_holding = station_data["applied_holding"].max()
 
     for _, row in station_data[station_data["applied_holding"] > 0].iterrows():
-        closest_block = block_data[block_data["train_id"] == row["train_id"]]
-        closest_block["time_diff"] = abs(closest_block["time_in_seconds"] - row["time_in_seconds"])
+        closest_block = block_data[
+            (block_data["train_id"] == row["train_id"])
+            & (block_data["direction"] == row["direction"])
+        ]
+        closest_block["time_diff"] = abs(
+            closest_block["time_in_seconds"] - row["time_in_seconds"]
+        )
         closest_block = closest_block.sort_values("time_diff").iloc[0]
         fig.add_trace(
             go.Scatter(
@@ -171,17 +191,26 @@ def update_figure(block_data, station_data):
                 ),
                 showlegend=False,
                 hoverinfo="text",
-                hovertext=f"Applied Holding: {row['applied_holding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
+                hovertext=f"Applied Holding: {row['applied_holding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']} {row['direction']} </br>",
             )
         )
 
-    max_denied_boarding = station_data["number_of_passengers_on_platform_after_stop"].max()
+    max_denied_boarding = station_data[
+        "number_of_passengers_on_platform_after_stop"
+    ].max()
     for _, row in station_data[
-        (station_data["number_of_passengers_on_platform_after_stop"] > 0)
-        & (station_data["direction"] == "Northbound")
+        station_data["denied_boarding"] > 0
+        # (station_data["number_of_passengers_on_platform_after_stop"] > 0)
+        # & (station_data["number_of_passengers_on_train_after_stop"] > 960)
+        # & (station_data["direction"] == "Northbound")
     ].iterrows():
-        closest_block = block_data[block_data["train_id"] == row["train_id"]]
-        closest_block["time_diff"] = abs(closest_block["time_in_seconds"] - row["time_in_seconds"])
+        closest_block = block_data[
+            (block_data["train_id"] == row["train_id"])
+            & (block_data["direction"] == row["direction"])
+        ]
+        closest_block["time_diff"] = abs(
+            closest_block["time_in_seconds"] - row["time_in_seconds"]
+        )
         closest_block = closest_block.sort_values("time_diff").iloc[0]
         fig.add_trace(
             go.Scatter(
@@ -190,15 +219,13 @@ def update_figure(block_data, station_data):
                 mode="markers",
                 marker=dict(
                     symbol="square",
-                    size=row["number_of_passengers_on_platform_after_stop"]
-                    / max_denied_boarding
-                    * 20,
+                    size=row["denied_boarding"] / max_denied_boarding * 20,
                     color="rgba(0, 0, 255, 0.5)",
                     line=dict(color="black", width=2),
                 ),
                 showlegend=False,
                 hoverinfo="text",
-                hovertext=f"Denied Boarding: {row['number_of_passengers_on_platform_after_stop']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
+                hovertext=f"Denied Boarding: {row['denied_boarding']}<br>Time: {pd.to_datetime(row['time_in_seconds'], unit='s')}<br>Train ID: {row['train_id']}",
             )
         )
 
@@ -213,7 +240,11 @@ def get_available_replication_ids(train_data):
 @click.argument(
     "results_dir",
     type=click.Path(exists=True),
-    default=project_root / "cta_experiments_jan" / "outputs" / "2024-04-01" / "13-21-26",
+    default=project_root
+    / "cta_experiments_jan"
+    / "outputs"
+    / "2024-04-22"
+    / "12-05-13",
 )
 @click.option(
     "-r",
@@ -223,7 +254,7 @@ def get_available_replication_ids(train_data):
     help="Replication ID to display. If not provided, will prompt user to select from available IDs.",
 )
 def main(results_dir, replication_id):
-    block_data = pd.read_csv(results_dir + "/block_test.csv")
+    block_data = pd.read_csv(str(results_dir) + "/block_test.csv")
 
     available_ids = get_available_replication_ids(block_data)
 
@@ -231,15 +262,16 @@ def main(results_dir, replication_id):
         if len(available_ids) == 1:
             replication_id = available_ids[0]
         else:
-            replication_id = click.prompt(
+            replication_number = click.prompt(
                 "Select replication ID",
-                type=click.Choice(available_ids),
-                default=available_ids[0],
+                type=click.Choice([str(i) for i in range(len(available_ids))]),
+                default="0",
             )
+            replication_id = available_ids[int(replication_number)]
 
     block_data = block_data[block_data["replication_id"] == replication_id]
 
-    station_data = pd.read_csv(results_dir + "/station_test.csv")
+    station_data = pd.read_csv(str(results_dir) + "/station_test.csv")
 
     station_data = station_data[station_data["replication_id"] == replication_id]
 

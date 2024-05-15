@@ -1,25 +1,34 @@
 # %%
-# %%
-import os
+# import os
 
+import os
 import pandas as pd
 import plotly.express as px
-from dotenv import find_dotenv, load_dotenv
-from sqlalchemy import create_engine, text
+# from dotenv import find_dotenv, load_dotenv
+# from sqlalchemy import create_engine, text
 
-load_dotenv(find_dotenv())
+# load_dotenv(find_dotenv())
 
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
-HOST = os.getenv("HOST")
-PORT = os.getenv("PORT")
-DATABASE = os.getenv("DATABASE")
+# USERNAME = os.getenv("USERNAME")
+# PASSWORD = os.getenv("PASSWORD")
+# HOST = os.getenv("HOST")
+# PORT = os.getenv("PORT")
+# DATABASE = os.getenv("DATABASE")
 
-start_date = os.getenv("start_date")
-end_date = os.getenv("end_date")
+# start_date = os.getenv("start_date")
+# end_date = os.getenv("end_date")
 
-engine = create_engine(f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}").connect()
 
+# engine = create_engine(
+#     f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+# ).connect()
+
+from mit_rail_sim.utils.db_con import engine, text
+
+OUTPUT_DIRECTORY = "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
+
+start_date = "2024-04-07"
+end_date = "2024-05-01"
 query_text = text(
     """
 SELECT
@@ -41,7 +50,7 @@ SELECT
 FROM
     avas_spectrum.qt2_trainevent
 WHERE
-    event_time::date BETWEEN '2024-02-13' AND '2024-02-26' AND
+    event_time::date BETWEEN :start_date AND :end_date AND
     EXTRACT(DOW FROM event_time) BETWEEN 1 AND 5 AND
     action = 'MOVE' AND
     run_id LIKE 'B%' AND
@@ -52,13 +61,16 @@ ORDER BY
    """
 )
 
-df = pd.read_sql(query_text, engine, params={"start_date": start_date, "end_date": end_date})
+results = engine.execute(query_text, {"start_date": start_date, "end_date": end_date})
+
+
+df = pd.DataFrame(results.fetchall())
 
 # Convert 'event_time' to datetime if it's not already
 df["event_time"] = pd.to_datetime(df["event_time"])
 
 df["time_of_day"] = (
-    df["event_time"] - df["event_time"].dt.normalize() + pd.to_datetime("2024-02-13")
+    df["event_time"] - df["event_time"].dt.normalize() + pd.to_datetime("2024-04-07")
 )
 
 # Ensure the data is sorted by event_time
@@ -93,7 +105,9 @@ def plot_station_event(df, station_event):
     df_station = df[df["station_event"] == station_event]
 
     # Calculate the rolling mean with a 30-minute window
-    df_station["rolling_mean"] = df_station["deviation"].ewm(span=30, adjust=False).mean()
+    df_station["rolling_mean"] = (
+        df_station["deviation"].ewm(span=30, adjust=False).mean()
+    )
 
     df_station["rolling_mean"] = df_station["deviation"].rolling("60T").mean()
 

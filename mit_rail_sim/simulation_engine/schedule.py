@@ -87,6 +87,130 @@ class GammaSchedule:
 
 
 class GammaScheduleWithShortTurningTwoTerminals(GammaSchedule):
+    forest_park_departures = [
+        10800,
+        12000,
+        13200,
+        14400,
+        15300,
+        16200,
+        17100,
+        18000,
+        18900,
+        19800,
+        20520,
+        21240,
+        21960,
+        22680,
+        23400,
+        24000,
+        24600,
+        25200,
+        25800,
+        26400,
+        27000,
+        27600,
+        28200,
+        28800,
+        29400,
+        30000,
+        30600,
+        31200,
+        31800,
+        32400,
+        33000,
+        33600,
+        34200,
+        34920,
+        35640,
+        36360,
+        37080,
+        37800,
+        38520,
+        39240,
+        39960,
+        40680,
+        41400,
+        42120,
+        42840,
+        43560,
+        44280,
+        45000,
+        45720,
+        46440,
+        47160,
+        47880,
+        48600,
+        49200,
+        49800,
+        50400,
+        51000,
+        51540,
+        51900,
+        52500,
+        53100,
+        53700,
+        54300,
+        55140,
+        55800,
+        56400,
+        57000,
+        57360,
+        58080,
+        58440,
+        59160,
+        59520,
+        60240,
+        60600,
+        61080,
+        61500,
+        62100,
+        62700,
+        63300,
+        63900,
+        64500,
+        65100,
+        65700,
+        66300,
+        66900,
+        67500,
+        68100,
+        68700,
+        69300,
+        69900,
+        70500,
+        71100,
+        71700,
+        72300,
+        72900,
+        73500,
+        74100,
+        74700,
+        75300,
+        75900,
+        76500,
+        77100,
+        77700,
+        78300,
+        78900,
+        79500,
+        80100,
+        80700,
+        81300,
+        81900,
+        82800,
+        83700,
+        84600,
+        85500,
+        86400,
+        87600,
+        88800,
+        90000,
+        91800,
+        93600,
+        95400,
+    ]
+
     def __init__(
         self,
         total_period: int,
@@ -95,6 +219,7 @@ class GammaScheduleWithShortTurningTwoTerminals(GammaSchedule):
         nb_mean: float,
         nb_cv: float,
         short_turning_rate: int,
+        start_hour_of_day: int = 14,
     ):
         self.total_period = total_period
         self.sb_mean = sb_mean * 60
@@ -102,33 +227,34 @@ class GammaScheduleWithShortTurningTwoTerminals(GammaSchedule):
         self.nb_mean = nb_mean * 60
         self.nb_coeff_var = nb_cv
         self.short_turning_rate = short_turning_rate
+        self.start_hour_of_day = start_hour_of_day
 
         self.generate_random_dispatch_info()
 
-    def remove_all_northbound_trains(self):
-        self.dispatch_info = [
-            (time, number, direction)
-            for time, number, direction in self.dispatch_info
-            if direction != "Northbound"
-        ]
+    def adjust_next_departure(self, arrival_time, direction, path, dispatch_margin=120):
+        if direction == "Northbound":
+            insertion_point = bisect.bisect_right(
+                GammaScheduleWithShortTurningTwoTerminals.forest_park_departures,
+                arrival_time,
+            )
 
-    def add_train(self, time: int, direction: str):
-        """
-        Add a train to the schedule.
+            next_departure_based_on_schedule = (
+                GammaScheduleWithShortTurningTwoTerminals[insertion_point]
+            )
 
-        Args:
-            time (int): The time at which the train will be added.
-            number (int): The train number.
-            direction (str): The direction in which the train is heading.
-        """
-        bisect.insort(self.dispatch_info, (time, 0, direction))
+            next_departure_based_on_arrival = arrival_time + dispatch_margin
+            next_departure = max(
+                next_departure_based_on_schedule, next_departure_based_on_arrival
+            )
+            dispatch = (next_departure, 0, "Northbound")
+            bisect.insort(self.dispatch_info, dispatch, key=lambda x: x[0])
 
     def get_gamma_params(self, mean, coeff_var):
         shape = (1 / coeff_var) ** 2
         scale = mean / shape
         return shape, scale
 
-    def gen_random_dispatch_info_sb(self) -> List[Tuple[float, int]]:
+    def gen_random_dispatch_info_sb(self) -> List[Tuple[float, int, str]]:
         dispatch_info = []
         if self.sb_coeff_var == 0:
             samples = [self.sb_mean for _ in range(self.total_period // self.sb_mean)]
@@ -150,7 +276,7 @@ class GammaScheduleWithShortTurningTwoTerminals(GammaSchedule):
 
         return dispatch_info
 
-    def gen_random_dispatch_info_nb(self) -> List[Tuple[float, int]]:
+    def gen_random_dispatch_info_nb(self) -> List[Tuple[float, int, str]]:
         dispatch_info = []
         if self.nb_coeff_var == 0:
             samples = [self.nb_mean for _ in range(self.total_period // self.nb_mean)]
@@ -167,19 +293,24 @@ class GammaScheduleWithShortTurningTwoTerminals(GammaSchedule):
 
         return dispatch_info
 
-    def generate_random_dispatch_info(self) -> List[Tuple[float, int]]:
+    def generate_random_dispatch_info(self) -> None:
         dispatch_info = []
         dispatch_info += self.gen_random_dispatch_info_sb()
         dispatch_info += self.gen_random_dispatch_info_nb()
 
         dispatch_info.sort(key=lambda x: x[0])
+
+        dispatch_info = [
+            (dispatch_time + self.start_hour_of_day * 3600, block_index, direction)
+            for dispatch_time, block_index, direction in dispatch_info
+        ]
+
         self.dispatch_info = dispatch_info
-        return dispatch_info
 
 
-class GammaScheduleWithShortTurningTwoTerminalsPMPeak(GammaScheduleWithShortTurningTwoTerminals):
-    import json
-
+class GammaScheduleWithShortTurningTwoTerminalsPMPeak(
+    GammaScheduleWithShortTurningTwoTerminals
+):
     # ...
 
     def __init__(
@@ -188,6 +319,7 @@ class GammaScheduleWithShortTurningTwoTerminalsPMPeak(GammaScheduleWithShortTurn
         nb_mean: float,
         nb_cv: float,
         short_turning_rate: int,
+        start_hour_of_day: int = 14,
     ):
         self.total_period = total_period
         self.path_to_params = project_root / "inputs" / "pm_peak_gamma_parameters.json"
@@ -198,10 +330,13 @@ class GammaScheduleWithShortTurningTwoTerminalsPMPeak(GammaScheduleWithShortTurn
         self.nb_mean = nb_mean
         self.nb_coeff_var = nb_cv
         self.short_turning_rate = short_turning_rate
-
+        self.start_hour_of_day = start_hour_of_day
         self.generate_random_dispatch_info()
 
-    def gen_random_dispatch_info_sb(self) -> List[Tuple[float, int]]:
+    def remove_all_northbound_trains(self):
+        self.dispatch_info = [t for t in self.dispatch_info if t[2] == "Southbound"]
+
+    def gen_random_dispatch_info_sb(self) -> List[Tuple[float, int, str]]:
         dispatch_info = []
 
         samples_5 = list(
@@ -243,7 +378,7 @@ class GammaScheduleWithShortTurningTwoTerminalsPMPeak(GammaScheduleWithShortTurn
 
         return dispatch_info
 
-    def gen_random_dispatch_info_nb(self) -> List[Tuple[float, int]]:
+    def gen_random_dispatch_info_nb(self) -> List[Tuple[float, int, str]]:
         dispatch_info = []
         if self.nb_coeff_var == 0:
             samples = [self.nb_mean for _ in range(self.total_period // self.nb_mean)]
@@ -373,7 +508,9 @@ class OHareEmpiricalSchedule:
         elif cta_day_type == "Sunday":
             self.data = self.data[self.data["event_time"].dt.dayofweek == 6]
         else:
-            raise ValueError("Invalid CTA day type. Must be one of 'Weekday', 'Saturday', 'Sunday'")
+            raise ValueError(
+                "Invalid CTA day type. Must be one of 'Weekday', 'Saturday', 'Sunday'"
+            )
 
         self.data = self.data[
             (
@@ -387,7 +524,9 @@ class OHareEmpiricalSchedule:
         self.data = self.data[self.data["headway"].between(*headway_quantiles)]
 
         self.data["interval"] = self.data["event_time"].dt.floor("15min")
-        self.data["interval"] = self.data["interval"] - self.data["interval"].dt.normalize()
+        self.data["interval"] = (
+            self.data["interval"] - self.data["interval"].dt.normalize()
+        )
 
         grouped_data = self.data.groupby(["interval", "qt2_trackid"])
 
@@ -401,14 +540,18 @@ class OHareEmpiricalSchedule:
 
         while current_time < end_time:
             try:
-                current_group = self.grouped_data.get_group((current_time.floor("15min"), 15020))
+                current_group = self.grouped_data.get_group(
+                    (current_time.floor("15min"), 15020)
+                )
 
             except KeyError:
                 current_time += pd.Timedelta(minutes=15)
                 continue
 
             if not current_group.empty:
-                headway = pd.Timedelta(current_group["headway"].sample(1).iloc[0], unit="m")
+                headway = pd.Timedelta(
+                    current_group["headway"].sample(1).iloc[0], unit="m"
+                )
                 current_time += headway
                 departure_time = (current_time).total_seconds()
                 dispatch_info.append((departure_time, 0, "Southbound"))
@@ -423,14 +566,18 @@ class OHareEmpiricalSchedule:
 
         while current_time < end_time:
             try:
-                current_group = self.grouped_data.get_group((current_time.floor("15min"), 11020))
+                current_group = self.grouped_data.get_group(
+                    (current_time.floor("15min"), 11020)
+                )
 
             except KeyError:
                 current_time += pd.Timedelta(minutes=15)
                 continue
 
             if not current_group.empty:
-                headway = pd.Timedelta(current_group["headway"].sample(1).iloc[0], unit="m")
+                headway = pd.Timedelta(
+                    current_group["headway"].sample(1).iloc[0], unit="m"
+                )
                 current_time += headway
                 departure_time = (current_time).total_seconds()
                 dispatch_info.append((departure_time, 0, "Northbound"))
@@ -458,7 +605,8 @@ class OHareEmpiricalSchedule:
         dispatch_info.sort(key=lambda x: x[0])
 
         dispatch_info = [
-            (time - self.start_time_of_day * 3600, _, __) for time, _, __ in dispatch_info
+            (time - self.start_time_of_day * 3600, _, __)
+            for time, _, __ in dispatch_info
         ]
 
         self.dispatch_info = dispatch_info
@@ -467,7 +615,9 @@ class OHareEmpiricalSchedule:
 
 
 class EmpiricalSchedule:
-    def __init__(self, cleaned_data_filepath: str, start_time_of_day: int, end_time_of_day: int):
+    def __init__(
+        self, cleaned_data_filepath: str, start_time_of_day: int, end_time_of_day: int
+    ):
         # TODO Try inverse transform sampling from the empricial cumulative distribution function or fit a theoretical distribution
         self.cleaned_data_filepath = cleaned_data_filepath
         self.start_time_of_day = pd.to_timedelta(f"{start_time_of_day}:00:00")
@@ -541,10 +691,13 @@ class EmpiricalSchedule:
         ]
         # Ensure each timestamp has 'hh:mm:ss' format
         departure_times = [
-            time if len(time.split(":")) == 3 else time + ":00" for time in departure_times
+            time if len(time.split(":")) == 3 else time + ":00"
+            for time in departure_times
         ]
 
-        self.uic_halsted_departure_times = [pd.to_timedelta(time) for time in departure_times]
+        self.uic_halsted_departure_times = [
+            pd.to_timedelta(time) for time in departure_times
+        ]
 
         self.dispatch_info = self.generate_random_dispatch_info()
 
@@ -565,7 +718,9 @@ class EmpiricalSchedule:
         filtered_data["interval"] = filtered_data["event_time"].dt.floor("15min")
 
         headway_quantiles = filtered_data["headway"].quantile([0.05, 0.95])
-        filtered_data = filtered_data[filtered_data["headway"].between(*headway_quantiles)]
+        filtered_data = filtered_data[
+            filtered_data["headway"].between(*headway_quantiles)
+        ]
 
         grouped_data = filtered_data.groupby(["station", "interval"])
 
@@ -603,7 +758,9 @@ class EmpiricalSchedule:
                 continue
 
             if not current_group.empty:
-                headway = pd.Timedelta(current_group["headway"].sample(1).iloc[0], unit="m")
+                headway = pd.Timedelta(
+                    current_group["headway"].sample(1).iloc[0], unit="m"
+                )
                 departure_time = (offset + headway).total_seconds()
                 dispatch_info.append(
                     (departure_time, 0, "Northbound")
@@ -620,7 +777,10 @@ class EmpiricalSchedule:
         dispatch_info = []
 
         for departure_time in self.uic_halsted_departure_times:
-            if departure_time < self.start_time_of_day or departure_time > self.end_time_of_day:
+            if (
+                departure_time < self.start_time_of_day
+                or departure_time > self.end_time_of_day
+            ):
                 continue
 
             # Find entries within 10 minutes proximity of time from departure time
@@ -629,7 +789,8 @@ class EmpiricalSchedule:
 
             # Filter the grouped_data based on proximity to departure time
             current_group = uic_data[
-                (uic_data["event_time"] >= lower_bound) & (uic_data["event_time"] <= upper_bound)
+                (uic_data["event_time"] >= lower_bound)
+                & (uic_data["event_time"] <= upper_bound)
             ]
 
             if not current_group.empty:
@@ -638,9 +799,13 @@ class EmpiricalSchedule:
             else:
                 deviation = pd.Timedelta(0, unit="m")
 
-            modified_departure_time = departure_time + deviation - self.start_time_of_day
+            modified_departure_time = (
+                departure_time + deviation - self.start_time_of_day
+            )
             dt_seconds = modified_departure_time.total_seconds()
-            dispatch_info.append((dt_seconds, 79, "Northbound"))  # 1 for UIC-Halsted block index
+            dispatch_info.append(
+                (dt_seconds, 79, "Northbound")
+            )  # 1 for UIC-Halsted block index
 
         return dispatch_info
 
