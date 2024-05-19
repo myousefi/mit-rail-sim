@@ -1,6 +1,7 @@
 # %%
 # import os
 
+from pathlib import Path
 import pandas as pd
 import plotly.express as px
 # from dotenv import find_dotenv, load_dotenv
@@ -8,6 +9,8 @@ import plotly.express as px
 
 from mit_rail_sim.utils.db_con import text, engine
 # load_dotenv(find_dotenv())
+
+OUTPUT_DIRECTORY = "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
 
 # USERNAME = os.getenv("USERNAME")
 # PASSWORD = os.getenv("PASSWORD")
@@ -116,13 +119,14 @@ upper_bound = Q3 + 1.5 * IQR
 df = df[(df["headway_ratio"] >= lower_bound) & (df["headway_ratio"] <= upper_bound)]
 
 
+df["deviation"] = -df["deviation"]
 fig = px.scatter(
     df,
     x="time_of_day",
     y="headway_ratio",
     hover_data=df.columns,
     color="deviation",
-    color_continuous_scale=px.colors.diverging.RdBu,  # symmetric color scale
+    color_continuous_scale=px.colors.diverging.RdBu_r,  # symmetric color scale
     color_continuous_midpoint=0,  # centering the color scale around zero
 )
 
@@ -170,7 +174,9 @@ fig.update_yaxes(showgrid=True, gridcolor="LightGrey")
 fig.show(renderer="browser")
 
 html_output = fig.to_html()
-output_file_path = "/Users/moji/Presentations/One-on-One Meetings/02-26-2024/short_turning_gaps_analysis.html"
+
+output_file_path = Path(OUTPUT_DIRECTORY + "short_turning_gaps_analysis.html")
+
 with open(output_file_path, "w") as file:
     file.write(html_output)
 
