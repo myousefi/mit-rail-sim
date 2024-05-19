@@ -1,8 +1,15 @@
 # %%
+import re
 import pandas as pd
 import plotly.express as px
 
 from mit_rail_sim.utils.db_con import engine, text
+
+import plotly.io as pio
+
+OUTPUT_DIRECTORY = "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
+
+pio.templates.default = "simple_white"
 
 query_text = text(
     """
@@ -76,7 +83,7 @@ ORDER BY
 )
 
 results = engine.execute(
-    query_text, {"start_date": "2024-04-07", "end_date": "2024-05-01"}
+    query_text, {"start_date": "2024-04-07", "end_date": "2024-05-30"}
 )
 
 df = pd.DataFrame(results.fetchall(), columns=results.keys())
@@ -86,100 +93,87 @@ import numpy as np
 
 # %%
 results = engine.execute(
-    query_text, {"start_date": "2023-12-01", "end_date": "2023-12-30"}
+    query_text, {"start_date": "2023-12-01", "end_date": "2024-02-07"}
 )
 old_df = pd.DataFrame(results.fetchall(), columns=results.keys())
 # %%
 # %%
-import plotly.graph_objects as go
+df["blocking_time_minutes"] = df["blocking_time"].dt.total_seconds() / 60
+old_df["blocking_time_minutes"] = old_df["blocking_time"].dt.total_seconds() / 60
 
-fig = go.Figure()
 
-# Plot the new data (df)
-fig.add_trace(
-    go.Histogram(
-        x=df["blocking_time"].dt.total_seconds() / 60,
-        histnorm="percent",
-        name="2023-12-01 to 2023-12-29",
-        opacity=0.75,
-    )
+df["blocking_time_minutes"] = df["blocking_time"].dt.total_seconds() / 60
+old_df["blocking_time_minutes"] = old_df["blocking_time"].dt.total_seconds() / 60
+
+# Determine AM/PM based on arrival_time_at_uic_halsted_nb
+df["period"] = pd.to_datetime(df["arrival_time_at_uic_halsted_nb"]).dt.strftime("%p")
+old_df["period"] = pd.to_datetime(old_df["arrival_time_at_uic_halsted_nb"]).dt.strftime(
+    "%p"
 )
 
-# Plot the old data (old_df)
-fig.add_trace(
-    go.Histogram(
-        x=old_df["blocking_time"].dt.total_seconds() / 60,
-        histnorm="percent",
-        name="2024-04-07 to 2024-05-01",
-        opacity=0.75,
-    )
+# Combine the datasets
+combined_df = pd.concat(
+    [df.assign(dataset="Spring 2024"), old_df.assign(dataset="Winter 2023")]
 )
 
-fig.update_layout(
-    title_text="Distribution of Inspection Times at UIC-Halsted",
-    xaxis_title_text="Inspection Time (minutes)",
-    yaxis_title_text="Percentage",
-    bargap=0.1,
-    bargroupgap=0.1,
-)
+# Remove rows with negative
+combined_df = combined_df[combined_df["blocking_time_minutes"] >= 0]
 
-fig.show(renderer="browser")
+combined_df = combined_df[combined_df["blocking_time_minutes"] > 1]
 
 # %%
-df["period"] = np.where(df["arrival_time_at_uic_halsted_nb"].dt.hour < 12, "AM", "PM")
-old_df["period"] = np.where(
-    old_df["arrival_time_at_uic_halsted_nb"].dt.hour < 12, "AM", "PM"
-)
-
-fig = go.Figure()
-
-# Plot the new data (df) for PM period
-fig.add_trace(
-    go.Histogram(
-        x=df[df["period"] == "PM"]["blocking_time"].dt.total_seconds() / 60,
+# Create separate plots for AM and PM
+for period in ["AM", "PM"]:
+    fig = px.histogram(
+        combined_df[combined_df["period"] == period],
+        x="blocking_time_minutes",
+        color="dataset",
         histnorm="percent",
-        name="2023-12-01 to 2023-12-29 (PM)",
-        opacity=0.75,
+        barmode="group",
+        marginal="box",
+        hover_data=["run_id", "arrival_time_at_uic_halsted_nb", "deviation"],
+        title=f"Distribution of Inspection Times at UIC-Halsted ({period})",
+        labels={
+            "blocking_time_minutes": "Inspection Time (minutes)",
+            "dataset": "Period",
+        },
     )
-)
-# Plot the new data (df) for AM period
-fig.add_trace(
-    go.Histogram(
-        x=df[df["period"] == "AM"]["blocking_time"].dt.total_seconds() / 60,
-        histnorm="percent",
-        name="2023-12-01 to 2023-12-29 (AM)",
-        opacity=0.75,
+
+    fig.update_xaxes(title_text="Inspection Time (minutes)")
+    fig.update_yaxes(title_text="Percentage")
+
+    fig.update_layout({"autosize": True, "width": 800, "height": 600})
+
+    for i, dataset in enumerate(combined_df["dataset"].unique()):
+        stats = combined_df[
+            (combined_df["period"] == period) & (combined_df["dataset"] == dataset)
+        ]["blocking_time_minutes"].describe()
+        fig.add_annotation(
+            x=1.20,
+            y=0.75 - i * 0.5,
+            xref="paper",
+            yref="paper",
+            text=f"{dataset}<br>"
+            f"Min: {stats['min']:.2f}<br>"
+            f"Q1: {stats['25%']:.2f}<br>"
+            f"Median: {stats['50%']:.2f}<br>"
+            f"Q3: {stats['75%']:.2f}<br>"
+            f"Max: {stats['max']:.2f}",
+            showarrow=False,
+            align="right",
+            bordercolor="black",
+            borderwidth=1,
+            borderpad=4,
+            bgcolor="white",
+            opacity=0.8,
+            font=dict(size=12),
+        )
+
+    fig.show(renderer="browser")
+
+    fig.write_image(
+        f"{OUTPUT_DIRECTORY}/inspection_times_uic_halsted_{period.lower()}.svg"
     )
-)
 
-# Plot the old data (old_df) for AM period
-fig.add_trace(
-    go.Histogram(
-        x=old_df[old_df["period"] == "AM"]["blocking_time"].dt.total_seconds() / 60,
-        histnorm="percent",
-        name="2024-04-07 to 2024-05-01 (AM)",
-        opacity=0.75,
-    )
-)
-
-# Plot the old data (old_df) for PM period
-fig.add_trace(
-    go.Histogram(
-        x=old_df[old_df["period"] == "PM"]["blocking_time"].dt.total_seconds() / 60,
-        histnorm="percent",
-        name="2024-04-07 to 2024-05-01 (PM)",
-        opacity=0.75,
-    )
-)
-
-fig.update_layout(
-    title_text="Distribution of Inspection Times at UIC-Halsted by AM/PM",
-    xaxis_title_text="Inspection Time (minutes)",
-    yaxis_title_text="Percentage",
-    bargap=0.1,
-    bargroupgap=0.1,
-)
-
-fig.show(renderer="browser")
 
 # %%
