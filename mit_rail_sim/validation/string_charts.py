@@ -1,5 +1,4 @@
 import datetime
-import functools
 import json
 
 import dash
@@ -220,6 +219,7 @@ def update_figure(selected_date):
     fig.update_traces(marker=dict(size=3))
 
     fig.update_layout(
+        title=f"{selected_date}",
         autosize=True,
         margin=dict(l=200),
         showlegend=True,
