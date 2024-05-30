@@ -85,16 +85,21 @@ class TrainLogger(BaseLogger):
             "total_travelled_distance": lambda train, _: train.total_travelled_distance,
             "location_from_terminal": lambda train, _: train.location_from_terminal,
             "current_block_id": lambda train, _: train.current_block.block_id,
-            "distance_travelled_in_current_block": lambda train, _: train.distance_travelled_in_current_block,
-            "train_speed_regulator_state": lambda train, _: str(train.train_speed_regulator.state),
-            "train_received_speed_code": lambda train, _: train.current_block.current_speed_code(
-                train
+            "distance_travelled_in_current_block": lambda train,
+            _: train.distance_travelled_in_current_block,
+            "train_speed_regulator_state": lambda train, _: str(
+                train.train_speed_regulator.state
             ),
-            "current_block_speed_limit": lambda train, _: train.current_block.default_speed_code,
-            "current_block_reduced_speed_due_to_slow_zone": lambda train, _: train.current_block.slow_zone_reduced_speed_limit
+            "train_received_speed_code": lambda train,
+            _: train.current_block.current_speed_code(train),
+            "current_block_speed_limit": lambda train,
+            _: train.current_block.default_speed_code,
+            "current_block_reduced_speed_due_to_slow_zone": lambda train,
+            _: train.current_block.slow_zone_reduced_speed_limit
             if train.current_block.slow_zone_reduced_speed_limit != float("inf")
             else None,
-            "number_of_passengers_on_board": lambda train, _: train.passenger_manager.total_passengers,
+            "number_of_passengers_on_board": lambda train,
+            _: train.passenger_manager.total_passengers,
             "starting_block_index": lambda train, _: train.starting_block_index,
             "direction": lambda train, _: train.path.direction,
             "headway": lambda train, _: train.current_block.headway,
@@ -106,17 +111,23 @@ class TrainLogger(BaseLogger):
 
         self.warning_file_path = log_file_path.replace(".csv", "_warnings.csv")
         # initiate a new warning file even if it already exists
-        with open(self.warning_file_path, mode="w", newline="", encoding="utf-8") as warning_file:
+        with open(
+            self.warning_file_path, mode="w", newline="", encoding="utf-8"
+        ) as warning_file:
             pass
 
     def _collect_train_data(self, train: Train, current_time: float) -> Dict[str, Any]:
-        return {header: func(train, current_time) for header, func in self.headers.items()}
+        return {
+            header: func(train, current_time) for header, func in self.headers.items()
+        }
 
     def update(self, train: Train) -> Union[None, Coroutine[Any, Any, None]]:
         if train.simulation.current_time < self.warmup_time:
             return None
 
-        if (train.steps_since_last_log % self.log_interval) == 0:  # Check if it's time to log
+        if (
+            train.steps_since_last_log % self.log_interval
+        ) == 0:  # Check if it's time to log
             train_data = self._collect_train_data(train, train.simulation.current_time)
             self.logger_strategy.write_row(self.log_file_path, train_data)
 
@@ -136,7 +147,9 @@ class TrainLogger(BaseLogger):
             "warning_message": warning_message,
         }
 
-        with open(self.warning_file_path, mode="a", newline="", encoding="utf-8") as warning_file:
+        with open(
+            self.warning_file_path, mode="a", newline="", encoding="utf-8"
+        ) as warning_file:
             csv_writer = csv.writer(warning_file)
             csv_writer.writerow(warning_data.values())
 
@@ -144,7 +157,9 @@ class TrainLogger(BaseLogger):
 
 
 class PassengerLogger(BaseLogger):
-    def __init__(self, log_file_path: str, logger_strategy: Optional[LoggerStrategy] = None):
+    def __init__(
+        self, log_file_path: str, logger_strategy: Optional[LoggerStrategy] = None
+    ):
         self.headers = {
             "replication_id": lambda passenger: passenger.simulation.replication_id,
             "passenger_id": lambda passenger: passenger.passenger_id,
@@ -157,7 +172,9 @@ class PassengerLogger(BaseLogger):
             "destination": lambda passenger: passenger.destination,
             "direction": lambda passenger: passenger.direction,
         }
-        super().__init__(log_file_path, headers=self.headers, logger_strategy=logger_strategy)
+        super().__init__(
+            log_file_path, headers=self.headers, logger_strategy=logger_strategy
+        )
 
     def log_passenger(self, passenger: Passenger) -> None:
         if passenger.boarding_time < self.warmup_time:
@@ -182,8 +199,12 @@ class StationLogger(BaseLogger):
             "dwell_time": lambda data: data["dwell_time"],
             "applied_holding": lambda data: data["applied_holding"],
             "train_id": lambda data: data["train_id"],
-            "number_of_passengers_boarded": lambda data: data["number_of_passengers_boarded"],
-            "number_of_passengers_alighted": lambda data: data["number_of_passengers_alighted"],
+            "number_of_passengers_boarded": lambda data: data[
+                "number_of_passengers_boarded"
+            ],
+            "number_of_passengers_alighted": lambda data: data[
+                "number_of_passengers_alighted"
+            ],
             "number_of_passengers_on_train_after_stop": lambda data: data[
                 "number_of_passengers_on_train_after_stop"
             ],
@@ -267,7 +288,9 @@ class JSONLoggerStrategy(LoggerStrategy):
 
 
 class SimulationLogger(BaseLogger):
-    def __init__(self, log_file_path: str, logger_strategy: Optional[LoggerStrategy] = None):
+    def __init__(
+        self, log_file_path: str, logger_strategy: Optional[LoggerStrategy] = None
+    ):
         self.headers = {
             "time_step": lambda sim: sim.time_step,
             "start_hour": lambda sim: sim._start_hour,
@@ -291,8 +314,44 @@ class SimulationLogger(BaseLogger):
         self.logger_strategy.write_row(self.log_file_path, warning_data)
 
 
+class OHareTerminalHoldingLogger(BaseLogger):
+    def __init__(
+        self, log_file_path: str, logger_strategy: Optional[LoggerStrategy] = None
+    ):
+        self.headers = {
+            "replication_id": lambda data: data["replication_id"],
+            "scheduled_departure_time": lambda data: data["scheduled_departure_time"],
+            "actual_departure_time": lambda data: data["actual_departure_time"],
+            "holding_time": lambda data: data["holding_time"],
+            "run_id": lambda data: data["run_id"],
+        }
+        super().__init__(log_file_path, self.headers, logger_strategy)
+
+    def log_terminal_holding(
+        self,
+        replication_id: int,
+        scheduled_departure_time: float,
+        actual_departure_time: float,
+        holding_time: float,
+        run_id: str,
+    ) -> None:
+        if actual_departure_time < self.warmup_time:
+            return
+
+        terminal_holding_data = {
+            "replication_id": replication_id,
+            "scheduled_departure_time": scheduled_departure_time,
+            "actual_departure_time": actual_departure_time,
+            "holding_time": holding_time,
+            "run_id": run_id,
+        }
+        self.logger_strategy.write_row(self.log_file_path, terminal_holding_data)
+
+
 class BlockActivationLogger(BaseLogger):
-    def __init__(self, log_file_path: str, logger_strategy: Optional[LoggerStrategy] = None):
+    def __init__(
+        self, log_file_path: str, logger_strategy: Optional[LoggerStrategy] = None
+    ):
         self.headers = {
             "replication_id": lambda data: data["replication_id"],
             "time_in_seconds": lambda data: data["time_in_seconds"],

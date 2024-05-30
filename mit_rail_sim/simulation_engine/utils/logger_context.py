@@ -2,6 +2,13 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from .logger_utils import OHareTerminalHoldingLogger
+
+from ..schedule_refactored.ohare_empirical_schedule import (
+    OHareEmpiricalSchedule,
+    OHareEmpiricalScheduleWithHolding,
+)
+
 if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.utils import BlockActivationLogger
     from mit_rail_sim.simulation_engine.utils import (
@@ -25,6 +32,7 @@ class LoggerContext:
         station_logger: StationLogger,
         simulation_logger: SimulationLogger,
         block_logger: BlockActivationLogger,
+        ohare_terminal_holding_logger: OHareTerminalHoldingLogger,
         warmup_time=0,
         start_hour_of_day: int = None,
     ):
@@ -35,12 +43,19 @@ class LoggerContext:
         self.simulation_logger = simulation_logger.set_warmup_time(warmup_time)
         self.block_logger = block_logger.set_warmup_time(warmup_time)
 
+        self.ohare_terminal_holding_logger = (
+            ohare_terminal_holding_logger.set_warmup_time(warmup_time)
+        )
+
     def __enter__(self):
         Train.train_logger = self.train_logger
         Passenger.passenger_logger = self.passenger_logger
         Station.station_logger = self.station_logger
         Simulation.simulation_logger = self.simulation_logger
         Block.block_logger = self.block_logger
+        OHareEmpiricalScheduleWithHolding.ohare_terminal_holding_logger = (
+            self.ohare_terminal_holding_logger
+        )
 
     def __exit__(self, exc_type, exc_value, traceback):
         Train.train_logger = None
@@ -48,3 +63,4 @@ class LoggerContext:
         Station.station_logger = None
         Simulation.simulation_logger = None
         Block.block_logger = None
+        OHareEmpiricalScheduleWithHolding.ohare_terminal_holding_logger = None

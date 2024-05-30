@@ -3,6 +3,7 @@
 import json
 
 import click
+from numpy import angle
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -10,8 +11,17 @@ import plotly.io as pio
 
 from mit_rail_sim.utils import project_root
 
-pio.templates.default = "simple_white"
+# pio.templates.default = "simple_white"
 
+config = {
+    "toImageButtonOptions": {
+        "format": "svg",  # Set the format to 'svg'
+        "filename": "custom_image",
+        "height": 600,  # Set the desired height
+        "width": 1600,  # Set the desired width
+        "scale": 1,  # Optionally scale the image
+    }
+}
 # Define color mapping for directions
 color_mapping = {
     "Northbound": "green",
@@ -126,7 +136,7 @@ def update_figure(block_data, station_data):
             line_color="black",
             annotation_text=station_name,
             annotation=dict(
-                font_size=10,
+                font_size=8,
                 font_color="black",
                 showarrow=False,
                 xref="x",  # Adjusted the reference to the entire plot
@@ -142,8 +152,8 @@ def update_figure(block_data, station_data):
 
     fig.update_layout(
         autosize=True,
-        margin=dict(l=200),
-        showlegend=True,
+        margin=dict(l=100, b=50, t=10, r=50),
+        showlegend=False,
     )
 
     # remove y-axis ticks
@@ -276,7 +286,7 @@ def main(results_dir, replication_id):
     station_data = station_data[station_data["replication_id"] == replication_id]
 
     fig = update_figure(block_data, station_data)
-    fig.show(renderer="browser")
+    fig.show(renderer="browser", config=config)
 
 
 # Load the CSV file and run the app

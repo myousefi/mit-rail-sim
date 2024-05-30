@@ -12,6 +12,7 @@ from mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies impo
 
 class BaseSchedule(ABC):
     def __init__(self, file_path, start_time_of_day: int, end_time_of_day: int):
+        self.replication_id = None
         self.file_path = file_path
         self.start_time_of_day = start_time_of_day
         self.end_time_of_day = end_time_of_day
@@ -25,6 +26,9 @@ class BaseSchedule(ABC):
     @abstractmethod
     def generate_random_dispatch_info(self):
         pass
+
+    def set_replication_id(self, seed_number: int):
+        self.replication_id = seed_number
 
     # TODO: Implement copy method
     def copy(self):

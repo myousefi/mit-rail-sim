@@ -29,6 +29,7 @@ from mit_rail_sim.simulation_engine.passenger import ArrivalRate
 
 from mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule import (
     OHareEmpiricalSchedule,
+    OHareEmpiricalScheduleWithHolding,
 )
 
 # Import necessary modules from mit_rail_sim
@@ -37,6 +38,7 @@ from mit_rail_sim.simulation_engine.utils import LoggerContext
 from mit_rail_sim.simulation_engine.utils.logger_utils import (
     BlockActivationLogger,
     NullTrainLogger,
+    OHareTerminalHoldingLogger,
     PassengerLogger,
     SimulationLogger,
     StationLogger,
@@ -183,6 +185,12 @@ from mit_rail_sim.utils import project_root
 def main(cfg: DictConfig) -> None:
     config_handler.set_config(cfg)
 
+    if cfg.station == "O-Hare":
+        cfg.holding = False
+        cfg.ohare_holding = True
+    elif cfg.station == "Clark-Lake":
+        cfg.station = "Clark/Lake"
+
     log_folder_path = cfg.log_folder_path
 
     print("Current working directory:", os.getcwd())
@@ -207,6 +215,11 @@ def main(cfg: DictConfig) -> None:
     block_logger = BlockActivationLogger(
         log_file_path=f"{log_folder_path}/block_test.csv"
     )
+
+    ohare_terminal_holding_logger = OHareTerminalHoldingLogger(
+        log_file_path=f"{log_folder_path}/ohare_terminal_holding_test.csv"
+    )
+
     arrival_rates = ArrivalRate(
         # filename=str(
         #     project_root
@@ -227,16 +240,27 @@ def main(cfg: DictConfig) -> None:
         station_logger=station_logger,
         simulation_logger=simulation_logger,
         block_logger=block_logger,
+        ohare_terminal_holding_logger=ohare_terminal_holding_logger,
         warmup_time=3600 * 1.5,
         start_hour_of_day=cfg.simulation.start_time_of_day,
     )
 
-    schedule = OHareEmpiricalSchedule(
-        # file_path=project_root / "inputs" / "schedules" / "empirical_schedule_83.json",
-        file_path=cfg.schedule_file,
-        start_time_of_day=cfg.simulation.start_time_of_day * 3600,
-        end_time_of_day=cfg.simulation.end_time_of_day * 3600,
-    )
+    # schedule = OHareEmpiricalSchedule(
+    # file_path=project_root / "inputs" / "schedules" / "empirical_schedule_83.json",
+    if cfg.ohare_holding:
+        schedule = OHareEmpiricalScheduleWithHolding(
+            file_path=cfg.schedule_file,
+            start_time_of_day=cfg.simulation.start_time_of_day * 3600,
+            end_time_of_day=cfg.simulation.end_time_of_day * 3600,
+            max_holding=cfg.max_holding,
+            min_holding=cfg.min_holding,
+        )
+    else:
+        schedule = OHareEmpiricalSchedule(
+            file_path=cfg.schedule_file,
+            start_time_of_day=cfg.simulation.start_time_of_day * 3600,
+            end_time_of_day=cfg.simulation.end_time_of_day * 3600,
+        )
     # if schd := cfg.schd:
     #     if schd == "PM":
     #         schedule = GammaScheduleWithShortTurningTwoTerminalsPMPeak(
