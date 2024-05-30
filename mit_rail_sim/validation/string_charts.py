@@ -18,6 +18,16 @@ pio.templates.default = "simple_white"
 
 app = dash.Dash(__name__)
 
+config = {
+    "toImageButtonOptions": {
+        "format": "svg",  # Set the format to 'svg'
+        "filename": "custom_image",
+        "height": 600,  # Set the desired height
+        "width": 1600,  # Set the desired width
+        "scale": 1,  # Optionally scale the image
+    }
+}
+
 # Define color mapping for directions
 color_mapping = {
     "NB": "blue",  # Example color for Northbound
@@ -86,7 +96,9 @@ two_days_before_today = datetime.date.today() - datetime.timedelta(days=2)
 app.layout = html.Div(
     [
         dcc.DatePickerSingle(id="date-picker-single", date=str(two_days_before_today)),
-        dcc.Graph(id="graph", style={"height": "100vh", "width": "100vw"}),
+        dcc.Graph(
+            id="graph", config=config, style={"height": "100vh", "width": "100vw"}
+        ),
     ]
 )
 
@@ -165,19 +177,19 @@ def update_figure(selected_date):
                 )
             )
 
-            fig.add_trace(
-                go.Scatter(
-                    x=group_data["event_seconds"] + group_data["deviation"] * 60,
-                    y=group_data["track_dist"],
-                    mode="markers",
-                    name=f"{run_id} ({direction}) - Scheduled",
-                    # name=f"{run_id}",
-                    # legendgroup=run_id,
-                    text=group_data["hover_text"],
-                    hoverinfo="text",
-                    marker=dict(color=color, opacity=0.1, size=1),
-                )
-            )
+            # fig.add_trace(
+            #     go.Scatter(
+            #         x=group_data["event_seconds"] + group_data["deviation"] * 60,
+            #         y=group_data["track_dist"],
+            #         mode="markers",
+            #         name=f"{run_id} ({direction}) - Scheduled",
+            #         # name=f"{run_id}",
+            #         # legendgroup=run_id,
+            #         text=group_data["hover_text"],
+            #         hoverinfo="text",
+            #         marker=dict(color=color, opacity=0.1, size=1),
+            #     )
+            # )
     # fig = px.scatter(
     #     df,
     #     x="event_seconds",
