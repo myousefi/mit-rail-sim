@@ -1,3 +1,4 @@
+from pathlib import Path
 import dash
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -7,47 +8,19 @@ import plotly.io as pio
 from dash import Input, Output, dcc, html
 
 from mit_rail_sim.utils import find_free_port
+from mit_rail_sim.utils.root_path import project_root
 
 # Set default Plotly template
 pio.templates.default = "simple_white"
+pio.templates["plotly_white"].layout.font.family = "Cambria"
 
 # Load and preprocess data
-df = pd.read_csv("../data/cta_afc_data_for_load_flow_imputed.csv")
+df = pd.read_csv(project_root / "inputs" / "demand" / f"odx_imputed_demand_all_periods.csv")
 
 df["transaction_dtm"] = pd.to_datetime(df["transaction_dtm"])
 df["time"] = df["transaction_dtm"].dt.hour
 df["day_type"] = df["transaction_dtm"].dt.dayofweek.apply(
     lambda x: "weekday" if x < 5 else "sat" if x == 5 else "sun"
-)
-
-# Impute missing data within each group
-fill_columns = [
-    "route_sequence",
-    "direction_sequence",
-    "boarding_platform_sequence",
-    "alighting_platform_sequence",
-    "first_route",
-    "first_direction",
-    "first_boarding_platform",
-    "first_alighting_platform",
-]
-
-
-def impute_within_group(group):
-    non_nan_rows = group.dropna(subset=fill_columns)
-    if non_nan_rows.empty:
-        return group
-    nan_rows = group[fill_columns].isna().any(axis=1)
-    group.loc[nan_rows, fill_columns] = (
-        non_nan_rows[fill_columns].sample(n=nan_rows.sum(), replace=True).values
-    )
-    return group
-
-
-df = (
-    df.groupby(["boarding_stop", "time", "day_type"])
-    .apply(impute_within_group)
-    .reset_index(drop=True)
 )
 
 # Merge station data
@@ -83,14 +56,6 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 # App layout
 app.layout = html.Div(
     [
-        dcc.DatePickerRange(
-            id="date-picker-range",
-            start_date=df["transaction_dtm"].min().date(),
-            end_date=df["transaction_dtm"].min().date(),
-            min_date_allowed=df["transaction_dtm"].min().date(),
-            max_date_allowed=df["transaction_dtm"].max().date(),
-            initial_visible_month=df["transaction_dtm"].min().date(),
-        ),
         dcc.RangeSlider(
             id="time-slider",
             min=0,
@@ -119,114 +84,203 @@ app.layout = html.Div(
             style={"width": "50%"},
         ),
         dcc.Graph(id="graph-output"),
+        dcc.Graph(id="growth-output"),
     ]
 )
 
 
 # Callback to update graph
 @app.callback(
-    Output("graph-output", "figure"),
+    [Output("graph-output", "figure"), Output("growth-output", "figure")],
     [
-        Input("date-picker-range", "start_date"),
-        Input("date-picker-range", "end_date"),
         Input("time-slider", "value"),
         Input("day-type-dropdown", "value"),
         Input("direction-dropdown", "value"),
     ],
 )
 def update_graph(
-    start_date,
-    end_date,
     time_range,
     selected_day_type,
     selected_direction,
 ):
-    start_date, end_date = (
-        pd.to_datetime(start_date).date(),
-        pd.to_datetime(end_date).date(),
-    )
-    if start_date > end_date or time_range[0] >= time_range[1]:
-        raise ValueError("Invalid date range or time range.")
+    if time_range[0] >= time_range[1]:
+        raise ValueError("Invalid time range.")
 
-    query = (
-        "transaction_dtm.dt.date >= @start_date & "
-        "transaction_dtm.dt.date <= @end_date & "
-        "transaction_dtm.dt.hour >= @time_range[0] & "
-        "transaction_dtm.dt.hour < @time_range[1] & "
-        "day_type == @selected_day_type & "
-        "first_direction == @selected_direction"
-    )
-    filtered_df = df.query(query)
+    periods = ["Winter 2023", "Spring 2024"]
+    data = []
 
-    categories = (
-        STATION_ORDER_NORTH
-        if selected_direction == "North"
-        else list(reversed(STATION_ORDER_NORTH))
-    )
-    filtered_df["origin"] = pd.Categorical(
-        filtered_df["origin"], categories=categories, ordered=True
-    )
-    filtered_df["destination"] = pd.Categorical(
-        filtered_df["destination"], categories=categories, ordered=True
-    )
-
-    daily_cumulative_load_flow = (
-        filtered_df.groupby(filtered_df["transaction_dtm"].dt.date)
-        .apply(
-            lambda day: (day.groupby("origin").size() - day.groupby("destination").size()).cumsum()
+    for period in periods:
+        query = (
+            "period == @period & "
+            "transaction_dtm.dt.hour >= @time_range[0] & "
+            "transaction_dtm.dt.hour < @time_range[1] & "
+            "day_type == @selected_day_type & "
+            "first_direction == @selected_direction"
         )
-        .reindex(columns=STATION_ORDER_NORTH)
-        .div(time_range[1] - time_range[0])
-    )
+        filtered_df = df.query(query)
 
-    fig = generate_plot(start_date, end_date, daily_cumulative_load_flow)
-    title = f"Load Flow Statistics for {time_range[0]}:00-{time_range[1]}:00, Direction: {selected_direction}bound"
-    fig.update_layout(
-        title=title,
-        showlegend=False,
-        yaxis_title="Cumulative Load Flow Per Hour",
-        yaxis_range=[0, 4000],
-    )
-    return fig
-
-
-def generate_plot(start_date, end_date, load_flow_data):
-    if start_date != end_date:
-        stats = load_flow_data.apply(
-            lambda x: {
-                "5_percentile": x.quantile(0.05),
-                "median": x.median(),
-                "95_percentile": x.quantile(0.95),
-            }
-        ).T
-        fig = px.line(
-            data_frame=stats,
-            y=["median"],
-            title="Daily Load Flow Statistics",
-            labels={"value": "Cumulative Load Flow", "origin": "Station"},
-            color_discrete_sequence=["blue"],
+        categories = (
+            STATION_ORDER_NORTH
+            if selected_direction == "North"
+            else list(reversed(STATION_ORDER_NORTH))
         )
-        for percentile in ["95_percentile", "5_percentile"]:
-            fig.add_trace(
-                go.Scatter(
-                    x=stats.index,
-                    y=stats[percentile],
-                    mode="lines",
-                    line=dict(width=0),
-                    fillcolor="rgba(135, 206, 250, 0.4)",
-                    fill="tonexty",
-                    showlegend=True,
-                )
+        filtered_df["origin"] = pd.Categorical(
+            filtered_df["origin"], categories=categories, ordered=True
+        )
+        filtered_df["destination"] = pd.Categorical(
+            filtered_df["destination"], categories=categories, ordered=True
+        )
+
+        median_load_flow = (
+            (filtered_df.groupby("origin").size() - filtered_df.groupby("destination").size())
+            .cumsum()
+            .reindex(categories)
+            .div(time_range[1] - time_range[0])
+            .div(filtered_df["transaction_dtm"].dt.date.nunique())
+        )
+        if selected_direction == "North":
+            median_load_flow = median_load_flow
+        else:
+            median_load_flow = median_load_flow[::-1]
+
+        data.append(go.Bar(x=STATION_ORDER_NORTH, y=median_load_flow, name=period))
+
+    fig = go.Figure(
+        data=[
+            go.Bar(
+                x=STATION_ORDER_NORTH,
+                y=data[0].y,
+                name=periods[0],
+                text=[f"{int(y)}" for y in data[0].y],
+                textposition="auto",
+                textfont=dict(size=8),
+            ),
+            go.Bar(
+                x=STATION_ORDER_NORTH,
+                y=data[1].y,
+                name=periods[1],
+                text=[f"{int(y)}" for y in data[1].y],
+                textposition="auto",
+                textfont=dict(size=8),
+            ),
+        ],
+        layout=go.Layout(
+            title=dict(
+                text=f"Average Load Flow for {time_range[0]}:00-{time_range[1]}:00, Direction: {selected_direction}bound",
+                font=dict(size=24),
+            ),
+            yaxis_title=dict(text="Number of Passengers Per Hour", font=dict(size=18)),
+            yaxis=dict(
+                range=[0, 4500],
+                tickfont=dict(size=14),
+                gridwidth=1,
+                gridcolor="LightGray",
+                dtick=500,
+            ),
+            xaxis=dict(tickfont=dict(size=14), tickangle=45),
+            barmode="group",
+            legend=dict(
+                font=dict(size=16),
+                yanchor="top",
+                xanchor="right",
+            ),
+        ),
+    )
+
+    winter_load_flow = data[0].y
+    spring_load_flow = data[1].y
+    growth_percentage = (spring_load_flow / winter_load_flow - 1) * 100
+
+    growth_fig = go.Figure(
+        data=[
+            go.Bar(
+                x=STATION_ORDER_NORTH,
+                y=growth_percentage,
+                text=[f"{x:.1f}%" for x in growth_percentage],
+                textposition="auto",
             )
-    else:
-        single_day_load_flow = load_flow_data.iloc[0]
-        fig = px.bar(
-            x=single_day_load_flow.index,
-            y=single_day_load_flow.values,
-            labels={"x": "Station", "y": "Cumulative Load Flow Per Hour"},
+        ],
+        layout=go.Layout(
+            title=dict(
+                text=f"Load Flow Growth (Spring 2024 vs Winter 2023) {time_range[0]}:00-{time_range[1]}:00, Direction: {selected_direction}bound",
+                font=dict(size=24),
+            ),
+            yaxis_title=dict(text="Growth Percentage (%)", font=dict(size=18)),
+            yaxis=dict(
+                tickfont=dict(size=14),
+                ticksuffix="%",
+                gridwidth=1,
+                gridcolor="LightGray",
+                dtick=5,  # Set the tick interval to 5%
+            ),
+            xaxis=dict(tickfont=dict(size=14), tickangle=45),
+        ),
+    )
+
+    return fig, growth_fig
+
+
+# Add this code block after the `update_graph` function
+def save_sample_plots():
+    sample_configs = [
+        {
+            "time_range": [7, 8],
+            "selected_day_type": "weekday",
+            "selected_direction": "North",
+        },
+        {
+            "time_range": [7, 8],
+            "selected_day_type": "weekday",
+            "selected_direction": "South",
+        },
+        {
+            "time_range": [16, 17],
+            "selected_day_type": "weekday",
+            "selected_direction": "North",
+        },
+        {
+            "time_range": [16, 17],
+            "selected_day_type": "weekday",
+            "selected_direction": "South",
+        },
+    ]
+
+    output_dir = Path(
+        "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
+    )
+    # output_dir.mkdir(exist_ok=True)
+
+    for config in sample_configs:
+        fig, _ = update_graph(
+            config["time_range"],
+            config["selected_day_type"],
+            config["selected_direction"],
         )
-    return fig
+
+        filename = f"{config['selected_direction']}_{config['selected_day_type']}_{config['time_range'][0]}-{config['time_range'][1]}.svg"
+        fig.write_image(
+            str(output_dir / filename),
+            width=1600,
+            height=600,
+            scale=2,
+        )
+
+    for config in sample_configs:
+        _, fig = update_graph(
+            config["time_range"],
+            config["selected_day_type"],
+            config["selected_direction"],
+        )
+
+        filename = f"load_flow_growth_{config['selected_direction']}_{config['selected_day_type']}_{config['time_range'][0]}-{config['time_range'][1]}.svg"
+        fig.write_image(
+            str(output_dir / filename),
+            width=1600,
+            height=600,
+            scale=2,
+        )
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, port=find_free_port())
+    save_sample_plots()
+    app.run_server(debug=True, port=find_free_port(), host="127.0.0.1")

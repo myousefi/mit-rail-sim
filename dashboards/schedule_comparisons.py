@@ -10,10 +10,21 @@ from sqlalchemy import create_engine, text
 from mit_rail_sim.utils import find_free_port
 from mit_rail_sim.utils.db_con import engine, text
 
-pio.templates.default = "simple_white"
+# pio.templates.default = "simple_white"
 
 pd.set_option("display.max_rows", 500)
 pd.set_option("display.max_columns", 500)
+
+# Set the global toImageButtonOptions configuration
+config = {
+    "toImageButtonOptions": {
+        "format": "svg",  # Set the format to 'svg'
+        "filename": "custom_image",
+        "height": 400,  # Set the desired height
+        "width": 800,  # Set the desired width
+        "scale": 1,  # Optionally scale the image
+    }
+}
 
 
 # Initialize the Dash app
@@ -31,9 +42,9 @@ app.layout = dbc.Container(
                             type="number",
                             value=81,
                         ),
-                        dcc.Graph(id="plot-1-0"),
-                        dcc.Graph(id="plot-1-1"),
-                        dcc.Graph(id="plot-1-2"),
+                        dcc.Graph(id="plot-1-0", config=config),
+                        dcc.Graph(id="plot-1-1", config=config),
+                        dcc.Graph(id="plot-1-2", config=config),
                     ]
                 ),
                 dbc.Col(
@@ -43,9 +54,9 @@ app.layout = dbc.Container(
                             type="number",
                             value=72,
                         ),
-                        dcc.Graph(id="plot-2-0"),
-                        dcc.Graph(id="plot-2-1"),
-                        dcc.Graph(id="plot-2-2"),
+                        dcc.Graph(id="plot-2-0", config=config),
+                        dcc.Graph(id="plot-2-1", config=config),
+                        dcc.Graph(id="plot-2-2", config=config),
                     ]
                 ),
                 dbc.Col(
@@ -55,9 +66,9 @@ app.layout = dbc.Container(
                             type="number",
                             value=68,
                         ),
-                        dcc.Graph(id="plot-3-0"),
-                        dcc.Graph(id="plot-3-1"),
-                        dcc.Graph(id="plot-3-2"),
+                        dcc.Graph(id="plot-3-0", config=config),
+                        dcc.Graph(id="plot-3-1", config=config),
+                        dcc.Graph(id="plot-3-2", config=config),
                     ]
                 ),
             ],

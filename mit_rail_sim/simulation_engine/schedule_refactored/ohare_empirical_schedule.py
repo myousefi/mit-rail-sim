@@ -136,6 +136,19 @@ class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
                     )  # 900 seconds = 15 minutes
                 ]
 
+                # Calculate the IQR for headway in the current interval
+                q1 = current_interval_data["headway"].quantile(0.25)
+                q3 = current_interval_data["headway"].quantile(0.75)
+                iqr = q3 - q1
+                lower_bound = q1 - 3.0 * iqr
+                upper_bound = q3 + 3.0 * iqr
+
+                # Filter out outliers based on the IQR
+                current_interval_data = current_interval_data[
+                    (current_interval_data["headway"] >= lower_bound)
+                    & (current_interval_data["headway"] <= upper_bound)
+                ]
+
                 if not current_interval_data.empty:
                     # Sample a headway from the current interval
                     sample_dispatch = current_interval_data.sample(n=1)
@@ -161,3 +174,95 @@ class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
         dispatch_info.sort(key=lambda x: x[0])
 
         return dispatch_info
+
+
+import json
+from typing import List, Tuple
+
+import pandas as pd
+
+from mit_rail_sim.simulation_engine.schedule_refactored import BaseSchedule
+from mit_rail_sim.simulation_engine.schedule_refactored import EmpiricalDispatchStrategy
+from mit_rail_sim.simulation_engine.train import Train
+
+
+class OHareEmpiricalScheduleWithHolding(OHareEmpiricalSchedule):
+    def __init__(
+        self,
+        file_path,
+        start_time_of_day: int,
+        end_time_of_day: int,
+        max_holding=180,
+        min_holding=60,
+    ):
+        super().__init__(file_path, start_time_of_day, end_time_of_day)
+        self.max_holding = max_holding
+        self.min_holding = min_holding
+
+    def generate_random_dispatch_info(self):
+        dispatch_info = super().generate_random_dispatch_info()
+
+        # Apply holding logic to adjust dispatch times for Southbound trains
+        adjusted_dispatch_info = []
+        southbound_dispatch_info = [
+            dispatch
+            for dispatch in dispatch_info
+            if (dispatch[2] == "Southbound" or dispatch[2] == "ShortTurning")
+        ]
+
+        for i in range(len(southbound_dispatch_info)):
+            current_dispatch = southbound_dispatch_info[i]
+            current_time, block_index, path, runid = current_dispatch
+
+            if i > 0:
+                prev_dispatch = southbound_dispatch_info[i - 1]
+                prev_time, _, _, _ = prev_dispatch
+                time_to_leading_train = current_time - prev_time
+            else:
+                time_to_leading_train = float("inf")
+
+            if i < len(southbound_dispatch_info) - 1:
+                next_dispatch = southbound_dispatch_info[i + 1]
+                next_time, _, _, _ = next_dispatch
+                time_to_following_train = next_time - current_time
+            else:
+                time_to_following_train = float("inf")
+
+            holding_time = self.suggested_holding(
+                time_to_leading_train, time_to_following_train
+            )
+            adjusted_time = current_time + holding_time
+
+            self.ohare_terminal_holding_logger.log_terminal_holding(
+                self.replication_id,
+                current_time,
+                adjusted_time,
+                holding_time,
+                runid,
+            )
+
+            adjusted_dispatch_info.append((adjusted_time, block_index, path, runid))
+
+        # Combine adjusted Southbound dispatch info with Northbound dispatch info
+        northbound_dispatch_info = [
+            dispatch for dispatch in dispatch_info if dispatch[2] == "Northbound"
+        ]
+        combined_dispatch_info = adjusted_dispatch_info + northbound_dispatch_info
+        combined_dispatch_info.sort(key=lambda x: x[0])
+
+        self.dispatch_info = combined_dispatch_info
+        return combined_dispatch_info
+
+    def suggested_holding(
+        self, time_to_leading_train: float, time_to_following_train: float
+    ) -> float:
+        if time_to_leading_train > time_to_following_train:
+            return 0
+        else:
+            holding_time = min(
+                (time_to_following_train - time_to_leading_train) / 2, self.max_holding
+            )
+            if holding_time < self.min_holding:
+                return 0
+            else:
+                return holding_time
