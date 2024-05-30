@@ -136,6 +136,19 @@ class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
                     )  # 900 seconds = 15 minutes
                 ]
 
+                # Calculate the IQR for headway in the current interval
+                q1 = current_interval_data["headway"].quantile(0.25)
+                q3 = current_interval_data["headway"].quantile(0.75)
+                iqr = q3 - q1
+                lower_bound = q1 - 3.0 * iqr
+                upper_bound = q3 + 3.0 * iqr
+
+                # Filter out outliers based on the IQR
+                current_interval_data = current_interval_data[
+                    (current_interval_data["headway"] >= lower_bound)
+                    & (current_interval_data["headway"] <= upper_bound)
+                ]
+
                 if not current_interval_data.empty:
                     # Sample a headway from the current interval
                     sample_dispatch = current_interval_data.sample(n=1)
@@ -179,8 +192,8 @@ class OHareEmpiricalScheduleWithHolding(OHareEmpiricalSchedule):
         file_path,
         start_time_of_day: int,
         end_time_of_day: int,
-        max_holding=120,
-        min_holding=30,
+        max_holding=180,
+        min_holding=60,
     ):
         super().__init__(file_path, start_time_of_day, end_time_of_day)
         self.max_holding = max_holding
@@ -192,7 +205,9 @@ class OHareEmpiricalScheduleWithHolding(OHareEmpiricalSchedule):
         # Apply holding logic to adjust dispatch times for Southbound trains
         adjusted_dispatch_info = []
         southbound_dispatch_info = [
-            dispatch for dispatch in dispatch_info if dispatch[2] == "Southbound"
+            dispatch
+            for dispatch in dispatch_info
+            if (dispatch[2] == "Southbound" or dispatch[2] == "ShortTurning")
         ]
 
         for i in range(len(southbound_dispatch_info)):
@@ -218,11 +233,19 @@ class OHareEmpiricalScheduleWithHolding(OHareEmpiricalSchedule):
             )
             adjusted_time = current_time + holding_time
 
+            self.ohare_terminal_holding_logger.log_terminal_holding(
+                self.replication_id,
+                current_time,
+                adjusted_time,
+                holding_time,
+                runid,
+            )
+
             adjusted_dispatch_info.append((adjusted_time, block_index, path, runid))
 
         # Combine adjusted Southbound dispatch info with Northbound dispatch info
         northbound_dispatch_info = [
-            dispatch for dispatch in dispatch_info if dispatch[2] != "Southbound"
+            dispatch for dispatch in dispatch_info if dispatch[2] == "Northbound"
         ]
         combined_dispatch_info = adjusted_dispatch_info + northbound_dispatch_info
         combined_dispatch_info.sort(key=lambda x: x[0])
