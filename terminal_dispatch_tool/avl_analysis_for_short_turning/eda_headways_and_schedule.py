@@ -2,7 +2,6 @@
 # import os
 
 import os
-from re import template
 import pandas as pd
 import plotly.express as px
 # from dotenv import find_dotenv, load_dotenv
@@ -165,6 +164,17 @@ def plot_station_event(df, station_event):
 
         fig.add_trace(scatter, secondary_y=False)
         fig.add_trace(line, secondary_y=False)
+
+        # fig.add_hline(
+        #     y=0,
+        #     line_dash="solid",
+        #     line_color="black",
+        #     annotation_text="On Time",
+        #     annotation_position="bottom right",
+        #     x0=0.02,
+        #     x1=1,
+        #     xref="paper",
+        # )
 
     # Update layout for a better visual appearance
     fig.update_layout(
