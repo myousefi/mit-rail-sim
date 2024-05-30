@@ -12,11 +12,10 @@ from mit_rail_sim.utils.root_path import project_root
 
 # Set default Plotly template
 pio.templates.default = "simple_white"
+pio.templates["plotly_white"].layout.font.family = "Cambria"
 
 # Load and preprocess data
-df = pd.read_csv(
-    project_root / "inputs" / "demand" / f"odx_imputed_demand_all_periods.csv"
-)
+df = pd.read_csv(project_root / "inputs" / "demand" / f"odx_imputed_demand_all_periods.csv")
 
 df["transaction_dtm"] = pd.to_datetime(df["transaction_dtm"])
 df["time"] = df["transaction_dtm"].dt.hour
@@ -85,13 +84,14 @@ app.layout = html.Div(
             style={"width": "50%"},
         ),
         dcc.Graph(id="graph-output"),
+        dcc.Graph(id="growth-output"),
     ]
 )
 
 
 # Callback to update graph
 @app.callback(
-    Output("graph-output", "figure"),
+    [Output("graph-output", "figure"), Output("growth-output", "figure")],
     [
         Input("time-slider", "value"),
         Input("day-type-dropdown", "value"),
@@ -132,10 +132,7 @@ def update_graph(
         )
 
         median_load_flow = (
-            (
-                filtered_df.groupby("origin").size()
-                - filtered_df.groupby("destination").size()
-            )
+            (filtered_df.groupby("origin").size() - filtered_df.groupby("destination").size())
             .cumsum()
             .reindex(categories)
             .div(time_range[1] - time_range[0])
@@ -148,27 +145,79 @@ def update_graph(
 
         data.append(go.Bar(x=STATION_ORDER_NORTH, y=median_load_flow, name=period))
 
-    fig = go.Figure(data=data)
-    title = f"Average Load Flow for {time_range[0]}:00-{time_range[1]}:00, Direction: {selected_direction}bound"
-    fig.update_layout(
-        title=dict(text=title, font=dict(size=24)),
-        barmode="group",
-        yaxis_title=dict(
-            text="Number of Passengers Per Hour", font=dict(size=18)
-        ),  # Increase y-axis title font size
-        yaxis=dict(
-            range=[0, 4500],
-            tickfont=dict(size=14),  # Increase y-axis tick font size
-        ),
-        xaxis=dict(
-            tickfont=dict(size=14),
-            tickangle=45,
-        ),
-        legend=dict(
-            font=dict(size=16)  # Increase legend font size
+    fig = go.Figure(
+        data=[
+            go.Bar(
+                x=STATION_ORDER_NORTH,
+                y=data[0].y,
+                name=periods[0],
+                text=[f"{int(y)}" for y in data[0].y],
+                textposition="auto",
+                textfont=dict(size=8),
+            ),
+            go.Bar(
+                x=STATION_ORDER_NORTH,
+                y=data[1].y,
+                name=periods[1],
+                text=[f"{int(y)}" for y in data[1].y],
+                textposition="auto",
+                textfont=dict(size=8),
+            ),
+        ],
+        layout=go.Layout(
+            title=dict(
+                text=f"Average Load Flow for {time_range[0]}:00-{time_range[1]}:00, Direction: {selected_direction}bound",
+                font=dict(size=24),
+            ),
+            yaxis_title=dict(text="Number of Passengers Per Hour", font=dict(size=18)),
+            yaxis=dict(
+                range=[0, 4500],
+                tickfont=dict(size=14),
+                gridwidth=1,
+                gridcolor="LightGray",
+                dtick=500,
+            ),
+            xaxis=dict(tickfont=dict(size=14), tickangle=45),
+            barmode="group",
+            legend=dict(
+                font=dict(size=16),
+                yanchor="top",
+                xanchor="right",
+            ),
         ),
     )
-    return fig
+
+    winter_load_flow = data[0].y
+    spring_load_flow = data[1].y
+    growth_percentage = (spring_load_flow / winter_load_flow - 1) * 100
+
+    growth_fig = go.Figure(
+        data=[
+            go.Bar(
+                x=STATION_ORDER_NORTH,
+                y=growth_percentage,
+                text=[f"{x:.1f}%" for x in growth_percentage],
+                textposition="auto",
+            )
+        ],
+        layout=go.Layout(
+            title=dict(
+                text=f"Load Flow Growth (Spring 2024 vs Winter 2023) {time_range[0]}:00-{time_range[1]}:00, Direction: {selected_direction}bound",
+                font=dict(size=24),
+            ),
+            yaxis_title=dict(text="Growth Percentage (%)", font=dict(size=18)),
+            yaxis=dict(
+                tickfont=dict(size=14),
+                ticksuffix="%",
+                gridwidth=1,
+                gridcolor="LightGray",
+                dtick=5,  # Set the tick interval to 5%
+            ),
+            xaxis=dict(tickfont=dict(size=14), tickangle=45),
+        ),
+    )
+
+    return fig, growth_fig
 
 
 # Add this code block after the `update_graph` function
@@ -202,7 +251,7 @@ def save_sample_plots():
     # output_dir.mkdir(exist_ok=True)
 
     for config in sample_configs:
-        fig = update_graph(
+        fig, _ = update_graph(
             config["time_range"],
             config["selected_day_type"],
             config["selected_direction"],
@@ -211,7 +260,22 @@ def save_sample_plots():
         filename = f"{config['selected_direction']}_{config['selected_day_type']}_{config['time_range'][0]}-{config['time_range'][1]}.svg"
         fig.write_image(
             str(output_dir / filename),
-            width=1200,
+            width=1600,
+            height=600,
+            scale=2,
+        )
+
+    for config in sample_configs:
+        _, fig = update_graph(
+            config["time_range"],
+            config["selected_day_type"],
+            config["selected_direction"],
+        )
+
+        filename = f"load_flow_growth_{config['selected_direction']}_{config['selected_day_type']}_{config['time_range'][0]}-{config['time_range'][1]}.svg"
+        fig.write_image(
+            str(output_dir / filename),
+            width=1600,
             height=600,
             scale=2,
         )
