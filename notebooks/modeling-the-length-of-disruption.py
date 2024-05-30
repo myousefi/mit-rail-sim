@@ -149,8 +149,8 @@ for period in ["AM", "PM"]:
             (combined_df["period"] == period) & (combined_df["dataset"] == dataset)
         ]["blocking_time_minutes"].describe()
         fig.add_annotation(
-            x=1.20,
-            y=0.75 - i * 0.5,
+            x=1.25,
+            y=0.75 - i * 0.6,
             xref="paper",
             yref="paper",
             text=f"{dataset}<br>"
@@ -166,7 +166,7 @@ for period in ["AM", "PM"]:
             borderpad=4,
             bgcolor="white",
             opacity=0.8,
-            font=dict(size=12),
+            font=dict(size=14),
         )
 
     fig.show(renderer="browser")
