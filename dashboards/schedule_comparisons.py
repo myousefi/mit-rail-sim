@@ -1,3 +1,4 @@
+from enum import unique
 import dash
 import dash_bootstrap_components as dbc
 import pandas as pd
@@ -6,6 +7,8 @@ import plotly.graph_objects as go
 import plotly.io as pio
 from dash import Input, Output, callback, dcc, html
 from sqlalchemy import create_engine, text
+
+import re
 
 from mit_rail_sim.utils import find_free_port
 from mit_rail_sim.utils.db_con import engine, text
@@ -20,8 +23,8 @@ config = {
     "toImageButtonOptions": {
         "format": "svg",  # Set the format to 'svg'
         "filename": "custom_image",
-        "height": 400,  # Set the desired height
-        "width": 800,  # Set the desired width
+        "height": 600,  # Set the desired height
+        "width": 1600,  # Set the desired width
         "scale": 1,  # Optionally scale the image
     }
 }
@@ -91,7 +94,7 @@ def fetch_data(version):
     blue_line_runs AS (
         SELECT DISTINCT runid
         FROM schd
-        WHERE timepointid SIMILAR TO '%(MgnMTS|FstPk|UICH|OHARE)%'
+        WHERE timepointid SIMILAR TO '%(MgnMTS|FstPk|Rosmt|JffPk|UICH|OHare)%'
     )
     SELECT *
     FROM schd
@@ -188,10 +191,14 @@ def fetch_data(version):
     )
     schd.sort_values(by=["time"], inplace=True)
 
-    sorted_run_ids = schd["runid"][schd["runid"] != "None"].unique()
-    sorted_run_ids = sorted_run_ids[
-        pd.Series(sorted_run_ids).str.extract(r"(\d+)")[0].astype(int).argsort()
+    unique_run_ids = schd["runid"][schd["runid"] != "None"].unique().tolist()
+    unique_run_ids = [
+        run_id for run_id in unique_run_ids if re.match(r"^[A-Za-z]\d{3}$", run_id)
     ]
+
+    sorted_run_ids = sorted(
+        set(unique_run_ids), key=lambda x: int(re.findall(r"\d+", x)[0])
+    )
 
     return schd, sorted_run_ids, station_to_category
 

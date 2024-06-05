@@ -37,19 +37,19 @@ WITH NB_Arrivals AS (
     FROM
         avas_spectrum.qt2_trainevent
     WHERE
-        scada = 'wc005t' -- UIC-Halsted NB Arrival
+        scada = 'wc005t' -- UIC-Halsted NB Departure
         AND event_time::date BETWEEN :start_date AND :end_date
         AND EXTRACT(DOW FROM event_time) BETWEEN 1 AND 5
         AND run_id LIKE 'B%'
 )
 SELECT
     NB.run_id,
-    NB.deviation,
+    -1 * NB.deviation as deviation,
     NB.arrival_time_at_uic_halsted_nb,
     NB.previous_arrival_time,
     NB.next_arrival_time,
-    NB.arrival_time_at_uic_halsted_nb - NB.previous_arrival_time AS backward_headway,
-    NB.next_arrival_time - NB.arrival_time_at_uic_halsted_nb AS forward_headway,
+    NB.arrival_time_at_uic_halsted_nb - NB.previous_arrival_time AS forward_headway,
+    NB.next_arrival_time - NB.arrival_time_at_uic_halsted_nb AS backward_headway,
     SB.event_time AS departure_time_at_uic_halsted_sb
 FROM
     NB_Arrivals AS NB
@@ -99,7 +99,7 @@ fig = px.scatter(
 )
 
 # Show the plot
-fig.show()
+fig.show(renderer="browser")
 
 # %%
 df["headway_ratio"] = df["forward_headway"] / df["backward_headway"]
@@ -118,8 +118,9 @@ lower_bound = Q1 - 1.5 * IQR
 upper_bound = Q3 + 1.5 * IQR
 df = df[(df["headway_ratio"] >= lower_bound) & (df["headway_ratio"] <= upper_bound)]
 
+df = df[df["headway_ratio"] > 0.05]
 
-df["deviation"] = -df["deviation"]
+# df["deviation"] = -df["deviation"]
 fig = px.scatter(
     df,
     x="time_of_day",
@@ -177,13 +178,24 @@ fig.show(renderer="browser")
 
 html_output = fig.to_html()
 
-output_file_path = Path(OUTPUT_DIRECTORY + "short_turning_gaps_analysis.html")
+output_file_path = OUTPUT_DIRECTORY + "short_turning_gaps_analysis.html"
 
 with open(output_file_path, "w") as file:
     file.write(html_output)
 fig.write_image(
     OUTPUT_DIRECTORY + "short_turning_gaps_analysis.svg", width=700, height=400
 )
+
+# %%
+# Find the ratio of trains having headway ratio below 1 and time between 15:00 and 18:00
+ratio = len(
+    df[(df["time_of_day"].dt.hour.between(15, 18)) & (df["headway_ratio"] < 0.5)]
+) / len(df[df["time_of_day"].dt.hour.between(15, 18)])
+
+print(
+    f"Ratio of trains with headway ratio below 0.5 and time between 15:00-18:00: {ratio:.2f}"
+)
+
 
 # %%
 # Find the ratio of trains with deviation less than 0 minutes having headway ratio below 1 and time between 15:00 and 18:00
