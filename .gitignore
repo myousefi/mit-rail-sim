@@ -383,5 +383,6 @@ add_speed_codes_skeleton.old.py
 refactoring_paths.py
 
 cta-2024/*
+!cta-2024/notebooks
 rope-refactoring-scripts/*
 inputs/schedules/
