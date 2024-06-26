@@ -386,3 +386,5 @@ cta-2024/*
 !cta-2024/notebooks
 rope-refactoring-scripts/*
 inputs/schedules/
+cta-2024/notebooks/average_waiting_times_comparison.html
+cta-2024/notebooks/average_waiting_times_comparison.svg
