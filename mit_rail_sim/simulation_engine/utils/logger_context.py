@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from .logger_utils import OHareTerminalHoldingLogger
 
@@ -47,6 +47,21 @@ class LoggerContext:
             ohare_terminal_holding_logger.set_warmup_time(warmup_time)
         )
 
+        self.unsuccessful_replications: List[int] = []
+
+    def add_unsuccessful_replication(self, replication_id: int) -> None:
+        self.unsuccessful_replications.append(replication_id)
+
+    def filter_logs_by_unsuccessful_replications(self) -> None:
+        for logger in [
+            self.train_logger,
+            self.passenger_logger,
+            self.station_logger,
+            self.block_logger,
+            self.ohare_terminal_holding_logger,
+        ]:
+            logger.filter_out_replications(self.unsuccessful_replications)
+
     def __enter__(self):
         Train.train_logger = self.train_logger
         Passenger.passenger_logger = self.passenger_logger
@@ -58,6 +73,7 @@ class LoggerContext:
         )
 
     def __exit__(self, exc_type, exc_value, traceback):
+        self.filter_logs_by_unsuccessful_replications()
         Train.train_logger = None
         Passenger.passenger_logger = None
         Station.station_logger = None

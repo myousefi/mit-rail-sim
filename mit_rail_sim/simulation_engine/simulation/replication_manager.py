@@ -73,5 +73,6 @@ class ReplicationManager:
                     warnings.warn(
                         f"Exception {e} raised during replication {seed_number}"
                     )
+                    self.logger_context.add_unsuccessful_replication(seed_number)
                     self.seed_numbers.append(random.randint(0, 2**32 - 1))
                     continue
