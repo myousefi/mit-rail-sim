@@ -184,11 +184,9 @@ class TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge(
 
         sum_headways = current_headway + following_headway
 
-        current_train_load = train.passenger_manager.get_total_passengers()
+        current_train_load = train.passenger_manager.total_passengers
         following_train_load = (
-            following_train.passenger_manager.get_total_passengers()
-            if following_train
-            else 0
+            following_train.passenger_manager.total_passengers if following_train else 0
         )
 
         target_headway = (
