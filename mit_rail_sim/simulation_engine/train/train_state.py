@@ -13,6 +13,7 @@ from mit_rail_sim.simulation_engine.train.train_headway_regulator import (
     TrainHeadwayRegulator,
     TrainHeadwayRegulatorAtStation,
     TrainHeadwayRegulatorAtStationInformedByCrowding,
+    TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge,
 )
 
 if TYPE_CHECKING:
@@ -73,13 +74,23 @@ class DwellingAtStationState(TrainState):
 
         if cfg := config_handler.get_config():
             if cfg.holding:
-                if self.station.name == cfg.station:
+                if (
+                    self.station.name == cfg.station
+                    and self.train.has_been_short_turned
+                ):
                     if self.station.direction == (
                         "Northbound" if cfg.schd == "PM" else "Southbound"
                     ):
-                        head_reg = TrainHeadwayRegulatorAtStation(
-                            cfg.max_holding, cfg.min_holding
+                        head_reg = (
+                            TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge(
+                                critical_station_name="Grand",
+                                max_holding=cfg.max_holding,
+                                min_holding=cfg.min_holding,
+                            )
                         )
+                        # head_reg = TrainHeadwayRegulatorAtStation(
+                        #     cfg.max_holding, cfg.min_holding
+                        # )
                         self.rec_holding = head_reg.suggested_holding(self.train)
                         # self.dwell_time = max(self.dwell_time, rec_holding)
 
