@@ -394,6 +394,8 @@ class ShortTurningPath(Path):
 
         train.state = SettingUpForShortTurning(train, random.uniform(2 * 60, 3 * 60))
 
+        train.has_been_short_turned = True
+
 
 class ShortTurningAtWestern(Path):
     def __init__(

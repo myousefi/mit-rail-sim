@@ -56,6 +56,8 @@ class Train:
 
         self.path: Path = path
 
+        self.has_been_short_turned = False
+
         self.starting_block_index = starting_block_index
         self.current_block_index = starting_block_index
 
