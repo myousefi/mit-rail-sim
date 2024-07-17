@@ -249,6 +249,9 @@ class Train:
             self.current_block_index, self.distance_travelled_in_current_block
         )
 
+    def get_next_station(self) -> Station:
+        return self.path.get_next_station(self.current_block_index)
+
     @property
     def current_speed_code(self) -> float:
         return self.current_block.current_speed_code(self)
