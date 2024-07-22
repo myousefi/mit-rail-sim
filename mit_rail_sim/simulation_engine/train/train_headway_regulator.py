@@ -205,7 +205,8 @@ class TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge(
                     station=station.name,
                     direction=direction,
                 )
-                * following_headway
+                # * following_headway
+                * sum_headways  # Note that the headway experienced at stations before UIC-Halsted is the sum_headways
                 // 3600
             )
 
@@ -288,7 +289,7 @@ class TrainHeadwayRegulatorWithEstimatedLoads(TrainHeadwayRegulatorAtStation):
 
         L_0_n = 0  # Assuming current train load at current station is 0
         L_0_n_plus_1 = self.estimate_following_train_load(
-            train, following_train_headway=following_headway
+            train, following_train_headway=sum_headways
         )
 
         target_headway = (passenger_retention_rate * (L_0_n_plus_1 - L_0_n)) / (
