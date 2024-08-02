@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from calendar import c
+from json import load
+import math
 from turtle import st
 from typing import TYPE_CHECKING
 
@@ -169,12 +171,14 @@ class TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge(
                     train.simulation.current_time
                     - following_train.next_block.last_train_visit_time
                 )
+                load_picking_headway = following_headway
             elif following_train.next_block.id_of_last_train == leading_train_id:
                 following_headway = (
                     train.simulation.current_time
                     - following_train.next_block.last_train_visit_time
                     - current_headway
                 )
+                load_picking_headway = following_headway + current_headway
             else:
                 print(
                     f"Train sequence error for train {train.train_id} at block {train.next_block.block_alt_name} at time {train.simulation.current_time}"
@@ -206,7 +210,7 @@ class TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge(
                     direction=direction,
                 )
                 # * following_headway
-                * sum_headways  # Note that the headway experienced at stations before UIC-Halsted is the sum_headways
+                * load_picking_headway  # Note that the headway experienced at stations before UIC-Halsted is the load_picking_headway
                 // 3600
             )
 
@@ -214,11 +218,13 @@ class TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge(
             passenger_retention_rate * (following_train_load - current_train_load)
         ) / (2 * weighted_avg_arrival_rate) + sum_headways / 2
 
-        if target_headway <= current_headway:
+        if target_headway <= current_headway or math.isnan(target_headway):
             return 0  # Dispatch immediately
         else:
             holding_time = min(target_headway - current_headway, self.max_holding)
-            return max(holding_time, self.min_holding)
+            if holding_time < self.min_holding:
+                return 0
+            return holding_time
 
 
 class TrainHeadwayRegulatorWithEstimatedLoads(TrainHeadwayRegulatorAtStation):
@@ -268,12 +274,14 @@ class TrainHeadwayRegulatorWithEstimatedLoads(TrainHeadwayRegulatorAtStation):
                     train.simulation.current_time
                     - following_train.next_block.last_train_visit_time
                 )
+                load_picking_headway = following_headway
             elif following_train.next_block.id_of_last_train == leading_train_id:
                 following_headway = (
                     train.simulation.current_time
                     - following_train.next_block.last_train_visit_time
                     - current_headway
                 )
+                load_picking_headway = following_headway + current_headway
             else:
                 print(
                     f"Train sequence error for train {train.train_id} at block {train.next_block.block_alt_name} at time {train.simulation.current_time}"
@@ -287,20 +295,28 @@ class TrainHeadwayRegulatorWithEstimatedLoads(TrainHeadwayRegulatorAtStation):
 
         sum_headways = current_headway + following_headway
 
-        L_0_n = 0  # Assuming current train load at current station is 0
+        # Assuming current train load at current station is 0 if short-turning otherwise use the estimated load
+        if train.has_been_short_turned:
+            L_0_n = 0
+        else:
+            L_0_n = self.estimate_following_train_load(
+                train, following_train_headway=current_headway
+            )
         L_0_n_plus_1 = self.estimate_following_train_load(
-            train, following_train_headway=sum_headways
+            train, following_train_headway=load_picking_headway
         )
 
         target_headway = (passenger_retention_rate * (L_0_n_plus_1 - L_0_n)) / (
             2 * weighted_avg_arrival_rate
         ) + sum_headways / 2
 
-        if target_headway <= current_headway:
+        if target_headway <= current_headway or math.isnan(target_headway):
             return 0  # Dispatch immediately
         else:
             holding_time = min(target_headway - current_headway, self.max_holding)
-            return max(holding_time, self.min_holding)
+            if holding_time < self.min_holding:
+                return 0
+            return holding_time
 
     def calculate_following_headway(
         self, train: Train, following_train: Train

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import random
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
@@ -181,33 +182,6 @@ class DwellingAtStationState(TrainState):
                 self.train.passenger_manager.remaining_capacity()
             )
 
-        # if cfg := config_handler.get_config():
-        #     if cfg.holding:
-        #         if (
-        #             self.station.name == cfg.station
-        #             and self.train.has_been_short_turned
-        #         ):
-        #             if self.station.direction == (
-        #                 "Northbound" if cfg.schd == "PM" else "Southbound"
-        #             ):
-        #                 head_reg = TrainHeadwayRegulatorWithEstimatedLoads(
-        #                     critical_station_name="Grand",
-        #                     max_holding=cfg.max_holding,
-        #                     min_holding=cfg.min_holding,
-        #                 )
-        # head_reg = TrainHeadwayRegulatorAtStation(
-        #     cfg.max_holding, cfg.min_holding
-        # )
-        # self.rec_holding = head_reg.suggested_holding(self.train)
-        # # self.dwell_time = max(self.dwell_time, rec_holding)
-
-        # print(
-        #     f"Hodling for {self.rec_holding} at {cfg.station}-{self.station.direction}"
-        # )
-        # self.rec_holding = (
-        #     self.rec_holding if self.rec_holding > cfg.minimum_holding_time else 0
-        # )
-
         self.station.generate_and_add_passengers(self.train, self.rec_holding)
 
         number_of_passengers_on_platform = self.station.sorted_passenger_queue.size()
@@ -255,13 +229,6 @@ class DwellingAtStationState(TrainState):
         self.dwell_time += self.station.get_dwell_time(self.door_metrics)
 
         self.dwell_time = max(self.dwell_time, self.rec_holding)
-        # if cfg := config_handler.get_config():
-        #     if cfg.headway_uic_nb:
-        #         if self.station.name == "UIC-Halsted":
-        #             if self.station.direction == "Northbound":
-        #                 head_reg = TrainHeadwayRegulatorAtStation()
-        #                 rec_holding = head_reg.suggested_holding(self.train)
-        #                 self.dwell_time = max(self.dwell_time, rec_holding)
 
         # Raise error if station does not have a logger
         if station.station_logger is None:
