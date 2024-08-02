@@ -1,0 +1,92 @@
+defaults:
+    - override hydra/launcher: joblib
+    - override hydra/sweeper: basic
+
+log_folder_path: ${hydra:runtime.output_dir}
+
+peaks:
+    PM: &pm_peak
+        start_time_of_day: 14
+        end_time_of_day: 18
+        stations: &pm_stations
+            - "Pulaski"
+            - "Racine"
+            - "UIC-Halsted"
+            - "LaSalle"
+            - "Clark/Lake"
+            - "NO-CONTROL"
+    AM: &am_peak
+        start_time_of_day: 4.5
+        end_time_of_day: 9.5
+        stations: &am_stations
+            - "Cumberland"
+            - "Jefferson Park"
+            - "Irving Park"
+            - "Logan Square"
+            - "Western (O-Hare Branch)"
+            - "Chicago"
+            - "NO-CONTROL"
+
+simulation:
+    number_of_replications: 50
+    start_time_of_day: ${peaks.${schd}.start_time_of_day}
+    end_time_of_day: ${peaks.${schd}.end_time_of_day}
+
+periods:
+    version_81:
+        demand_file: "/Users/moji/Projects/mit_rail_sim/inputs/demand/arrival_rates_Nov.csv"
+        schedule_file: "/Users/moji/Projects/mit_rail_sim/inputs/schedules/empirical_schedule_81.json"
+    version_83:
+        demand_file: "/Users/moji/Projects/mit_rail_sim/inputs/demand/odx_imputed_demand_2024-04-07_2024-05-30.csv"
+        schedule_file: "/Users/moji/Projects/mit_rail_sim/inputs/schedules/empirical_schedule_83.json"
+logger:
+    should_log_trajectories: False
+    log_interval: 25
+
+inspection_time: High
+
+headway_management: False
+holding: True
+ohare_holding: False
+station: "UIC-Halsted"
+# station: "Jefferson\ Park"
+# station: "Logan\ Square"
+# station: ${station}
+# station: "NO-CONTROL"
+
+schd: PM
+
+period: version_83
+
+demand_file: ${periods.${period}.demand_file}
+schedule_file: ${periods.${period}.schedule_file}
+
+passenger:
+    probability_of_boarding_any_train: 0.5
+
+demand_level: 1.3
+
+# headway: 6
+# short_turning_rate: 3
+
+short_turning: UIC
+
+max_holding: 180
+min_holding: 60
+
+scen: holding_strategies
+
+critical_station: "Grand"
+
+holding_strategy: "load_equalizing_estimated_load"
+
+hydra:
+    run:
+        dir: /Users/moji/Projects/mit_rail_sim/load-balance/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    job:
+        chdir: true
+    sweep:
+        dir: /Users/moji/Projects/mit_rail_sim/load-balance/${scen}/
+        subdir: ${hydra.job.override_dirname}
+    sweeper:
+        params:

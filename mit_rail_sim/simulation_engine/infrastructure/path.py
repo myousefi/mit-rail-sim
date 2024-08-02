@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import random
 from copy import deepcopy
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Optional
 
 import numpy as np
 from scipy import stats
@@ -145,6 +145,12 @@ class Path:
     def set_block_slow_zone(self, block_id: str, speed_limit: float):
         block = self.get_block_by_id(block_id)
         block.set_slow_zone(speed_limit)
+
+    def get_next_station(self, current_block_index: int) -> Optional[Station]:
+        for block in self.blocks[current_block_index + 1 :]:
+            if block.station:
+                return block.station
+        return None
 
     def get_block_by_id(self, block_id: str) -> MovingBlock | Block:
         for block in self.blocks:
@@ -393,6 +399,8 @@ class ShortTurningPath(Path):
         train.distance_travelled_in_current_block = 0.0
 
         train.state = SettingUpForShortTurning(train, random.uniform(2 * 60, 3 * 60))
+
+        train.has_been_short_turned = True
 
 
 class ShortTurningAtWestern(Path):
