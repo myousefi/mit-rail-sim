@@ -1,4 +1,6 @@
 import csv
+from math import e
+import stat
 from typing import List
 
 
@@ -7,9 +9,7 @@ class ArrivalRate:
         self._rates = self._load_rates_from_csv(filename)
         self.demand_factor = demand_factor
 
-    @staticmethod
-    def is_southbound_trip(origin_stop, destination_stop):
-        station_names = [
+        self.station_names = [
             "O-Hare",
             "Rosemont",
             "Cumberland",
@@ -45,8 +45,17 @@ class ArrivalRate:
             "Forest Park",
         ]
 
-        origin_index = station_names.index(origin_stop)
-        destination_index = station_names.index(destination_stop)
+    def sort_stations_by_direction(self, direction) -> List[str]:
+        if direction == "Southbound":
+            return self.station_names
+        elif direction == "Northbound":
+            return self.station_names[::-1]
+        else:
+            raise ValueError(f"Invalid direction: {direction}")
+
+    def is_southbound_trip(self, origin_stop, destination_stop):
+        origin_index = self.station_names.index(origin_stop)
+        destination_index = self.station_names.index(destination_stop)
 
         return destination_index > origin_index
 
@@ -73,7 +82,13 @@ class ArrivalRate:
             raise ValueError(f"Error loading CSV file: {exception}") from exception
 
     def _get_bound_entries(self, current_hour, current_weekday):
-        lower_bound_hour = max(filter(lambda x: x < current_hour, self._rates.keys()))
+        try:
+            lower_bound_hour = max(
+                filter(lambda x: x <= current_hour, self._rates.keys())
+            )
+        except ValueError:
+            raise ValueError(f"No matching hour found for {current_hour}")
+
         upper_bound_hour = min(
             filter(lambda x: x >= current_hour, self._rates.keys()),
             default=lower_bound_hour,
@@ -84,7 +99,9 @@ class ArrivalRate:
 
         return lower_bound_hour, lower_bound_entry, upper_bound_hour, upper_bound_entry
 
-    def get_smoothed_rate(self, current_hour, current_weekday, origin_stop, destination_stop):
+    def get_smoothed_rate(
+        self, current_hour, current_weekday, origin_stop, destination_stop
+    ):
         (
             lower_bound_hour,
             lower_bound_entry,
@@ -102,9 +119,12 @@ class ArrivalRate:
                 rate_diff = upper_rate - lower_rate
                 hour_diff = upper_bound_hour - lower_bound_hour
 
-                smoothed_rate = lower_rate + (rate_diff / hour_diff) * (
-                    current_hour - lower_bound_hour
-                )
+                if hour_diff == 0:
+                    smoothed_rate = lower_rate
+                else:
+                    smoothed_rate = lower_rate + (rate_diff / hour_diff) * (
+                        current_hour - lower_bound_hour
+                    )
             else:
                 smoothed_rate = lower_origin_data[destination_stop]
         elif destination_stop in upper_origin_data:
@@ -123,3 +143,120 @@ class ArrivalRate:
                     stops.update(origin_data[origin_stop].keys())
 
         return list(stops)
+
+    def get_all_previous_stops_for_station_and_direction(
+        self, station: str, direction: str
+    ) -> List[str]:
+        stations = self.sort_stations_by_direction(direction)
+
+        station_index = stations.index(station)
+
+        stations = stations[:station_index]
+
+        return stations
+
+    def get_all_destination_stops_for_origin_and_direction(
+        self, origin_stop, direction
+    ) -> List[str]:
+        stations = self.sort_stations_by_direction(direction)
+
+        origin_index = stations.index(origin_stop)
+
+        stations = stations[origin_index + 1 :]
+
+        return stations
+
+    def get_lambda_for_station(
+        self, current_hour: float, current_weekday: bool, station: str, direction: str
+    ) -> float:
+        lambda_i = 0
+        all_destinations = self.get_all_destination_stops_for_origin_and_direction(
+            origin_stop=station, direction=direction
+        )
+
+        for destination in all_destinations:
+            lambda_i += self.get_smoothed_rate(
+                current_hour,
+                current_weekday,
+                origin_stop=station,
+                destination_stop=destination,
+            )
+
+        return lambda_i * self.demand_factor
+
+    def get_p_for_station(
+        self, current_hour: float, current_weekday: bool, station: str, direction: str
+    ) -> float:
+        previous_stops = self.get_all_previous_stops_for_station_and_direction(
+            station, direction
+        )
+        next_stops = self.get_all_destination_stops_for_origin_and_direction(
+            station, direction
+        )
+
+        total_rate = 0
+        through_rate = 0
+
+        for origin in previous_stops:
+            for destination in [station] + next_stops:
+                rate = self.get_smoothed_rate(
+                    current_hour,
+                    current_weekday,
+                    origin_stop=origin,
+                    destination_stop=destination,
+                )
+                total_rate += rate
+                if destination != station:
+                    through_rate += rate
+
+        return through_rate / total_rate if total_rate > 0 else 0
+
+    def get_a_i(
+        self,
+        current_hour: float,
+        current_weekday: bool,
+        start_station: str,
+        critical_station: str,
+        direction: str,
+    ) -> float:
+        stations = self.sort_stations_by_direction(direction)
+        start_index = stations.index(start_station)
+        critical_index = stations.index(critical_station)
+
+        a_i = 1.0
+        for k in stations[start_index + 1 : critical_index + 1]:
+            p_k = self.get_p_for_station(current_hour, current_weekday, k, direction)
+            a_i *= p_k
+
+        return a_i
+
+    def get_lambda_bar(
+        self,
+        current_hour: float,
+        current_weekday: bool,
+        start_station: str,
+        critical_station: str,
+        direction: str,
+    ) -> float:
+        stations = self.sort_stations_by_direction(direction)
+        start_index = stations.index(start_station)
+        critical_index = stations.index(critical_station)
+
+        stations = stations[start_index:critical_index]
+
+        lambda_bar = 0.0
+        for i, station in enumerate(stations):
+            a_i = self.get_a_i(
+                current_hour, current_weekday, station, critical_station, direction
+            )
+            lambda_i = self.get_lambda_for_station(
+                current_hour, current_weekday, station, direction
+            )
+            lambda_bar += a_i * lambda_i
+
+        # Add λ for the critical station
+        lambda_bar += self.get_lambda_for_station(
+            current_hour, current_weekday, critical_station, direction
+        )
+
+        return lambda_bar

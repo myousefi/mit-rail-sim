@@ -179,7 +179,7 @@ from mit_rail_sim.utils import project_root
 
 
 @hydra.main(
-    config_path=str(project_root / "cta-2024"),
+    config_path=str(project_root / "load-balance"),
     config_name="config",
 )
 def main(cfg: DictConfig) -> None:

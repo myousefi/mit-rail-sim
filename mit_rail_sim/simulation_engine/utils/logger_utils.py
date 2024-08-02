@@ -4,7 +4,9 @@ import asyncio
 import csv
 import json
 import os
-from typing import TYPE_CHECKING, Any, Coroutine, Dict, Optional, Union
+from typing import TYPE_CHECKING, Any, Coroutine, Dict, List, Optional, Union
+
+import pandas as pd
 
 if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.infrastructure import Block
@@ -67,6 +69,14 @@ class BaseLogger(ABC):
     def set_warmup_time(self, warmup_time: float) -> BaseLogger:
         self.warmup_time = warmup_time
         return self
+
+    def filter_out_replications(self, replication_ids: List[int]) -> None:
+        try:
+            df = pd.read_csv(self.log_file_path)
+            filtered_df = df[~df["replication_id"].isin(replication_ids)]
+            filtered_df.to_csv(self.log_file_path, index=False)
+        except FileNotFoundError:
+            pass
 
 
 class TrainLogger(BaseLogger):
@@ -272,6 +282,9 @@ class NullTrainLogger(TrainLogger):
         pass
 
     def log_warning(self, *args, **kwargs) -> None:
+        pass
+
+    def filter_out_replications(self, replication_ids: List[int]) -> None:
         pass
 
 

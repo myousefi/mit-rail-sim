@@ -56,6 +56,8 @@ class Train:
 
         self.path: Path = path
 
+        self.has_been_short_turned = False
+
         self.starting_block_index = starting_block_index
         self.current_block_index = starting_block_index
 
@@ -246,6 +248,9 @@ class Train:
         return self.path.get_distance_to_the_next_station(
             self.current_block_index, self.distance_travelled_in_current_block
         )
+
+    def get_next_station(self) -> Station:
+        return self.path.get_next_station(self.current_block_index)
 
     @property
     def current_speed_code(self) -> float:

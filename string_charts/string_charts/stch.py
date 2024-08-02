@@ -18,7 +18,7 @@ config = {
         "format": "svg",  # Set the format to 'svg'
         "filename": "custom_image",
         "height": 600,  # Set the desired height
-        "width": 1600,  # Set the desired width
+        "width": 800,  # Set the desired width
         "scale": 1,  # Optionally scale the image
     }
 }
