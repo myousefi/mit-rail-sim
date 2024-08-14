@@ -3,7 +3,7 @@ from random import randint, seed
 from unittest import TestCase
 
 from mit_rail_sim.simulation_engine.passenger.arrival_rate import ArrivalRate
-from mit_rail_sim.simulation_engine.schedule import Schedule, WeibullSchedule
+from mit_rail_sim.simulation_engine.schedule import WeibullSchedule
 from mit_rail_sim.simulation_engine.simulation.replication_manager import (
     ReplicationManager,
 )
@@ -59,7 +59,8 @@ class CTABlueLineTestCase(TestCase):
         )
         replication_manager.run_replications(
             schedule=self.schedule,
-            path_initializer_function=lambda data, slow_zones: self.block_factory.create_path_and_control_center(
+            path_initializer_function=lambda data,
+            slow_zones: self.block_factory.create_path_and_control_center(
                 data, slow_zones, "MovingBlock"
             ),
             data=data,
@@ -82,7 +83,8 @@ class CTABlueLineTestCase(TestCase):
 
         replication_manager.run_replications(
             schedule=self.schedule,
-            path_initializer_function=lambda data, slow_zones: self.block_factory.create_path_and_control_center(
+            path_initializer_function=lambda data,
+            slow_zones: self.block_factory.create_path_and_control_center(
                 data, slow_zones, block_type="FixedBlock"
             ),
             data=data,

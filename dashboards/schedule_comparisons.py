@@ -1,17 +1,14 @@
-from enum import unique
 import dash
 import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-import plotly.io as pio
-from dash import Input, Output, callback, dcc, html
-from sqlalchemy import create_engine, text
+from dash import Input, Output, dcc
+from sqlalchemy import text
 
 import re
 
 from mit_rail_sim.utils import find_free_port
-from mit_rail_sim.utils.db_con import engine, text
+from mit_rail_sim.utils.db_con import engine
 
 # pio.templates.default = "simple_white"
 

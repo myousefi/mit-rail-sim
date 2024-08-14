@@ -3,9 +3,6 @@ import unittest
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import scipy
-from plotly.subplots import make_subplots
-from scipy import stats
 
 
 class TestTravelTimes(unittest.TestCase):
@@ -31,7 +28,10 @@ class TestTravelTimes(unittest.TestCase):
                 future_ohare_entries = group[
                     (group["station"] == "AR O-Hare")
                     & (group["event_time"] > row["event_time"])
-                    & (group["event_time"] < (row["event_time"] + pd.Timedelta(minutes=180)))
+                    & (
+                        group["event_time"]
+                        < (row["event_time"] + pd.Timedelta(minutes=180))
+                    )
                 ]
                 if not future_ohare_entries.empty:
                     travel_time = (
@@ -87,7 +87,9 @@ class TestTravelTimes(unittest.TestCase):
                         x[x["station_name"] == "Forest Park"]["departure_time"].min(),
                         (
                             x[x["station_name"] == "O-Hare"]["time_in_seconds"].min()
-                            - x[x["station_name"] == "Forest Park"]["time_in_seconds"].max()
+                            - x[x["station_name"] == "Forest Park"][
+                                "time_in_seconds"
+                            ].max()
                         )
                         / 60,
                         x["replication_id"].unique()[0],

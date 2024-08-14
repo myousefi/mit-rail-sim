@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import math
-import random
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
@@ -13,7 +11,6 @@ from mit_rail_sim.simulation_engine.infrastructure.block import (
 from mit_rail_sim.simulation_engine.train.train_headway_regulator import (
     TrainHeadwayRegulator,
     TrainHeadwayRegulatorAtStation,
-    TrainHeadwayRegulatorAtStationInformedByCrowding,
     TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge,
     TrainHeadwayRegulatorWithEstimatedLoads,
 )
@@ -22,7 +19,6 @@ if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.infrastructure import Station
     from mit_rail_sim.simulation_engine.train import Train
 
-from abc import ABC, abstractmethod
 
 cfg = config_handler.get_config()
 
@@ -305,7 +301,7 @@ class WaitingToBeDispatched(TrainState):
                 for block in self.blocks_to_deactivate:
                     try:
                         block.deactivate(self.train)
-                    except Exception as e:
+                    except Exception:
                         pass
 
         self.rec_holding -= self.train.time_step

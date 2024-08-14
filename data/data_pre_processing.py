@@ -33,7 +33,9 @@ for i in range(len(data) - 1, -1, -1):
             # Add the next blocks to SPEED_CODES_TO_COMMUNICATE with speeds from speeds_to_communicate list
             previous_blocks = data[i - 5 : i - 1]
             for j, block in enumerate(previous_blocks):
-                data[i]["SPEED_CODES_TO_COMMUNICATE"][block["BLOCK"]] = speeds_to_communicate[j]
+                data[i]["SPEED_CODES_TO_COMMUNICATE"][block["BLOCK"]] = (
+                    speeds_to_communicate[j]
+                )
 
 # Write the updated data back to the file
 with open("file.json", "w") as file:

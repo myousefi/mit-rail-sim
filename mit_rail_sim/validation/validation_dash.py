@@ -1,13 +1,11 @@
 from datetime import datetime, time
 
-import dash
 import dash_bootstrap_components as dbc
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import plotly.io as pio
-from dash import Dash, Input, Output, State, dcc, html
+from dash import Dash, Input, Output, dcc, html
 from pandas.tseries.holiday import USFederalHolidayCalendar
 
 from mit_rail_sim.utils import find_free_port, project_root
@@ -209,7 +207,9 @@ def filter_by_time_and_weekday(df, start_time, end_time):
 
 def remove_holidays(df):
     cal = USFederalHolidayCalendar()
-    holidays = cal.holidays(start=df["event_datetime"].min(), end=df["event_datetime"].max())
+    holidays = cal.holidays(
+        start=df["event_datetime"].min(), end=df["event_datetime"].max()
+    )
     return df[~df["event_datetime"].dt.date.isin(holidays)].copy()
 
 
@@ -237,7 +237,9 @@ app.layout = dbc.Container(
                 dbc.Col(
                     [
                         html.Label("Delay Threshold"),
-                        dcc.Input(id="delay-threshold-input", type="number", value=10, min=0),
+                        dcc.Input(
+                            id="delay-threshold-input", type="number", value=10, min=0
+                        ),
                     ]
                 ),
             ]
@@ -265,7 +267,8 @@ app.layout = dbc.Container(
                         dcc.Dropdown(
                             id="start-station-dropdown",
                             options=[
-                                {"label": station, "value": station} for station in STATION_ORDER
+                                {"label": station, "value": station}
+                                for station in STATION_ORDER
                             ],
                             value=STATION_ORDER[0],
                         ),
@@ -277,7 +280,8 @@ app.layout = dbc.Container(
                         dcc.Dropdown(
                             id="end-station-dropdown",
                             options=[
-                                {"label": station, "value": station} for station in STATION_ORDER
+                                {"label": station, "value": station}
+                                for station in STATION_ORDER
                             ],
                             value=STATION_ORDER[-1],
                         ),
@@ -362,9 +366,9 @@ def update_bar_plot(time_range, delay_threshold):
     ].dt.date.tolist()
 
     delay_grouped = (
-        filtered_event_delay.groupby([filtered_event_delay["event_datetime"].dt.date, "drqbe"])[
-            "delay"
-        ]
+        filtered_event_delay.groupby(
+            [filtered_event_delay["event_datetime"].dt.date, "drqbe"]
+        )["delay"]
         .sum()
         .reset_index()
     )
@@ -433,12 +437,16 @@ def update_run_time_histogram(selected_station, time_range, stored_data):
     start_time = time(time_range[0])
     end_time = time(time_range[1])
 
-    filtered_df = track_df[track_df["scada"].isin(RUN_TIME_BLOCKS[selected_station])].copy()
+    filtered_df = track_df[
+        track_df["scada"].isin(RUN_TIME_BLOCKS[selected_station])
+    ].copy()
     filtered_df = filter_by_time_and_weekday(filtered_df, start_time, end_time)
     filtered_df = remove_holidays(filtered_df)
 
     # Filter simulation data by time and selected station
-    filtered_sim = block_test[block_test["block_id"].isin(RUN_TIME_BLOCKS[selected_station])].copy()
+    filtered_sim = block_test[
+        block_test["block_id"].isin(RUN_TIME_BLOCKS[selected_station])
+    ].copy()
     filtered_sim = filtered_sim[
         (filtered_sim["time_in_seconds"] >= time_range[0] * 3600)
         & (filtered_sim["time_in_seconds"] <= time_range[1] * 3600)
@@ -451,9 +459,12 @@ def update_run_time_histogram(selected_station, time_range, stored_data):
         non_delayed_days = stored_data["non_delayed_days"]
         # Convert back to datetime.date from str
         non_delayed_days = [
-            datetime.strptime(date_str, "%Y-%m-%d").date() for date_str in non_delayed_days
+            datetime.strptime(date_str, "%Y-%m-%d").date()
+            for date_str in non_delayed_days
         ]
-        filtered_df = filtered_df[filtered_df["event_datetime"].dt.date.isin(non_delayed_days)]
+        filtered_df = filtered_df[
+            filtered_df["event_datetime"].dt.date.isin(non_delayed_days)
+        ]
 
     avl = pd.merge_asof(
         left=filtered_df[filtered_df["scada"] == RUN_TIME_BLOCKS[selected_station][0]],
@@ -467,8 +478,12 @@ def update_run_time_histogram(selected_station, time_range, stored_data):
     )
 
     sim = pd.merge_asof(
-        left=filtered_sim[filtered_sim["block_id"] == RUN_TIME_BLOCKS[selected_station][0]],
-        right=filtered_sim[filtered_sim["block_id"] == RUN_TIME_BLOCKS[selected_station][1]],
+        left=filtered_sim[
+            filtered_sim["block_id"] == RUN_TIME_BLOCKS[selected_station][0]
+        ],
+        right=filtered_sim[
+            filtered_sim["block_id"] == RUN_TIME_BLOCKS[selected_station][1]
+        ],
         by=["replication_id", "train_id"],
         left_on="time",
         right_on="time",
@@ -480,7 +495,9 @@ def update_run_time_histogram(selected_station, time_range, stored_data):
         avl["event_time_destination"] - avl["event_time_origin"]
     ).dt.total_seconds() / 60
 
-    sim_run_times = (sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]) / 60
+    sim_run_times = (
+        sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]
+    ) / 60
 
     real_run_times = real_run_times.dropna(inplace=False)
 
@@ -497,10 +514,16 @@ def update_run_time_histogram(selected_station, time_range, stored_data):
     fig = go.Figure()
 
     # Add real-world data
-    fig.add_trace(go.Histogram(x=real_run_times.values, name="Real-World Data", histnorm="percent"))
+    fig.add_trace(
+        go.Histogram(
+            x=real_run_times.values, name="Real-World Data", histnorm="percent"
+        )
+    )
 
     # Add simulation data
-    fig.add_trace(go.Histogram(x=sim_run_times.values, name="Simulation Data", histnorm="percent"))
+    fig.add_trace(
+        go.Histogram(x=sim_run_times.values, name="Simulation Data", histnorm="percent")
+    )
 
     fig.update_layout(
         title=f"Run-Time Histogram for {selected_station} to Next Station",
@@ -572,7 +595,9 @@ def update_dwell_time_histogram(selected_station, time_range, stored_data):
     # filtered_df = remove_holidays(filtered_df)
 
     # Filter simulation data by time and selected station
-    filtered_sim = block_test[block_test["block_id"].isin(DWELL_BLOCK[selected_station])].copy()
+    filtered_sim = block_test[
+        block_test["block_id"].isin(DWELL_BLOCK[selected_station])
+    ].copy()
     filtered_sim = filtered_sim[
         (filtered_sim["time_in_seconds"] >= time_range[0] * 3600)
         & (filtered_sim["time_in_seconds"] <= time_range[1] * 3600)
@@ -585,9 +610,12 @@ def update_dwell_time_histogram(selected_station, time_range, stored_data):
         non_delayed_days = stored_data["non_delayed_days"]
         # Convert back to datetime.date from str
         non_delayed_days = [
-            datetime.strptime(date_str, "%Y-%m-%d").date() for date_str in non_delayed_days
+            datetime.strptime(date_str, "%Y-%m-%d").date()
+            for date_str in non_delayed_days
         ]
-        filtered_df = filtered_df[filtered_df["event_datetime"].dt.date.isin(non_delayed_days)]
+        filtered_df = filtered_df[
+            filtered_df["event_datetime"].dt.date.isin(non_delayed_days)
+        ]
 
     avl = pd.merge_asof(
         left=filtered_df[filtered_df["scada"] == DWELL_BLOCK[selected_station][0]],
@@ -602,7 +630,9 @@ def update_dwell_time_histogram(selected_station, time_range, stored_data):
 
     sim = pd.merge_asof(
         left=filtered_sim[filtered_sim["block_id"] == DWELL_BLOCK[selected_station][0]],
-        right=filtered_sim[filtered_sim["block_id"] == DWELL_BLOCK[selected_station][1]],
+        right=filtered_sim[
+            filtered_sim["block_id"] == DWELL_BLOCK[selected_station][1]
+        ],
         by=["replication_id", "train_id"],
         left_on="time",
         right_on="time",
@@ -614,7 +644,9 @@ def update_dwell_time_histogram(selected_station, time_range, stored_data):
         avl["event_time_destination"] - avl["event_time_origin"]
     ).dt.total_seconds() / 60
 
-    sim_run_times = (sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]) / 60
+    sim_run_times = (
+        sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]
+    ) / 60
 
     real_run_times = real_run_times.dropna(inplace=False)
 
@@ -631,10 +663,16 @@ def update_dwell_time_histogram(selected_station, time_range, stored_data):
     fig = go.Figure()
 
     # Add real-world data
-    fig.add_trace(go.Histogram(x=real_run_times.values, name="Real-World Data", histnorm="percent"))
+    fig.add_trace(
+        go.Histogram(
+            x=real_run_times.values, name="Real-World Data", histnorm="percent"
+        )
+    )
 
     # Add simulation data
-    fig.add_trace(go.Histogram(x=sim_run_times.values, name="Simulation Data", histnorm="percent"))
+    fig.add_trace(
+        go.Histogram(x=sim_run_times.values, name="Simulation Data", histnorm="percent")
+    )
 
     fig.update_layout(
         title=f"Dwell-Time Histogram for {selected_station}",
@@ -708,7 +746,9 @@ def update_histograms(selected_station, time_range, stored_data):
     filtered_df = remove_holidays(filtered_df)
 
     # Filter simulation data by time and selected station
-    filtered_sim = simulation_results[(simulation_results["station_name"] == selected_station)]
+    filtered_sim = simulation_results[
+        (simulation_results["station_name"] == selected_station)
+    ]
     filtered_sim = filtered_sim[
         (filtered_sim["time_in_seconds"] >= time_range[0] * 3600)
         & (filtered_sim["time_in_seconds"] <= time_range[1] * 3600)
@@ -718,9 +758,12 @@ def update_histograms(selected_station, time_range, stored_data):
         non_delayed_days = stored_data["non_delayed_days"]
         # Convert back to datetime.date from str
         non_delayed_days = [
-            datetime.strptime(date_str, "%Y-%m-%d").date() for date_str in non_delayed_days
+            datetime.strptime(date_str, "%Y-%m-%d").date()
+            for date_str in non_delayed_days
         ]
-        filtered_df = filtered_df[filtered_df["event_datetime"].dt.date.isin(non_delayed_days)]
+        filtered_df = filtered_df[
+            filtered_df["event_datetime"].dt.date.isin(non_delayed_days)
+        ]
 
     station_df = filtered_df[filtered_df["station"] == selected_station].copy()
 
@@ -729,7 +772,8 @@ def update_histograms(selected_station, time_range, stored_data):
     q3 = station_df["headway"].quantile(0.75)
     iqr = q3 - q1
     station_df = station_df[
-        (station_df["headway"] >= q1 - 3 * iqr) & (station_df["headway"] <= q3 + 3 * iqr)
+        (station_df["headway"] >= q1 - 3 * iqr)
+        & (station_df["headway"] <= q3 + 3 * iqr)
     ]
 
     q1 = station_df["dwell_arrtodep"].quantile(0.25)
@@ -763,7 +807,9 @@ def update_histograms(selected_station, time_range, stored_data):
         fig.add_trace(go.Histogram(x=data, name="Real-World Data", histnorm="percent"))
 
         # Add simulation data
-        fig.add_trace(go.Histogram(x=sim_data, name="Simulation Data", histnorm="percent"))
+        fig.add_trace(
+            go.Histogram(x=sim_data, name="Simulation Data", histnorm="percent")
+        )
 
         fig.update_layout(
             title=f"{title} Histogram for {selected_station}",
@@ -821,7 +867,9 @@ def calculate_real_travel_times(df, dest_df, origin_station, destination_station
     df = df[["date", "run_id", "event_time", "event_datetime", "station"]].copy()
     df = df.sort_values("event_time")
 
-    dest_df = dest_df[["date", "run_id", "event_time", "event_datetime", "station"]].copy()
+    dest_df = dest_df[
+        ["date", "run_id", "event_time", "event_datetime", "station"]
+    ].copy()
     dest_df = dest_df.sort_values("event_time")
 
     # Separate origin and destination stations
@@ -848,7 +896,9 @@ def calculate_real_travel_times(df, dest_df, origin_station, destination_station
 
     # Calculate travel times
     travel_times = (
-        (merged_df["event_time_destination"] - merged_df["event_time_origin"]).dt.total_seconds()
+        (
+            merged_df["event_time_destination"] - merged_df["event_time_origin"]
+        ).dt.total_seconds()
         / 60
     ).dropna()
 
@@ -861,7 +911,9 @@ def calculate_real_travel_times(df, dest_df, origin_station, destination_station
     q1 = travel_times.quantile(0.25)
     q3 = travel_times.quantile(0.75)
     iqr = q3 - q1
-    travel_times = travel_times[(travel_times >= q1 - 3 * iqr) & (travel_times <= q3 + 3 * iqr)]
+    travel_times = travel_times[
+        (travel_times >= q1 - 3 * iqr) & (travel_times <= q3 + 3 * iqr)
+    ]
 
     return travel_times
 
@@ -872,7 +924,9 @@ def calculate_sim_travel_times(df, dest_df, origin_station, destination_station)
     df = df.sort_values(by="time_in_seconds")
     df["time"] = df["time_in_seconds"]
 
-    dest_df = dest_df[["replication_id", "time_in_seconds", "station_name", "train_id"]].copy()
+    dest_df = dest_df[
+        ["replication_id", "time_in_seconds", "station_name", "train_id"]
+    ].copy()
     dest_df = dest_df.sort_values(by="time_in_seconds")
     dest_df["time"] = dest_df["time_in_seconds"]
 
@@ -893,7 +947,8 @@ def calculate_sim_travel_times(df, dest_df, origin_station, destination_station)
     # print(merged_df.head(5))
     # Calculate the travel times
     sim_travel_times = (
-        (merged_df["time_in_seconds_destination"] - merged_df["time_in_seconds_origin"]) / 60
+        (merged_df["time_in_seconds_destination"] - merged_df["time_in_seconds_origin"])
+        / 60
     ).dropna()
 
     return sim_travel_times
@@ -919,15 +974,20 @@ def update_travel_time_histogram(start_station, end_station, time_range, stored_
     if stored_data:
         non_delayed_days = stored_data["non_delayed_days"]
         non_delayed_days = [
-            datetime.strptime(date_str, "%Y-%m-%d").date() for date_str in non_delayed_days
+            datetime.strptime(date_str, "%Y-%m-%d").date()
+            for date_str in non_delayed_days
         ]
-        filtered_df = filtered_df[filtered_df["event_datetime"].dt.date.isin(non_delayed_days)]
+        filtered_df = filtered_df[
+            filtered_df["event_datetime"].dt.date.isin(non_delayed_days)
+        ]
 
     real_travel_times = calculate_real_travel_times(
         filtered_df, merged_data, start_station, end_station
     )
     fig = go.Figure()
-    fig.add_trace(go.Histogram(x=real_travel_times, name="Travel Time", histnorm="percent"))
+    fig.add_trace(
+        go.Histogram(x=real_travel_times, name="Travel Time", histnorm="percent")
+    )
 
     filtered_sim = simulation_results[
         (simulation_results["time_in_seconds"] >= time_range[0] * 3600)
@@ -937,7 +997,9 @@ def update_travel_time_histogram(start_station, end_station, time_range, stored_
         filtered_sim, simulation_results, start_station, end_station
     )
 
-    fig.add_trace(go.Histogram(x=sim_travel_times, name="Simulation", histnorm="percent"))
+    fig.add_trace(
+        go.Histogram(x=sim_travel_times, name="Simulation", histnorm="percent")
+    )
 
     fig.update_layout(
         title=f"Travel Time Histogram from {start_station} to {end_station}",
@@ -1010,9 +1072,9 @@ def update_passenger_boxplots(time_range, delay_threshold):
         & (sorted_simulation_results["time_in_seconds"] <= time_range[1] * 3600)
     ]
 
-    sorted_simulation_results["station_name"] = sorted_simulation_results["station_name"].astype(
-        "category"
-    )
+    sorted_simulation_results["station_name"] = sorted_simulation_results[
+        "station_name"
+    ].astype("category")
     sorted_simulation_results["station_name"] = sorted_simulation_results[
         "station_name"
     ].cat.set_categories(STATION_ORDER, ordered=True)
@@ -1134,9 +1196,12 @@ def update_heatmap_plot(percentile, time_range, stored_data):
     if stored_data:
         non_delayed_days = stored_data["non_delayed_days"]
         non_delayed_days = [
-            datetime.strptime(date_str, "%Y-%m-%d").date() for date_str in non_delayed_days
+            datetime.strptime(date_str, "%Y-%m-%d").date()
+            for date_str in non_delayed_days
         ]
-        filtered_df = filtered_df[filtered_df["event_datetime"].dt.date.isin(non_delayed_days)]
+        filtered_df = filtered_df[
+            filtered_df["event_datetime"].dt.date.isin(non_delayed_days)
+        ]
 
     filtered_sim = simulation_results[
         (simulation_results["time_in_seconds"] >= time_range[0] * 3600)
@@ -1151,7 +1216,9 @@ def update_heatmap_plot(percentile, time_range, stored_data):
 
     for i, origin_station in enumerate(STATION_ORDER):
         for j, destination_station in enumerate(STATION_ORDER):
-            if j <= i:  # Only consider stations that come after the origin in STATION_ORDER
+            if (
+                j <= i
+            ):  # Only consider stations that come after the origin in STATION_ORDER
                 continue
 
             # Filter the all_pair_real_travel_times for the current OD pair
@@ -1205,7 +1272,9 @@ def update_heatmap_plot(percentile, time_range, stored_data):
     )
 
     # Show all x-axis and y-axis labels
-    fig.update_xaxes(tickvals=list(range(len(STATION_ORDER))), ticktext=STATION_ORDER, tickangle=45)
+    fig.update_xaxes(
+        tickvals=list(range(len(STATION_ORDER))), ticktext=STATION_ORDER, tickangle=45
+    )
     fig.update_yaxes(tickvals=list(range(len(STATION_ORDER))), ticktext=STATION_ORDER)
 
     return fig
@@ -1226,11 +1295,14 @@ if __name__ == "__main__":
     merged_data.sort_values(by=["event_datetime"], inplace=True)
     track_df = merged_data.copy()
     merged_data["dwell_arrtodep"] = (
-        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds / 60
+        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds
+        / 60
     )
 
     merged_data = merged_data[merged_data["scada"].isin(STATION_BLOCK.values())]
-    merged_data["station"] = merged_data["scada"].map({v: k for k, v in STATION_BLOCK.items()})
+    merged_data["station"] = merged_data["scada"].map(
+        {v: k for k, v in STATION_BLOCK.items()}
+    )
 
     event_delay = pd.read_csv("./data/blue_line_event_delay_drqe.csv")
     event_delay["event_datetime"] = pd.to_datetime(event_delay["event_datetime"])
@@ -1241,10 +1313,12 @@ if __name__ == "__main__":
     block_test = pd.read_csv("./simulation_results/block_test.csv")
 
     # Step 1: Add difference_in_activation column to block_test
-    block_test.sort_values(by=["replication_id", "train_id", "time_in_seconds"], inplace=True)
-    block_test["difference_in_activation"] = -block_test.groupby(["replication_id", "train_id"])[
-        "time_in_seconds"
-    ].diff(-2)
+    block_test.sort_values(
+        by=["replication_id", "train_id", "time_in_seconds"], inplace=True
+    )
+    block_test["difference_in_activation"] = -block_test.groupby(
+        ["replication_id", "train_id"]
+    )["time_in_seconds"].diff(-2)
 
     # Create a new column in station_test dataframe to hold the corresponding block_id values for the Northbound direction only
     simulation_results["block_id"] = simulation_results.apply(

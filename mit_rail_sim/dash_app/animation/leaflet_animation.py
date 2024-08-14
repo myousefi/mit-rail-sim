@@ -13,7 +13,9 @@ os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 
 def get_color(number_of_passengers, min_passengers=0, max_passengers=960):
     # Normalize the passenger count to a value between 0 and 1
-    normalized_value = (number_of_passengers - min_passengers) / (max_passengers - min_passengers)
+    normalized_value = (number_of_passengers - min_passengers) / (
+        max_passengers - min_passengers
+    )
     normalized_value = max(0, min(normalized_value, 1))  # Clamp between 0 and 1
 
     # Interpolate between green and red
@@ -40,7 +42,9 @@ def generate_feature(row, north_bound_line, max_travel_distance):
         },
         "properties": {
             "times": [
-                (datetime(2023, 12, 10) + timedelta(seconds=row["time_in_seconds"])).isoformat()
+                (
+                    datetime(2023, 12, 10) + timedelta(seconds=row["time_in_seconds"])
+                ).isoformat()
             ],
             "style": {"color": color, "weight": 5},
             "icon": "circle",
@@ -63,7 +67,11 @@ df = pd.read_csv(csv_path)
 df["time_in_seconds"] = pd.to_timedelta(df["time_in_seconds"], unit="s")
 origin_timestamp = pd.Timestamp("2023-12-01 00:00:00")
 df["adjusted_time"] = origin_timestamp + df["time_in_seconds"]
-df = df.groupby(["train_id", pd.Grouper(key="adjusted_time", freq="20S")]).first().reset_index()
+df = (
+    df.groupby(["train_id", pd.Grouper(key="adjusted_time", freq="20S")])
+    .first()
+    .reset_index()
+)
 df["time_in_seconds"] = (df["adjusted_time"] - origin_timestamp).dt.total_seconds()
 df.drop(columns=["adjusted_time"], inplace=True)
 
@@ -74,10 +82,14 @@ df = df[df["replication_id"] == df["replication_id"].iloc[0]]
 # Read shapefiles
 stations_gdf = gpd.read_file("./processed_data/stations.shp")
 rail_lines_gdf = gpd.read_file("./processed_data/all_lines.shp")
-north_bound_line = rail_lines_gdf[rail_lines_gdf["Name"] == "NorthBound"].geometry.iloc[0]
+north_bound_line = rail_lines_gdf[rail_lines_gdf["Name"] == "NorthBound"].geometry.iloc[
+    0
+]
 
 # Create base folium map
-m = folium.Map([41.92147007783234, -87.7808453375612], zoom_start=12, tiles="cartodb positron")
+m = folium.Map(
+    [41.92147007783234, -87.7808453375612], zoom_start=12, tiles="cartodb positron"
+)
 
 
 # Add stations and rail lines to map
@@ -96,7 +108,9 @@ for idx, row in stations_gdf.iterrows():
 for idx, row in rail_lines_gdf.iterrows():
     geom = row["geometry"]
     x, y = geom.xy
-    folium.PolyLine(locations=[(lat, lon) for lat, lon in zip(y, x)], color="blue").add_to(m)
+    folium.PolyLine(
+        locations=[(lat, lon) for lat, lon in zip(y, x)], color="blue"
+    ).add_to(m)
 
 # Sort the DataFrame by 'train_id' and 'time_in_seconds'
 df.sort_values(["train_id", "time_in_seconds"], inplace=True)
@@ -105,7 +119,9 @@ df.sort_values(["train_id", "time_in_seconds"], inplace=True)
 max_travel_distance = df["location_from_terminal"].max()
 
 # Generate features using apply
-features = df.apply(generate_feature, axis=1, args=(north_bound_line, max_travel_distance)).tolist()
+features = df.apply(
+    generate_feature, axis=1, args=(north_bound_line, max_travel_distance)
+).tolist()
 
 train_geojson = {"type": "FeatureCollection", "features": features}
 

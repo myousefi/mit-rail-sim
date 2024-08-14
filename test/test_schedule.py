@@ -1,6 +1,5 @@
 import unittest
 from test.test_CTA_blue_line_imaginary import (
-    CTABlueLineTestCase,
     TestCTABlueLineTrainMovement,
 )
 from typing import List, Optional
@@ -9,10 +8,9 @@ from unittest.mock import MagicMock
 import pandas as pd
 import plotly.graph_objects as go
 
-from mit_rail_sim.simulation_engine.infrastructure import Path
 from mit_rail_sim.simulation_engine.schedule import Schedule
 from mit_rail_sim.simulation_engine.simulation.simulation import Simulation
-from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
+from mit_rail_sim.simulation_engine.train import TrainSpeedRegulator
 from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 # Import Schedule and Simulation classes here
@@ -52,7 +50,6 @@ class TestSimulation(TestCTABlueLineTrainMovement):
 
     # @unittest.skip("This test is for visualization purposes only.")
     def test_train_dispatch_during_simulation(self):
-
         try:
             # schedule = Schedule(10, 30, 40)
             schedule = MagicMock()
@@ -129,7 +126,9 @@ class TestSimulation(TestCTABlueLineTrainMovement):
         log_file_path = "./test/output_files/test.csv"
         data = pd.read_csv(log_file_path)
 
-        train_ids = data["train_id"].unique().tolist()  # Get unique train_ids from the data
+        train_ids = (
+            data["train_id"].unique().tolist()
+        )  # Get unique train_ids from the data
 
         # self.visualize_time_profile_from_logs(data, train_ids, "speed", "Speed")
 
@@ -137,7 +136,9 @@ class TestSimulation(TestCTABlueLineTrainMovement):
         #     data, train_ids, "acceleration", "Acceleration"
         # )
 
-        self.visualize_speed_vs_distance_profile_from_logs(data, train_ids, "speed", "Speed")
+        self.visualize_speed_vs_distance_profile_from_logs(
+            data, train_ids, "speed", "Speed"
+        )
         self.visualize_time_profile_from_logs(
             data, train_ids, "total_travelled_distance", "Distance"
         )

@@ -13,10 +13,6 @@ from mit_rail_sim.simulation_engine.train.train_speed_regulator_state import (
     BrakeNormalToStationState,
     KeepingTheSpeedUptoCodeState,
 )
-from mit_rail_sim.simulation_engine.train.train_state import (
-    DwellingAtStationState,
-    MovingBetweenStationsState,
-)
 from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 
@@ -51,7 +47,9 @@ class BaseTestCase(unittest.TestCase):
             },
         )
 
-        self.signal_control_center = SignalControlCenter([self.block1, self.block2, self.block3])
+        self.signal_control_center = SignalControlCenter(
+            [self.block1, self.block2, self.block3]
+        )
 
         self.path = Path([self.block1, self.block2, self.block3])
 
@@ -68,7 +66,9 @@ class BaseTestCase(unittest.TestCase):
             path=self.path,
         )
 
-    def visualize_distance_profiles(self, distances, values, values_label, title) -> None:
+    def visualize_distance_profiles(
+        self, distances, values, values_label, title
+    ) -> None:
         plt.plot(distances, values)
         plt.xlabel("Distance (m)")
         plt.ylabel(values_label)
@@ -90,7 +90,9 @@ class TestMovingBetweenStationsState(BaseTestCase):
         )
 
         self.assertAlmostEqual(self.train.speed, expected_speed)
-        self.assertAlmostEqual(self.train.total_travelled_distance, expected_distance_travelled)
+        self.assertAlmostEqual(
+            self.train.total_travelled_distance, expected_distance_travelled
+        )
 
     def test_transition_to_dwelling_at_station(self):
         self.train.current_block_index = 1
@@ -102,7 +104,9 @@ class TestMovingBetweenStationsState(BaseTestCase):
         self.train.state.handle(0.5)
 
         # assert if is the same class as self.train.train_speed_regulator.state is BrakeToNormalState()
-        self.assertIsInstance(self.train.train_speed_regulator.state, BrakeNormalToStationState)
+        self.assertIsInstance(
+            self.train.train_speed_regulator.state, BrakeNormalToStationState
+        )
 
     def test_train_at_brake_normal_state(self):
         self.train.current_block_index = 1

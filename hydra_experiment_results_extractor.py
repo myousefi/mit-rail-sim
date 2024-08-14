@@ -38,7 +38,9 @@ class TravelTimeCalculator:
 
     def process_experiment(self, experiment_dir):
         # Extract parameters from the config file
-        with open(os.path.join(experiment_dir, ".hydra", "config.yaml"), "r") as config_file:
+        with open(
+            os.path.join(experiment_dir, ".hydra", "config.yaml"), "r"
+        ) as config_file:
             parameters = yaml.safe_load(config_file)
 
         # Process the station_test.csv file
@@ -49,7 +51,9 @@ class TravelTimeCalculator:
         avg_travel_time, std_travel_time = self.calculate_sim_travel_times(
             df, origin_station, destination_station
         )
-        cv_travel_time = std_travel_time / avg_travel_time if avg_travel_time != 0 else 0
+        cv_travel_time = (
+            std_travel_time / avg_travel_time if avg_travel_time != 0 else 0
+        )
 
         stations = [
             "Forest Park",
@@ -66,7 +70,9 @@ class TravelTimeCalculator:
             headway_stats[
                 f"avg_headway_{station.replace('-', '_').replace(' ', '_')}"
             ] = avg_headway
-            headway_stats[f"cv_headway_{station.replace('-', '_').replace(' ', '_')}"] = cv_headway
+            headway_stats[
+                f"cv_headway_{station.replace('-', '_').replace(' ', '_')}"
+            ] = cv_headway
 
         result = {
             **parameters,

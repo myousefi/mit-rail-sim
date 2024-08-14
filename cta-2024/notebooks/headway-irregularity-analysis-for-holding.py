@@ -92,7 +92,6 @@ df = df[(df["headway"] >= lower_bound) & (df["headway"] <= upper_bound)]
 # %%
 
 import pandas as pd
-import plotly.graph_objects as go
 
 STATION_ORDER_NORTH = [
     "O-Hare",

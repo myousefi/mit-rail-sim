@@ -15,7 +15,9 @@ start_date = os.getenv("start_date")
 end_date = os.getenv("end_date")
 
 # Connect to the database
-engine = create_engine(f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}").connect()
+engine = create_engine(
+    f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+).connect()
 
 # Query to fetch event data
 query_text1 = text(

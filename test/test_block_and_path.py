@@ -67,7 +67,9 @@ class TestPath(unittest.TestCase):
         self.assertEqual(self.path.get_distance_to_the_next_station(0, 2), 398)
         self.assertEqual(self.path.get_distance_to_the_next_station(0, 5), 395)
         self.assertEqual(self.path.get_distance_to_the_next_station(1, 198), 7402)
-        self.assertEqual(self.path.get_distance_to_the_next_station(3, 530), float("inf"))
+        self.assertEqual(
+            self.path.get_distance_to_the_next_station(3, 530), float("inf")
+        )
 
     def test_get_distance_to_the_next_station_for_a_train(self):
         self.assertEqual(self.path.get_distance_to_the_next_station(0, 0), 400)

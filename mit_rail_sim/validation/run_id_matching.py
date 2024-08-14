@@ -34,12 +34,17 @@ df.reset_index(inplace=True, drop=True)
 for run_id in df["run_id"].unique():
     run_index = df["run_id"] == run_id
     df.loc[run_index, "run_id"] = f"{run_id}_0"
-    split_indices = df[run_index].index[abs(df[run_index]["track_dist"].diff()) > 5000].to_list()
+    split_indices = (
+        df[run_index].index[abs(df[run_index]["track_dist"].diff()) > 5000].to_list()
+    )
     if split_indices:
         split_indices.append(df.index[-1] + 1)
     for i in range(len(split_indices) - 1):
         df.loc[
-            run_index & (df.index >= split_indices[i]) & (df.index < split_indices[i + 1]), "run_id"
+            run_index
+            & (df.index >= split_indices[i])
+            & (df.index < split_indices[i + 1]),
+            "run_id",
         ] = f"{run_id}_{i+1}"
 
 
@@ -47,7 +52,10 @@ def is_start_valid(start, start_threshold):
     return (
         (abs(start["track_dist"] - 1805) <= start_threshold)
         or (abs(start["track_dist"] - 45896) <= start_threshold)
-        or (start["event_time"] - pd.to_datetime("04-01-2023 00:00:00") <= timedelta(seconds=180))
+        or (
+            start["event_time"] - pd.to_datetime("04-01-2023 00:00:00")
+            <= timedelta(seconds=180)
+        )
     )
 
 
@@ -69,7 +77,9 @@ class RunIDClass:
 
     def __add__(self, other):
         df.loc[df["run_id"] == self.run_id, "run_id"] = self.run_id + "_" + other.run_id
-        df.loc[df["run_id"] == other.run_id, "run_id"] = self.run_id + "_" + other.run_id
+        df.loc[df["run_id"] == other.run_id, "run_id"] = (
+            self.run_id + "_" + other.run_id
+        )
 
         return RunIDClass(
             self.run_id + "_" + other.run_id,
@@ -81,7 +91,8 @@ class RunIDClass:
 
     def __le__(self, other):
         return (
-            abs((self.start["event_time"] - other.end["event_time"])).total_seconds() < 80
+            abs((self.start["event_time"] - other.end["event_time"])).total_seconds()
+            < 80
         ) and (abs(self.start["track_dist"] - other.end["track_dist"]) <= 1000)
 
     def __sub__(self, other):

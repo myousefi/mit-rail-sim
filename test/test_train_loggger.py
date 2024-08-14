@@ -16,7 +16,9 @@ class TestTrainLogger(BaseTestCase):
         self.log_interval = 10
 
         # Set up the train logger with the train from the BaseTestCase
-        self.train_logger = TrainLogger(self.train, self.temp_log_file_path, self.log_interval)
+        self.train_logger = TrainLogger(
+            self.train, self.temp_log_file_path, self.log_interval
+        )
         self.train.train_logger = self.train_logger
 
     def tearDown(self):
@@ -69,7 +71,9 @@ class TestTrainLogger(BaseTestCase):
                 self.assertEqual(float(row[3]), self.train.acceleration)
                 self.assertEqual(float(row[4]), self.train.total_travelled_distance)
                 self.assertEqual(int(row[5]), self.train.current_block_index)
-                self.assertEqual(float(row[6]), self.train.distance_travelled_in_current_block)
+                self.assertEqual(
+                    float(row[6]), self.train.distance_travelled_in_current_block
+                )
                 self.assertEqual(row[7].lower() == "true", self.train.is_at_station())
 
 

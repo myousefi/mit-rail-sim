@@ -1,6 +1,5 @@
 import os
 
-import numpy as np
 import pandas as pd
 
 from mit_rail_sim.utils import project_root
@@ -8,7 +7,13 @@ from mit_rail_sim.utils import project_root
 os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 
 # Read the CSV file into a DataFrame
-csv_path = project_root / "mit_rail_sim" / "validation" / "simulation_results" / "train_test.csv"
+csv_path = (
+    project_root
+    / "mit_rail_sim"
+    / "validation"
+    / "simulation_results"
+    / "train_test.csv"
+)
 df = pd.read_csv(csv_path)
 
 # Convert time_in_seconds to a Pandas Timedelta object for resampling
@@ -24,7 +29,9 @@ df["adjusted_time"] = origin_timestamp + df["time_in_seconds"]
 
 # Group by 'replication_id', 'train_id' and the 10-second intervals
 df = (
-    df.groupby(["replication_id", "train_id", pd.Grouper(key="adjusted_time", freq="10S")])
+    df.groupby(
+        ["replication_id", "train_id", pd.Grouper(key="adjusted_time", freq="10S")]
+    )
     .first()
     .reset_index()
 )

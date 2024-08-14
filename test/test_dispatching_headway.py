@@ -7,7 +7,7 @@ import scipy.stats as st
 from fitter import Fitter
 from matplotlib import pyplot as plt
 from pandas.tseries.holiday import USFederalHolidayCalendar
-from pandas.tseries.offsets import BDay, CustomBusinessDay
+from pandas.tseries.offsets import CustomBusinessDay
 
 
 class TestDispatchingHeadway(unittest.TestCase):
@@ -28,7 +28,9 @@ class TestDispatchingHeadway(unittest.TestCase):
         # ]
 
         # set the date part to '1970-01-01' but keep the original time
-        df["event_time"] = df["event_time"].apply(lambda dt: dt.replace(year=1970, month=1, day=1))
+        df["event_time"] = df["event_time"].apply(
+            lambda dt: dt.replace(year=1970, month=1, day=1)
+        )
 
         df = df[
             (df["headway"] > df["headway"].quantile(0.01))

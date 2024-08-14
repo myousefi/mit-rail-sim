@@ -1,12 +1,10 @@
 from datetime import datetime, time
 
-import dash
 import dash_bootstrap_components as dbc
-import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from dash import Dash, Input, Output, State, dcc, html
+from dash import Dash, Input, Output, dcc, html
 from pandas.tseries.holiday import USFederalHolidayCalendar
 
 from mit_rail_sim.utils import find_free_port
@@ -28,7 +26,9 @@ def filter_by_time_and_weekday(df, start_time, end_time):
 
 def remove_holidays(df):
     cal = USFederalHolidayCalendar()
-    holidays = cal.holidays(start=df["event_datetime"].min(), end=df["event_datetime"].max())
+    holidays = cal.holidays(
+        start=df["event_datetime"].min(), end=df["event_datetime"].max()
+    )
     return df[~df["event_datetime"].dt.date.isin(holidays)].copy()
 
 
@@ -55,9 +55,17 @@ app.layout = dbc.Container(
                 ),
             ]
         ),
-        dbc.Row([dbc.Col(dcc.Graph(id="dwell-diff")), dbc.Col(dcc.Graph(id="run-time-diff"))]),
         dbc.Row(
-            [dbc.Col(dcc.Graph(id="dwell-diff-hist")), dbc.Col(dcc.Graph(id="run-time-diff-hist"))]
+            [
+                dbc.Col(dcc.Graph(id="dwell-diff")),
+                dbc.Col(dcc.Graph(id="run-time-diff")),
+            ]
+        ),
+        dbc.Row(
+            [
+                dbc.Col(dcc.Graph(id="dwell-diff-hist")),
+                dbc.Col(dcc.Graph(id="run-time-diff-hist")),
+            ]
         ),
     ],
     fluid=True,
@@ -116,7 +124,9 @@ def update_dwell_diff(time_range):
             avl["event_time_destination"] - avl["event_time_origin"]
         ).dt.total_seconds() / 60
 
-        sim_run_times = (sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]) / 60
+        sim_run_times = (
+            sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]
+        ) / 60
 
         real_run_times.dropna(inplace=True)
 
@@ -134,7 +144,9 @@ def update_dwell_diff(time_range):
             (real_run_times > lower_fence) & (real_run_times < upper_fence)
         ]
 
-    df = pd.DataFrame.from_dict(run_times_dict, orient="index", columns=["Dwell Time Difference"])
+    df = pd.DataFrame.from_dict(
+        run_times_dict, orient="index", columns=["Dwell Time Difference"]
+    )
 
     fig = go.Figure(
         go.Bar(
@@ -152,7 +164,10 @@ def update_dwell_diff(time_range):
     )
 
     fig2 = px.histogram(
-        df, x="Dwell Time Difference", nbins=20, title="Dwell Time Difference: AVL - SIM (mins) "
+        df,
+        x="Dwell Time Difference",
+        nbins=20,
+        title="Dwell Time Difference: AVL - SIM (mins) ",
     )
 
     fig2.add_annotation(
@@ -223,7 +238,9 @@ def update_run_time_diff(time_range):
             avl["event_time_destination"] - avl["event_time_origin"]
         ).dt.total_seconds() / 60
 
-        sim_run_times = (sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]) / 60
+        sim_run_times = (
+            sim["time_in_seconds_destination"] - sim["time_in_seconds_origin"]
+        ) / 60
 
         real_run_times.dropna(inplace=True)
 
@@ -248,7 +265,9 @@ def update_run_time_diff(time_range):
 
         run_times_dict[station] = real_run_times.mean() - sim_run_times.mean()
 
-    df = pd.DataFrame.from_dict(run_times_dict, orient="index", columns=["Run Time Difference"])
+    df = pd.DataFrame.from_dict(
+        run_times_dict, orient="index", columns=["Run Time Difference"]
+    )
 
     fig = go.Figure(
         go.Bar(
@@ -266,7 +285,10 @@ def update_run_time_diff(time_range):
     )
 
     fig2 = px.histogram(
-        df, x="Run Time Difference", nbins=20, title="Run Time Difference: AVL - SIM (mins) "
+        df,
+        x="Run Time Difference",
+        nbins=20,
+        title="Run Time Difference: AVL - SIM (mins) ",
     )
 
     fig2.add_annotation(
@@ -298,11 +320,14 @@ if __name__ == "__main__":
     merged_data.sort_values(by=["event_datetime"], inplace=True)
     track_df = merged_data.copy()
     merged_data["dwell_arrtodep"] = (
-        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds / 60
+        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds
+        / 60
     )
 
     merged_data = merged_data[merged_data["scada"].isin(STATION_BLOCK.values())]
-    merged_data["station"] = merged_data["scada"].map({v: k for k, v in STATION_BLOCK.items()})
+    merged_data["station"] = merged_data["scada"].map(
+        {v: k for k, v in STATION_BLOCK.items()}
+    )
 
     event_delay = pd.read_csv("./data/blue_line_event_delay_drqe.csv")
     event_delay["event_datetime"] = pd.to_datetime(event_delay["event_datetime"])
@@ -312,13 +337,17 @@ if __name__ == "__main__":
     block_test = pd.read_csv("./simulation_results/block_test.csv")
 
     # Step 1: Add difference_in_activation column to block_test
-    block_test.sort_values(by=["replication_id", "train_id", "time_in_seconds"], inplace=True)
-    block_test["difference_in_activation"] = -block_test.groupby(["replication_id", "train_id"])[
-        "time_in_seconds"
-    ].diff(-2)
+    block_test.sort_values(
+        by=["replication_id", "train_id", "time_in_seconds"], inplace=True
+    )
+    block_test["difference_in_activation"] = -block_test.groupby(
+        ["replication_id", "train_id"]
+    )["time_in_seconds"].diff(-2)
 
     # Create a new column in station_test dataframe to hold the corresponding block_id values
-    simulation_results["block_id"] = simulation_results["station_name"].map(STATION_BLOCK)
+    simulation_results["block_id"] = simulation_results["station_name"].map(
+        STATION_BLOCK
+    )
 
     # Merge the dataframes on replication_id, train_id and block_id
     simulation_results = pd.merge(

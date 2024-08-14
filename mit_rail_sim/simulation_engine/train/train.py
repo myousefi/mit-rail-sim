@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import math
-import random
 from typing import TYPE_CHECKING, Optional, Tuple
 
 from mit_rail_sim.simulation_engine.infrastructure.block import (
@@ -9,7 +8,6 @@ from mit_rail_sim.simulation_engine.infrastructure.block import (
 )
 
 if TYPE_CHECKING:
-    from mit_rail_sim.simulation_engine.utils.logger_utils import AsyncTrainLogger
     from mit_rail_sim.simulation_engine.train.train_passenger_manager import (
         TrainPassengerManager,
     )

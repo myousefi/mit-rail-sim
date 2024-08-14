@@ -1,6 +1,5 @@
 import json
 
-import matplotlib.pyplot as plt
 import pandas as pd
 
 from mit_rail_sim.utils import project_root
@@ -12,7 +11,11 @@ with open(project_root / "alt_file_northbound_updated.json", "r") as f:
     for i, block in enumerate(data[:-1]):  # Exclude the last block to avoid index error
         if "STATION" in block:
             station_blocks.append(
-                (block["BLOCK_ALT"], data[i + 1]["BLOCK_ALT"], block["STATION"]["STATION_NAME"])
+                (
+                    block["BLOCK_ALT"],
+                    data[i + 1]["BLOCK_ALT"],
+                    block["STATION"]["STATION_NAME"],
+                )
             )
 
 # Load the track_events dataset
@@ -38,7 +41,9 @@ from dash.dependencies import Input, Output
 app = dash.Dash(__name__)
 
 # Get the list of unique station names for the dropdown menu
-station_names = sorted(set(station_name for block1, block2, station_name in station_blocks))
+station_names = sorted(
+    set(station_name for block1, block2, station_name in station_blocks)
+)
 
 app.layout = html.Div(
     [
@@ -79,7 +84,9 @@ def update_histogram(selected_station):
         tolerance=pd.Timedelta("5 minute"),
     )
 
-    merged["time_difference"] = (merged["time"] - merged["event_time"]).dt.total_seconds()
+    merged["time_difference"] = (
+        merged["time"] - merged["event_time"]
+    ).dt.total_seconds()
 
     # filter by fence method
     q1 = merged["time_difference"].quantile(0.25)
@@ -91,7 +98,9 @@ def update_histogram(selected_station):
     ]
 
     # Create the histogram using Plotly Express
-    fig = px.histogram(merged, x="time_difference", title="Histogram of Time Differences")
+    fig = px.histogram(
+        merged, x="time_difference", title="Histogram of Time Differences"
+    )
 
     return fig
 

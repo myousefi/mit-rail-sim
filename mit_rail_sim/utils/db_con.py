@@ -1,8 +1,6 @@
 import os
-import warnings
 from dotenv import find_dotenv, load_dotenv
-from sqlalchemy import create_engine, text
-
+from sqlalchemy import create_engine, text  # noqa: F401
 from rich.console import Console
 from rich.panel import Panel
 

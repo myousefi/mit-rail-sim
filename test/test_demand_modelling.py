@@ -60,7 +60,9 @@ class ArrivalRateCSVGeneratorTest(unittest.TestCase):
             writer.writeheader()
 
             for day in weekday:
-                for hour in [round(x * hour_step, 2) for x in range(int(24 / hour_step))]:
+                for hour in [
+                    round(x * hour_step, 2) for x in range(int(24 / hour_step))
+                ]:
                     for origin_stop, destination_stop in combinations(station_names, 2):
                         writer.writerow(
                             {

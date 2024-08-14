@@ -16,7 +16,10 @@ app.layout = html.Div(
         html.H1("Arrival Rate Heatmap", style={"textAlign": "center"}),
         dcc.Checklist(
             id="weekday-checkbox",
-            options=[{"label": "Weekday", "value": True}, {"label": "Weekend", "value": False}],
+            options=[
+                {"label": "Weekday", "value": True},
+                {"label": "Weekend", "value": False},
+            ],
             value=[True],
             inline=True,
         ),
@@ -35,15 +38,21 @@ app.layout = html.Div(
 
 # Define the callback to update graph
 @app.callback(
-    Output("heatmap", "figure"), [Input("weekday-checkbox", "value"), Input("hour-slider", "value")]
+    Output("heatmap", "figure"),
+    [Input("weekday-checkbox", "value"), Input("hour-slider", "value")],
 )
 def update_heatmap(weekday, hour):
     is_weekday = weekday[0] if weekday else False
     hour_df = df[(df["weekday"] == is_weekday) & (df["hour"] == hour)]
-    pivot_df = hour_df.pivot(index="origin_stop", columns="destination_stop", values="arrival_rate")
+    pivot_df = hour_df.pivot(
+        index="origin_stop", columns="destination_stop", values="arrival_rate"
+    )
     fig = go.Figure(
         data=go.Heatmap(
-            z=pivot_df.values, x=pivot_df.columns, y=pivot_df.index, colorscale="Viridis"
+            z=pivot_df.values,
+            x=pivot_df.columns,
+            y=pivot_df.index,
+            colorscale="Viridis",
         )
     )
     fig.update_layout(title=f"Hour: {hour}, Weekday: {is_weekday}", xaxis_nticks=36)

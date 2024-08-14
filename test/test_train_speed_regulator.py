@@ -1,7 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
 
-from mit_rail_sim.simulation_engine.train import Train
 from mit_rail_sim.simulation_engine.train.train_speed_regulator import (  # AccelerateToSpeedCodeState,
     TrainSpeedRegulator,
 )
@@ -52,7 +51,9 @@ class TestTrainSpeedRegulator(unittest.TestCase):
         ]:
             self.train.current_block.current_speed_code = cur_speed_code
             self.train.next_block.current_speed_code = next_speed_code
-            self.assertAlmostEqual(self.regulator.planning_distance, expected_planning_dist)
+            self.assertAlmostEqual(
+                self.regulator.planning_distance, expected_planning_dist
+            )
 
     def test_braking_distance(self):
         for speed, expected_braking_distance in [
@@ -62,7 +63,9 @@ class TestTrainSpeedRegulator(unittest.TestCase):
             (60, 1800),
         ]:
             self.train.speed = speed
-            self.assertAlmostEqual(self.regulator.braking_distance, expected_braking_distance)
+            self.assertAlmostEqual(
+                self.regulator.braking_distance, expected_braking_distance
+            )
 
     def test_regulate_acceleration(self):
         self.regulator.state = MagicMock()
@@ -133,7 +136,9 @@ class TestDecelerateToSpeedNormalRateForPlanningState(unittest.TestCase):
     def setUp(self):
         self.regulator = MagicMock()
         self.next_block = MagicMock()
-        self.state = DecelerateToSpeedNormalRateForPlanningState(self.regulator, self.next_block)
+        self.state = DecelerateToSpeedNormalRateForPlanningState(
+            self.regulator, self.next_block
+        )
 
     def test_set_the_acceleration(self):
         test_cases = [

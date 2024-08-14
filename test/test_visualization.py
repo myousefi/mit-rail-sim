@@ -3,7 +3,6 @@ from typing import List, Optional, TypeVar
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import plotly.graph_objs as go
 import plotly.io as pio
 from plotly.subplots import make_subplots
 from typing_extensions import Protocol
@@ -62,7 +61,6 @@ class VisualizationMixin(VisualizationMixinBase):
             unique_states = data["train_speed_regulator_states"].unique()
 
             for state, group in data.groupby("train_speed_regulator_states"):
-
                 state_index = unique_states.tolist().index(state)
 
                 fig.add_trace(
@@ -78,7 +76,9 @@ class VisualizationMixin(VisualizationMixinBase):
                 )
         else:
             fig.add_trace(
-                go.Scatter(x=distances, y=quantity_to_profile, mode="lines", name=title),
+                go.Scatter(
+                    x=distances, y=quantity_to_profile, mode="lines", name=title
+                ),
             )
 
         if current_speed_codes is not None:
@@ -147,7 +147,6 @@ class VisualizationMixin(VisualizationMixinBase):
         colors = px.colors.qualitative.Plotly
 
         if train_speed_regulator_states is not None:
-
             data = pd.DataFrame(
                 {
                     "times": times,
@@ -160,7 +159,6 @@ class VisualizationMixin(VisualizationMixinBase):
             unique_states = data["train_speed_regulator_states"].unique()
 
             for state, group in data.groupby("train_speed_regulator_states"):
-
                 state_index = unique_states.tolist().index(state)
 
                 fig.add_trace(

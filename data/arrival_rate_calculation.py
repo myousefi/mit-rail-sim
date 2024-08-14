@@ -19,8 +19,12 @@ def preprocess_data(data):
     data = data[data["inferred_alighting_gtfs_stop"].notnull()]
     data = data[data["inferred_alighting_gtfs_stop"] != "None"]
     data["transaction_dtm"] = pd.to_datetime(data["transaction_dtm"])
-    data["hour"] = data["transaction_dtm"].dt.hour + data["transaction_dtm"].dt.minute / 60
-    bins = [i / 4 - 0.0001 for i in range(0, 97)]  # Create bins for every 15-minute interval
+    data["hour"] = (
+        data["transaction_dtm"].dt.hour + data["transaction_dtm"].dt.minute / 60
+    )
+    bins = [
+        i / 4 - 0.0001 for i in range(0, 97)
+    ]  # Create bins for every 15-minute interval
     labels = [i / 4 for i in range(0, 96)]  # Create labels for the bins
     data["hour"] = pd.cut(data["hour"], bins=bins, labels=labels).astype(float)
     data["weekday"] = data["transaction_dtm"].dt.weekday < 5
@@ -28,7 +32,9 @@ def preprocess_data(data):
 
 
 def calculate_arrival_rates(data, stations):
-    data["inferred_alighting_gtfs_stop"] = data["inferred_alighting_gtfs_stop"].astype(int)
+    data["inferred_alighting_gtfs_stop"] = data["inferred_alighting_gtfs_stop"].astype(
+        int
+    )
     data["boarding_stop"] = data["boarding_stop"].astype(int)
 
     merged_data_destination = (
@@ -54,7 +60,9 @@ def calculate_arrival_rates(data, stations):
     )
 
     grouped_data = (
-        merged_data_origin.groupby(["hour", "weekday", "origin_stop", "destination_stop"])
+        merged_data_origin.groupby(
+            ["hour", "weekday", "origin_stop", "destination_stop"]
+        )
         .size()
         .reset_index(name="count")
     )
@@ -78,7 +86,8 @@ def calculate_arrival_rates(data, stations):
     )  # Since there are two weekend days (Saturday and Sunday)
 
     grouped_data["arrival_rate"] = grouped_data.apply(
-        lambda x: (x["count"] / (total_weekdays if x["weekday"] else total_weekends)) * 4,
+        lambda x: (x["count"] / (total_weekdays if x["weekday"] else total_weekends))
+        * 4,
         axis=1,
     )
 

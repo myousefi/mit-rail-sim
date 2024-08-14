@@ -1,5 +1,4 @@
 import pandas as pd
-from pandas.tseries.offsets import BDay
 
 # Load the dataset
 df = pd.read_csv("data/emprical_schedule/events.csv")
@@ -103,7 +102,10 @@ def check_short_turning(group):
 
         if list(station_to_time.keys()).index(row["station"]) <= 9:
             group.loc[i, "is_short_turning"] = 0
-        elif "Forest Park" in prev_events["station"].values or row["station"] == "LV Forest Park":
+        elif (
+            "Forest Park" in prev_events["station"].values
+            or row["station"] == "LV Forest Park"
+        ):
             group.loc[i, "is_short_turning"] = 0
         elif "Cicero" in prev_events["station"].values or row["station"] == "Cicero":
             group.loc[i, "is_short_turning"] = 0

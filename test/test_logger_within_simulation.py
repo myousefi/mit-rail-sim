@@ -79,7 +79,6 @@ class TestTrainLogger(BaseTestCase):
             self.assertEqual(row[7].lower() == "true", False)
 
     def test_logging_for_the_latest_step(self):
-
         steps_to_log = self.log_interval * 50
 
         self.simulation.run(steps_to_log)

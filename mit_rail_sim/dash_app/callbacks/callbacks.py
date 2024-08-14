@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from dash import Input, Output, no_update
+from dash import Input, Output
 
 if TYPE_CHECKING:
     from dash import Dash
@@ -16,7 +16,9 @@ def callbacks(
     arrival_rate_plot_creator: ArrivalRatePlotCreator,
 ):
     @app.callback(
-        Output("replication_id", "data"),  # Dummy output, won't actually change anything
+        Output(
+            "replication_id", "data"
+        ),  # Dummy output, won't actually change anything
         [Input("replication_id_dropdown", "value")],
     )
     def update_replication_id(replication_id):
@@ -116,4 +118,6 @@ def callbacks(
     )
     def update_arrival_rates_figure(hour_range, weekday):
         is_weekday = weekday if weekday else False
-        return arrival_rate_plot_creator.get_figure(hour_range[0], hour_range[1], is_weekday)
+        return arrival_rate_plot_creator.get_figure(
+            hour_range[0], hour_range[1], is_weekday
+        )

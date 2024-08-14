@@ -1,15 +1,10 @@
 # %%
-import dash
-import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 import plotly.io as pio
-from dash import Input, Output, callback, dcc, html
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
 
-from mit_rail_sim.utils import find_free_port
-from mit_rail_sim.utils.db_con import engine, text
+from mit_rail_sim.utils.db_con import engine
 
 pio.templates.default = "simple_white"
 
@@ -87,9 +82,6 @@ df["starttp_abs_dist"] = df["starttp"].map(MARKER_ABS_DIST)
 df["endtp_abs_dist"] = df["endtp"].map(MARKER_ABS_DIST)
 
 
-import datetime
-
-
 def seconds_to_time(seconds):
     return pd.to_datetime(seconds, unit="s")
 
@@ -99,7 +91,6 @@ df["schd_tripend_time"] = df["schd_tripend"].apply(seconds_to_time)
 
 df.head()
 # %%
-import plotly.express as px
 
 fig = px.timeline(
     df,

@@ -37,9 +37,13 @@ class TrainMovementVisualizationMixin(VisualizationMixin):
                     distance = self.train.total_travelled_distance
                     acceleration = self.train.acceleration
                     planned_distance = self.train_speed_regulator.planning_distance
-                    current_speed_code = self.train.current_block.current_speed_code(self.train)
+                    current_speed_code = self.train.current_block.current_speed_code(
+                        self.train
+                    )
                     distance_to_next_station = self.train.distance_to_next_station
-                    train_speed_regulator_state = str(self.train.train_speed_regulator.state)
+                    train_speed_regulator_state = str(
+                        self.train.train_speed_regulator.state
+                    )
 
                     speeds.append(speed)
                     times.append(time)
@@ -226,7 +230,9 @@ class RandomizedBaseTestCase(unittest.TestCase, TrainMovementVisualizationMixin)
             visible_distance=random.randint(50, 1000),
             length=random.randint(1000, 10000),
             default_speed_code=random.randint(10, 60),
-            speed_codes_to_communicate=random_speed_codes(["Block_001", "Block_002", "Block_004"]),
+            speed_codes_to_communicate=random_speed_codes(
+                ["Block_001", "Block_002", "Block_004"]
+            ),
             station=Station("A", random.randint(10, 900)),
         )
 
@@ -235,7 +241,9 @@ class RandomizedBaseTestCase(unittest.TestCase, TrainMovementVisualizationMixin)
             visible_distance=random.randint(50, 1000),
             length=random.randint(1000, 10000),
             default_speed_code=random.randint(10, 60),
-            speed_codes_to_communicate=random_speed_codes(["Block_002", "Block_003", "Block_005"]),
+            speed_codes_to_communicate=random_speed_codes(
+                ["Block_002", "Block_003", "Block_005"]
+            ),
         )
 
         self.block5 = Block(
@@ -250,7 +258,9 @@ class RandomizedBaseTestCase(unittest.TestCase, TrainMovementVisualizationMixin)
             [self.block1, self.block2, self.block3, self.block4, self.block5]
         )
 
-        self.path = Path([self.block1, self.block2, self.block3, self.block4, self.block5])
+        self.path = Path(
+            [self.block1, self.block2, self.block3, self.block4, self.block5]
+        )
 
         self.train_speed_regulator = TrainSpeedRegulator(
             max_acceleration=random.uniform(2, 6),

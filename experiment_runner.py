@@ -1,6 +1,5 @@
 import os
 import shutil
-import sys
 from random import randint, seed
 from test.test_trb_submission_experiments.factory.block_factory import BlockFactory
 from test.test_trb_submission_experiments.util.data_loader import DataLoader
@@ -9,7 +8,7 @@ import hydra
 from omegaconf import DictConfig
 
 from mit_rail_sim.simulation_engine.passenger.arrival_rate import ArrivalRate
-from mit_rail_sim.simulation_engine.schedule import GammaSchedule, Schedule
+from mit_rail_sim.simulation_engine.schedule import GammaSchedule
 from mit_rail_sim.simulation_engine.simulation.replication_manager import (
     ReplicationManager,
 )
@@ -18,7 +17,6 @@ from mit_rail_sim.simulation_engine.utils.logger_utils import (
     NullTrainLogger,
     PassengerLogger,
     StationLogger,
-    TrainLogger,
 )
 from mit_rail_sim.utils import project_root
 
@@ -26,14 +24,18 @@ from mit_rail_sim.utils import project_root
 class CTABlueLineSimulator:
     def __init__(self, cfg):
         self.cfg = cfg
-        self.arrival_rates = ArrivalRate(filename=project_root / "data" / "arrival_rates.csv")
+        self.arrival_rates = ArrivalRate(
+            filename=project_root / "data" / "arrival_rates.csv"
+        )
         self.data_loader = DataLoader()
         self.block_factory = BlockFactory(self.arrival_rates)
         self.current_seed = self.data_loader.load_seed() or randint(0, 2**32 - 1)
         seed(self.current_seed)
 
         # Construct log file paths
-        base_path = os.path.join(cfg.log_file_base_path, cfg.signal_system.log_file_suffix)
+        base_path = os.path.join(
+            cfg.log_file_base_path, cfg.signal_system.log_file_suffix
+        )
         # Check if path exists and exit if it does
         if os.path.exists(base_path):
             # raise RuntimeError(f"Path {base_path} already exists. Stopping experiment.")
@@ -73,15 +75,20 @@ class CTABlueLineSimulator:
         )
 
         replication_manager.run_replications(
-            schedule=GammaSchedule(num_trains=100, mean=self.cfg.headway, cv=self.cfg.cv_headway),
-            path_initializer_function=lambda data, slow_zones: self.block_factory.create_path_and_control_center(
+            schedule=GammaSchedule(
+                num_trains=100, mean=self.cfg.headway, cv=self.cfg.cv_headway
+            ),
+            path_initializer_function=lambda data,
+            slow_zones: self.block_factory.create_path_and_control_center(
                 data,
                 slow_zones,
                 block_type=self.cfg.signal_system.block_type,
                 moving_block_safety_margin=200
                 if self.cfg.signal_system.block_type == "MovingBlock"
                 else None,
-                offscan_blocks=[(self.cfg.offscan_symptomatic_block, self.cfg.offscan_probability)],
+                offscan_blocks=[
+                    (self.cfg.offscan_symptomatic_block, self.cfg.offscan_probability)
+                ],
             ),
             data=data,
             slow_zones=slow_zones,

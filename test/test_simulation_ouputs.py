@@ -29,12 +29,17 @@ class TestRailwaySimulation(unittest.TestCase):
 
         # Keep the stations sorted as per the first train in the first replication
         first_train_stations = (
-            df[(df["train_id"] == "train_0") & (df["replication_id"] == first_replication_id)]
+            df[
+                (df["train_id"] == "train_0")
+                & (df["replication_id"] == first_replication_id)
+            ]
             .sort_values(by="time_in_seconds")["station_name"]
             .tolist()
         )
         station_headway_cv["station_name"] = pd.Categorical(
-            station_headway_cv["station_name"], categories=first_train_stations, ordered=True
+            station_headway_cv["station_name"],
+            categories=first_train_stations,
+            ordered=True,
         )
         station_headway_cv = station_headway_cv.sort_values("station_name")
 
@@ -43,7 +48,10 @@ class TestRailwaySimulation(unittest.TestCase):
             station_headway_cv,
             x="station_name",
             y="headway",
-            labels={"headway": "Coefficient of Variation (%)", "station_name": "Station Name"},
+            labels={
+                "headway": "Coefficient of Variation (%)",
+                "station_name": "Station Name",
+            },
             title="Coefficient of Variation of Headways",
         )
         fig.show()
