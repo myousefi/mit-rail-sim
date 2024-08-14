@@ -28,6 +28,7 @@ geopandas = "*"
 jupyterlab = "*"
 kaleido = "*"
 rich = "*"
+pre-commit = "*"
 
 [dev-packages]
 nbformat = "*"
