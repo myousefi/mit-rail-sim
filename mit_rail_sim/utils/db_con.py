@@ -26,7 +26,7 @@ try:
     engine = create_engine(
         f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
     )
-except (FileNotFoundError, KeyError, ValueError):
+except (FileNotFoundError, KeyError, ValueError, OSError, IOError):
     console.print(
         Panel.fit(
             "[bold red]WARNING:[/bold red] Database connection is not available. "
