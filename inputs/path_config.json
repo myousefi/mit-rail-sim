@@ -1,0 +1,48 @@
+{
+    "directions": [
+        "Northbound",
+        "Southbound"
+    ],
+    "dispatching_blocks": [
+        {
+            "direction": "Northbound",
+            "block_id": "WC-470",
+            "dispatch_margin": 0,
+            "upstream_blocks": [
+                "WC-470"
+            ]
+        },
+        {
+            "direction": "Northbound",
+            "block_id": "WC-16",
+            "dispatch_margin": 80,
+            "upstream_blocks": [
+                "WC-35",
+                "WC-32",
+                "321",
+                "WC-26",
+                "WC-22",
+                "311",
+                "WC-16"
+            ]
+        },
+        {
+            "direction": "Southbound",
+            "block_id": "NWD-739",
+            "dispatch_margin": 0,
+            "upstream_blocks": [
+                "NWD-739"
+            ]
+        }
+    ],
+    "short_turning": {
+        "UIC": {
+            "nb_juncture_block_id": "WC-16",
+            "sb_juncture_block_id": "WD-13"
+        },
+        "Western": {
+            "nb_juncture_block_id": "WC-104",
+            "sb_juncture_block_id": "WD-111"
+        }
+    }
+}
