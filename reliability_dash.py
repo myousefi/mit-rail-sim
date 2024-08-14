@@ -31,7 +31,10 @@ app.layout = html.Div(
                     [
                         dcc.Dropdown(
                             id="dropdown1",
-                            options=[{"label": i, "value": i} for i in df["block_type"].unique()],
+                            options=[
+                                {"label": i, "value": i}
+                                for i in df["block_type"].unique()
+                            ],
                             value=df["block_type"].unique()[0],
                             placeholder="Select a signal system...",
                         ),
@@ -45,13 +48,18 @@ app.layout = html.Div(
                         ),
                         dcc.Dropdown(
                             id="dropdown3",
-                            options=[{"label": i, "value": i} for i in df["headway"].unique()],
+                            options=[
+                                {"label": i, "value": i} for i in df["headway"].unique()
+                            ],
                             value=df["headway"].unique()[0],
                             placeholder="Select mean headway...",
                         ),
                         dcc.Dropdown(
                             id="dropdown4",
-                            options=[{"label": i, "value": i} for i in df["cv_headway"].unique()],
+                            options=[
+                                {"label": i, "value": i}
+                                for i in df["cv_headway"].unique()
+                            ],
                             value=df["cv_headway"].unique()[0],
                             placeholder="Select CV headway...",
                         ),
@@ -62,7 +70,10 @@ app.layout = html.Div(
                     [
                         dcc.Dropdown(
                             id="dropdown5",
-                            options=[{"label": i, "value": i} for i in df["block_type"].unique()],
+                            options=[
+                                {"label": i, "value": i}
+                                for i in df["block_type"].unique()
+                            ],
                             value=df["block_type"].unique()[0],
                             placeholder="Select a signal system...",
                         ),
@@ -76,13 +87,18 @@ app.layout = html.Div(
                         ),
                         dcc.Dropdown(
                             id="dropdown7",
-                            options=[{"label": i, "value": i} for i in df["headway"].unique()],
+                            options=[
+                                {"label": i, "value": i} for i in df["headway"].unique()
+                            ],
                             value=df["headway"].unique()[0],
                             placeholder="Select mean headway...",
                         ),
                         dcc.Dropdown(
                             id="dropdown8",
-                            options=[{"label": i, "value": i} for i in df["cv_headway"].unique()],
+                            options=[
+                                {"label": i, "value": i}
+                                for i in df["cv_headway"].unique()
+                            ],
                             value=df["cv_headway"].unique()[0],
                             placeholder="Select CV headway...",
                         ),
@@ -142,11 +158,13 @@ def update_graph(signal1, zone1, mean1, signal2, zone2, mean2):
         ]
 
         trace1_values = [
-            df_filtered1[f"cv_headway_{station.replace(' ', '_')}"].mean() for station in stations
+            df_filtered1[f"cv_headway_{station.replace(' ', '_')}"].mean()
+            for station in stations
         ]
 
         trace2_values = [
-            df_filtered2[f"cv_headway_{station.replace(' ', '_')}"].mean() for station in stations
+            df_filtered2[f"cv_headway_{station.replace(' ', '_')}"].mean()
+            for station in stations
         ]
 
         trace1 = go.Bar(
@@ -181,7 +199,8 @@ def update_graph(signal1, zone1, mean1, signal2, zone2, mean2):
         fig.update_yaxes(title_text=f"CV Headway: {cv}", row=i, col=1)
 
     fig.update_layout(
-        height=400 * len(cv_headway_values),  # adjust height based on the number of subplots
+        height=400
+        * len(cv_headway_values),  # adjust height based on the number of subplots
         template="plotly_white",
         barmode="group",
         legend=dict(

@@ -1,7 +1,6 @@
 # %%
 import os
 from pathlib import Path
-import re
 import pandas as pd
 import glob
 import plotly.io as pio
@@ -86,8 +85,6 @@ data["PM"] = all_data[
     "period=version_83,scen=schedule-evaluation,schd=PM,station=NO-CONTROL"
 ]
 # %%
-from mit_rail_sim.validation.validation_dash import STATION_ORDER
-import plotly.express as px
 
 
 def alighting_boarding_figures(simulation_results):
@@ -354,7 +351,9 @@ for schd in data.keys():
 
     fig.show(renderer="browser")
 
-    fig.write_image(OUTPUT_DIRECTORY / f"denied-boarfing-percentage-peak-hour-{schd}.svg")
+    fig.write_image(
+        OUTPUT_DIRECTORY / f"denied-boarfing-percentage-peak-hour-{schd}.svg"
+    )
 
 # %%
 for schd in data.keys():
@@ -374,7 +373,6 @@ for schd in data.keys():
     print(denied_boardings_by_hour)
 
 # %%
-import pandas as pd
 import plotly.graph_objects as go
 
 for schd in data.keys():
@@ -446,7 +444,9 @@ for schd, df in data.items():
         "is_short_turning"
     ].transform("max")
 
-    df["is_short_turning"] = df["is_short_turning"].replace({True: "Short Truning", False: "Full Service"})
+    df["is_short_turning"] = df["is_short_turning"].replace(
+        {True: "Short Truning", False: "Full Service"}
+    )
 
     df = df[df["direction"] == direction]
 

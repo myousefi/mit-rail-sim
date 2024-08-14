@@ -2,20 +2,16 @@
 import glob
 import os
 from pathlib import Path
-import stat
 
 import pandas as pd
 import plotly.io as pio
 
-from mit_rail_sim.utils.root_path import project_root
 
 pio.templates.default = "simple_white"
 # pio.renderers.default = "browser"
 
-import os
 
 import plotly.express as px
-import plotly.graph_objects as go
 
 from mit_rail_sim.validation.validation_dash import STATION_ORDER
 

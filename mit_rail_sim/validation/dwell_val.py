@@ -1,13 +1,9 @@
 import json
-from datetime import datetime, time
+from datetime import datetime
 
-import dash
-import dash_bootstrap_components as dbc
-import numpy as np
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-from dash import Dash, Input, Output, State, dcc, html
+from dash import Dash, Input, Output, dcc, html
 from pandas.tseries.holiday import USFederalHolidayCalendar
 
 from mit_rail_sim.utils import find_free_port, project_root
@@ -133,7 +129,9 @@ def filter_by_time_and_weekday(df, start_time, end_time):
 
 def remove_holidays(df):
     cal = USFederalHolidayCalendar()
-    holidays = cal.holidays(start=df["event_datetime"].min(), end=df["event_datetime"].max())
+    holidays = cal.holidays(
+        start=df["event_datetime"].min(), end=df["event_datetime"].max()
+    )
     return df[~df["event_datetime"].dt.date.isin(holidays)].copy()
 
 
@@ -195,7 +193,8 @@ if __name__ == "__main__":
                 break
 
     merged_data["dwell_arrtodep"] = (
-        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds / 60
+        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds
+        / 60
     )
 
     merged_data["next_scada"] = merged_data["scada"].map(two_next_scada)
@@ -205,14 +204,18 @@ if __name__ == "__main__":
         group["consecutive_scada"] = group["next_scada"].eq(group["scada"].shift(-2))
         return group
 
-    merged_data = merged_data.groupby(["date", "run_id"], as_index=False).apply(calc_dwell)
+    merged_data = merged_data.groupby(["date", "run_id"], as_index=False).apply(
+        calc_dwell
+    )
 
     # merged_data["consecutive_scada"] = merged_data.groupby(["date", "run_id"])[merged_data["scada"].shift(-2).eq(merged_data["next_scada"])]
 
     merged_data = merged_data[merged_data["scada"].isin(STATION_BLOCK.values())]
     merged_data = merged_data[merged_data["consecutive_scada"]]
 
-    merged_data["station"] = merged_data["scada"].map({v: k for k, v in STATION_BLOCK.items()})
+    merged_data["station"] = merged_data["scada"].map(
+        {v: k for k, v in STATION_BLOCK.items()}
+    )
 
     # print(merged_data.head())
 
@@ -220,13 +223,17 @@ if __name__ == "__main__":
     block_test = pd.read_csv("./simulation_results/block_test.csv")
 
     # Step 1: Add difference_in_activation column to block_test
-    block_test.sort_values(by=["replication_id", "train_id", "time_in_seconds"], inplace=True)
-    block_test["difference_in_activation"] = -block_test.groupby(["replication_id", "train_id"])[
-        "time_in_seconds"
-    ].diff(-2)
+    block_test.sort_values(
+        by=["replication_id", "train_id", "time_in_seconds"], inplace=True
+    )
+    block_test["difference_in_activation"] = -block_test.groupby(
+        ["replication_id", "train_id"]
+    )["time_in_seconds"].diff(-2)
 
     # Create a new column in station_test dataframe to hold the corresponding block_id values
-    simulation_results["block_id"] = simulation_results["station_name"].map(STATION_BLOCK)
+    simulation_results["block_id"] = simulation_results["station_name"].map(
+        STATION_BLOCK
+    )
 
     # Merge the dataframes on replication_id, train_id and block_id
     simulation_results = pd.merge(
@@ -276,9 +283,9 @@ if __name__ == "__main__":
             simulation_results.groupby(
                 [pd.Grouper(key="time", freq="30min", origin="epoch"), "station"]
             )["difference_in_activation"].mean(),
-            merged_data.groupby([pd.Grouper(key="time", freq="30min", origin="epoch"), "station"])[
-                "dwell_arrtodep"
-            ].mean(),
+            merged_data.groupby(
+                [pd.Grouper(key="time", freq="30min", origin="epoch"), "station"]
+            )["dwell_arrtodep"].mean(),
             # simulation_results.groupby(
             #     [pd.Grouper(key="time", freq="30min", origin="epoch"), "station"]
             # )["dwell_time"].mean(),
@@ -300,9 +307,9 @@ if __name__ == "__main__":
     dwell_scatter = (
         pd.concat(
             [
-                simulation_results[["time", "station", "difference_in_activation"]].rename(
-                    columns={"difference_in_activation": "duration"}
-                ),
+                simulation_results[
+                    ["time", "station", "difference_in_activation"]
+                ].rename(columns={"difference_in_activation": "duration"}),
                 merged_data[["time", "station", "dwell_arrtodep"]].rename(
                     columns={"dwell_arrtodep": "duration"}
                 ),

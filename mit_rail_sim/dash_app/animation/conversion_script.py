@@ -14,12 +14,16 @@ os.chdir(project_root / "mit_rail_sim" / "dash_app" / "animation")
 load_dotenv()
 
 # Read the stations shapefile
-stations_shapefile_path = "./assets/cta_rail_lines_and_stations/CTA_RailStations-point.shp"
+stations_shapefile_path = (
+    "./assets/cta_rail_lines_and_stations/CTA_RailStations-point.shp"
+)
 stations_gdf = gpd.read_file(stations_shapefile_path)
 stations_gdf = stations_gdf[stations_gdf["Rail Line"].str.contains("Blue")]
 
 # Read the rail lines shapefile
-rail_lines_shapefile_path = "./assets/cta_rail_lines_and_stations/CTA_RailLines-line.shp"
+rail_lines_shapefile_path = (
+    "./assets/cta_rail_lines_and_stations/CTA_RailLines-line.shp"
+)
 rail_lines_gdf = gpd.read_file(rail_lines_shapefile_path)
 rail_lines_gdf = rail_lines_gdf[rail_lines_gdf["ALT_LEGEND"] == "BL"]
 rail_lines_gdf = rail_lines_gdf.to_crs(epsg=26916)

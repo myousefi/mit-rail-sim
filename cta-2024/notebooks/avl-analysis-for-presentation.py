@@ -107,11 +107,8 @@ for period, period_results in results.items():
 
 # %%
 import plotly.express as px
-import plotly.graph_objects as go
 import plotly.io as pio
 import pandas as pd
-import numpy as np
-from scipy.stats import norm
 
 pio.templates.default = "simple_white"
 

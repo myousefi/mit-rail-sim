@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 
 from mit_rail_sim.utils.db_con import engine, text
 from mit_rail_sim.utils.root_path import project_root

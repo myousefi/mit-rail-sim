@@ -4,7 +4,10 @@ from mit_rail_sim.utils import project_root
 
 # Load first file
 with open(
-    project_root / "data" / "cta_blue_line_infra" / "northbound_signal_blocks_and_tracks.json",
+    project_root
+    / "data"
+    / "cta_blue_line_infra"
+    / "northbound_signal_blocks_and_tracks.json",
     "r",
 ) as f:
     data1 = json.load(f)

@@ -373,7 +373,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_sensitivity.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_sensitivity.svg"
     )
 )
 
@@ -486,12 +486,11 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_sensitivity.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_sensitivity.svg"
     )
 )
 
 # %%
-import plotly.express as px
 
 # Filter the data for max_holding=180 and max_holding=0 at Clark/Lake station
 df_180 = df_combined[

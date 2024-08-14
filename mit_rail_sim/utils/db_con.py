@@ -1,7 +1,10 @@
 import os
-import warnings
 from dotenv import find_dotenv, load_dotenv
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text  # noqa: F401
+from rich.console import Console
+from rich.panel import Panel
+
+console = Console()
 
 
 class DummyEngine:
@@ -22,7 +25,13 @@ try:
         f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
     )
 except (FileNotFoundError, KeyError, ValueError, OSError, IOError):
-    warnings.warn(
-        "Database connection is not available. Some features like CTA String Chart dashboards will not work. Please provide a .env file with correct credentials."
+    console.print(
+        Panel.fit(
+            "[bold red]WARNING:[/bold red] Database connection is not available. "
+            "Some features like CTA String Chart dashboards will not work. "
+            "Please provide a .env file with correct credentials.",
+            title="Database Connection Error",
+            border_style="red",
+        )
     )
     engine = DummyEngine()

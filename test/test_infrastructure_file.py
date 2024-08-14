@@ -65,7 +65,9 @@ class TestPlotInfrastructure(unittest.TestCase):
             speed = int(segment["SPEED"])
 
             # Plot the speed limit within each block as a horizontal line
-            self.add_trace_to_figure(fig, [start, end], [speed, speed], dict(color="blue", width=1))
+            self.add_trace_to_figure(
+                fig, [start, end], [speed, speed], dict(color="blue", width=1)
+            )
 
             # Plot the blocks
             fig.add_shape(
@@ -90,8 +92,12 @@ class TestPlotInfrastructure(unittest.TestCase):
             # Plot the stations
             if "STATION" in segment:
                 station_name = segment["STATION"]["STATION_NAME"]
-                end_of_platform_milepost = int(segment["STATION"]["END_OF_PLATFORM_MILEPOST"])
-                station_pos = distance + abs(end_of_platform_milepost - segment["STARTSTN"])
+                end_of_platform_milepost = int(
+                    segment["STATION"]["END_OF_PLATFORM_MILEPOST"]
+                )
+                station_pos = distance + abs(
+                    end_of_platform_milepost - segment["STARTSTN"]
+                )
                 fig.add_shape(
                     type="line",
                     x0=station_pos,
@@ -171,7 +177,11 @@ class TestPlotInfrastructure(unittest.TestCase):
         )
 
         track_speed_dict = pd.read_csv(
-            project_root / "mit_rail_sim" / "validation" / "data" / "track_events_result.csv"
+            project_root
+            / "mit_rail_sim"
+            / "validation"
+            / "data"
+            / "track_events_result.csv"
         )
 
         for index, row in track_speed_dict.iterrows():
@@ -214,7 +224,11 @@ class TestPlotInfrastructure(unittest.TestCase):
         )
 
         avl_speed = pd.read_csv(
-            project_root / "mit_rail_sim" / "validation" / "data" / "track_events_result.csv"
+            project_root
+            / "mit_rail_sim"
+            / "validation"
+            / "data"
+            / "track_events_result.csv"
         )
 
         df = (

@@ -1,6 +1,3 @@
-from curses.ascii import SO
-
-
 NORTHBOUND_DEPARTING_BLOCKS = [
     # ("Forest Park", "wc461t"),
     ("Harlem (Forest Park Branch)", "wc437t"),

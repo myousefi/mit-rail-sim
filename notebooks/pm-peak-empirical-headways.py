@@ -1,8 +1,5 @@
 # %%
-import numpy as np
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
 import plotly.io as pio
 
 from mit_rail_sim.utils import project_root
@@ -61,7 +58,9 @@ df["run_id"] = df["runid"].str.replace("R", "B")
 df["time"] = pd.to_datetime(df["event_time"])
 df["time"] = df["time"] - df["time"].dt.normalize()
 
-headways_df["time"] = headways_df["event_time"] - headways_df["event_time"].dt.normalize()
+headways_df["time"] = (
+    headways_df["event_time"] - headways_df["event_time"].dt.normalize()
+)
 
 # Sort the DataFrames by 'event_time' for merge_asof
 headways_df = headways_df.sort_values("time")
@@ -98,7 +97,6 @@ plt.show()
 
 import json
 
-import numpy as np
 import scipy.stats as stats
 
 # Filter the DataFrame for hdw == 5

@@ -59,19 +59,19 @@ merged_df["layover_time"] = merged_df["layover_time"].dt.total_seconds() / 60
 merged_df.head()
 
 # %%
-import plotly.express as px
 
 merged_df["time_of_day"] = (
     merged_df["event_time_sb"].dt.normalize() - merged_df["event_time_sb"]
 ) + pd.Timestamp("2023-12-08")
 
-fig = px.scatter(merged_df, x="time_of_day", y="layover_time", title="Layover Times by Time of Day")
+fig = px.scatter(
+    merged_df, x="time_of_day", y="layover_time", title="Layover Times by Time of Day"
+)
 fig.update_xaxes(title_text="Time of Day")
 fig.update_yaxes(title_text="Layover Time (minutes)")
 fig.show()
 
 # %%
-import plotly.graph_objects as go
 
 # Define AM and PM peak periods
 am_peak_start = 7

@@ -6,7 +6,6 @@ from typing import TYPE_CHECKING, Dict, List, Optional
 
 if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.infrastructure import (
-        MovingBlockControl,
         Path,
         SignalControlCenter,
         Station,

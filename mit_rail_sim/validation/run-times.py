@@ -1,7 +1,6 @@
 import json
 
 import pandas as pd
-import plotly.express as px
 
 track_df = pd.read_csv("./data/track_events.csv", parse_dates=["event_time"])
 sim_df = pd.read_csv("./simulation_results/block_test.csv")

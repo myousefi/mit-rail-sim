@@ -1,19 +1,11 @@
 import asyncio
 import json
 import os
-import random
 import unittest
-from random import choice, randint, seed, uniform
+from random import choice, randint, seed
 from test.base_test_case import TrainMovementVisualizationMixin
-from typing import List, Optional
-from unittest.mock import MagicMock
+from typing import List
 
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objs as go
-import plotly.io as pio
-import plotly.subplots as sp
-from plotly.subplots import make_subplots
 
 from mit_rail_sim.simulation_engine.infrastructure import (
     Block,
@@ -27,22 +19,16 @@ from mit_rail_sim.simulation_engine.infrastructure import (
 from mit_rail_sim.simulation_engine.passenger import ArrivalRate
 from mit_rail_sim.simulation_engine.schedule import (
     EmpiricalSchedule,
-    GammaSchedule,
     Schedule,
-    WeibullSchedule,
 )
 from mit_rail_sim.simulation_engine.simulation import (
     ReplicationManager,
     SimulationContext,
 )
 from mit_rail_sim.simulation_engine.simulation.simulation import Simulation
-from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
-from mit_rail_sim.simulation_engine.train.train import NextBlockNotFoundError
 from mit_rail_sim.simulation_engine.utils import (
-    BlockActivationLogger,
     LoggerContext,
     PassengerLogger,
-    TrainLogger,
 )
 from mit_rail_sim.simulation_engine.utils.logger_utils import (
     SimulationLogger,
@@ -66,7 +52,9 @@ class CTABlueLineTestCase(unittest.TestCase):
         asyncio.set_event_loop(self.loop)
 
         HEADWAY = 700
-        self.schedule = Schedule(40, HEADWAY, (-150, 150), alternate_start_block_index=79)
+        self.schedule = Schedule(
+            40, HEADWAY, (-150, 150), alternate_start_block_index=79
+        )
 
         self.train_logger = AsyncTrainLogger(
             log_file_path="./test/output_files/train_test.csv",
@@ -91,7 +79,10 @@ class CTABlueLineTestCase(unittest.TestCase):
 
     def test_simulation_with_passengers(self):
         logger_context = LoggerContext(
-            self.train_logger, self.passenger_logger, self.station_logger, self.simulation_logger
+            self.train_logger,
+            self.passenger_logger,
+            self.station_logger,
+            self.simulation_logger,
         )
 
         simulation = Simulation(
@@ -109,7 +100,10 @@ class CTABlueLineTestCase(unittest.TestCase):
         slow_zones = read_slow_zones_from_json("test_slow_zones.json")
 
         logger_context = LoggerContext(
-            self.train_logger, self.passenger_logger, self.station_logger, self.simulation_logger
+            self.train_logger,
+            self.passenger_logger,
+            self.station_logger,
+            self.simulation_logger,
         )
 
         replication_manager = ReplicationManager(
@@ -129,7 +123,10 @@ class CTABlueLineTestCase(unittest.TestCase):
         slow_zones = read_slow_zones_from_json("test_slow_zones.json")
 
         logger_context = LoggerContext(
-            self.train_logger, self.passenger_logger, self.station_logger, self.simulation_logger
+            self.train_logger,
+            self.passenger_logger,
+            self.station_logger,
+            self.simulation_logger,
         )
 
         schedule = EmpiricalSchedule(
@@ -141,7 +138,9 @@ class CTABlueLineTestCase(unittest.TestCase):
         # schedule = GammaSchedule(num_trains=20, mean=20, cv=0.2)
 
         replication_manager = ReplicationManager(
-            number_of_replications=50, logger_context=logger_context, train_speed_regulator="CTA"
+            number_of_replications=50,
+            logger_context=logger_context,
+            train_speed_regulator="CTA",
         )
 
         replication_manager.run_replications(
@@ -197,7 +196,9 @@ class CTABlueLineTestCase(unittest.TestCase):
 
         signal_control_center = SignalControlCenter(blocks)
         path = Path(blocks, slow_zones=slow_zones)
-        path.make_dispatching_block(block_index=0, dispatch_margin=0, upstream_blocks=["WC-470"])
+        path.make_dispatching_block(
+            block_index=0, dispatch_margin=0, upstream_blocks=["WC-470"]
+        )
         path.make_dispatching_block(
             block_index=79,
             dispatch_margin=10,
@@ -249,11 +250,22 @@ class CTABlueLineTestCase(unittest.TestCase):
 
         signal_control_center = SignalControlCenter(blocks)
         path = Path(blocks, slow_zones=slow_zones)
-        path.make_dispatching_block(block_index=0, dispatch_margin=0, upstream_blocks=["WC-470"])
+        path.make_dispatching_block(
+            block_index=0, dispatch_margin=0, upstream_blocks=["WC-470"]
+        )
         path.make_dispatching_block(
             block_index=79,
             dispatch_margin=110,
-            upstream_blocks=["WC-32", "321", "WC-26", "WC-22", "311", "WC-16", "WC-11", "WC-8"],
+            upstream_blocks=[
+                "WC-32",
+                "321",
+                "WC-26",
+                "WC-22",
+                "311",
+                "WC-16",
+                "WC-11",
+                "WC-8",
+            ],
         )
 
         return path, signal_control_center
@@ -296,7 +308,9 @@ class CTABlueLineTestCase(unittest.TestCase):
 
         moving_block_control = MovingBlockControl(blocks)
         path = Path(blocks, slow_zones=slow_zones)
-        path.make_dispatching_block(block_index=0, dispatch_margin=0, upstream_blocks=[])
+        path.make_dispatching_block(
+            block_index=0, dispatch_margin=0, upstream_blocks=[]
+        )
         path.make_dispatching_block(
             block_index=79,
             dispatch_margin=110,
@@ -408,7 +422,9 @@ class CTABlueLineTestCase(unittest.TestCase):
         return None
 
 
-class TestCTABlueLineTrainMovement(TrainMovementVisualizationMixin, CTABlueLineTestCase):
+class TestCTABlueLineTrainMovement(
+    TrainMovementVisualizationMixin, CTABlueLineTestCase
+):
     @unittest.skip("Test is visual only")
     def test_single_train_movement(self):
         (

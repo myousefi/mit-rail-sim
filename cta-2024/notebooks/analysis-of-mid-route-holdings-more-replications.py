@@ -2,17 +2,14 @@
 import glob
 import os
 from pathlib import Path
-import stat
 
 import pandas as pd
 import plotly.io as pio
 
-from mit_rail_sim.utils.root_path import project_root
 
 pio.templates.default = "simple_white"
 # pio.renderers.default = "browser"
 
-import os
 
 import plotly.express as px
 import plotly.graph_objects as go
@@ -60,7 +57,9 @@ def read_csv_files_in_subdir(subdir_path):
 
 # directory = Path()
 
-directory = "/Users/moji/Projects/mit_rail_sim/cta-2024/mid_route_holding_more_replications"
+directory = (
+    "/Users/moji/Projects/mit_rail_sim/cta-2024/mid_route_holding_more_replications"
+)
 
 
 subdirs = [d for d in glob.glob(os.path.join(directory, "**/")) if os.path.isdir(d)]
@@ -263,7 +262,9 @@ for schd in ["AM", "PM"]:
 
     # Create a DataFrame for the table
     table_data = pd.merge(station_counts, station_percentages, on="station")
-    table_data["avg_percentage"] = table_data["avg_percentage"].apply(lambda x: f"{x:.2%}")
+    table_data["avg_percentage"] = table_data["avg_percentage"].apply(
+        lambda x: f"{x:.2%}"
+    )
     print(f"\nAverage Counts and Percentages for {schd} Schedule:")
     print(table_data.to_markdown(index=False))
 
@@ -600,7 +601,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
     )
 )
 
@@ -697,7 +698,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
     )
 )
 
@@ -811,7 +812,7 @@ fig_am_wait.show(renderer="browser")
 fig_am_wait.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 
@@ -907,7 +908,7 @@ fig_am_journey.show(renderer="browser")
 fig_am_journey.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 
@@ -982,7 +983,7 @@ fig_am_passengers_boarded.show(renderer="browser")
 fig_am_passengers_boarded.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"average_number_of_passengers_boarded_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "average_number_of_passengers_boarded_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 

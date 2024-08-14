@@ -1,6 +1,3 @@
-import pytest
-from unittest.mock import Mock, patch
-
 from mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule import (
     OHareEmpiricalSchedule,
     OHareEmpiricalDispatchStrategy,

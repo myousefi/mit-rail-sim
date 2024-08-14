@@ -2,7 +2,9 @@ import json
 
 import pandas as pd
 
-df = pd.read_csv("mit_rail_sim/validation/data/events.csv")[["station", "scada", "locationdesc"]]
+df = pd.read_csv("mit_rail_sim/validation/data/events.csv")[
+    ["station", "scada", "locationdesc"]
+]
 
 # keep only unique combinations of station and scada and locationdesc
 df = df.drop_duplicates(subset=["station", "scada", "locationdesc"])
@@ -27,7 +29,8 @@ df["station"] = pd.Categorical(df["station"], categories=stations["station"].uni
 df = df.sort_values("station")
 
 df["matching"] = df.apply(
-    lambda row: str(row["block"]).replace("-", "").lower() in str(row["scada"]).lower(), axis=1
+    lambda row: str(row["block"]).replace("-", "").lower() in str(row["scada"]).lower(),
+    axis=1,
 )
 
 

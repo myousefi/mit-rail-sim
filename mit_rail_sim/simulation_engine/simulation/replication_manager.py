@@ -2,11 +2,8 @@ from __future__ import annotations
 
 import random
 import warnings
-from copy import deepcopy
-from decimal import Decimal
 from typing import TYPE_CHECKING, List, Optional
 
-from mit_rail_sim.simulation_engine.schedule import EmpiricalSchedule, Schedule
 from mit_rail_sim.simulation_engine.simulation import Simulation, SimulationContext
 
 if TYPE_CHECKING:

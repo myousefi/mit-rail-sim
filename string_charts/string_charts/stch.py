@@ -3,11 +3,8 @@
 import json
 
 import click
-from numpy import angle
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
-import plotly.io as pio
 
 from mit_rail_sim.utils import project_root
 

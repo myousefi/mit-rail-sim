@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 import pandas as pd
@@ -136,7 +135,7 @@ for period, (start_date, end_date) in period_dict.items():
 final_result_df = pd.concat(result_dfs, ignore_index=True)
 
 output_file_path = (
-    project_root / "inputs" / "demand" / f"odx_imputed_demand_all_periods.csv"
+    project_root / "inputs" / "demand" / "odx_imputed_demand_all_periods.csv"
 )
 
 final_result_df.to_csv(output_file_path, index=False)

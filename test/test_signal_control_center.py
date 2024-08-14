@@ -1,4 +1,3 @@
-import unittest
 from test.base_test_case import BaseTestCase
 
 from mit_rail_sim.simulation_engine.infrastructure import Block, SignalControlCenter
@@ -34,7 +33,9 @@ class TestSignalControlCenter(BaseTestCase):
                 "Block_002": 25,
             },
         )
-        self.signal_control_center = SignalControlCenter([self.block1, self.block2, self.block3])
+        self.signal_control_center = SignalControlCenter(
+            [self.block1, self.block2, self.block3]
+        )
 
     def test_initial_speed_codes(self):
         self.assertEqual(self.block1.current_speed_code, 50)

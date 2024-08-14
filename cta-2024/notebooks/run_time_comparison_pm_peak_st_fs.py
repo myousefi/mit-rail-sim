@@ -1,5 +1,4 @@
 # %%
-from pathlib import Path
 import pandas as pd
 import plotly.express as px
 from mit_rail_sim.utils.db_con import text, engine

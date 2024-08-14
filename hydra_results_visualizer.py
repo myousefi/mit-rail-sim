@@ -11,7 +11,9 @@ df = pd.read_csv("output_slow_zones.csv")
 
 # Convert any NaN values to string 'None' for dropdown compatibility
 df = df.fillna("None")
-df["offscan_symptomatic_block_index"] = df["offscan_symptomatic_block_index"].astype(str)
+df["offscan_symptomatic_block_index"] = df["offscan_symptomatic_block_index"].astype(
+    str
+)
 
 # For dropping entries based on the condition
 df = df[df["avg_headway_Forest_Park"] >= 100]
@@ -26,7 +28,10 @@ column_1 = html.Div(
     [
         dcc.Dropdown(
             id="block_type_dropdown",
-            options=[{"label": str(i), "value": str(i)} for i in sorted(df["block_type"].unique())],
+            options=[
+                {"label": str(i), "value": str(i)}
+                for i in sorted(df["block_type"].unique())
+            ],
             value=str(df["block_type"].unique()[0]),
             placeholder="Select Block Type",
         ),
@@ -69,7 +74,10 @@ column_2 = html.Div(
     [
         dcc.Dropdown(
             id="block_type_dropdown_2",
-            options=[{"label": str(i), "value": str(i)} for i in sorted(df["block_type"].unique())],
+            options=[
+                {"label": str(i), "value": str(i)}
+                for i in sorted(df["block_type"].unique())
+            ],
             value=str(df["block_type"].unique()[0]),
             placeholder="Select Block Type",
         ),
@@ -104,7 +112,12 @@ column_2 = html.Div(
             },
         ),
     ],
-    style={"width": "48%", "display": "inline-block", "vertical-align": "top", "margin-left": "4%"},
+    style={
+        "width": "48%",
+        "display": "inline-block",
+        "vertical-align": "top",
+        "margin-left": "4%",
+    },
 )
 
 # App layout
@@ -123,7 +136,10 @@ app.layout = html.Div([column_1, column_2])
 def update_graph(block_type, offscan_symptomatic_block_index, offscan_probability):
     df_filtered = df[
         (df["block_type"] == block_type)
-        & (df["offscan_symptomatic_block_index"] == str(offscan_symptomatic_block_index))
+        & (
+            df["offscan_symptomatic_block_index"]
+            == str(offscan_symptomatic_block_index)
+        )
         # & (df["offscan_probability"] == float(offscan_probability))
     ]
 
@@ -208,7 +224,9 @@ def update_graph(block_type, offscan_symptomatic_block_index, offscan_probabilit
 
     # Update x-axis title only for the bottom subplot
     fig.update_xaxes(
-        title_text="Average Dispatching Headway (seconds)", row=len(cv_headway_values), col=1
+        title_text="Average Dispatching Headway (seconds)",
+        row=len(cv_headway_values),
+        col=1,
     )
 
     # Update graph aesthetics for finer grid
@@ -218,8 +236,12 @@ def update_graph(block_type, offscan_symptomatic_block_index, offscan_probabilit
     )
 
     for i in range(1, len(cv_headway_values) + 1):
-        fig.update_xaxes(gridcolor="lightgray", gridwidth=0.5, range=[80, 370], row=i, col=1)
-        fig.update_yaxes(gridcolor="lightgray", gridwidth=0.5, range=[55, 90], row=i, col=1)
+        fig.update_xaxes(
+            gridcolor="lightgray", gridwidth=0.5, range=[80, 370], row=i, col=1
+        )
+        fig.update_yaxes(
+            gridcolor="lightgray", gridwidth=0.5, range=[55, 90], row=i, col=1
+        )
 
     fig.update_xaxes(range=[80, 370])  # Set x-axis limits to 150-370
     fig.update_yaxes(range=[60, 90])  # Set y-axis limits to 80-90
@@ -239,7 +261,10 @@ def update_graph(block_type, offscan_symptomatic_block_index, offscan_probabilit
 def update_graph_2(block_type, offscan_symptomatic_block_index, offscan_probability):
     df_filtered = df[
         (df["block_type"] == block_type)
-        & (df["offscan_symptomatic_block_index"] == str(offscan_symptomatic_block_index))
+        & (
+            df["offscan_symptomatic_block_index"]
+            == str(offscan_symptomatic_block_index)
+        )
         # & (df["offscan_probability"] == float(offscan_probability))
     ]
 
@@ -331,7 +356,9 @@ def update_graph_2(block_type, offscan_symptomatic_block_index, offscan_probabil
 
     # Update x-axis title only for the bottom subplot
     fig.update_xaxes(
-        title_text="Average Dispatching Headway (seconds)", row=len(cv_headway_values), col=1
+        title_text="Average Dispatching Headway (seconds)",
+        row=len(cv_headway_values),
+        col=1,
     )
 
     # Update graph aesthetics for finer grid
@@ -341,8 +368,12 @@ def update_graph_2(block_type, offscan_symptomatic_block_index, offscan_probabil
     )
 
     for i in range(1, len(cv_headway_values) + 1):
-        fig.update_xaxes(gridcolor="lightgray", gridwidth=0.5, range=[150, 370], row=i, col=1)
-        fig.update_yaxes(gridcolor="lightgray", gridwidth=0.5, range=[80, 85], row=i, col=1)
+        fig.update_xaxes(
+            gridcolor="lightgray", gridwidth=0.5, range=[150, 370], row=i, col=1
+        )
+        fig.update_yaxes(
+            gridcolor="lightgray", gridwidth=0.5, range=[80, 85], row=i, col=1
+        )
 
     fig.update_xaxes(range=[150, 370])  # Set x-axis limits to 150-370
     fig.update_yaxes(range=[80, 85])  # Set y-axis limits to 80-90

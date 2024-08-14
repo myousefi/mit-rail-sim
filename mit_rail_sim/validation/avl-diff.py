@@ -11,7 +11,6 @@ from validation_dash import (
     STATION_ORDER,
     calculate_real_travel_times,
     filter_by_time_and_weekday,
-    remove_holidays,
 )
 
 from mit_rail_sim.utils import find_free_port, project_root
@@ -73,7 +72,9 @@ def update_heatmap_plot(start_date1, end_date1, start_date2, end_date2):
 
     for i, origin_station in enumerate(STATION_ORDER):
         for j, destination_station in enumerate(STATION_ORDER):
-            if j <= i:  # Only consider stations that come after the origin in STATION_ORDER
+            if (
+                j <= i
+            ):  # Only consider stations that come after the origin in STATION_ORDER
                 continue
 
             # Filtering the filtered_df to get real_travel_times for the current OD pair
@@ -121,7 +122,9 @@ def update_heatmap_plot(start_date1, end_date1, start_date2, end_date2):
     )
 
     # Show all x-axis and y-axis labels
-    fig.update_xaxes(tickvals=list(range(len(STATION_ORDER))), ticktext=STATION_ORDER, tickangle=45)
+    fig.update_xaxes(
+        tickvals=list(range(len(STATION_ORDER))), ticktext=STATION_ORDER, tickangle=45
+    )
     fig.update_yaxes(tickvals=list(range(len(STATION_ORDER))), ticktext=STATION_ORDER)
 
     return fig
@@ -138,10 +141,13 @@ if __name__ == "__main__":
     merged_data["date"] = merged_data["event_datetime"].dt.date
     merged_data.sort_values(by=["event_datetime"], inplace=True)
     merged_data["dwell_arrtodep"] = (
-        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-1)).dt.seconds / 60
+        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-1)).dt.seconds
+        / 60
     )
 
     merged_data = merged_data[merged_data["scada"].isin(STATION_BLOCK.values())]
-    merged_data["station"] = merged_data["scada"].map({v: k for k, v in STATION_BLOCK.items()})
+    merged_data["station"] = merged_data["scada"].map(
+        {v: k for k, v in STATION_BLOCK.items()}
+    )
 
     app.run_server(debug=True, port=find_free_port())

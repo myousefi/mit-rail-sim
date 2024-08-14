@@ -63,7 +63,11 @@ for subdir, data_frames in all_data.items():
         print(f"Data frame: {df_name}, Shape: {df.shape}")
 
 
-all_data["max_holding=0,period=version_83,schd=PM,station=UIC-Halsted"] = read_csv_files_in_subdir("/Users/moji/Projects/mit_rail_sim/cta-2024/mid_route_holding_even_more_replications/period=version_83,schd=PM,station=NO-CONTROL")
+all_data["max_holding=0,period=version_83,schd=PM,station=UIC-Halsted"] = (
+    read_csv_files_in_subdir(
+        "/Users/moji/Projects/mit_rail_sim/cta-2024/mid_route_holding_even_more_replications/period=version_83,schd=PM,station=NO-CONTROL"
+    )
+)
 
 
 print(all_data.keys())
@@ -222,7 +226,9 @@ fig = go.Figure(
     data=[
         go.Box(
             x=temp[temp["max_holding"] == scenario]["station_name"],
-            y=temp[temp["max_holding"] == scenario]["number_of_passengers_on_train_after_stop"],
+            y=temp[temp["max_holding"] == scenario][
+                "number_of_passengers_on_train_after_stop"
+            ],
             name=name,
             boxpoints="all",
             jitter=0.3,
@@ -374,19 +380,30 @@ grouped_data = temp.groupby(["scenario", "origin", "destination"])
 mean_wait_times = grouped_data["waiting_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = temp.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    temp.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total wait time for each origin and scenario
 total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
 total_wait_time = total_wait_time.reset_index().rename(columns={0: "total_wait_time"})
-total_wait_time_pivot = total_wait_time.pivot(index="origin", columns="scenario", values="total_wait_time")
+total_wait_time_pivot = total_wait_time.pivot(
+    index="origin", columns="scenario", values="total_wait_time"
+)
 
 for scenario in ORDERED_SCENARIOS[1:]:
     total_wait_time_pivot[f"Savings ({scenario}s)"] = (
-        total_wait_time_pivot["0"]
-        - total_wait_time_pivot[scenario]
+        total_wait_time_pivot["0"] - total_wait_time_pivot[scenario]
     )
 
 
@@ -397,10 +414,7 @@ fig = go.Figure(
             x=total_wait_time_pivot.index,
             y=total_wait_time_pivot[f"Savings ({scenario}s)"],
             name=f"Max Holding: {scenario}s",
-            text=[
-                f"{y:.0f}"
-                for y in total_wait_time_pivot[f"Savings ({scenario}s)"]
-            ],
+            text=[f"{y:.0f}" for y in total_wait_time_pivot[f"Savings ({scenario}s)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -446,8 +460,7 @@ fig.update_layout(
 # Add annotations for total savings in waiting_time for each scenario
 for i, scenario in enumerate(ORDERED_SCENARIOS[1:]):
     total_waiting_time_savings = (
-        total_wait_time_pivot["0"].sum()
-        - total_wait_time_pivot[scenario].sum()
+        total_wait_time_pivot["0"].sum() - total_wait_time_pivot[scenario].sum()
     )
     fig.add_annotation(
         x=0.01,
@@ -465,7 +478,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_sensitivity.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_sensitivity.svg"
     )
 )
 
@@ -481,22 +494,35 @@ grouped_data = temp.groupby(["scenario", "origin", "destination"])
 mean_travel_times = grouped_data["journey_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = temp.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    temp.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total journey time for each origin and scenario
 total_journey_time = (mean_travel_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
-total_journey_time = total_journey_time.reset_index().rename(columns={0: "total_journey_time"})
+total_journey_time = total_journey_time.reset_index().rename(
+    columns={0: "total_journey_time"}
+)
 
 # Pivot the DataFrame to have origin stations as rows and scenarios as columns
-total_journey_time_pivot = total_journey_time.pivot(index="origin", columns="scenario", values="total_journey_time")
+total_journey_time_pivot = total_journey_time.pivot(
+    index="origin", columns="scenario", values="total_journey_time"
+)
 
 # Calculate savings for each scenario compared to the no-control scenario
 for scenario in ORDERED_SCENARIOS[1:]:
     total_journey_time_pivot[f"Savings ({scenario}s)"] = (
-        total_journey_time_pivot["0"]
-        - total_journey_time_pivot[scenario]
+        total_journey_time_pivot["0"] - total_journey_time_pivot[scenario]
     )
 
 
@@ -508,10 +534,7 @@ fig = go.Figure(
             y=total_journey_time_pivot[f"Savings ({scenario}s)"],
             name=f"Max Holding: {scenario}s",
             text=[
-                f"{y:.0f}"
-                for y in total_journey_time_pivot[
-                    f"Savings ({scenario}s)"
-                ]
+                f"{y:.0f}" for y in total_journey_time_pivot[f"Savings ({scenario}s)"]
             ],
             textposition="auto",
             textfont=dict(size=12),
@@ -558,8 +581,7 @@ fig.update_layout(
 # Add annotations for total savings in journey_time for each scenario
 for i, scenario in enumerate(ORDERED_SCENARIOS[1:]):
     total_journey_time_savings = (
-        total_journey_time_pivot["0"].sum()
-        - total_journey_time_pivot[scenario].sum()
+        total_journey_time_pivot["0"].sum() - total_journey_time_pivot[scenario].sum()
     )
     fig.add_annotation(
         x=0.01,
@@ -577,12 +599,11 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_sensitivity.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_sensitivity.svg"
     )
 )
 
 # %%
-import plotly.express as px
 
 # Filter the data for max_holding=180 and max_holding=0 at Clark/Lake station
 df_180 = df_combined[
@@ -596,26 +617,34 @@ df_0 = df_combined[
 # Combine the filtered data into a single DataFrame
 df_plot = pd.concat(
     [
-        df_0["number_of_passengers_on_platform_before_stop"].reset_index(drop=True).to_frame("NO-CONTROL"),
-        df_180["number_of_passengers_on_platform_before_stop"].reset_index(drop=True).to_frame("Holding at UIC-Halsted (<180s)"),
+        df_0["number_of_passengers_on_platform_before_stop"]
+        .reset_index(drop=True)
+        .to_frame("NO-CONTROL"),
+        df_180["number_of_passengers_on_platform_before_stop"]
+        .reset_index(drop=True)
+        .to_frame("Holding at UIC-Halsted (<180s)"),
     ],
     axis=1,
 )
 
 # Melt the DataFrame to create a 'Scenario' column
-df_plot = df_plot.melt(var_name="Scenario", value_name="Number of Passengers on Platform")
+df_plot = df_plot.melt(
+    var_name="Scenario", value_name="Number of Passengers on Platform"
+)
 
 # Define the desired order of scenarios
 scenario_order = ["NO-CONTROL", "Holding at UIC-Halsted (<180s)"]
 
 # Convert the 'Scenario' column to a categorical type with the desired order
-df_plot["Scenario"] = pd.Categorical(df_plot["Scenario"], categories=scenario_order, ordered=True)
+df_plot["Scenario"] = pd.Categorical(
+    df_plot["Scenario"], categories=scenario_order, ordered=True
+)
 
 # Sort the DataFrame based on the 'Scenario' column
 df_plot = df_plot.sort_values("Scenario")
 
 # Define custom color map
-color_map = {"NO-CONTROL": '#1F77B4', "Holding at UIC-Halsted (<180s)": '#D62728'}
+color_map = {"NO-CONTROL": "#1F77B4", "Holding at UIC-Halsted (<180s)": "#D62728"}
 
 # Create the histogram plot with box plot on the margin
 fig = px.histogram(
@@ -659,7 +688,6 @@ fig.write_image(
     width=1600,
     height=600,
 )
-
 
 
 # %%
@@ -745,7 +773,7 @@ fig.write_image(
 # %%
 # Define the desired order of scenarios and custom color map
 scenario_order = ["NO-CONTROL", "Holding at UIC-Halsted (<180s)"]
-color_map = {"NO-CONTROL": '#1F77B4', "Holding at UIC-Halsted (<180s)": '#D62728'}
+color_map = {"NO-CONTROL": "#1F77B4", "Holding at UIC-Halsted (<180s)": "#D62728"}
 
 # Filter the data for max_holding=180 and max_holding=0 at Clark/Lake station
 df_180_clark_lake = df_combined[
@@ -759,17 +787,25 @@ df_0_clark_lake = df_combined[
 # Combine the filtered data into a single DataFrame for Clark/Lake station
 df_plot_clark_lake = pd.concat(
     [
-        df_0_clark_lake["number_of_passengers_on_platform_before_stop"].reset_index(drop=True).to_frame("NO-CONTROL"),
-        df_180_clark_lake["number_of_passengers_on_platform_before_stop"].reset_index(drop=True).to_frame("Holding at UIC-Halsted (<180s)"),
+        df_0_clark_lake["number_of_passengers_on_platform_before_stop"]
+        .reset_index(drop=True)
+        .to_frame("NO-CONTROL"),
+        df_180_clark_lake["number_of_passengers_on_platform_before_stop"]
+        .reset_index(drop=True)
+        .to_frame("Holding at UIC-Halsted (<180s)"),
     ],
     axis=1,
 )
 
 # Melt the DataFrame to create a 'Scenario' column for Clark/Lake station
-df_plot_clark_lake = df_plot_clark_lake.melt(var_name="Scenario", value_name="Number of Passengers on Platform")
+df_plot_clark_lake = df_plot_clark_lake.melt(
+    var_name="Scenario", value_name="Number of Passengers on Platform"
+)
 
 # Convert the 'Scenario' column to a categorical type with the desired order for Clark/Lake station
-df_plot_clark_lake["Scenario"] = pd.Categorical(df_plot_clark_lake["Scenario"], categories=scenario_order, ordered=True)
+df_plot_clark_lake["Scenario"] = pd.Categorical(
+    df_plot_clark_lake["Scenario"], categories=scenario_order, ordered=True
+)
 
 # Sort the DataFrame based on the 'Scenario' column for Clark/Lake station
 df_plot_clark_lake = df_plot_clark_lake.sort_values("Scenario")
@@ -824,18 +860,20 @@ df_0_all = df_combined[df_combined["max_holding"] == "0"]
 # Combine the filtered data into a single DataFrame for all stations
 df_plot_all = pd.concat(
     [
-        df_180_all[["station_name", "number_of_passengers_on_platform_before_stop"]].assign(
-            Scenario="Holding at UIC-Halsted (<180s)"
-        ),
-        df_0_all[["station_name", "number_of_passengers_on_platform_before_stop"]].assign(
-            Scenario="NO-CONTROL"
-        ),
+        df_180_all[
+            ["station_name", "number_of_passengers_on_platform_before_stop"]
+        ].assign(Scenario="Holding at UIC-Halsted (<180s)"),
+        df_0_all[
+            ["station_name", "number_of_passengers_on_platform_before_stop"]
+        ].assign(Scenario="NO-CONTROL"),
     ],
     ignore_index=True,
 )
 
 # Convert the 'Scenario' column to a categorical type with the desired order for all stations
-df_plot_all["Scenario"] = pd.Categorical(df_plot_all["Scenario"], categories=scenario_order, ordered=True)
+df_plot_all["Scenario"] = pd.Categorical(
+    df_plot_all["Scenario"], categories=scenario_order, ordered=True
+)
 
 # Create the box plot for all stations
 fig_all = px.box(
@@ -870,7 +908,6 @@ fig_all.update_layout(
         borderwidth=0,
     ),
     xaxis_tickangle=45,
-
 )
 
 # Reduce the size of markers for outliers in all stations plot
@@ -892,29 +929,49 @@ fig_all.write_image(
 # %%
 # Filter the data for max_holding=180 and max_holding=0 for selected stations
 df_180_selected = df_combined[
-    (df_combined["max_holding"] == "180") &
-    (df_combined["station_name"].isin(STATION_ORDER[STATION_ORDER.index("Illinois Medical District"):STATION_ORDER.index("Damen")+1]))
+    (df_combined["max_holding"] == "180")
+    & (
+        df_combined["station_name"].isin(
+            STATION_ORDER[
+                STATION_ORDER.index("Illinois Medical District") : STATION_ORDER.index(
+                    "Damen"
+                )
+                + 1
+            ]
+        )
+    )
 ]
 df_0_selected = df_combined[
-    (df_combined["max_holding"] == "0") &
-    (df_combined["station_name"].isin(STATION_ORDER[STATION_ORDER.index("Illinois Medical District"):STATION_ORDER.index("Damen")+1]))
+    (df_combined["max_holding"] == "0")
+    & (
+        df_combined["station_name"].isin(
+            STATION_ORDER[
+                STATION_ORDER.index("Illinois Medical District") : STATION_ORDER.index(
+                    "Damen"
+                )
+                + 1
+            ]
+        )
+    )
 ]
 
 # Combine the filtered data into a single DataFrame for selected stations
 df_plot_selected = pd.concat(
     [
-        df_180_selected[["station_name", "number_of_passengers_on_platform_before_stop"]].assign(
-            Scenario="Holding at UIC-Halsted (<180s)"
-        ),
-        df_0_selected[["station_name", "number_of_passengers_on_platform_before_stop"]].assign(
-            Scenario="NO-CONTROL"
-        ),
+        df_180_selected[
+            ["station_name", "number_of_passengers_on_platform_before_stop"]
+        ].assign(Scenario="Holding at UIC-Halsted (<180s)"),
+        df_0_selected[
+            ["station_name", "number_of_passengers_on_platform_before_stop"]
+        ].assign(Scenario="NO-CONTROL"),
     ],
     ignore_index=True,
 )
 
 # Convert the 'Scenario' column to a categorical type with the desired order for selected stations
-df_plot_selected["Scenario"] = pd.Categorical(df_plot_selected["Scenario"], categories=scenario_order, ordered=True)
+df_plot_selected["Scenario"] = pd.Categorical(
+    df_plot_selected["Scenario"], categories=scenario_order, ordered=True
+)
 
 # Create the box plot for selected stations
 fig_selected = px.box(
@@ -928,7 +985,12 @@ fig_selected = px.box(
         "number_of_passengers_on_platform_before_stop": "Number of Passengers on Platform",
     },
     category_orders={
-        "station_name": STATION_ORDER[STATION_ORDER.index("Illinois Medical District"):STATION_ORDER.index("Damen")+1],
+        "station_name": STATION_ORDER[
+            STATION_ORDER.index("Illinois Medical District") : STATION_ORDER.index(
+                "Damen"
+            )
+            + 1
+        ],
         "Scenario": scenario_order,
     },
     color_discrete_map=color_map,
@@ -987,7 +1049,9 @@ df_plot_all = pd.concat(
 )
 
 # Convert the 'Scenario' column to a categorical type with the desired order for all stations
-df_plot_all["Scenario"] = pd.Categorical(df_plot_all["Scenario"], categories=scenario_order, ordered=True)
+df_plot_all["Scenario"] = pd.Categorical(
+    df_plot_all["Scenario"], categories=scenario_order, ordered=True
+)
 # Define the service standard and crush load values
 service_standard = 640
 crush_load = 960
@@ -1085,10 +1149,7 @@ fig_all.show(renderer="browser")
 
 # Save the plot for all stations as an image file
 fig_all.write_image(
-    str(
-        OUTPUT_DIRECTORY
-        / "train_load_boxplot_all_stations_holding_vs_no_control.svg"
-    ),
+    str(OUTPUT_DIRECTORY / "train_load_boxplot_all_stations_holding_vs_no_control.svg"),
     width=1600,
     height=600,
 )
@@ -1101,29 +1162,49 @@ crush_load = 960
 
 # Filter the data for max_holding=180 and max_holding=0 for selected stations
 df_180_selected = df_combined[
-    (df_combined["max_holding"] == "180") &
-    (df_combined["station_name"].isin(STATION_ORDER[STATION_ORDER.index("Illinois Medical District"):STATION_ORDER.index("Damen")+1]))
+    (df_combined["max_holding"] == "180")
+    & (
+        df_combined["station_name"].isin(
+            STATION_ORDER[
+                STATION_ORDER.index("Illinois Medical District") : STATION_ORDER.index(
+                    "Damen"
+                )
+                + 1
+            ]
+        )
+    )
 ]
 df_0_selected = df_combined[
-    (df_combined["max_holding"] == "0") &
-    (df_combined["station_name"].isin(STATION_ORDER[STATION_ORDER.index("Illinois Medical District"):STATION_ORDER.index("Damen")+1]))
+    (df_combined["max_holding"] == "0")
+    & (
+        df_combined["station_name"].isin(
+            STATION_ORDER[
+                STATION_ORDER.index("Illinois Medical District") : STATION_ORDER.index(
+                    "Damen"
+                )
+                + 1
+            ]
+        )
+    )
 ]
 
 # Combine the filtered data into a single DataFrame for selected stations
 df_plot_selected = pd.concat(
     [
-        df_180_selected[["station_name", "number_of_passengers_on_train_after_stop"]].assign(
-            Scenario="Holding at UIC-Halsted (<180s)"
-        ),
-        df_0_selected[["station_name", "number_of_passengers_on_train_after_stop"]].assign(
-            Scenario="NO-CONTROL"
-        ),
+        df_180_selected[
+            ["station_name", "number_of_passengers_on_train_after_stop"]
+        ].assign(Scenario="Holding at UIC-Halsted (<180s)"),
+        df_0_selected[
+            ["station_name", "number_of_passengers_on_train_after_stop"]
+        ].assign(Scenario="NO-CONTROL"),
     ],
     ignore_index=True,
 )
 
 # Convert the 'Scenario' column to a categorical type with the desired order for selected stations
-df_plot_selected["Scenario"] = pd.Categorical(df_plot_selected["Scenario"], categories=scenario_order, ordered=True)
+df_plot_selected["Scenario"] = pd.Categorical(
+    df_plot_selected["Scenario"], categories=scenario_order, ordered=True
+)
 
 # Create the box plot for selected stations
 fig_selected = px.box(
@@ -1137,7 +1218,12 @@ fig_selected = px.box(
         "number_of_passengers_on_train_after_stop": "Number of Passengers on Train After Stop",
     },
     category_orders={
-        "station_name": STATION_ORDER[STATION_ORDER.index("Illinois Medical District"):STATION_ORDER.index("Damen")+1],
+        "station_name": STATION_ORDER[
+            STATION_ORDER.index("Illinois Medical District") : STATION_ORDER.index(
+                "Damen"
+            )
+            + 1
+        ],
         "Scenario": scenario_order,
     },
     color_discrete_map=color_map,

@@ -80,9 +80,9 @@ class Station:
                 delta_t,
             )
 
-            for (
-                arrival_time
-            ) in passenger_arrival_times:  # CHANGED: Iterating over passenger_arrival_times
+            for arrival_time in (
+                passenger_arrival_times
+            ):  # CHANGED: Iterating over passenger_arrival_times
                 # Generate Passenger objects with appropriate attributes
                 passenger = Passenger(
                     # self.last_train_visit_time + arrival_time,
@@ -112,7 +112,9 @@ class Station:
         )
 
 
-def linear_dwell_time_model(boarding, alighting, c0=13.5, alpha=8 * 4 / 100, epsilon_std=3):
+def linear_dwell_time_model(
+    boarding, alighting, c0=13.5, alpha=8 * 4 / 100, epsilon_std=3
+):
     number_of_passengers = boarding + alighting
     epsilon = random.gauss(0, epsilon_std)
     dwell_time = c0 + alpha * number_of_passengers + epsilon
@@ -196,7 +198,9 @@ def weston_model(
     ) * (
         (boarding_passengers / doors) ** power_value
         + (alighting_passengers / doors) ** power_value
-        + mixed_multiplier * (boarding_passengers / doors) * (alighting_passengers / doors)
+        + mixed_multiplier
+        * (boarding_passengers / doors)
+        * (alighting_passengers / doors)
     )
     return dwell_time
 
@@ -235,6 +239,8 @@ def douglas_model(
         + combined_coefficient
         * (alighting_passengers_per_door + boarding_passengers_per_door)
         * standing_through_passengers_per_door
-        + interaction_coefficient * alighting_passengers_per_door * boarding_passengers_per_door
+        + interaction_coefficient
+        * alighting_passengers_per_door
+        * boarding_passengers_per_door
     )
     return dwell_time

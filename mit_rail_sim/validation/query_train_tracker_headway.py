@@ -15,7 +15,9 @@ DATABASE = os.getenv("DATABASE")
 start_date = os.getenv("start_date")
 end_date = os.getenv("end_date")
 
-engine = create_engine(f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}").connect()
+engine = create_engine(
+    f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+).connect()
 
 station_trackid = {
     "Forest Park": 11020,
@@ -58,10 +60,10 @@ trackid_query_str = " or ".join(
 )
 
 query_text2 = text(
-    f"SELECT event_datetime, qt2_trackid, track_desc, status, dir_id,"
-    f" dwell_arrtodep, hdw_deptoarr, hdw_arrtoarr, stop_id, stopname, public_name,"
-    f" schd_ver, sched_avghdw, sched_cnt, sched_maxhdw, sched_minhdw, "
-    f"CASE "
+    "SELECT event_datetime, qt2_trackid, track_desc, status, dir_id,"
+    " dwell_arrtodep, hdw_deptoarr, hdw_arrtoarr, stop_id, stopname, public_name,"
+    " schd_ver, sched_avghdw, sched_cnt, sched_maxhdw, sched_minhdw, "
+    "CASE "
     + " ".join(
         [
             f"WHEN qt2_trackid = {trackid} THEN '{station}'"
@@ -72,6 +74,6 @@ query_text2 = text(
     f" AND event_datetime < :end_date AND ({trackid_query_str});"
 )
 
-pd.read_sql(query_text2, engine, params={"start_date": start_date, "end_date": end_date}).to_csv(
-    "./data/headways.csv", index=False
-)
+pd.read_sql(
+    query_text2, engine, params={"start_date": start_date, "end_date": end_date}
+).to_csv("./data/headways.csv", index=False)

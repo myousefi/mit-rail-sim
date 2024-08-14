@@ -3,7 +3,6 @@ from typing import Dict, List
 import pandas as pd
 import plotly.graph_objs as go
 from plotly import express as px
-from plotly.subplots import make_subplots
 
 from mit_rail_sim.dash_app.helpers import get_color
 
@@ -44,7 +43,9 @@ class PlotCreator:
 
         hover_texts_dict = {}
         for train_id in unique_train_ids:
-            train_df = replication_train_data[replication_train_data["train_id"] == train_id]
+            train_df = replication_train_data[
+                replication_train_data["train_id"] == train_id
+            ]
 
             # Making column title bold and adding horizontal lines
             hover_texts_dict[train_id] = train_df.apply(
@@ -318,7 +319,9 @@ class PlotCreator:
         )
         return fig
 
-    def create_headway_scatter(self, replication_id: int, station_name: str) -> go.Figure:
+    def create_headway_scatter(
+        self, replication_id: int, station_name: str
+    ) -> go.Figure:
         replication_subset_station_data = self.replication_station_data[
             self.replication_station_data["replication_id"] == replication_id
         ]
@@ -591,13 +594,17 @@ class PlotCreator:
 
         df["waiting_time"] = df["waiting_time"] / 60
         # Sort the dataframe by station names according to the given list
-        df["origin"] = pd.Categorical(df["origin"], categories=station_names, ordered=True)
+        df["origin"] = pd.Categorical(
+            df["origin"], categories=station_names, ordered=True
+        )
         df.sort_values("origin", inplace=True)
 
         data = []
         for direction in ["Northbound", "Southbound"]:
             # _df = df[df["direction"] == direction]
-            group = df[df["direction"] == direction].groupby("origin", sort=False)["waiting_time"]
+            group = df[df["direction"] == direction].groupby("origin", sort=False)[
+                "waiting_time"
+            ]
             # Calculate means, 25% and 75% percentiles
             means = group.mean()
             lower_bounds = group.quantile(0.25)
@@ -660,7 +667,9 @@ class PlotCreator:
 
         # Group by "origin" and "destination", and calculate the 90th and 50th percentiles of "journey_time"
         percentiles = (
-            df.groupby(["origin", "destination"]).journey_time.quantile([0.90, 0.50]).unstack()
+            df.groupby(["origin", "destination"])
+            .journey_time.quantile([0.90, 0.50])
+            .unstack()
         )
 
         # Calculate the reliability buffer time (the difference between the 90th percentile and 50th percentile)

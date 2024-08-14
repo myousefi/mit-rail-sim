@@ -5,7 +5,9 @@ import pandas as pd
 from mit_rail_sim.utils import project_root
 
 # Read the Excel file
-file_path = project_root / "data" / "cta_blue_line_infra" / "BlueLine_Track_Circuit.xlsx"
+file_path = (
+    project_root / "data" / "cta_blue_line_infra" / "BlueLine_Track_Circuit.xlsx"
+)
 df = pd.read_excel(file_path)
 
 # Remove trailing 'T' from 'BLOCK' column

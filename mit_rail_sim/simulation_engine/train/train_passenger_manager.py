@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import random
 from collections import defaultdict
-from typing import TYPE_CHECKING, DefaultDict, List
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
-    from mit_rail_sim.simulation_engine.passenger import Passenger
+    pass
 
 
 class TrainPassengerManager:
@@ -26,11 +26,15 @@ class TrainPassengerManager:
         self.num_seats_per_door = num_seats_per_door
 
     def remaining_capacity(self) -> int:
-        return self.train_capacity - sum(len(passengers) for passengers in self.passengers.values())
+        return self.train_capacity - sum(
+            len(passengers) for passengers in self.passengers.values()
+        )
 
     def alight_passengers(self, current_station, current_time):
         alighting_passengers = self.passengers[current_station]
-        alight_counts = [[0 for _ in range(self.num_doors_per_car)] for _ in range(self.num_cars)]
+        alight_counts = [
+            [0 for _ in range(self.num_doors_per_car)] for _ in range(self.num_cars)
+        ]
 
         for passenger in alighting_passengers:
             car_idx = passenger.car_assigned
@@ -43,7 +47,9 @@ class TrainPassengerManager:
         return alight_counts
 
     def alight_all_passengers(self, current_station, current_time):
-        alight_counts = [[0 for _ in range(self.num_doors_per_car)] for _ in range(self.num_cars)]
+        alight_counts = [
+            [0 for _ in range(self.num_doors_per_car)] for _ in range(self.num_cars)
+        ]
 
         for stations in self.passengers.keys():
             alighting_passengers = self.passengers[stations]
@@ -69,7 +75,9 @@ class TrainPassengerManager:
         current_time,
         car_assignment_weights: List[float] = [1, 3, 1, 1, 1, 1, 3, 1],
     ):
-        boarding_counts = [[0 for _ in range(self.num_doors_per_car)] for _ in range(self.num_cars)]
+        boarding_counts = [
+            [0 for _ in range(self.num_doors_per_car)] for _ in range(self.num_cars)
+        ]
 
         for passenger in passengers:
             if self.remaining_capacity() <= 0:
@@ -101,7 +109,9 @@ class TrainPassengerManager:
                 alightings = alight_counts[car_idx][door_idx]
                 boardings = boarding_counts[car_idx][door_idx]
                 through_standees = max(
-                    len(self.cars[car_idx][door_idx]) - boardings - self.num_seats_per_door,
+                    len(self.cars[car_idx][door_idx])
+                    - boardings
+                    - self.num_seats_per_door,
                     0,
                 )
                 metrics.append((alightings, boardings, through_standees))

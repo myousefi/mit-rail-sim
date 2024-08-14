@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING, List
 from .logger_utils import OHareTerminalHoldingLogger
 
 from ..schedule_refactored.ohare_empirical_schedule import (
-    OHareEmpiricalSchedule,
     OHareEmpiricalScheduleWithHolding,
 )
 

@@ -1,11 +1,9 @@
 import bisect
-import datetime
 import json
 import random
 from copy import deepcopy
 from typing import List, Tuple
 
-import numpy as np
 import scipy.stats as st
 
 from mit_rail_sim.utils import project_root
@@ -472,7 +470,6 @@ class WeibullSchedule:
         return deepcopy(self)
 
 
-import datetime
 from typing import List, Tuple
 
 import pandas as pd

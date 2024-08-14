@@ -1,11 +1,4 @@
-import unittest
 from test.base_test_case import BaseTestCase, RandomizedBaseTestCase
-
-import matplotlib.pyplot as plt
-
-from mit_rail_sim.simulation_engine.train import Train
-from mit_rail_sim.simulation_engine.train.train import NextBlockNotFoundError
-from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 
 class TestTrainMovement(BaseTestCase):
@@ -25,9 +18,13 @@ class TestTrainMovement(BaseTestCase):
         self.visualize_distance_profiles(
             distances, distance_to_next_station_list, "Distance to Station"
         )
-        self.visualize_distance_profiles(distances, speeds, "Speed", current_speed_codes)
+        self.visualize_distance_profiles(
+            distances, speeds, "Speed", current_speed_codes
+        )
         self.visualize_distance_profiles(distances, accelerations, "Acceleration")
-        self.visualize_distance_profiles(distances, planned_distances, "Planned Distance")
+        self.visualize_distance_profiles(
+            distances, planned_distances, "Planned Distance"
+        )
 
 
 class TestTrainMovementRandomBlocks(RandomizedBaseTestCase):
@@ -47,6 +44,10 @@ class TestTrainMovementRandomBlocks(RandomizedBaseTestCase):
         self.visualize_distance_profiles(
             distances, distance_to_next_station_list, "Distance to Station"
         )
-        self.visualize_distance_profiles(distances, speeds, "Speed", current_speed_codes)
+        self.visualize_distance_profiles(
+            distances, speeds, "Speed", current_speed_codes
+        )
         self.visualize_distance_profiles(distances, accelerations, "Acceleration")
-        self.visualize_distance_profiles(distances, planned_distances, "Planned Distance")
+        self.visualize_distance_profiles(
+            distances, planned_distances, "Planned Distance"
+        )

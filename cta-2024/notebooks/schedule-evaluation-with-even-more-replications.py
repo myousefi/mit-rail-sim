@@ -1,7 +1,6 @@
 # %%
 import os
 from pathlib import Path
-import re
 import pandas as pd
 import glob
 import plotly.io as pio
@@ -82,15 +81,9 @@ for subdir, data_frames in all_data.items():
 # %%
 
 data = {}
-data["AM"] = all_data[
-    "period=version_83,schd=AM,station=NO-CONTROL"
-]
-data["PM"] = all_data[
-    "period=version_83,schd=PM,station=NO-CONTROL"
-]
+data["AM"] = all_data["period=version_83,schd=AM,station=NO-CONTROL"]
+data["PM"] = all_data["period=version_83,schd=PM,station=NO-CONTROL"]
 # %%
-from mit_rail_sim.validation.validation_dash import STATION_ORDER
-import plotly.express as px
 
 
 def alighting_boarding_figures(simulation_results):
@@ -238,7 +231,9 @@ print(colors)
 for schd, df in data.items():
     df = df["station_test"]
 
-    df["station_name"] = df["station_name"].replace("Western (O-Hare Branch)", "Western")
+    df["station_name"] = df["station_name"].replace(
+        "Western (O-Hare Branch)", "Western"
+    )
 
     total_passengers = df.groupby(["station_name", "direction"])[
         "number_of_passengers_boarded"
@@ -299,8 +294,10 @@ for schd, df in data.items():
 for schd in data.keys():
     df = data[schd]["station_test"]
 
-    df["station_name"] = df["station_name"].replace("Western (O-Hare Branch)", "Western")
-    
+    df["station_name"] = df["station_name"].replace(
+        "Western (O-Hare Branch)", "Western"
+    )
+
     if schd == "AM":
         df = df[(df["time_in_seconds"] > 6 * 3600) & (df["time_in_seconds"] < 7 * 3600)]
     elif schd == "PM":
@@ -321,7 +318,6 @@ for schd in data.keys():
     percentage_denied_boardings = percentage_denied_boardings[
         percentage_denied_boardings > 0
     ]
-        
 
     fig = go.Figure(
         data=[
@@ -363,7 +359,9 @@ for schd in data.keys():
 
     fig.show(renderer="browser")
 
-    fig.write_image(OUTPUT_DIRECTORY / f"denied-boarfing-percentage-peak-hour-{schd}.svg")
+    fig.write_image(
+        OUTPUT_DIRECTORY / f"denied-boarfing-percentage-peak-hour-{schd}.svg"
+    )
 
 # %%
 for schd in data.keys():
@@ -383,7 +381,6 @@ for schd in data.keys():
     print(denied_boardings_by_hour)
 
 # %%
-import pandas as pd
 import plotly.graph_objects as go
 
 for schd in data.keys():
@@ -455,7 +452,9 @@ for schd, df in data.items():
         "is_short_turning"
     ].transform("max")
 
-    df["is_short_turning"] = df["is_short_turning"].replace({True: "Short Truning", False: "Full Service"})
+    df["is_short_turning"] = df["is_short_turning"].replace(
+        {True: "Short Truning", False: "Full Service"}
+    )
 
     df = df[df["direction"] == direction]
 

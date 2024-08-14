@@ -21,7 +21,8 @@ def calculate_absolute_distance(rail_data_json):
     for segment in rail_data_json:
         if "STATION" in segment:
             stations[segment["STATION"]["STATION_NAME"]] = distance + abs(
-                int(segment["STATION"]["END_OF_PLATFORM_MILEPOST"]) - int(segment["STARTSTN"])
+                int(segment["STATION"]["END_OF_PLATFORM_MILEPOST"])
+                - int(segment["STARTSTN"])
             )
         distance += int(segment["DISTANCE"])
 
@@ -34,7 +35,9 @@ def calculate_travel_times(station_data: pd.DataFrame) -> pd.DataFrame:
 
     # Group data by replication_id, station_name, and train_id, and sort by time_in_seconds
     station_data_sorted = station_data.sort_values("time_in_seconds")
-    grouped_data = station_data_sorted.groupby(["replication_id", "station_name", "train_id"])
+    grouped_data = station_data_sorted.groupby(
+        ["replication_id", "station_name", "train_id"]
+    )
 
     # Create a dictionary for fast lookup of data frames for each group
     group_dict = {g: df for g, df in grouped_data}
@@ -54,8 +57,12 @@ def calculate_travel_times(station_data: pd.DataFrame) -> pd.DataFrame:
                         if ((replication_id, origin_name, train_id) in group_dict) and (
                             (replication_id, destination_name, train_id) in group_dict
                         ):
-                            origin_data = group_dict[(replication_id, origin_name, train_id)]
-                            dest_data = group_dict[(replication_id, destination_name, train_id)]
+                            origin_data = group_dict[
+                                (replication_id, origin_name, train_id)
+                            ]
+                            dest_data = group_dict[
+                                (replication_id, destination_name, train_id)
+                            ]
 
                             if not origin_data.empty and not dest_data.empty:
                                 # Get the first time_in_seconds value for the origin and last for the destination

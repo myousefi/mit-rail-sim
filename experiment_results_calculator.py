@@ -55,7 +55,9 @@ class TravelTimeCalculator:
             df, origin_station, destination_station
         )
         # Calculate Coefficient of Variation of travel times
-        cv_travel_time = std_travel_time / avg_travel_time if avg_travel_time != 0 else 0
+        cv_travel_time = (
+            std_travel_time / avg_travel_time if avg_travel_time != 0 else 0
+        )
 
         # Specify stations for headway calculations
         stations = [
@@ -75,7 +77,9 @@ class TravelTimeCalculator:
             headway_stats[
                 f"avg_headway_{station.replace('-', '_').replace(' ', '_')}"
             ] = avg_headway
-            headway_stats[f"cv_headway_{station.replace('-', '_').replace(' ', '_')}"] = cv_headway
+            headway_stats[
+                f"cv_headway_{station.replace('-', '_').replace(' ', '_')}"
+            ] = cv_headway
 
         # Add the results to the output
         self.output.append(

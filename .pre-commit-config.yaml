@@ -1,59 +1,40 @@
-# # See https://pre-commit.com/ for usage and config
-# repos:
-#     - repo: local
-#       hooks:
-#           - id: isort
-#             name: isort
-#             stages: [commit]
-#             language: system
-#             entry: pipenv run isort  --apply
-#             types: [python]
-
-#           - id: black
-#             name: black
-#             stages: [commit]
-#             language: system
-#             entry: pipenv run black
-#             types: [python]
-
-#           - id: flake8
-#             name: flake8
-#             stages: [commit]
-#             language: system
-#             entry: pipenv run flake8
-#             types: [python]
-#             exclude: setup.py
-#             always_run: true
-
-#           - id: mypy
-#             name: mypy
-#             stages: [commit]
-#             language: system
-#             entry: pipenv run mypy
-#             types: [python]
-#             require_serial: true
-#             always_run: true
-
-#           - id: pytest
-#             name: pytest
-#             stages: [commit]
-#             language: system
-#             entry: pipenv run pytest
-#             types: [python]
-#             pass_filenames: false
-#             always_run: true
-
-# - id: pytest-cov
-#   name: pytest
-#   stages: [push]
-#   language: system
-#   entry: pipenv run pytest --cov
-#   types: [python]
-#   pass_filenames: false
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+default_install_hook_types: [pre-commit, pre-push]
 
 repos:
-    - repo: https://github.com/pre-commit/pre-commit-hooks
-      rev: v4.4.0 # Use the latest release version
-      hooks:
-          - id: check-added-large-files
-            args: ["--maxkb=1000"] # Set maximum file size to 1MB (1000KB)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-toml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.0
+    hooks:
+      - id: ruff
+        args:
+          [
+            --fix,
+            --fix-only,
+            --extend-exclude=*/__init__.py,
+            --exit-non-zero-on-fix,
+          ]
+      - id: ruff-format
+
+  - repo: https://github.com/adamchainz/blacken-docs
+    rev: "1.16.0"
+    hooks:
+      - id: blacken-docs
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: rye run mypy
+        language: system
+        types: [python]
+        args: [--config-file, pyproject.toml]
+        stages: [pre-push]
