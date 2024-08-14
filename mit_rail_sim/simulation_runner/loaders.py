@@ -3,9 +3,33 @@ from random import randint
 from typing import List, Dict, Tuple
 
 from mit_rail_sim import config_handler
-from mit_rail_sim.simulation_engine.infrastructure import SlowZone, Path, SignalControlCenter, Station, Block
-from mit_rail_sim.simulation_engine.infrastructure.path import ShortTurningPath, ShortTurningAtWestern
+from mit_rail_sim.simulation_engine.infrastructure import (
+    SlowZone,
+    Path,
+    SignalControlCenter,
+    Station,
+    Block,
+)
+from mit_rail_sim.simulation_engine.infrastructure.path import (
+    ShortTurningPath,
+    ShortTurningAtWestern,
+)
 from mit_rail_sim.simulation_engine.passenger import ArrivalRate
+
+
+class PathConfigLoader:
+    def __init__(self, path_config_file):
+        with open(path_config_file, "r") as f:
+            self.config = json.load(f)
+
+    def get_directions(self):
+        return self.config["directions"]
+
+    def get_dispatching_blocks(self):
+        return self.config["dispatching_blocks"]
+
+    def get_short_turning_config(self, short_turning_type):
+        return self.config["short_turning"][short_turning_type]
 
 
 def read_slow_zones_from_json(file_path: str) -> List[SlowZone]:
@@ -20,15 +44,17 @@ def load_data(data_filename: str):
 
 
 def create_path_from_data_with_offscan_symptom(
-    data: Dict, slow_zones: List[SlowZone], arrival_rates: ArrivalRate
+    data: Dict,
+    slow_zones: List[SlowZone],
+    arrival_rates: ArrivalRate,
+    path_config_loader: PathConfigLoader,
 ) -> Tuple[Dict[str, Path], SignalControlCenter]:
-    # off_scans = []
     blocks = []
     paths = {}
 
     cfg = config_handler.get_config()
 
-    for direction in ["Northbound", "Southbound"]:
+    for direction in path_config_loader.get_directions():
         path_blocks = []
         for block_data in data[direction]:
             block_id = block_data["BLOCK"]
@@ -75,62 +101,30 @@ def create_path_from_data_with_offscan_symptom(
 
     signal_control_center = SignalControlCenter(blocks)
 
-    paths["Northbound"].make_dispatching_block(
-        block_id="WC-470", dispatch_margin=0, upstream_blocks=["WC-470"]
-    )
+    for dispatching_block in path_config_loader.get_dispatching_blocks():
+        paths[dispatching_block["direction"]].make_dispatching_block(
+            block_id=dispatching_block["block_id"],
+            dispatch_margin=dispatching_block["dispatch_margin"],
+            upstream_blocks=dispatching_block["upstream_blocks"],
+        )
 
-    paths["Northbound"].make_dispatching_block(
-        block_id="WC-16",
-        dispatch_margin=80,
-        upstream_blocks=[
-            "WC-35",
-            "WC-32",
-            "321",
-            "WC-26",
-            "WC-22",
-            "311",
-            "WC-16",
-            # "WC-11",
-            # "WC-8",
-        ],
+    short_turning_config = path_config_loader.get_short_turning_config(
+        cfg.short_turning
     )
-
-    paths["Northbound"].make_dispatching_block(
-        block_id="WC-104",
-        dispatch_margin=80,
-        upstream_blocks=[
-            "WC-104",
-            "621",
-            "WC-111",
-            "WC-117",
-            "WC-125",
-            "WC-130",
-            "WC-138",
-            "WC-144",
-            "WC-151",
-            "WC-158",
-        ],
-    )
-
-    paths["Southbound"].make_dispatching_block(
-        block_id="NWD-739", dispatch_margin=0, upstream_blocks=["NWD-739"]
-    )
-
     if cfg.short_turning == "UIC":
         paths["ShortTurning"] = ShortTurningPath(
             nb_path=paths["Northbound"],
             sb_path=paths["Southbound"],
-            nb_juncture_block_id="WC-16",
-            sb_juncture_block_id="WD-13",
+            nb_juncture_block_id=short_turning_config["nb_juncture_block_id"],
+            sb_juncture_block_id=short_turning_config["sb_juncture_block_id"],
         )
     elif cfg.short_turning == "Western":
         paths["ShortTurning"] = ShortTurningAtWestern(
             nb_path=paths["Northbound"],
             sb_path=paths["Southbound"],
-            nb_juncture_block_id="WC-104",
-            sb_juncture_block_id="WD-111",
+            nb_juncture_block_id=short_turning_config["nb_juncture_block_id"],
+            sb_juncture_block_id=short_turning_config["sb_juncture_block_id"],
         )
-
     else:
         raise Exception("Invalid short turning type")
 

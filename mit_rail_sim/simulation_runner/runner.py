@@ -1,4 +1,3 @@
-# import imp
 import os
 
 import hydra
@@ -25,6 +24,7 @@ from mit_rail_sim.simulation_engine.utils.logger_utils import (
     TrainLogger,
 )
 from mit_rail_sim.simulation_runner.loaders import (
+    PathConfigLoader,
     read_slow_zones_from_json,
     load_data,
     create_path_from_data_with_offscan_symptom,
@@ -162,8 +162,13 @@ def main(cfg: DictConfig) -> None:
 
     from functools import partial
 
+    path_config_laod = PathConfigLoader(
+        path_config_file=project_root / "inputs" / "path_config.json"
+    )
     fixed_arrival_rates_function = partial(
-        create_path_from_data_with_offscan_symptom, arrival_rates=arrival_rates
+        create_path_from_data_with_offscan_symptom,
+        arrival_rates=arrival_rates,
+        path_config_loader=path_config_laod,
     )
 
     replication_manager.run_replications(
