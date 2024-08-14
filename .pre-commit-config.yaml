@@ -15,7 +15,13 @@ repos:
     rev: v0.3.0
     hooks:
       - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
+        args:
+          [
+            --fix,
+            --fix-only,
+            "isort --skip */__init__.py",
+            --exit-non-zero-on-fix,
+          ]
       - id: ruff-format
   - repo: https://github.com/adamchainz/blacken-docs
     rev: "1.16.0"
