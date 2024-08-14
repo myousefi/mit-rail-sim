@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
-import dash_html_components as html
+from dash import dcc
+from dash import html
 
 if TYPE_CHECKING:
     from mit_rail_sim.dash_app.helpers import HeadwayAnalysis, PlotCreator
@@ -21,9 +21,15 @@ def parse_results_dir(results_dir):
 
     return dbc.Alert(
         [
-            html.P([html.Strong("Signal System Type: "), html.Span(signal_system_type)]),
-            html.P([html.Strong("Slow Zones Accounted: "), html.Span(slow_zones_accounted)]),
-            html.P([html.Strong("Dispatching Headway: "), html.Span(dispatching_headway)]),
+            html.P(
+                [html.Strong("Signal System Type: "), html.Span(signal_system_type)]
+            ),
+            html.P(
+                [html.Strong("Slow Zones Accounted: "), html.Span(slow_zones_accounted)]
+            ),
+            html.P(
+                [html.Strong("Dispatching Headway: "), html.Span(dispatching_headway)]
+            ),
             html.P(
                 [html.Span(cleaned_results_dir)],
             ),  # use a smaller font
@@ -33,7 +39,9 @@ def parse_results_dir(results_dir):
     )
 
 
-def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, results_dir: str):
+def generate_layout(
+    plot_creator: PlotCreator, analysis: HeadwayAnalysis, results_dir: str
+):
     layout = dbc.Container(
         [
             # parse_results_dir(results_dir),
@@ -71,7 +79,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
                             ),
                             dbc.Col(
                                 [
-                                    dbc.Label("Train ID", className="h5 font-weight-bold"),
+                                    dbc.Label(
+                                        "Train ID", className="h5 font-weight-bold"
+                                    ),
                                     dbc.Select(
                                         id="train_id_dropdown",
                                         options=[
@@ -89,7 +99,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
                             ),
                             dbc.Col(
                                 [
-                                    dbc.Label("Profile", className="h5 font-weight-bold"),
+                                    dbc.Label(
+                                        "Profile", className="h5 font-weight-bold"
+                                    ),
                                     dbc.Select(
                                         id="profile_dropdown",
                                         options=[
@@ -117,13 +129,17 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
             ),
             dbc.Card(
                 [
-                    dbc.CardHeader(html.H5("Time Profile", className="font-weight-bold")),
+                    dbc.CardHeader(
+                        html.H5("Time Profile", className="font-weight-bold")
+                    ),
                     dbc.CardBody(
                         [
                             dcc.Loading(
                                 id="loading-profile-graph",
                                 type="cube",
-                                children=dcc.Graph(id="profile_graph", style={"height": "80vh"}),
+                                children=dcc.Graph(
+                                    id="profile_graph", style={"height": "80vh"}
+                                ),
                             ),
                         ]
                     ),
@@ -132,7 +148,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
             ),
             dbc.Card(
                 [
-                    dbc.CardHeader(html.H5("Distance Profile", className="font-weight-bold")),
+                    dbc.CardHeader(
+                        html.H5("Distance Profile", className="font-weight-bold")
+                    ),
                     dbc.CardBody(
                         [
                             dcc.Loading(
@@ -161,7 +179,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
                             dcc.Loading(
                                 id="loading-distances-graph",
                                 type="cube",
-                                children=dcc.Graph(id="distances_graph", style={"height": "100vh"}),
+                                children=dcc.Graph(
+                                    id="distances_graph", style={"height": "100vh"}
+                                ),
                             ),
                         ]
                     ),
@@ -676,7 +696,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
                         [
                             dbc.Col(
                                 [
-                                    dbc.Label("Station", className="h5 font-weight-bold"),
+                                    dbc.Label(
+                                        "Station", className="h5 font-weight-bold"
+                                    ),
                                     dbc.Select(
                                         id="station_dropdown",
                                         options=[
@@ -692,7 +714,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
                             ),
                             dbc.Col(
                                 [
-                                    dbc.Label("Direction", className="h5 font-weight-bold"),
+                                    dbc.Label(
+                                        "Direction", className="h5 font-weight-bold"
+                                    ),
                                     dbc.Select(
                                         id="direction_dropdown",
                                         options=[
@@ -719,7 +743,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
             ),
             dbc.Card(
                 [
-                    dbc.CardHeader(html.H5("Headway Histogram", className="font-weight-bold")),
+                    dbc.CardHeader(
+                        html.H5("Headway Histogram", className="font-weight-bold")
+                    ),
                     dbc.CardBody(
                         [
                             dcc.Loading(
@@ -737,7 +763,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
             ),
             dbc.Card(
                 [
-                    dbc.CardHeader(html.H5("Arrival Rates Heatmap", className="font-weight-bold")),
+                    dbc.CardHeader(
+                        html.H5("Arrival Rates Heatmap", className="font-weight-bold")
+                    ),
                     dbc.CardBody(
                         [
                             dbc.Row(
@@ -763,7 +791,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
                                                 max=24,
                                                 step=0.25,
                                                 value=[0, 1],
-                                                marks={i: f"{i:02d}:00" for i in range(25)},
+                                                marks={
+                                                    i: f"{i:02d}:00" for i in range(25)
+                                                },
                                             ),
                                         ],
                                         className="mb-3",
@@ -811,7 +841,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
                                                 style={"height": "75vh"},
                                             ),
                                         ],
-                                        style={"height": "80vh"},  # to make the heatmap full height
+                                        style={
+                                            "height": "80vh"
+                                        },  # to make the heatmap full height
                                     ),
                                 ]
                             ),
@@ -823,7 +855,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
             ),
             dbc.Card(
                 [
-                    dbc.CardHeader(html.H5("Average Waiting Time", className="font-weight-bold")),
+                    dbc.CardHeader(
+                        html.H5("Average Waiting Time", className="font-weight-bold")
+                    ),
                     dbc.CardBody(
                         [
                             dbc.Spinner(
@@ -912,7 +946,9 @@ def generate_layout(plot_creator: PlotCreator, analysis: HeadwayAnalysis, result
             ),
             dbc.Card(
                 [
-                    dbc.CardHeader(html.H5("Travel Time Histogram", className="font-weight-bold")),
+                    dbc.CardHeader(
+                        html.H5("Travel Time Histogram", className="font-weight-bold")
+                    ),
                     dbc.CardBody(
                         [
                             dcc.Loading(
