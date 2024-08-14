@@ -24,7 +24,9 @@ class SignalControlCenter:
     #     return []
 
     def get_block_by_id(self, block_id: str) -> Optional[Block]:
-        return next((block for block in self.blocks if block.block_id == block_id), None)
+        return next(
+            (block for block in self.blocks if block.block_id == block_id), None
+        )
 
     def send_speed_codes_to_upstream_blocks(self, block: Block) -> None:
         for upstream_block_id, speed_code in block.speed_codes_to_communicate.items():

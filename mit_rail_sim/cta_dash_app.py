@@ -63,7 +63,9 @@ def visualize_time_profile_from_logs(
         hover_text = []
         for i in range(train_data.shape[0]):
             hover_text.append(
-                "<br>".join([f"{col}: {train_data.iloc[i][col]}" for col in train_data.columns])
+                "<br>".join(
+                    [f"{col}: {train_data.iloc[i][col]}" for col in train_data.columns]
+                )
             )
 
         fig.add_trace(
@@ -79,8 +81,12 @@ def visualize_time_profile_from_logs(
 
         if station_data is not None:
             # Get the times when the train arrived at each station and corresponding names
-            station_times = station_data[station_data["train_id"] == train_id]["time_in_seconds"]
-            station_names = station_data[station_data["train_id"] == train_id]["station_name"]
+            station_times = station_data[station_data["train_id"] == train_id][
+                "time_in_seconds"
+            ]
+            station_names = station_data[station_data["train_id"] == train_id][
+                "station_name"
+            ]
 
             # Add a vertical line at each station time and annotate it with station name
             for station_time, station_name in zip(station_times, station_names):
@@ -130,14 +136,18 @@ def calculate_travel_times(station_data: pd.DataFrame) -> pd.DataFrame:
             if origin_name != destination_name:
                 # filter station_data for the current origin/destination pair
                 origin_data = station_data[station_data["station_name"] == origin_name]
-                dest_data = station_data[station_data["station_name"] == destination_name]
+                dest_data = station_data[
+                    station_data["station_name"] == destination_name
+                ]
                 # calculate the travel time for each train that passes through both stations
                 for train_id in set(origin_data["train_id"]).intersection(
                     set(dest_data["train_id"])
                 ):
                     origin = origin_data[origin_data["train_id"] == train_id].iloc[0]
                     destination = dest_data[dest_data["train_id"] == train_id].iloc[0]
-                    travel_time = destination["time_in_seconds"] - origin["time_in_seconds"]
+                    travel_time = (
+                        destination["time_in_seconds"] - origin["time_in_seconds"]
+                    )
 
                     if travel_time > 0:
                         travel_times.append(
@@ -164,7 +174,8 @@ app.layout = html.Div(
                         dcc.Dropdown(
                             id="train_id_dropdown",
                             options=[
-                                {"label": train_id, "value": train_id} for train_id in train_ids
+                                {"label": train_id, "value": train_id}
+                                for train_id in train_ids
                             ],
                             value=train_ids[0],
                         ),
@@ -195,7 +206,9 @@ app.layout = html.Div(
         dcc.Graph(id="distance_profile_graph"),
         html.H2("Distances Traveled Since Start"),
         dcc.Graph(id="distances_graph"),
-        dcc.Store(id="dummy_input", storage_type="memory"),  # Add a dummy dcc.Store component
+        dcc.Store(
+            id="dummy_input", storage_type="memory"
+        ),  # Add a dummy dcc.Store component
         dbc.Row(
             [
                 dbc.Col(
@@ -274,11 +287,17 @@ def update_distances_graph(_):
 )
 def update_graph(train_id, profile):
     if profile == "speed":
-        return visualize_time_profile_from_logs(train_data, [train_id], profile, "Speed")
+        return visualize_time_profile_from_logs(
+            train_data, [train_id], profile, "Speed"
+        )
     elif profile == "acceleration":
-        return visualize_time_profile_from_logs(train_data, [train_id], profile, "Acceleration")
+        return visualize_time_profile_from_logs(
+            train_data, [train_id], profile, "Acceleration"
+        )
     elif profile == "total_travelled_distance":
-        return visualize_time_profile_from_logs(train_data, [train_id], profile, "Distance")
+        return visualize_time_profile_from_logs(
+            train_data, [train_id], profile, "Distance"
+        )
 
 
 def create_headway_scatter(data: pd.DataFrame, station_name: str) -> go.Figure:
@@ -404,7 +423,8 @@ def create_travel_time_histogram(
     travel_times_data: pd.DataFrame, origin: str, destination: str
 ) -> go.Figure:
     travel_times = travel_times_data[
-        (travel_times_data["origin"] == origin) & (travel_times_data["destination"] == destination)
+        (travel_times_data["origin"] == origin)
+        & (travel_times_data["destination"] == destination)
     ]
     fig = px.histogram(
         travel_times,

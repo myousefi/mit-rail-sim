@@ -5,7 +5,6 @@ import random
 from copy import deepcopy
 from typing import TYPE_CHECKING, List, Optional
 
-import numpy as np
 from scipy import stats
 from scipy.stats import truncnorm
 
@@ -37,7 +36,6 @@ if TYPE_CHECKING:
     from mit_rail_sim.simulation_engine.infrastructure.station import Station
     from mit_rail_sim.simulation_engine.train import Train
 
-import os
 
 from mit_rail_sim.utils import project_root
 
@@ -112,7 +110,7 @@ class Path:
                 self.set_block_slow_zone(
                     slow_zone.block_id, slow_zone.reduced_speed_limit
                 )
-            except ValueError as e:
+            except ValueError:
                 pass
                 # print(e)
 

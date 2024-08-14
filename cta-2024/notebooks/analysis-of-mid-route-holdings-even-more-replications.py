@@ -2,17 +2,14 @@
 import glob
 import os
 from pathlib import Path
-import stat
 
 import pandas as pd
 import plotly.io as pio
 
-from mit_rail_sim.utils.root_path import project_root
 
 pio.templates.default = "simple_white"
 # pio.renderers.default = "browser"
 
-import os
 
 import plotly.express as px
 import plotly.graph_objects as go
@@ -265,10 +262,14 @@ for schd in ["AM", "PM"]:
 
     # Create a DataFrame for the table
     table_data = pd.merge(station_counts, station_percentages, on="station")
-    table_data["avg_percentage"] = table_data["avg_percentage"].apply(lambda x: f"{x:.2%}")
+    table_data["avg_percentage"] = table_data["avg_percentage"].apply(
+        lambda x: f"{x:.2%}"
+    )
 
     # Convert the 'station' column to a categorical type with the desired order
-    table_data["station"] = pd.Categorical(table_data["station"], categories=station_order, ordered=True)
+    table_data["station"] = pd.Categorical(
+        table_data["station"], categories=station_order, ordered=True
+    )
 
     # Sort the DataFrame based on the 'station' column
     table_data = table_data.sort_values("station")
@@ -339,7 +340,9 @@ for schd in ["AM", "PM"]:
     )
 
     # Determine the station order based on the schedule (AM or PM)
-    station_order = ORDERED_SCENARIOS_AM.copy() if schd == "AM" else ORDERED_SCENARIOS_PM.copy()
+    station_order = (
+        ORDERED_SCENARIOS_AM.copy() if schd == "AM" else ORDERED_SCENARIOS_PM.copy()
+    )
 
     # Remove O'Hare from station_order if it exists
     if "O-Hare" in station_order:
@@ -354,7 +357,7 @@ for schd in ["AM", "PM"]:
         station_order.remove("NO-CONTROL")
 
     station_data = station_data[station_data["station"].isin(station_order)]
-    
+
     color = "#1F77B4" if schd == "PM" else "#FF7F0E"
 
     # Create the box plot
@@ -401,10 +404,14 @@ for schd in ["AM", "PM"]:
 
     # Create a DataFrame for the table
     table_data = passengers_held_avg.reset_index(drop=False).copy()
-    table_data["station"] = pd.Categorical(table_data["station"], categories=station_order, ordered=True)
+    table_data["station"] = pd.Categorical(
+        table_data["station"], categories=station_order, ordered=True
+    )
     table_data = table_data.sort_values("station")
 
-    table_data["number_of_passengers_on_train_after_stop"] = table_data["number_of_passengers_on_train_after_stop"].round(1)
+    table_data["number_of_passengers_on_train_after_stop"] = table_data[
+        "number_of_passengers_on_train_after_stop"
+    ].round(1)
     print(f"\nAverage Number of Passengers Held for {schd} Schedule:")
     print(table_data.to_markdown(index=False))
 
@@ -415,7 +422,7 @@ for schd in ["AM", "PM"]:
     # Display the plot
     fig.show(renderer="browser")
 
-#TODO copy the information to a table 
+# TODO copy the information to a table
 # %%
 temp = df_combined.query(
     "direction == 'Northbound' and period == 'Spring 2024' and schd == 'PM'"
@@ -497,10 +504,30 @@ passenger_df = pd.concat(
         all_data["period=version_83,schd=PM,station=Clark-Lake"]["passenger_test"],
     ],
     keys=pd.CategoricalIndex(
-        ["NO-CONTROL", "Pulaski", "Racine", "UIC-Halsted", "Clinton", 
-         "LaSalle", "Jackson", "Monroe", "Washington", "Clark/Lake"],
-        categories=["NO-CONTROL", "Pulaski", "Racine", "UIC-Halsted", "Clinton", 
-         "LaSalle", "Jackson", "Monroe", "Washington", "Clark/Lake"],
+        [
+            "NO-CONTROL",
+            "Pulaski",
+            "Racine",
+            "UIC-Halsted",
+            "Clinton",
+            "LaSalle",
+            "Jackson",
+            "Monroe",
+            "Washington",
+            "Clark/Lake",
+        ],
+        categories=[
+            "NO-CONTROL",
+            "Pulaski",
+            "Racine",
+            "UIC-Halsted",
+            "Clinton",
+            "LaSalle",
+            "Jackson",
+            "Monroe",
+            "Washington",
+            "Clark/Lake",
+        ],
         ordered=True,
     ),
 ).reset_index(names=["scenario", "index"])
@@ -554,18 +581,29 @@ grouped_data = temp.groupby(["scenario", "origin", "destination"])
 mean_wait_times = grouped_data["waiting_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = temp.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    temp.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total wait time for each origin and scenario
 total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
 total_wait_time = total_wait_time.reset_index().rename(columns={0: "total_wait_time"})
-total_wait_time_pivot = total_wait_time.pivot(index="origin", columns="scenario", values="total_wait_time")
+total_wait_time_pivot = total_wait_time.pivot(
+    index="origin", columns="scenario", values="total_wait_time"
+)
 
 total_wait_time_pivot["Savings (minutes)"] = (
-    total_wait_time_pivot["NO-CONTROL"]
-    - total_wait_time_pivot["UIC-Halsted"]
+    total_wait_time_pivot["NO-CONTROL"] - total_wait_time_pivot["UIC-Halsted"]
 )
 
 total_waiting_time_savings = (
@@ -578,10 +616,7 @@ fig = go.Figure(
         go.Bar(
             x=total_wait_time_pivot.index,
             y=total_wait_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_wait_time_pivot["Savings (minutes)"]
-            ],
+            text=[f"{y:.0f}" for y in total_wait_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -632,7 +667,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
     )
 )
 
@@ -653,18 +688,29 @@ grouped_data = temp.groupby(["scenario", "origin", "destination"])
 mean_wait_times = grouped_data["waiting_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = temp.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    temp.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total wait time for each origin and scenario
 total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
 total_wait_time = total_wait_time.reset_index().rename(columns={0: "total_wait_time"})
-total_wait_time_pivot = total_wait_time.pivot(index="origin", columns="scenario", values="total_wait_time")
+total_wait_time_pivot = total_wait_time.pivot(
+    index="origin", columns="scenario", values="total_wait_time"
+)
 
 total_wait_time_pivot["Savings (minutes)"] = (
-    total_wait_time_pivot["Clark/Lake"]
-    - total_wait_time_pivot["UIC-Halsted"]
+    total_wait_time_pivot["Clark/Lake"] - total_wait_time_pivot["UIC-Halsted"]
 )
 
 total_waiting_time_savings = (
@@ -677,10 +723,7 @@ fig = go.Figure(
         go.Bar(
             x=total_wait_time_pivot.index,
             y=total_wait_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_wait_time_pivot["Savings (minutes)"]
-            ],
+            text=[f"{y:.0f}" for y in total_wait_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -730,7 +773,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_wait_time_by_origin_station_Northbound_PM_ClarkLake_UIC.svg"
+        / "savings_in_total_daily_wait_time_by_origin_station_Northbound_PM_ClarkLake_UIC.svg"
     )
 )
 
@@ -747,19 +790,32 @@ grouped_data = temp.groupby(["scenario", "origin", "destination"])
 mean_journey_times = grouped_data["journey_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = temp.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    temp.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total journey time for each origin and scenario
 total_journey_time = (mean_journey_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
-total_journey_time = total_journey_time.reset_index().rename(columns={0: "total_journey_time"})
+total_journey_time = total_journey_time.reset_index().rename(
+    columns={0: "total_journey_time"}
+)
 
-total_journey_time_pivot = total_journey_time.pivot(index="origin", columns="scenario", values="total_journey_time")
+total_journey_time_pivot = total_journey_time.pivot(
+    index="origin", columns="scenario", values="total_journey_time"
+)
 
 total_journey_time_pivot["Savings (minutes)"] = (
-    total_journey_time_pivot["NO-CONTROL"]
-    - total_journey_time_pivot["UIC-Halsted"]
+    total_journey_time_pivot["NO-CONTROL"] - total_journey_time_pivot["UIC-Halsted"]
 )
 
 total_journey_time_savings = (
@@ -772,10 +828,7 @@ fig = go.Figure(
         go.Bar(
             x=total_journey_time_pivot.index,
             y=total_journey_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_journey_time_pivot["Savings (minutes)"]
-            ],
+            text=[f"{y:.0f}" for y in total_journey_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -825,7 +878,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
     )
 )
 
@@ -846,19 +899,32 @@ grouped_data = temp.groupby(["scenario", "origin", "destination"])
 mean_journey_times = grouped_data["journey_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = temp.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    temp.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total journey time for each origin and scenario
 total_journey_time = (mean_journey_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
-total_journey_time = total_journey_time.reset_index().rename(columns={0: "total_journey_time"})
+total_journey_time = total_journey_time.reset_index().rename(
+    columns={0: "total_journey_time"}
+)
 
-total_journey_time_pivot = total_journey_time.pivot(index="origin", columns="scenario", values="total_journey_time")
+total_journey_time_pivot = total_journey_time.pivot(
+    index="origin", columns="scenario", values="total_journey_time"
+)
 
 total_journey_time_pivot["Savings (minutes)"] = (
-    total_journey_time_pivot["Clark/Lake"]
-    - total_journey_time_pivot["UIC-Halsted"]
+    total_journey_time_pivot["Clark/Lake"] - total_journey_time_pivot["UIC-Halsted"]
 )
 
 total_journey_time_savings = (
@@ -871,10 +937,7 @@ fig = go.Figure(
         go.Bar(
             x=total_journey_time_pivot.index,
             y=total_journey_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_journey_time_pivot["Savings (minutes)"]
-            ],
+            text=[f"{y:.0f}" for y in total_journey_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -924,7 +987,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_ClarkLake_UIC.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_ClarkLake_UIC.svg"
     )
 )
 
@@ -934,16 +997,36 @@ passenger_df = pd.concat(
     [
         all_data["period=version_83,schd=AM,station=NO-CONTROL"]["passenger_test"],
         all_data["period=version_83,schd=AM,station=Chicago"]["passenger_test"],
-        all_data["period=version_83,schd=AM,station=Western (O-Hare Branch)"]["passenger_test"],
+        all_data["period=version_83,schd=AM,station=Western (O-Hare Branch)"][
+            "passenger_test"
+        ],
         all_data["period=version_83,schd=AM,station=Logan Square"]["passenger_test"],
         all_data["period=version_83,schd=AM,station=Irving Park"]["passenger_test"],
         all_data["period=version_83,schd=AM,station=Jefferson Park"]["passenger_test"],
         all_data["period=version_83,schd=AM,station=Cumberland"]["passenger_test"],
-        all_data["period=version_83,schd=AM,station=O-Hare"]["passenger_test"]
+        all_data["period=version_83,schd=AM,station=O-Hare"]["passenger_test"],
     ],
     keys=pd.CategoricalIndex(
-        ["NO-CONTROL", "Chicago", "Western (O-Hare Branch)", "Logan Square", "Irving Park", "Jefferson Park", "Cumberland", "O-Hare"],
-        categories=["NO-CONTROL", "Chicago", "Western (O-Hare Branch)", "Logan Square", "Irving Park", "Jefferson Park", "Cumberland", "O-Hare"],
+        [
+            "NO-CONTROL",
+            "Chicago",
+            "Western (O-Hare Branch)",
+            "Logan Square",
+            "Irving Park",
+            "Jefferson Park",
+            "Cumberland",
+            "O-Hare",
+        ],
+        categories=[
+            "NO-CONTROL",
+            "Chicago",
+            "Western (O-Hare Branch)",
+            "Logan Square",
+            "Irving Park",
+            "Jefferson Park",
+            "Cumberland",
+            "O-Hare",
+        ],
         ordered=True,
     ),
 ).reset_index(names=["scenario", "index"])
@@ -966,7 +1049,17 @@ grouped_data = southbound_data_am.groupby(["scenario", "origin", "destination"])
 mean_wait_times = grouped_data["waiting_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total wait time for each origin and scenario
 total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
@@ -974,13 +1067,14 @@ total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
 # Step 5: Reset the index to have origin and scenario as columns
 total_wait_time = total_wait_time.reset_index().rename(columns={0: "total_wait_time"})
 
-total_wait_time_pivot = total_wait_time.pivot(index="origin", columns="scenario", values="total_wait_time")
+total_wait_time_pivot = total_wait_time.pivot(
+    index="origin", columns="scenario", values="total_wait_time"
+)
 
 total_wait_time_pivot
 
 total_wait_time_pivot["Savings (minutes)"] = (
-    total_wait_time_pivot["NO-CONTROL"]
-    - total_wait_time_pivot["O-Hare"]
+    total_wait_time_pivot["NO-CONTROL"] - total_wait_time_pivot["O-Hare"]
 )
 
 fig_am_wait = go.Figure(
@@ -988,10 +1082,7 @@ fig_am_wait = go.Figure(
         go.Bar(
             x=total_wait_time_pivot.index,
             y=total_wait_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_wait_time_pivot["Savings (minutes)"]
-            ],
+            text=[f"{y:.0f}" for y in total_wait_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -1025,8 +1116,7 @@ fig_am_wait.update_layout(
 )
 
 total_waiting_time_savings_am = (
-    total_wait_time_pivot["NO-CONTROL"].sum()
-    - total_wait_time_pivot["O-Hare"].sum()
+    total_wait_time_pivot["NO-CONTROL"].sum() - total_wait_time_pivot["O-Hare"].sum()
 )
 
 fig_am_wait.add_annotation(
@@ -1045,7 +1135,7 @@ fig_am_wait.show(renderer="browser")
 fig_am_wait.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 
@@ -1061,7 +1151,17 @@ grouped_data = southbound_data_am.groupby(["scenario", "origin", "destination"])
 mean_wait_times = grouped_data["waiting_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total wait time for each origin and scenario
 total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
@@ -1069,11 +1169,12 @@ total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
 # Step 5: Reset the index to have origin and scenario as columns
 total_wait_time = total_wait_time.reset_index().rename(columns={0: "total_wait_time"})
 
-total_wait_time_pivot = total_wait_time.pivot(index="origin", columns="scenario", values="total_wait_time")
+total_wait_time_pivot = total_wait_time.pivot(
+    index="origin", columns="scenario", values="total_wait_time"
+)
 
 total_wait_time_pivot["Savings (minutes)"] = (
-    total_wait_time_pivot["Jefferson Park"]
-    - total_wait_time_pivot["O-Hare"]
+    total_wait_time_pivot["Jefferson Park"] - total_wait_time_pivot["O-Hare"]
 )
 
 fig_am_wait = go.Figure(
@@ -1081,10 +1182,7 @@ fig_am_wait = go.Figure(
         go.Bar(
             x=total_wait_time_pivot.index,
             y=total_wait_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_wait_time_pivot["Savings (minutes)"]
-            ],
+            text=[f"{y:.0f}" for y in total_wait_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -1138,7 +1236,7 @@ fig_am_wait.show(renderer="browser")
 fig_am_wait.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_JEFFERSONPARK_OHARE.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_JEFFERSONPARK_OHARE.svg"
     )
 )
 
@@ -1155,21 +1253,33 @@ grouped_data = southbound_data_am.groupby(["scenario", "origin", "destination"])
 mean_journey_times = grouped_data["journey_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total journey time for each origin and scenario
 total_journey_time = (mean_journey_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
-total_journey_time = total_journey_time.reset_index().rename(columns={0: "total_journey_time"})
-
-total_journey_time_pivot = total_journey_time.pivot(index="origin", columns="scenario", values="total_journey_time")
-
-total_journey_time_pivot["Savings (minutes)"] = (
-    total_journey_time_pivot["NO-CONTROL"]
-    - total_journey_time_pivot["O-Hare"]
+total_journey_time = total_journey_time.reset_index().rename(
+    columns={0: "total_journey_time"}
 )
 
+total_journey_time_pivot = total_journey_time.pivot(
+    index="origin", columns="scenario", values="total_journey_time"
+)
+
+total_journey_time_pivot["Savings (minutes)"] = (
+    total_journey_time_pivot["NO-CONTROL"] - total_journey_time_pivot["O-Hare"]
+)
 
 
 total_journey_time_savings_am = (
@@ -1182,12 +1292,7 @@ fig_am_journey = go.Figure(
         go.Bar(
             x=total_journey_time_pivot.index,
             y=total_journey_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_journey_time_pivot[
-                    "Savings (minutes)"
-                ]
-            ],
+            text=[f"{y:.0f}" for y in total_journey_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -1236,7 +1341,7 @@ fig_am_journey.show(renderer="browser")
 fig_am_journey.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 # %%
@@ -1251,19 +1356,32 @@ grouped_data = southbound_data_am.groupby(["scenario", "origin", "destination"])
 mean_journey_times = grouped_data["journey_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total journey time for each origin and scenario
 total_journey_time = (mean_journey_times * avg_passengers).sum(axis=1)
 
 # Step 5: Reset the index to have origin and scenario as columns
-total_journey_time = total_journey_time.reset_index().rename(columns={0: "total_journey_time"})
+total_journey_time = total_journey_time.reset_index().rename(
+    columns={0: "total_journey_time"}
+)
 
-total_journey_time_pivot = total_journey_time.pivot(index="origin", columns="scenario", values="total_journey_time")
+total_journey_time_pivot = total_journey_time.pivot(
+    index="origin", columns="scenario", values="total_journey_time"
+)
 
 total_journey_time_pivot["Savings (minutes)"] = (
-    total_journey_time_pivot["Jefferson Park"]
-    - total_journey_time_pivot["O-Hare"]
+    total_journey_time_pivot["Jefferson Park"] - total_journey_time_pivot["O-Hare"]
 )
 
 total_journey_time_savings_am = (
@@ -1276,12 +1394,7 @@ fig_am_journey = go.Figure(
         go.Bar(
             x=total_journey_time_pivot.index,
             y=total_journey_time_pivot["Savings (minutes)"],
-            text=[
-                f"{y:.0f}"
-                for y in total_journey_time_pivot[
-                    "Savings (minutes)"
-                ]
-            ],
+            text=[f"{y:.0f}" for y in total_journey_time_pivot["Savings (minutes)"]],
             textposition="auto",
             textfont=dict(size=12),
         )
@@ -1330,7 +1443,7 @@ fig_am_journey.show(renderer="browser")
 fig_am_journey.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_JEFFERSONPARK.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_JEFFERSONPARK.svg"
     )
 )
 
@@ -1406,7 +1519,7 @@ fig_am_passengers_boarded.show(renderer="browser")
 fig_am_passengers_boarded.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"average_number_of_passengers_boarded_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "average_number_of_passengers_boarded_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 
@@ -1417,7 +1530,9 @@ southbound_data_am = passenger_df.query(
     "direction == 'Southbound' and (scenario == 'NO-CONTROL' or scenario == 'O-Hare')"
 )
 
-southbound_data_am.set_index(["origin", "destination", "scenario", "replication_id"], inplace=True)
+southbound_data_am.set_index(
+    ["origin", "destination", "scenario", "replication_id"], inplace=True
+)
 
 # Filter the data for Southbound direction, origin at Harlem (O-Hare Branch), and the desired scenarios
 harlem_southbound_data = southbound_data_am[
@@ -1507,7 +1622,13 @@ ohare_southbound_data = southbound_data_am[
 ]
 
 # Calculate the median journey times for each scenario and destination
-median_journey_times = ohare_southbound_data.reset_index().groupby(["scenario", "destination"])["journey_time"].mean().unstack().T
+median_journey_times = (
+    ohare_southbound_data.reset_index()
+    .groupby(["scenario", "destination"])["journey_time"]
+    .mean()
+    .unstack()
+    .T
+)
 
 # Calculate the difference in median journey times between NO-CONTROL and O-Hare scenarios
 median_diff = median_journey_times["NO-CONTROL"] - median_journey_times["O-Hare"]
@@ -1528,7 +1649,9 @@ fig = go.Figure(
             text="Difference in Mean Journey Times (NO-CONTROL - O'Hare)",
             font=dict(size=24),
         ),
-        yaxis_title=dict(text="Difference in Median Journey Time (minutes)", font=dict(size=18)),
+        yaxis_title=dict(
+            text="Difference in Median Journey Time (minutes)", font=dict(size=18)
+        ),
         yaxis=dict(
             tickfont=dict(size=14),
             gridwidth=1,
@@ -1562,10 +1685,20 @@ harlem_southbound_data = southbound_data_am[
 ]
 
 # Calculate the sum of journey times for each scenario, destination, and replication_id
-sum_journey_times = harlem_southbound_data.reset_index().groupby(["scenario", "destination", "replication_id"])["journey_time"].sum().reset_index()
+sum_journey_times = (
+    harlem_southbound_data.reset_index()
+    .groupby(["scenario", "destination", "replication_id"])["journey_time"]
+    .sum()
+    .reset_index()
+)
 
 # Calculate the average sum of journey times over replication_ids for each scenario and destination
-avg_sum_journey_times = sum_journey_times.groupby(["scenario", "destination"])["journey_time"].mean().unstack().T
+avg_sum_journey_times = (
+    sum_journey_times.groupby(["scenario", "destination"])["journey_time"]
+    .mean()
+    .unstack()
+    .T
+)
 
 
 # Calculate the difference in average sum of journey times between NO-CONTROL and O-Hare scenarios
@@ -1587,7 +1720,10 @@ fig = go.Figure(
             text="Difference in Average Sum of Journey Times (NO-CONTROL - O'Hare)",
             font=dict(size=24),
         ),
-        yaxis_title=dict(text="Difference in Average Sum of Journey Times (minutes)", font=dict(size=18)),
+        yaxis_title=dict(
+            text="Difference in Average Sum of Journey Times (minutes)",
+            font=dict(size=18),
+        ),
         yaxis=dict(
             tickfont=dict(size=14),
             gridwidth=1,
@@ -1625,7 +1761,6 @@ harlem_southbound_data.groupby("scenario").agg(
 )
 
 
-
 # %%
 import pandas as pd
 
@@ -1636,7 +1771,17 @@ grouped_data = southbound_data_am.groupby(["scenario", "origin", "destination"])
 mean_wait_times = grouped_data["waiting_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    southbound_data_am.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total wait time for each origin and scenario
 total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
@@ -1644,10 +1789,11 @@ total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
 # Step 5: Reset the index to have origin and scenario as columns
 total_wait_time = total_wait_time.reset_index().rename(columns={0: "total_wait_time"})
 
-total_wait_time_pivot = total_wait_time.pivot(index="origin", columns="scenario", values="total_wait_time")
+total_wait_time_pivot = total_wait_time.pivot(
+    index="origin", columns="scenario", values="total_wait_time"
+)
 
 total_wait_time_pivot
-
 
 
 # %%
@@ -1657,13 +1803,14 @@ import itertools
 scenarios = ORDERED_SCENARIOS_AM
 
 passenger_df = pd.concat(
-    [all_data[f"period=version_83,schd=AM,station={station}"]["passenger_test"] for station in scenarios],
+    [
+        all_data[f"period=version_83,schd=AM,station={station}"]["passenger_test"]
+        for station in scenarios
+    ],
     keys=scenarios,
 ).reset_index(names=["scenario", "index"])
-        
-temp = passenger_df.query(
-    "direction == 'Southbound' and scenario in @scenarios"
-)
+
+temp = passenger_df.query("direction == 'Southbound' and scenario in @scenarios")
 
 temp["scenario"] = temp["scenario"].astype("str")
 
@@ -1674,7 +1821,17 @@ grouped_data = temp.groupby(["scenario", "origin", "destination"])
 mean_wait_times = grouped_data["waiting_time"].mean().unstack()
 
 # Step 3: Calculate the average number of passengers for each origin-destination pair
-avg_passengers = temp.groupby(["origin", "destination", "scenario", "replication_id"])["passenger_id"].count().reset_index().query("passenger_id > 0").groupby(["origin", "destination"])["passenger_id"].mean().unstack()
+avg_passengers = (
+    temp.groupby(["origin", "destination", "scenario", "replication_id"])[
+        "passenger_id"
+    ]
+    .count()
+    .reset_index()
+    .query("passenger_id > 0")
+    .groupby(["origin", "destination"])["passenger_id"]
+    .mean()
+    .unstack()
+)
 
 # Step 4: Calculate the total wait time for each origin and scenario
 total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
@@ -1682,7 +1839,9 @@ total_wait_time = (mean_wait_times * avg_passengers).sum(axis=1)
 # Step 5: Reset the index to have origin and scenario as columns
 total_wait_time = total_wait_time.reset_index().rename(columns={0: "total_wait_time"})
 
-total_wait_time_pivot = total_wait_time.pivot(index="origin", columns="scenario", values="total_wait_time").T
+total_wait_time_pivot = total_wait_time.pivot(
+    index="origin", columns="scenario", values="total_wait_time"
+).T
 
 # Step 6: Calculate the savings between each pair of scenarios
 savings_df = pd.DataFrame(index=scenarios, columns=scenarios)
@@ -1700,5 +1859,3 @@ for scenario1, scenario2 in itertools.combinations(scenarios, 2):
 savings_df.head()
 
 # %%
-
-

@@ -1,7 +1,5 @@
 import json
 
-import matplotlib.pyplot as plt
-import pandas as pd
 
 from mit_rail_sim.utils import project_root
 

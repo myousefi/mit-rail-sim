@@ -21,7 +21,9 @@ start_date = "2023-11-13"
 end_date = "2023-12-18"
 
 # Connect to the database
-engine = create_engine(f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}").connect()
+engine = create_engine(
+    f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+).connect()
 
 # Load station and direction mapping from CSV
 station_direction_df = pd.read_csv(

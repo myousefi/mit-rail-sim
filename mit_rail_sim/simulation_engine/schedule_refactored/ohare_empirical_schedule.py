@@ -176,10 +176,8 @@ class OHareEmpiricalDispatchStrategy(EmpiricalDispatchStrategy):
         return dispatch_info
 
 
-import json
 from typing import List, Tuple
 
-import pandas as pd
 
 from mit_rail_sim.simulation_engine.schedule_refactored import BaseSchedule
 from mit_rail_sim.simulation_engine.schedule_refactored import EmpiricalDispatchStrategy

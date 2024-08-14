@@ -50,7 +50,10 @@ class MovingBlockControl:
         if needed_braking_distance < 0:
             return 0
 
-        if asking_train.train_speed_regulator.braking_distance < needed_braking_distance:
+        if (
+            asking_train.train_speed_regulator.braking_distance
+            < needed_braking_distance
+        ):
             return asking_block.civil_speed_limit
 
         return min(

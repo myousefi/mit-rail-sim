@@ -15,5 +15,3 @@ station: {
     station_name: Forest Park,
     end_of_platform_milepost: 465+92,
 }
-
-

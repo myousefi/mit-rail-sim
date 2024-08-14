@@ -1,5 +1,4 @@
 # %%
-import re
 import pandas as pd
 import plotly.express as px
 
@@ -87,8 +86,6 @@ results = engine.execute(
 )
 
 df = pd.DataFrame(results.fetchall(), columns=results.keys())
-
-import numpy as np
 
 
 # %%

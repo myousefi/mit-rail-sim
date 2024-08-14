@@ -18,7 +18,9 @@ csv_stations = sorted(list(csv_stations))
 # Read JSON file and extract unique station names
 with open(project_root / "file.json", "r") as json_file:
     json_data = json.load(json_file)
-    json_stations = set(item["STATION"]["STATION_NAME"] for item in json_data if "STATION" in item)
+    json_stations = set(
+        item["STATION"]["STATION_NAME"] for item in json_data if "STATION" in item
+    )
 
 # Sort the station names
 json_stations = sorted(list(json_stations))

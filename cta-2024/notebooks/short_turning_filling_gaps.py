@@ -1,7 +1,6 @@
 # %%
 # import os
 
-from pathlib import Path
 import pandas as pd
 import plotly.express as px
 # from dotenv import find_dotenv, load_dotenv
@@ -83,7 +82,6 @@ df.set_index("time_of_day", drop=False, inplace=True)
 
 
 # %%
-import plotly.express as px
 
 # Create a scatter plot of the arrival times at UIC-Halsted NB
 fig = px.scatter(

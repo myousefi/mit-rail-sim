@@ -23,7 +23,9 @@ class PassengerGenerator:
 
         if True:
             # if rate_alpha * delta_t < 15:
-            return self._generate_poisson_passengers(delta_t, rate_alpha, delta_t_in_seconds)
+            return self._generate_poisson_passengers(
+                delta_t, rate_alpha, delta_t_in_seconds
+            )
         else:
             return self._generate_normal_distribution_passengers(
                 delta_t, rate_alpha, delta_t_in_seconds
@@ -42,7 +44,9 @@ class PassengerGenerator:
             probability *= rate_alpha * delta_t / k
             cumulative_probability += probability
 
-        passenger_arrivals = sorted([random.uniform(0, delta_t_in_seconds) for _ in range(k)])
+        passenger_arrivals = sorted(
+            [random.uniform(0, delta_t_in_seconds) for _ in range(k)]
+        )
         return passenger_arrivals
 
     def _generate_normal_distribution_passengers(

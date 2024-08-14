@@ -1,12 +1,6 @@
 import json
 import unittest
-from io import StringIO
-from unittest.mock import patch
 
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 FIGURE_WIDTH = 10000
 FIGURE_HEIGHT = 1000

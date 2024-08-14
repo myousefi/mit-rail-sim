@@ -1,19 +1,17 @@
-import os
 from distutils.sysconfig import project_base
 
 import pandas as pd
-from dotenv import find_dotenv, load_dotenv
 from pandas.tseries.holiday import USFederalHolidayCalendar
-from sqlalchemy import create_engine, text
 
-from mit_rail_sim.validation.validation_dash import STATION_ORDER
 
 # Load stations data
 station_df = pd.read_csv(
     project_base + "mit_rail_sim" / "odx_arrival" / "data" / "blue_line_stations.csv"
 )
 
-df = pd.read_csv(project_base + "mit_rail_sim" / "odx_arrival" / "data" / "ODX_Journeys_Nov.csv")
+df = pd.read_csv(
+    project_base + "mit_rail_sim" / "odx_arrival" / "data" / "ODX_Journeys_Nov.csv"
+)
 
 df["Destination"] = df["first_alighting_platform"].map(
     dict(zip(station_df["STOP_ID"], station_df["STATION_NAME_IN_SIM"]))
@@ -63,6 +61,8 @@ rate_df["inferred_ratio_mapped"] = rate_df.index.map(
 
 rate_df.reset_index(inplace=True)
 # Perform the division to scale arrival_rate
-rate_df["arrival_rate"] = rate_df["unscaled_arrival_rate"] / rate_df["inferred_ratio_mapped"]
+rate_df["arrival_rate"] = (
+    rate_df["unscaled_arrival_rate"] / rate_df["inferred_ratio_mapped"]
+)
 
 rate_df.to_csv("./data/arrival_rates_Nov.csv", index=False)

@@ -78,12 +78,23 @@ class BlockFactory:
                 block_index=0, dispatch_margin=0, upstream_blocks=["WC-470"]
             )
         elif block_type == "MovingBlock":
-            path.make_dispatching_block(block_index=0, dispatch_margin=0, upstream_blocks=[])
+            path.make_dispatching_block(
+                block_index=0, dispatch_margin=0, upstream_blocks=[]
+            )
 
         path.make_dispatching_block(
             block_index=79,
             dispatch_margin=110,
-            upstream_blocks=["WC-32", "321", "WC-26", "WC-22", "311", "WC-16", "WC-11", "WC-8"],
+            upstream_blocks=[
+                "WC-32",
+                "321",
+                "WC-26",
+                "WC-22",
+                "311",
+                "WC-16",
+                "WC-11",
+                "WC-8",
+            ],
         )
 
     def create_blocks(self, data, block_type):

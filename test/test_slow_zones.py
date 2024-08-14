@@ -156,7 +156,9 @@ class TestSlowZoneFunctions(unittest.TestCase):
             zone_dict = zone.to_dict()
             reconstructed_zone = SlowZone.from_dict(zone_dict)
             self.assertEqual(reconstructed_zone.block_id, zone.block_id)
-            self.assertEqual(reconstructed_zone.reduced_speed_limit, zone.reduced_speed_limit)
+            self.assertEqual(
+                reconstructed_zone.reduced_speed_limit, zone.reduced_speed_limit
+            )
 
     def test_write_read_slow_zones_to_from_json(self):
         file_path = "test_slow_zones.json"
@@ -165,7 +167,9 @@ class TestSlowZoneFunctions(unittest.TestCase):
         read_zones = read_slow_zones_from_json(file_path)
         for original_zone, read_zone in zip(self.slow_zones, read_zones):
             self.assertEqual(original_zone.block_id, read_zone.block_id)
-            self.assertEqual(original_zone.reduced_speed_limit, read_zone.reduced_speed_limit)
+            self.assertEqual(
+                original_zone.reduced_speed_limit, read_zone.reduced_speed_limit
+            )
 
 
 if __name__ == "__main__":

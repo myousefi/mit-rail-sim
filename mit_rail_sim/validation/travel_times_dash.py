@@ -1,12 +1,9 @@
-from datetime import datetime, time
+from datetime import datetime
 
-import dash
 import dash_bootstrap_components as dbc
-import numpy as np
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-from dash import Dash, Input, Output, State, dcc, html
+from dash import Dash, Input, Output, dcc, html
 from pandas.tseries.holiday import USFederalHolidayCalendar
 
 from mit_rail_sim.utils import find_free_port, project_root
@@ -132,7 +129,9 @@ def filter_by_time_and_weekday(df, start_time, end_time):
 
 def remove_holidays(df):
     cal = USFederalHolidayCalendar()
-    holidays = cal.holidays(start=df["event_datetime"].min(), end=df["event_datetime"].max())
+    holidays = cal.holidays(
+        start=df["event_datetime"].min(), end=df["event_datetime"].max()
+    )
     return df[~df["event_datetime"].dt.date.isin(holidays)].copy()
 
 
@@ -149,7 +148,8 @@ app.layout = dbc.Container(
                         dcc.Dropdown(
                             id="start-station-dropdown",
                             options=[
-                                {"label": station, "value": station} for station in STATION_ORDER
+                                {"label": station, "value": station}
+                                for station in STATION_ORDER
                             ],
                             value=STATION_ORDER[0],
                         ),
@@ -161,7 +161,8 @@ app.layout = dbc.Container(
                         dcc.Dropdown(
                             id="end-station-dropdown",
                             options=[
-                                {"label": station, "value": station} for station in STATION_ORDER
+                                {"label": station, "value": station}
+                                for station in STATION_ORDER
                             ],
                             value=STATION_ORDER[-1],
                         ),
@@ -187,7 +188,9 @@ def update_travel_time_scatter(start_station, end_station):
     df = (
         pd.concat(
             [
-                calculate_real_travel_times(merged_data, merged_data, start_station, end_station),
+                calculate_real_travel_times(
+                    merged_data, merged_data, start_station, end_station
+                ),
                 calculate_sim_travel_times(
                     simulation_results, simulation_results, start_station, end_station
                 ),
@@ -215,7 +218,9 @@ def calculate_real_travel_times(df, dest_df, origin_station, destination_station
     df = df[["date", "run_id", "event_time", "event_datetime", "station"]].copy()
     df = df.sort_values("event_time")
 
-    dest_df = dest_df[["date", "run_id", "event_time", "event_datetime", "station"]].copy()
+    dest_df = dest_df[
+        ["date", "run_id", "event_time", "event_datetime", "station"]
+    ].copy()
     dest_df = dest_df.sort_values("event_time")
 
     # Separate origin and destination stations
@@ -251,7 +256,9 @@ def calculate_real_travel_times(df, dest_df, origin_station, destination_station
     )
 
     travel_times["duration"] = (
-        (merged_df["event_time_destination"] - merged_df["event_time_origin"]).dt.total_seconds()
+        (
+            merged_df["event_time_destination"] - merged_df["event_time_origin"]
+        ).dt.total_seconds()
         / 60
     ).dropna()
 
@@ -260,7 +267,8 @@ def calculate_real_travel_times(df, dest_df, origin_station, destination_station
     q3 = travel_times["duration"].quantile(0.75)
     iqr = q3 - q1
     travel_times = travel_times[
-        (travel_times["duration"] >= q1 - 3 * iqr) & (travel_times["duration"] <= q3 + 3 * iqr)
+        (travel_times["duration"] >= q1 - 3 * iqr)
+        & (travel_times["duration"] <= q3 + 3 * iqr)
     ]
 
     return travel_times
@@ -272,7 +280,9 @@ def calculate_sim_travel_times(df, dest_df, origin_station, destination_station)
     df = df.sort_values(by="time_in_seconds")
     df["time"] = df["time_in_seconds"]
 
-    dest_df = dest_df[["replication_id", "time_in_seconds", "station_name", "train_id"]].copy()
+    dest_df = dest_df[
+        ["replication_id", "time_in_seconds", "station_name", "train_id"]
+    ].copy()
     dest_df = dest_df.sort_values(by="time_in_seconds")
     dest_df["time"] = dest_df["time_in_seconds"]
 
@@ -297,7 +307,8 @@ def calculate_sim_travel_times(df, dest_df, origin_station, destination_station)
     )
 
     sim_travel_times["duration"] = (
-        (merged_df["time_in_seconds_destination"] - merged_df["time_in_seconds_origin"]) / 60
+        (merged_df["time_in_seconds_destination"] - merged_df["time_in_seconds_origin"])
+        / 60
     ).dropna()
 
     return sim_travel_times
@@ -318,11 +329,14 @@ if __name__ == "__main__":
     merged_data.sort_values(by=["event_datetime"], inplace=True)
     track_df = merged_data.copy()
     merged_data["dwell_arrtodep"] = (
-        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds / 60
+        abs(merged_data.groupby(["date", "run_id"])["event_time"].diff(-2)).dt.seconds
+        / 60
     )
 
     merged_data = merged_data[merged_data["scada"].isin(STATION_BLOCK.values())]
-    merged_data["station"] = merged_data["scada"].map({v: k for k, v in STATION_BLOCK.items()})
+    merged_data["station"] = merged_data["scada"].map(
+        {v: k for k, v in STATION_BLOCK.items()}
+    )
 
     event_delay = pd.read_csv("./data/blue_line_event_delay_drqe.csv")
     event_delay["event_datetime"] = pd.to_datetime(event_delay["event_datetime"])
@@ -332,13 +346,17 @@ if __name__ == "__main__":
     block_test = pd.read_csv("./simulation_results/block_test.csv")
 
     # Step 1: Add difference_in_activation column to block_test
-    block_test.sort_values(by=["replication_id", "train_id", "time_in_seconds"], inplace=True)
-    block_test["difference_in_activation"] = -block_test.groupby(["replication_id", "train_id"])[
-        "time_in_seconds"
-    ].diff(-2)
+    block_test.sort_values(
+        by=["replication_id", "train_id", "time_in_seconds"], inplace=True
+    )
+    block_test["difference_in_activation"] = -block_test.groupby(
+        ["replication_id", "train_id"]
+    )["time_in_seconds"].diff(-2)
 
     # Create a new column in station_test dataframe to hold the corresponding block_id values
-    simulation_results["block_id"] = simulation_results["station_name"].map(STATION_BLOCK)
+    simulation_results["block_id"] = simulation_results["station_name"].map(
+        STATION_BLOCK
+    )
 
     # Merge the dataframes on replication_id, train_id and block_id
     simulation_results = pd.merge(

@@ -1,16 +1,10 @@
 from __future__ import annotations
 
-from calendar import c
-from json import load
 import math
-from turtle import st
 from typing import TYPE_CHECKING
 
-from mit_rail_sim.simulation_engine.infrastructure import station
-from mit_rail_sim.simulation_engine.passenger import arrival_rate
 
 if TYPE_CHECKING:
-    from mit_rail_sim.simulation_engine.infrastructure import Path
     from mit_rail_sim.simulation_engine.train import Train
 
 

@@ -19,8 +19,14 @@ class TestHistogram(unittest.TestCase):
         mask = (
             (cleaned_events["station"].isin(["LV Forest Park", "UIC-Halsted"]))
             & (
-                (cleaned_events["event_time"].dt.time >= pd.to_datetime("07:00:00").time())
-                & (cleaned_events["event_time"].dt.time <= pd.to_datetime("11:00:00").time())
+                (
+                    cleaned_events["event_time"].dt.time
+                    >= pd.to_datetime("07:00:00").time()
+                )
+                & (
+                    cleaned_events["event_time"].dt.time
+                    <= pd.to_datetime("11:00:00").time()
+                )
             )
             & (
                 (cleaned_events["station"] != "UIC-Halsted")
@@ -36,7 +42,10 @@ class TestHistogram(unittest.TestCase):
 
         # Merge station_test with short_turning_trips
         station_test = pd.merge(
-            station_test, short_turning_trips, how="left", on=["replication_id", "train_id"]
+            station_test,
+            short_turning_trips,
+            how="left",
+            on=["replication_id", "train_id"],
         )
         station_test["is_short_turning"] = station_test["train_id"].notna()
 
@@ -115,7 +124,11 @@ class TestHistogram(unittest.TestCase):
         )
 
         fig.update_layout(
-            height=600, width=800, title_text="Histograms of Headways", bargap=0.1, bargroupgap=0.2
+            height=600,
+            width=800,
+            title_text="Histograms of Headways",
+            bargap=0.1,
+            bargroupgap=0.2,
         )
 
         # Calculate statistics and KL divergence
@@ -150,7 +163,9 @@ class TestHistogram(unittest.TestCase):
             self.assertTrue(all(headway >= 0 for headway in sim_headway))
 
             # Assert that mean and std are non-negative
-            self.assertTrue(real_mean >= 0 and real_std >= 0 and sim_mean >= 0 and sim_std >= 0)
+            self.assertTrue(
+                real_mean >= 0 and real_std >= 0 and sim_mean >= 0 and sim_std >= 0
+            )
 
             annotations = [
                 f"Real mean: {real_mean:.2f}",
@@ -162,7 +177,9 @@ class TestHistogram(unittest.TestCase):
                 f"KL Divergence: {kl_divergence:.2f}",
             ]
 
-            annotation_x = [0.5] * len(annotations)  # position annotations in the middle
+            annotation_x = [0.5] * len(
+                annotations
+            )  # position annotations in the middle
             annotation_y = np.linspace(
                 0, 1, len(annotations)
             )  # distribute annotations evenly along y
@@ -174,7 +191,7 @@ class TestHistogram(unittest.TestCase):
                     text=annotation,
                     showarrow=False,
                     xref=f"x{i+1}",
-                    yref=f"paper",
+                    yref="paper",
                     font=dict(size=10),
                 )
 

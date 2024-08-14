@@ -2,7 +2,6 @@ from pathlib import Path
 import dash
 import dash_bootstrap_components as dbc
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 from dash import Input, Output, dcc, html
@@ -15,7 +14,9 @@ pio.templates.default = "simple_white"
 pio.templates["plotly_white"].layout.font.family = "Cambria"
 
 # Load and preprocess data
-df = pd.read_csv(project_root / "inputs" / "demand" / f"odx_imputed_demand_all_periods.csv")
+df = pd.read_csv(
+    project_root / "inputs" / "demand" / "odx_imputed_demand_all_periods.csv"
+)
 
 df["transaction_dtm"] = pd.to_datetime(df["transaction_dtm"])
 df["time"] = df["transaction_dtm"].dt.hour
@@ -132,7 +133,10 @@ def update_graph(
         )
 
         median_load_flow = (
-            (filtered_df.groupby("origin").size() - filtered_df.groupby("destination").size())
+            (
+                filtered_df.groupby("origin").size()
+                - filtered_df.groupby("destination").size()
+            )
             .cumsum()
             .reindex(categories)
             .div(time_range[1] - time_range[0])

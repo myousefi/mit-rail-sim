@@ -1,8 +1,7 @@
 import json
 import unittest
-from random import choice, randint, seed, uniform
+from random import randint
 from typing import List
-from unittest.mock import MagicMock
 
 from mit_rail_sim.simulation_engine.infrastructure import (
     Block,
@@ -15,9 +14,7 @@ from mit_rail_sim.simulation_engine.infrastructure.path import ShortTurningPath
 from mit_rail_sim.simulation_engine.passenger import ArrivalRate
 from mit_rail_sim.simulation_engine.schedule import (
     EmpiricalSchedule,
-    GammaSchedule,
     OHareEmpiricalSchedule,
-    Schedule,
 )
 from mit_rail_sim.simulation_engine.simulation import ReplicationManager
 from mit_rail_sim.simulation_engine.utils import (
@@ -27,7 +24,6 @@ from mit_rail_sim.simulation_engine.utils import (
 )
 from mit_rail_sim.simulation_engine.utils.logger_utils import (
     BlockActivationLogger,
-    NullTrainLogger,
     SimulationLogger,
     StationLogger,
 )
@@ -73,7 +69,9 @@ class CTABlueLineTestCase(unittest.TestCase):
     def test_simulation_with_real_data_from_file(self):
         data = self.load_data(project_root / "inputs" / "infra.json")
 
-        slow_zones = read_slow_zones_from_json(project_root / "inputs" / "slow_zones.json")
+        slow_zones = read_slow_zones_from_json(
+            project_root / "inputs" / "slow_zones.json"
+        )
 
         logger_context = LoggerContext(
             self.train_logger,
@@ -143,10 +141,14 @@ class CTABlueLineTestCase(unittest.TestCase):
 
                 if "STATION" in block_data:
                     station_data = block_data["STATION"]
-                    end_of_platform_milepost = int(station_data["END_OF_PLATFORM_MILEPOST"])
+                    end_of_platform_milepost = int(
+                        station_data["END_OF_PLATFORM_MILEPOST"]
+                    )
                     start_stn = block_data["STARTSTN"]
 
-                    location_relative_to_block = abs(start_stn - end_of_platform_milepost)
+                    location_relative_to_block = abs(
+                        start_stn - end_of_platform_milepost
+                    )
 
                     if location_relative_to_block < 0:
                         print(station_data["STATION_NAME"])

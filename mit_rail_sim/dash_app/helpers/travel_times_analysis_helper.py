@@ -20,12 +20,16 @@ class TravelTimeAnalysis:
                 future_destination_entries = group[
                     (group["station"] == destination_station)
                     & (group["event_time"] > row["event_time"])
-                    & (group["event_time"] < (row["event_time"] + pd.Timedelta(minutes=180)))
+                    & (
+                        group["event_time"]
+                        < (row["event_time"] + pd.Timedelta(minutes=180))
+                    )
                 ]
                 if not future_destination_entries.empty:
                     travel_times.append(
                         (
-                            future_destination_entries["event_time"].min() - row["event_time"]
+                            future_destination_entries["event_time"].min()
+                            - row["event_time"]
                         ).total_seconds()
                         / 60
                     )
@@ -45,12 +49,18 @@ class TravelTimeAnalysis:
         real_data_filtered = self.filter_data(origin_station, destination_station)
         real_travel_times_lists = (
             real_data_filtered.groupby(["date", "run_id"])
-            .apply(lambda x: self.calculate_travel_times(x, origin_station, destination_station))
+            .apply(
+                lambda x: self.calculate_travel_times(
+                    x, origin_station, destination_station
+                )
+            )
             .dropna()
         )
 
         # Flatten the resulting series of lists into a single series
-        real_travel_times = pd.Series([tt for sublist in real_travel_times_lists for tt in sublist])
+        real_travel_times = pd.Series(
+            [tt for sublist in real_travel_times_lists for tt in sublist]
+        )
 
         # Filter travel times between the 5th and 95th percentiles
         lower_bound = real_travel_times.quantile(0.05)
@@ -83,8 +93,12 @@ class TravelTimeAnalysis:
         return sim_travel_times
 
     def plot_histogram(self, origin_station, destination_station):
-        real_travel_times = self.prepare_travel_times(origin_station, destination_station)
-        sim_travel_times = self.calculate_sim_travel_times(origin_station, destination_station)
+        real_travel_times = self.prepare_travel_times(
+            origin_station, destination_station
+        )
+        sim_travel_times = self.calculate_sim_travel_times(
+            origin_station, destination_station
+        )
 
         # Mean and Standard Deviation
         mean_real = np.mean(real_travel_times)

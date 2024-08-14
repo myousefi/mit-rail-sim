@@ -14,7 +14,10 @@ class ArrivalRatePlotCreator:
             & (self.data["hour"] < end_hour)
         ]
         pivot_df = hour_df.pivot_table(
-            index="origin_stop", columns="destination_stop", values="arrival_rate", aggfunc="mean"
+            index="origin_stop",
+            columns="destination_stop",
+            values="arrival_rate",
+            aggfunc="mean",
         )
 
         # Ensure all stations are in the DataFrame

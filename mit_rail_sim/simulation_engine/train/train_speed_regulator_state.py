@@ -39,7 +39,9 @@ class TrainSpeedRegulatorState(ABC):
     def should_transition_to_brake_normal_to_station(self) -> bool:
         future_distance_travelled = (
             self.regulator.train.speed_in_fps * self.regulator.train.time_step
-            + 0.5 * self.regulator.train.acceleration_in_fps2 * self.regulator.train.time_step**2
+            + 0.5
+            * self.regulator.train.acceleration_in_fps2
+            * self.regulator.train.time_step**2
         )
 
         future_distance_to_next_station = (
@@ -50,7 +52,9 @@ class TrainSpeedRegulatorState(ABC):
         return (future_distance_to_next_station) <= self.regulator.braking_distance
 
     def should_transition_to_break_with_maximum_rate_state(self) -> bool:
-        return self.regulator.train.speed > self.regulator.train.current_speed_code * 1.05
+        return (
+            self.regulator.train.speed > self.regulator.train.current_speed_code * 1.05
+        )
 
     @abstractmethod
     def check_the_validity_of_the_acceleration(self) -> None:
@@ -126,7 +130,9 @@ class KeepingTheSpeedUptoCodeState(TrainSpeedRegulatorState):
 
     def future_planning_distance(self) -> Tuple[float, BlockType]:
         current_index = self.regulator.train.current_block_index
-        three_next_blocks = self.regulator.train.path.blocks[current_index + 1 : current_index + 3]
+        three_next_blocks = self.regulator.train.path.blocks[
+            current_index + 1 : current_index + 3
+        ]
 
         distance_to_reach_target_speed = (
             lambda block: (
@@ -138,10 +144,12 @@ class KeepingTheSpeedUptoCodeState(TrainSpeedRegulatorState):
         )
 
         braking_distances = [
-            (distance_to_reach_target_speed(block), block) for block in three_next_blocks
+            (distance_to_reach_target_speed(block), block)
+            for block in three_next_blocks
         ]
         cummulative_block_lengths = [
-            sum(b.length for b in three_next_blocks[:i]) for i in range(1, len(three_next_blocks))
+            sum(b.length for b in three_next_blocks[:i])
+            for i in range(1, len(three_next_blocks))
         ]
 
         for i in range(1, len(braking_distances)):
@@ -152,7 +160,10 @@ class KeepingTheSpeedUptoCodeState(TrainSpeedRegulatorState):
 
         max_distance, restricting_block = max(braking_distances, key=lambda x: x[0])
 
-        if restricting_block.current_speed_code(self.regulator.train) >= self.regulator.train.speed:
+        if (
+            restricting_block.current_speed_code(self.regulator.train)
+            >= self.regulator.train.speed
+        ):
             return 0, restricting_block
 
         return max_distance, restricting_block
@@ -199,7 +210,9 @@ class LeavingTheStationState(KeepingTheSpeedUptoCodeState):
     def __init__(self, regulator: TrainSpeedRegulator):
         super().__init__(regulator)
         if self.regulator.train.current_block.station is None:
-            raise ValueError("Train is leaving a station which is not the current block")
+            raise ValueError(
+                "Train is leaving a station which is not the current block"
+            )
 
         self.station = self.regulator.train.current_block.station
 
@@ -261,16 +274,22 @@ class DecelerateToSpeedNormalRateForPlanningState(TrainSpeedRegulatorState):
 
 class BrakeWithMaximumRateState(TrainSpeedRegulatorState):
     def set_the_acceleration(self) -> None:
-        if self.regulator.train.speed > self.regulator.train.current_block.current_speed_code(
-            self.regulator.train
+        if (
+            self.regulator.train.speed
+            > self.regulator.train.current_block.current_speed_code(
+                self.regulator.train
+            )
         ):
             self.regulator.train.acceleration = -self.regulator.emergency_deceleration
         else:
             self.regulator.train.acceleration = 0
 
     def handle_custom_transition(self) -> Optional[TrainSpeedRegulatorState]:
-        if self.regulator.train.speed <= self.regulator.train.current_block.current_speed_code(
-            self.regulator.train
+        if (
+            self.regulator.train.speed
+            <= self.regulator.train.current_block.current_speed_code(
+                self.regulator.train
+            )
         ):
             return KeepingTheSpeedUptoCodeState(self.regulator)
 
@@ -295,7 +314,9 @@ class BrakeNormalToStationState(TrainSpeedRegulatorState):
     def __init__(self, regulator: TrainSpeedRegulator):
         super().__init__(regulator)
 
-        self.distance_to_stop_before_station = randint(MIN_STOP_DISTANCE, MAX_STOP_DISTANCE)
+        self.distance_to_stop_before_station = randint(
+            MIN_STOP_DISTANCE, MAX_STOP_DISTANCE
+        )
         self.absolute_location_of_station = (
             self.regulator.train.total_travelled_distance
             + self.regulator.train.distance_to_next_station
@@ -382,7 +403,9 @@ class BrakeNormalToStationState(TrainSpeedRegulatorState):
         # required_acceleration_fps2 = (self.regulator.train.speed_in_fps**2) / (2 * 5)
 
         # required_acceleration = required_acceleration_fps2 * 3600 / 5280
-        required_acceleration = self.regulator.train.speed / self.regulator.train.time_step
+        required_acceleration = (
+            self.regulator.train.speed / self.regulator.train.time_step
+        )
         # required_acceleration = self.regulator.train.speed / self.regulator.train.time_step
 
         # if required_acceleration > self.regulator.emergency_deceleration:

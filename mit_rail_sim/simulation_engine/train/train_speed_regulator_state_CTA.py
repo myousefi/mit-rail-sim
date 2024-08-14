@@ -81,12 +81,17 @@ class TrainSpeedRegulatorStateCTA(ABC):
             # - future_distance_travelled
             - 3 * MAX_STOP_DISTANCE
         )
-        return future_distance_to_next_station <= self.regulator.braking_distance_for_station
+        return (
+            future_distance_to_next_station
+            <= self.regulator.braking_distance_for_station
+        )
 
     def entered_symptomatic_block(
         self, symptomatic_block: OffScanSymptomaticBlockDecorator
     ) -> None:
-        self.regulator.state = StopAtSymptomaticBlockStateCTA(self.regulator, symptomatic_block)
+        self.regulator.state = StopAtSymptomaticBlockStateCTA(
+            self.regulator, symptomatic_block
+        )
 
     @abstractmethod
     def check_the_validity_of_the_acceleration(self) -> None:
@@ -139,12 +144,16 @@ class KeepingTheSpeedUptoCodeStateCTA(TrainSpeedRegulatorStateCTA):
             # -self.regulator.normal_deceleration
 
     def check_the_validity_of_the_acceleration(self) -> None:
-        if self.regulator.train.acceleration > 0 and (self.new_speed > self.current_speed_code):
+        if self.regulator.train.acceleration > 0 and (
+            self.new_speed > self.current_speed_code
+        ):
             self.regulator.train.acceleration = (
                 self.current_speed_code - self.regulator.train.speed
             ) / self.regulator.train.time_step
 
-        elif (self.regulator.train.acceleration < 0) and (self.new_speed < self.current_speed_code):
+        elif (self.regulator.train.acceleration < 0) and (
+            self.new_speed < self.current_speed_code
+        ):
             self.regulator.train.acceleration = (
                 -(self.current_speed_code - self.regulator.train.speed)
                 / self.regulator.train.time_step
@@ -229,7 +238,9 @@ class DecelerateAndWaitForClearanceStateCTA(TrainSpeedRegulatorStateCTA):
             self.readjust_acceleration()
 
     def readjust_acceleration(self) -> None:
-        target_acceleration = self.regulator.train.speed / self.regulator.train.time_step
+        target_acceleration = (
+            self.regulator.train.speed / self.regulator.train.time_step
+        )
         self.regulator.train.acceleration = -target_acceleration
 
         super().readjust_acceleration()
@@ -286,7 +297,9 @@ class StopAtSymptomaticBlockStateCTA(TrainSpeedRegulatorStateCTA):
             self.readjust_acceleration()
 
     def handle_custom_transition(self) -> Optional[TrainSpeedRegulatorStateCTA]:
-        if math.isclose(self.regulator.train.speed, 0, abs_tol=self.regulator.TOLERANCE):
+        if math.isclose(
+            self.regulator.train.speed, 0, abs_tol=self.regulator.TOLERANCE
+        ):
             self.time_stopped += self.regulator.train.time_step
 
         if self.time_stopped > self.time_to_get_clearance_from_control_center:
@@ -336,7 +349,9 @@ class LeavingTheStationStateCTA(KeepingTheSpeedUptoCodeStateCTA):
     def __init__(self, regulator: TrainSpeedRegulatorCTA):
         super().__init__(regulator)
         if self.regulator.train.current_block.station is None:
-            raise ValueError("Train is leaving a station which is not the current block")
+            raise ValueError(
+                "Train is leaving a station which is not the current block"
+            )
 
         self.station = self.regulator.train.current_block.station
 
@@ -353,7 +368,9 @@ class BrakeNormalToStationStateCTA(TrainSpeedRegulatorStateCTA):
     def __init__(self, regulator: TrainSpeedRegulatorCTA):
         super().__init__(regulator)
 
-        self.distance_to_stop_before_station = random.randint(MIN_STOP_DISTANCE, MAX_STOP_DISTANCE)
+        self.distance_to_stop_before_station = random.randint(
+            MIN_STOP_DISTANCE, MAX_STOP_DISTANCE
+        )
 
         self.next_station = (
             self.regulator.train.distance_to_next_station
@@ -362,13 +379,20 @@ class BrakeNormalToStationStateCTA(TrainSpeedRegulatorStateCTA):
 
         self.required_deceleration_in_fps2 = (self.regulator.train.speed_in_fps**2) / (
             2
-            * (self.regulator.train.distance_to_next_station - self.distance_to_stop_before_station)
+            * (
+                self.regulator.train.distance_to_next_station
+                - self.distance_to_stop_before_station
+            )
         )
 
-        self.regulator.train.acceleration = -self.required_deceleration_in_fps2 / 5280 * 3600
+        self.regulator.train.acceleration = (
+            -self.required_deceleration_in_fps2 / 5280 * 3600
+        )
 
     def set_the_acceleration(self) -> None:
-        distance_to_stop = self.next_station - self.regulator.train.total_travelled_distance
+        distance_to_stop = (
+            self.next_station - self.regulator.train.total_travelled_distance
+        )
 
         if distance_to_stop < 0:
             raise ValueError(
@@ -414,7 +438,9 @@ class BrakeNormalToStationStateCTA(TrainSpeedRegulatorStateCTA):
     def readjust_acceleration(self) -> None:
         # required_acceleration = self.regulator.train.speed / self.regulator.train.time_step
 
-        required_acceleration = self.regulator.train.speed / self.regulator.train.time_step
+        required_acceleration = (
+            self.regulator.train.speed / self.regulator.train.time_step
+        )
 
         # future_distance_travelled = (
         #     self.regulator.train.speed_in_fps * self.regulator.train.time_step

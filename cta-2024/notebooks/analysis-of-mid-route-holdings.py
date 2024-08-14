@@ -2,17 +2,14 @@
 import glob
 import os
 from pathlib import Path
-import stat
 
 import pandas as pd
 import plotly.io as pio
 
-from mit_rail_sim.utils.root_path import project_root
 
 pio.templates.default = "simple_white"
 # pio.renderers.default = "browser"
 
-import os
 
 import plotly.express as px
 import plotly.graph_objects as go
@@ -591,7 +588,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
     )
 )
 
@@ -688,7 +685,7 @@ fig.show(renderer="browser")
 fig.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Northbound_PM_UIC_NOCONTROL.svg"
     )
 )
 
@@ -802,7 +799,7 @@ fig_am_wait.show(renderer="browser")
 fig_am_wait.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "savings_in_total_daily_waiting_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 
@@ -898,7 +895,7 @@ fig_am_journey.show(renderer="browser")
 fig_am_journey.write_image(
     str(
         OUTPUT_DIRECTORY
-        / f"savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
+        / "savings_in_total_daily_journey_time_by_origin_station_Southbound_AM_OHARE_NOCONTROL.svg"
     )
 )
 

@@ -16,7 +16,9 @@ start_date = os.getenv("start_date")
 end_date = os.getenv("end_date")
 
 # Connect to the database
-engine = create_engine(f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}").connect()
+engine = create_engine(
+    f"postgresql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+).connect()
 
 # Load stations data
 station_df = pd.read_csv("data/blue_line_stations.csv")
@@ -55,7 +57,9 @@ for col in [
     "boarding_platform_sequence",
     "alighting_platform_sequence",
 ]:
-    result_df["first_" + col.replace("_sequence", "")] = result_df[col].str.split("|").str[1]
+    result_df["first_" + col.replace("_sequence", "")] = (
+        result_df[col].str.split("|").str[1]
+    )
 
 result_df.sort_values(["transaction_dtm"], inplace=True)
 

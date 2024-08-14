@@ -1,15 +1,10 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, List, Optional
+from typing import TYPE_CHECKING
 
-from mit_rail_sim.simulation_engine.infrastructure import AbstractBlock
 
 if TYPE_CHECKING:
-    from mit_rail_sim.simulation_engine.infrastructure import (
-        MovingBlockControl,
-        Station,
-    )
-    from mit_rail_sim.simulation_engine.train import Train
+    pass
 
 
 # class MovingBlock(AbstractBlock):

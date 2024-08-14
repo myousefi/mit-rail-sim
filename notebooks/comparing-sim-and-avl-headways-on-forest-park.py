@@ -27,7 +27,9 @@ query_text = text(
 """
 )
 
-results = engine.execute(query_text, params={"start_date": "2024-01-01", "end_date": "2024-03-01"})
+results = engine.execute(
+    query_text, params={"start_date": "2024-01-01", "end_date": "2024-03-01"}
+)
 df = pd.DataFrame(results.fetchall())
 
 # %%
@@ -43,18 +45,20 @@ for filename in all_files:
     df_list.append(df_temp)
 
 df_concatenated = (
-    pd.concat(df_list, ignore_index=True).query("block_id == 'wc437t'")[["headway"]] / 60
+    pd.concat(df_list, ignore_index=True).query("block_id == 'wc437t'")[["headway"]]
+    / 60
 )
 
 
 # %%
 
-import plotly.express as px
 
 df_concatenated["source"] = "Simulated"
 df["source"] = "AVL"
 
-df_combined = pd.concat([df_concatenated[["headway", "source"]], df[["headway", "source"]]])
+df_combined = pd.concat(
+    [df_concatenated[["headway", "source"]], df[["headway", "source"]]]
+)
 
 fig = px.histogram(
     df_combined,

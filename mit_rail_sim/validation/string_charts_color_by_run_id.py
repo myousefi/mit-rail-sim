@@ -1,10 +1,8 @@
-import functools
 import json
 
 import dash
 import diskcache as dc
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
 from dash import dcc, html
@@ -72,7 +70,9 @@ with open(project_root / "inputs" / "infra.json", "r") as f:
         distance += block["DISTANCE"]
         track_dist[block["BLOCK_ALT"]] = distance
         if "STATION" in block:
-            station_dict[block["STATION"]["STATION_NAME"]] = distance - block["DISTANCE"] / 2
+            station_dict[block["STATION"]["STATION_NAME"]] = (
+                distance - block["DISTANCE"] / 2
+            )
 
     for block in data["Southbound"]:
         distance -= block["DISTANCE"]
@@ -93,7 +93,9 @@ def update_figure(selected_date):
     df = query_from_aws(selected_date)
 
     # df = df[df["event_time"].dt.date == pd.to_datetime(selected_date).date()]
-    df["event_seconds"] = (df["event_time"] - pd.to_datetime(selected_date)).dt.total_seconds()
+    df["event_seconds"] = (
+        df["event_time"] - pd.to_datetime(selected_date)
+    ).dt.total_seconds()
 
     df["track_dist"] = df["scada"].map(track_dist)
     sorted_run_ids = df["run_id"].unique()
@@ -108,7 +110,11 @@ def update_figure(selected_date):
     # )  # Exclude columns already used in the plot
     df["hover_text"] = df[hover_columns].apply(
         lambda x: "<br>".join(
-            [f"{col}: {val}" for col, val in zip(hover_columns, x.astype(str)) if pd.notna(val)]
+            [
+                f"{col}: {val}"
+                for col, val in zip(hover_columns, x.astype(str))
+                if pd.notna(val)
+            ]
         ),
         axis=1,
     )
@@ -194,7 +200,9 @@ def update_figure(selected_date):
         tickvals=[1800 * i for i in range(int(df["event_seconds"].max() / 1800) + 1)],
         ticktext=[
             pd.to_datetime(v, unit="s").strftime("%H:%M:%S")
-            for v in [1800 * i for i in range(int(df["event_seconds"].max() / 1800) + 1)]
+            for v in [
+                1800 * i for i in range(int(df["event_seconds"].max() / 1800) + 1)
+            ]
         ],
         tickangle=-45,
     )

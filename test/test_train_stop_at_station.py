@@ -2,7 +2,6 @@ import unittest
 from test.base_test_case import TrainMovementVisualizationMixin
 from unittest.mock import MagicMock
 
-from matplotlib import pyplot as plt
 
 from mit_rail_sim.simulation_engine.infrastructure import (
     Block,
@@ -11,7 +10,6 @@ from mit_rail_sim.simulation_engine.infrastructure import (
     Station,
 )
 from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
-from mit_rail_sim.simulation_engine.utils import TrainLogger
 
 
 class TestTrainStopatStation(unittest.TestCase, TrainMovementVisualizationMixin):
@@ -147,7 +145,9 @@ class TestTrainStopatStation(unittest.TestCase, TrainMovementVisualizationMixin)
             "Distance from Start",
             train_speed_regulator_states,
         )
-        self.visualize_time_profile(times, speeds, "Speed", train_speed_regulator_states)
+        self.visualize_time_profile(
+            times, speeds, "Speed", train_speed_regulator_states
+        )
         self.visualize_distance_profiles(
             distances,
             distance_to_next_station_list,
@@ -167,7 +167,9 @@ class TestTrainStopatStation(unittest.TestCase, TrainMovementVisualizationMixin)
             "Acceleration",
             train_speed_regulator_states=train_speed_regulator_states,
         )
-        self.visualize_distance_profiles(distances, planned_distances, "Planned Distance")
+        self.visualize_distance_profiles(
+            distances, planned_distances, "Planned Distance"
+        )
 
     def test_distance_in_the_block_with_station_before_the_station(self):
         self.train.current_block_index = 1
@@ -184,8 +186,12 @@ class TestTrainStopatStation(unittest.TestCase, TrainMovementVisualizationMixin)
     def test_dwell_time(self):
         dwell_times = [5, 10, 15]  # Dwell times at stations
         # Mock the dwelling time for each station
-        self.path.blocks[1].station.get_dwell_time = MagicMock(return_value=dwell_times[0])
-        self.path.blocks[4].station.get_dwell_time = MagicMock(return_value=dwell_times[1])
+        self.path.blocks[1].station.get_dwell_time = MagicMock(
+            return_value=dwell_times[0]
+        )
+        self.path.blocks[4].station.get_dwell_time = MagicMock(
+            return_value=dwell_times[1]
+        )
 
         (
             speeds,

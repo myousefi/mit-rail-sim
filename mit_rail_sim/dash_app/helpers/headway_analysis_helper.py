@@ -52,7 +52,9 @@ class HeadwayAnalysis:
         self.cleaned_events = pd.read_csv(self.cleaned_events_path)
 
         # Clean cleaned_events data
-        self.cleaned_events["event_time"] = pd.to_datetime(self.cleaned_events["event_time"])
+        self.cleaned_events["event_time"] = pd.to_datetime(
+            self.cleaned_events["event_time"]
+        )
         self.cleaned_events["station"] = self.cleaned_events["station"].replace(
             "LV Forest Park", "Forest Park"
         )
@@ -65,8 +67,14 @@ class HeadwayAnalysis:
         mask = (
             (self.cleaned_events["station"].isin(["Forest Park", "UIC-Halsted"]))
             & (
-                (self.cleaned_events["event_time"].dt.time >= pd.to_datetime("07:00:00").time())
-                & (self.cleaned_events["event_time"].dt.time <= pd.to_datetime("11:00:00").time())
+                (
+                    self.cleaned_events["event_time"].dt.time
+                    >= pd.to_datetime("07:00:00").time()
+                )
+                & (
+                    self.cleaned_events["event_time"].dt.time
+                    <= pd.to_datetime("11:00:00").time()
+                )
             )
             & (
                 (self.cleaned_events["station"] != "UIC-Halsted")
@@ -77,12 +85,16 @@ class HeadwayAnalysis:
 
         # Determine short-turning trips
         short_turning_trips = self.train_test.loc[
-            self.train_test["starting_block_index"] == 79, ["replication_id", "train_id"]
+            self.train_test["starting_block_index"] == 79,
+            ["replication_id", "train_id"],
         ].drop_duplicates()
 
         # Merge station_test with short_turning_trips
         self.station_test = pd.merge(
-            self.station_test, short_turning_trips, how="left", on=["replication_id", "train_id"]
+            self.station_test,
+            short_turning_trips,
+            how="left",
+            on=["replication_id", "train_id"],
         )
         self.station_test["is_short_turning"] = self.station_test["train_id"].notna()
 
@@ -117,7 +129,9 @@ class HeadwayAnalysis:
 
         # Filter outliers
         self.real_headway_fp = self.filter_outliers(self.real_headway_fp)
-        self.real_headway_uic_halsted = self.filter_outliers(self.real_headway_uic_halsted)
+        self.real_headway_uic_halsted = self.filter_outliers(
+            self.real_headway_uic_halsted
+        )
 
     def filter_outliers(self, series, lower_quantile=0.05, upper_quantile=0.95):
         return series[
