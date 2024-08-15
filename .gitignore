@@ -396,3 +396,5 @@ load-balance/*
 !load-balance/**/*.py
 !load-balance/**/*.yaml
 .env-backup
+
+!inputs/**
