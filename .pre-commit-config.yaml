@@ -28,13 +28,3 @@ repos:
     rev: "1.16.0"
     hooks:
       - id: blacken-docs
-
-  - repo: local
-    hooks:
-      - id: mypy
-        name: mypy
-        entry: rye run mypy
-        language: system
-        types: [python]
-        args: [--config-file, pyproject.toml]
-        stages: [pre-push]
