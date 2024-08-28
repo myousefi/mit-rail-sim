@@ -34,11 +34,11 @@ simulation:
 
 periods:
     version_81:
-        demand_file: "/Users/moji/Projects/mit_rail_sim/inputs/demand/arrival_rates_Nov.csv"
-        schedule_file: "/Users/moji/Projects/mit_rail_sim/inputs/schedules/empirical_schedule_81.json"
+        demand_file: "/Users/moji/Projects/transit_lab_simmetro/inputs/demand/arrival_rates_Nov.csv"
+        schedule_file: "/Users/moji/Projects/transit_lab_simmetro/inputs/schedules/empirical_schedule_81.json"
     version_83:
-        demand_file: "/Users/moji/Projects/mit_rail_sim/inputs/demand/odx_imputed_demand_2024-04-07_2024-05-30.csv"
-        schedule_file: "/Users/moji/Projects/mit_rail_sim/inputs/schedules/empirical_schedule_83.json"
+        demand_file: "/Users/moji/Projects/transit_lab_simmetro/inputs/demand/odx_imputed_demand_2024-04-07_2024-05-30.csv"
+        schedule_file: "/Users/moji/Projects/transit_lab_simmetro/inputs/schedules/empirical_schedule_83.json"
 logger:
     should_log_trajectories: False
     log_interval: 25
@@ -82,11 +82,11 @@ holding_strategy: "load_equalizing_estimated_load"
 
 hydra:
     run:
-        dir: /Users/moji/Projects/mit_rail_sim/load-balance/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+        dir: /Users/moji/Projects/transit_lab_simmetro/load-balance/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
     job:
         chdir: true
     sweep:
-        dir: /Users/moji/Projects/mit_rail_sim/load-balance/${scen}/
+        dir: /Users/moji/Projects/transit_lab_simmetro/load-balance/${scen}/
         subdir: ${hydra.job.override_dirname}
     sweeper:
         params:

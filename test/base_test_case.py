@@ -2,14 +2,14 @@ import unittest
 from test.test_visualization import VisualizationMixin
 from unittest.mock import MagicMock
 
-from mit_rail_sim.simulation_engine.infrastructure import (
+from transit_lab_simmetro.simulation_engine.infrastructure import (
     Block,
     Path,
     SignalControlCenter,
     Station,
 )
-from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
-from mit_rail_sim.simulation_engine.train.train import NextBlockNotFoundError
+from transit_lab_simmetro.simulation_engine.train import Train, TrainSpeedRegulator
+from transit_lab_simmetro.simulation_engine.train.train import NextBlockNotFoundError
 
 
 class TrainMovementVisualizationMixin(VisualizationMixin):

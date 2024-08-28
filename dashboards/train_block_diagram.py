@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.io as pio
 from sqlalchemy import text
 
-from mit_rail_sim.utils.db_con import engine
+from transit_lab_simmetro.utils.db_con import engine
 
 pio.templates.default = "simple_white"
 

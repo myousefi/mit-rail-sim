@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path as PPath
 from test.base_test_case import BaseTestCase
 
-# from mit_rail_sim import Path, Simulation, TrainLogger, TrainSpeedRegulator
+# from transit_lab_simmetro import Path, Simulation, TrainLogger, TrainSpeedRegulator
 
 
 class TestTrainLogger(BaseTestCase):

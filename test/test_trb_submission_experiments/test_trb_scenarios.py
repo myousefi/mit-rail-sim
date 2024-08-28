@@ -2,18 +2,18 @@ import unittest
 from random import randint, seed
 from unittest import TestCase
 
-from mit_rail_sim.simulation_engine.passenger.arrival_rate import ArrivalRate
-from mit_rail_sim.simulation_engine.schedule import WeibullSchedule
-from mit_rail_sim.simulation_engine.simulation.replication_manager import (
+from transit_lab_simmetro.simulation_engine.passenger.arrival_rate import ArrivalRate
+from transit_lab_simmetro.simulation_engine.schedule import WeibullSchedule
+from transit_lab_simmetro.simulation_engine.simulation.replication_manager import (
     ReplicationManager,
 )
-from mit_rail_sim.simulation_engine.utils.logger_context import LoggerContext
-from mit_rail_sim.simulation_engine.utils.logger_utils import (
+from transit_lab_simmetro.simulation_engine.utils.logger_context import LoggerContext
+from transit_lab_simmetro.simulation_engine.utils.logger_utils import (
     PassengerLogger,
     StationLogger,
     TrainLogger,
 )
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 from .factory.block_factory import BlockFactory
 from .util.data_loader import DataLoader

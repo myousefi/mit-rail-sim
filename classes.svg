@@ -9,7 +9,7 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 4286.5)">
 <title>classes</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-4286.5 19013.25,-4286.5 19013.25,4 -4,4"/>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.AbstractBlock -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.AbstractBlock -->
 <g id="node1" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.AbstractBlock</title>
 <polygon fill="none" stroke="black" points="175.88,-3891 175.88,-4122 466.38,-4122 466.38,-3891 175.88,-3891"/>
@@ -31,7 +31,7 @@
 <text text-anchor="start" x="267.88" y="-3910.7" font-family="Times,serif" font-size="14.00">(train: Train): bool</text>
 <text text-anchor="start" x="183.88" y="-3896.7" font-family="Times,serif" font-size="14.00">set_slow_zone(speed_limit: float)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.arrival_rate.ArrivalRate -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.arrival_rate.ArrivalRate -->
 <g id="node2" class="node">
 <title>mit_rail_sim.simulation_engine.passenger.arrival_rate.ArrivalRate</title>
 <polygon fill="none" stroke="black" points="913.5,-2087.75 913.5,-2326.25 1570.75,-2326.25 1570.75,-2087.75 913.5,-2087.75"/>
@@ -51,7 +51,7 @@
 <text text-anchor="start" x="921.5" y="-2111.45" font-family="Times,serif" font-size="14.00">is_southbound_trip(origin_stop, destination_stop)</text>
 <text text-anchor="start" x="921.5" y="-2094.95" font-family="Times,serif" font-size="14.00">sort_stations_by_direction(direction): List[str]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.passenger_generator.PassengerGenerator -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.passenger_generator.PassengerGenerator -->
 <g id="node62" class="node">
 <title>mit_rail_sim.simulation_engine.passenger.passenger_generator.PassengerGenerator</title>
 <polygon fill="none" stroke="black" points="868.5,-2478.75 868.5,-2552.25 1615.75,-2552.25 1615.75,-2478.75 868.5,-2478.75"/>
@@ -61,14 +61,14 @@
 <polyline fill="none" stroke="black" points="868.5,-2503.25 1615.75,-2503.25"/>
 <text text-anchor="start" x="876.5" y="-2485.95" font-family="Times,serif" font-size="14.00">generate_passengers(current_hour: float, current_weekday: bool, boarding_stop: str, alighting_stop: str, delta_t_in_seconds: float): list</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.arrival_rate.ArrivalRate&#45;&gt;mit_rail_sim.simulation_engine.passenger.passenger_generator.PassengerGenerator -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.arrival_rate.ArrivalRate&#45;&gt;transit_lab_simmetro.simulation_engine.passenger.passenger_generator.PassengerGenerator -->
 <g id="edge85" class="edge">
 <title>mit_rail_sim.simulation_engine.passenger.arrival_rate.ArrivalRate&#45;&gt;mit_rail_sim.simulation_engine.passenger.passenger_generator.PassengerGenerator</title>
 <path fill="none" stroke="black" d="M1242.12,-2326.5C1242.12,-2374.81 1242.12,-2427.98 1242.12,-2465.42"/>
 <polygon fill="none" stroke="black" points="1242.13,-2465.55 1246.13,-2471.55 1242.13,-2477.55 1238.13,-2471.55 1242.13,-2465.55"/>
 <text text-anchor="middle" x="1273.25" y="-2356.2" font-family="Times,serif" font-size="14.00" fill="green">arrival_rate</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.arrival_rates_helper.ArrivalRatePlotCreator -->
+<!-- transit_lab_simmetro.dash_app.helpers.arrival_rates_helper.ArrivalRatePlotCreator -->
 <g id="node3" class="node">
 <title>mit_rail_sim.dash_app.helpers.arrival_rates_helper.ArrivalRatePlotCreator</title>
 <polygon fill="none" stroke="black" points="4336.38,-140.75 4336.38,-230.75 4599.88,-230.75 4599.88,-140.75 4336.38,-140.75"/>
@@ -79,7 +79,7 @@
 <polyline fill="none" stroke="black" points="4336.38,-165.25 4599.88,-165.25"/>
 <text text-anchor="start" x="4344.38" y="-147.95" font-family="Times,serif" font-size="14.00">get_figure(start_hour, end_hour, is_weekday)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.BaseLogger -->
 <g id="node4" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger</title>
 <polygon fill="none" stroke="black" points="4903.25,-939.5 4903.25,-1079 5217,-1079 5217,-939.5 4903.25,-939.5"/>
@@ -93,7 +93,7 @@
 <text text-anchor="start" x="4911.25" y="-963.2" font-family="Times,serif" font-size="14.00">filter_out_replications(replication_ids: List[int]): None</text>
 <text text-anchor="start" x="4911.25" y="-946.7" font-family="Times,serif" font-size="14.00">set_warmup_time(warmup_time: float): BaseLogger</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.BaseSchedule -->
 <g id="node5" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule</title>
 <polygon fill="none" stroke="black" points="7933.5,-470.75 7933.5,-649.75 8248.75,-649.75 8248.75,-470.75 7933.5,-470.75"/>
@@ -112,7 +112,7 @@
 <text text-anchor="start" x="8057.75" y="-490.45" font-family="Times,serif" font-size="14.00">()</text>
 <text text-anchor="start" x="7991" y="-476.45" font-family="Times,serif" font-size="14.00">set_replication_id(seed_number: int)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.Block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.Block -->
 <g id="node6" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.Block</title>
 <polygon fill="none" stroke="black" points="597.62,-3483.5 597.62,-3837.5 1006.62,-3837.5 1006.62,-3483.5 597.62,-3483.5"/>
@@ -139,13 +139,13 @@
 <text text-anchor="start" x="605.62" y="-3507.2" font-family="Times,serif" font-size="14.00">remove_communicated_speed_code(block_id: str): None</text>
 <text text-anchor="start" x="605.62" y="-3490.7" font-family="Times,serif" font-size="14.00">set_slow_zone(speed_limit: float)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.Block&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.AbstractBlock -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.Block&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.AbstractBlock -->
 <g id="edge1" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.Block&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.AbstractBlock</title>
 <path fill="none" stroke="black" d="M597.44,-3807.89C556.72,-3837 514.61,-3867.13 475.9,-3894.81"/>
 <polygon fill="none" stroke="black" points="473.99,-3891.87 467.89,-3900.54 478.06,-3897.57 473.99,-3891.87"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.BlockActivationLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.BlockActivationLogger -->
 <g id="node7" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.BlockActivationLogger</title>
 <polygon fill="none" stroke="black" points="3564.25,-523.5 3564.25,-597 3878,-597 3878,-523.5 3564.25,-523.5"/>
@@ -155,13 +155,13 @@
 <polyline fill="none" stroke="black" points="3564.25,-548 3878,-548"/>
 <text text-anchor="start" x="3572.25" y="-530.7" font-family="Times,serif" font-size="14.00">log_block_activation(block: Block, train: Train): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.BlockActivationLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.BlockActivationLogger&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.BaseLogger -->
 <g id="edge51" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.BlockActivationLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger</title>
 <path fill="none" stroke="black" d="M3757.02,-597.47C3788.78,-627.7 3837.64,-670 3887.12,-696.5 4163.1,-844.31 4252.24,-847.74 4560.12,-904.5 4681.45,-926.87 4716.62,-896.06 4837.12,-922.5 4855.24,-926.48 4873.84,-931.68 4892.19,-937.56"/>
 <polygon fill="none" stroke="black" points="4890.93,-940.83 4901.52,-940.63 4893.11,-934.18 4890.93,-940.83"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeNormalToStationState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.BrakeNormalToStationState -->
 <g id="node8" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeNormalToStationState</title>
 <polygon fill="none" stroke="black" points="5349.38,-3582.5 5349.38,-3738.5 5720.88,-3738.5 5720.88,-3582.5 5349.38,-3582.5"/>
@@ -176,7 +176,7 @@
 <text text-anchor="start" x="5357.38" y="-3606.2" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="5357.38" y="-3589.7" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
 <g id="node96" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState</title>
 <polygon fill="none" stroke="black" points="4374,-3906.75 4374,-4106.25 4746.25,-4106.25 4746.25,-3906.75 4374,-3906.75"/>
@@ -199,13 +199,13 @@
 <text text-anchor="start" x="4382" y="-3926.45" font-family="Times,serif" font-size="14.00">should_transition_to_brake_normal_to_station(): bool</text>
 <text text-anchor="start" x="4382" y="-3912.45" font-family="Times,serif" font-size="14.00">should_transition_to_break_with_maximum_rate_state(): bool</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeNormalToStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.BrakeNormalToStationState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
 <g id="edge27" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeNormalToStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState</title>
 <path fill="none" stroke="black" d="M5468.02,-3738.65C5433.25,-3774.01 5388.08,-3813.43 5340.12,-3838 5156.07,-3932.32 4921.36,-3973.6 4757.71,-3991.62"/>
 <polygon fill="none" stroke="black" points="4757.61,-3988.11 4748.04,-3992.66 4758.36,-3995.07 4757.61,-3988.11"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.BrakeNormalToStationStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.BrakeNormalToStationStateCTA -->
 <g id="node9" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.BrakeNormalToStationStateCTA</title>
 <polygon fill="none" stroke="black" points="2761.88,-923 2761.88,-1095.5 3160.38,-1095.5 3160.38,-923 2761.88,-923"/>
@@ -221,7 +221,7 @@
 <text text-anchor="start" x="2769.88" y="-946.7" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="2769.88" y="-930.2" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="node97" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <polygon fill="none" stroke="black" points="3128.88,-1372 3128.88,-1602 3665.38,-1602 3665.38,-1372 3128.88,-1372"/>
@@ -246,13 +246,13 @@
 <text text-anchor="start" x="3136.88" y="-1391.7" font-family="Times,serif" font-size="14.00">should_stop_for_a_double_red_signal(): Tuple[bool, Optional[int]]</text>
 <text text-anchor="start" x="3136.88" y="-1377.7" font-family="Times,serif" font-size="14.00">should_transition_to_brake_normal_to_station(): bool</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.BrakeNormalToStationStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.BrakeNormalToStationStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="edge32" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.BrakeNormalToStationStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <path fill="none" stroke="black" d="M3039.58,-1095.85C3107.91,-1170.42 3207.8,-1279.42 3284.64,-1363.26"/>
 <polygon fill="none" stroke="black" points="3281.88,-1365.43 3291.22,-1370.44 3287.04,-1360.7 3281.88,-1365.43"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeWithMaximumRateState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.BrakeWithMaximumRateState -->
 <g id="node10" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeWithMaximumRateState</title>
 <polygon fill="none" stroke="black" points="4179.38,-3611.25 4179.38,-3709.75 4550.88,-3709.75 4550.88,-3611.25 4179.38,-3611.25"/>
@@ -264,13 +264,13 @@
 <text text-anchor="start" x="4187.38" y="-3634.95" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="4187.38" y="-3618.45" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeWithMaximumRateState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.BrakeWithMaximumRateState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
 <g id="edge28" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.BrakeWithMaximumRateState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState</title>
 <path fill="none" stroke="black" d="M4392.65,-3710.06C4420,-3758.31 4462.89,-3833.97 4498.42,-3896.64"/>
 <polygon fill="none" stroke="black" points="4495.33,-3898.29 4503.31,-3905.26 4501.42,-3894.84 4495.33,-3898.29"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.CSVLoggerStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.CSVLoggerStrategy -->
 <g id="node11" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.CSVLoggerStrategy</title>
 <polygon fill="none" stroke="black" points="8625.12,-140.75 8625.12,-230.75 8947.12,-230.75 8947.12,-140.75 8625.12,-140.75"/>
@@ -281,7 +281,7 @@
 <text text-anchor="start" x="8633.12" y="-164.45" font-family="Times,serif" font-size="14.00">write_header(log_file_path: str): None</text>
 <text text-anchor="start" x="8633.12" y="-147.95" font-family="Times,serif" font-size="14.00">write_row(log_file_path: str, data: Dict[str, Any]): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.LoggerStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.LoggerStrategy -->
 <g id="node46" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.LoggerStrategy</title>
 <polygon fill="none" stroke="black" points="8795.12,-530 8795.12,-590.5 9117.12,-590.5 9117.12,-530 8795.12,-530"/>
@@ -293,13 +293,13 @@
 <text text-anchor="start" x="8803.12" y="-535.7" font-family="Times,serif" font-style="italic" font-size="14.00">write_row</text>
 <text text-anchor="start" x="8858.62" y="-535.7" font-family="Times,serif" font-size="14.00">(log_file_path: str, data: Dict[str, Any]): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.CSVLoggerStrategy&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.LoggerStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.CSVLoggerStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.LoggerStrategy -->
 <g id="edge52" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.CSVLoggerStrategy&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.LoggerStrategy</title>
 <path fill="none" stroke="black" d="M8806.29,-230.94C8839.67,-304.08 8905.89,-449.18 8937.93,-519.37"/>
 <polygon fill="none" stroke="black" points="8934.62,-520.55 8941.95,-528.19 8940.98,-517.64 8934.62,-520.55"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateAndWaitForClearanceStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateAndWaitForClearanceStateCTA -->
 <g id="node12" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateAndWaitForClearanceStateCTA</title>
 <polygon fill="none" stroke="black" points="3595.88,-923 3595.88,-1095.5 3994.38,-1095.5 3994.38,-923 3595.88,-923"/>
@@ -315,13 +315,13 @@
 <text text-anchor="start" x="3603.88" y="-946.7" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="3603.88" y="-930.2" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateAndWaitForClearanceStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateAndWaitForClearanceStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="edge33" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateAndWaitForClearanceStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <path fill="none" stroke="black" d="M3723.51,-1095.85C3661.26,-1170.27 3570.32,-1278.98 3500.23,-1362.76"/>
 <polygon fill="none" stroke="black" points="3497.57,-1360.48 3493.84,-1370.39 3502.94,-1364.97 3497.57,-1360.48"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateToMeetTheCodeStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateToMeetTheCodeStateCTA -->
 <g id="node13" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateToMeetTheCodeStateCTA</title>
 <polygon fill="none" stroke="black" points="4012.88,-960 4012.88,-1058.5 4411.38,-1058.5 4411.38,-960 4012.88,-960"/>
@@ -333,13 +333,13 @@
 <text text-anchor="start" x="4020.88" y="-983.7" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="4020.88" y="-967.2" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateToMeetTheCodeStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateToMeetTheCodeStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="edge34" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DecelerateToMeetTheCodeStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <path fill="none" stroke="black" d="M4148.28,-1058.98C4054.17,-1129.46 3871.17,-1261.49 3703.12,-1353.5 3694.18,-1358.4 3685.01,-1363.25 3675.69,-1368.04"/>
 <polygon fill="none" stroke="black" points="3674.21,-1364.87 3666.88,-1372.53 3677.38,-1371.11 3674.21,-1364.87"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.DecelerateToSpeedNormalRateForPlanningState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.DecelerateToSpeedNormalRateForPlanningState -->
 <g id="node14" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.DecelerateToSpeedNormalRateForPlanningState</title>
 <polygon fill="none" stroke="black" points="4569.38,-3590.75 4569.38,-3730.25 4940.88,-3730.25 4940.88,-3590.75 4569.38,-3590.75"/>
@@ -353,13 +353,13 @@
 <text text-anchor="start" x="4577.38" y="-3614.45" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="4577.38" y="-3597.95" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.DecelerateToSpeedNormalRateForPlanningState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.DecelerateToSpeedNormalRateForPlanningState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
 <g id="edge29" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.DecelerateToSpeedNormalRateForPlanningState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState</title>
 <path fill="none" stroke="black" d="M4715.9,-3730.7C4688.99,-3778.17 4652.73,-3842.14 4621.96,-3896.41"/>
 <polygon fill="none" stroke="black" points="4618.92,-3894.69 4617.03,-3905.11 4625.01,-3898.14 4618.92,-3894.69"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DelayedDecelerateToMeetTheCodeStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.DelayedDecelerateToMeetTheCodeStateCTA -->
 <g id="node15" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DelayedDecelerateToMeetTheCodeStateCTA</title>
 <polygon fill="none" stroke="black" points="4429.88,-944.5 4429.88,-1074 4828.38,-1074 4828.38,-944.5 4429.88,-944.5"/>
@@ -375,13 +375,13 @@
 <text text-anchor="start" x="4556.38" y="-964.2" font-family="Times,serif" font-size="14.00">(): None</text>
 <text text-anchor="start" x="4437.88" y="-950.2" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DelayedDecelerateToMeetTheCodeStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.DelayedDecelerateToMeetTheCodeStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="edge35" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.DelayedDecelerateToMeetTheCodeStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <path fill="none" stroke="black" d="M4547.39,-1074.25C4443.56,-1152.29 4256.03,-1282.53 4075.12,-1353.5 3948.86,-1403.03 3801.85,-1434.66 3677.05,-1454.53"/>
 <polygon fill="none" stroke="black" points="3676.65,-1451.06 3667.31,-1456.07 3677.73,-1457.97 3676.65,-1451.06"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
 <g id="node16" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy</title>
 <polygon fill="none" stroke="black" points="10195.88,-984.75 10195.88,-1033.75 10348.38,-1033.75 10348.38,-984.75 10195.88,-984.75"/>
@@ -391,7 +391,7 @@
 <text text-anchor="start" x="10203.88" y="-992.95" font-family="Times,serif" font-style="italic" font-size="14.00">generate_dispatch_info</text>
 <text text-anchor="start" x="10331.38" y="-992.95" font-family="Times,serif" font-size="14.00">()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.DispatchingBlockDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.DispatchingBlockDecorator -->
 <g id="node17" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.DispatchingBlockDecorator</title>
 <polygon fill="none" stroke="black" points="604.75,-715 604.75,-904 825.5,-904 825.5,-715 604.75,-715"/>
@@ -408,13 +408,13 @@
 <text text-anchor="start" x="615" y="-738.7" font-family="Times,serif" font-size="14.00">is_it_clear_to_dispatch(): bool</text>
 <text text-anchor="start" x="615" y="-722.2" font-family="Times,serif" font-size="14.00">ready_to_dispatch(train: Train): bool</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.DispatchingBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.DispatchingBlockDecorator&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.Block -->
 <g id="edge2" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.DispatchingBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block</title>
 <path fill="none" stroke="black" d="M745.8,-904.11C770.85,-988.94 802.12,-1117.86 802.12,-1232.75 802.12,-1232.75 802.12,-1232.75 802.12,-3064.25 802.12,-3200.65 802.12,-3354.64 802.12,-3471.82"/>
 <polygon fill="none" stroke="black" points="798.63,-3471.52 802.13,-3481.52 805.63,-3471.52 798.63,-3471.52"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator -->
 <g id="node18" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator</title>
 <polygon fill="none" stroke="black" points="412,-482.25 412,-638.25 628.25,-638.25 628.25,-482.25 412,-482.25"/>
@@ -429,7 +429,7 @@
 <text text-anchor="start" x="420" y="-505.95" font-family="Times,serif" font-size="14.00">is_it_clear_to_dispatch(): bool</text>
 <text text-anchor="start" x="420" y="-489.45" font-family="Times,serif" font-size="14.00">ready_to_dispatch(train: Train): bool</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.MovingBlock -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.MovingBlock -->
 <g id="node48" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.MovingBlock</title>
 <polygon fill="none" stroke="black" points="0,-1114.5 0,-1353 396.25,-1353 396.25,-1114.5 0,-1114.5"/>
@@ -449,13 +449,13 @@
 <text text-anchor="start" x="8" y="-1138.2" font-family="Times,serif" font-size="14.00">next_train(requesting_train: Train): Optional[Train]</text>
 <text text-anchor="start" x="8" y="-1121.7" font-family="Times,serif" font-size="14.00">register_moving_block_control_center(moving_block_control): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.MovingBlock -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.MovingBlock -->
 <g id="edge3" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.MovingBlock</title>
 <path fill="none" stroke="black" d="M483.03,-638.61C428.46,-752.41 325.88,-966.32 259.85,-1104.03"/>
 <polygon fill="none" stroke="black" points="256.78,-1102.33 255.62,-1112.86 263.1,-1105.35 256.78,-1102.33"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.DummyTrain -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.DummyTrain -->
 <g id="node19" class="node">
 <title>mit_rail_sim.simulation_engine.train.train.DummyTrain</title>
 <polygon fill="none" stroke="black" points="3601.88,-2466 3601.88,-2565 3784.38,-2565 3784.38,-2466 3601.88,-2466"/>
@@ -468,7 +468,7 @@
 <text text-anchor="start" x="3627.12" y="-2485.7" font-family="Times,serif" font-size="14.00">(): None</text>
 <text text-anchor="start" x="3609.88" y="-2471.7" font-family="Times,serif" font-size="14.00">should_log(): bool</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.Train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.Train -->
 <g id="node86" class="node">
 <title>mit_rail_sim.simulation_engine.train.train.Train</title>
 <polygon fill="none" stroke="black" points="2810.62,-2696.5 2810.62,-3430 3243.62,-3430 3243.62,-2696.5 2810.62,-2696.5"/>
@@ -518,13 +518,13 @@
 <text text-anchor="start" x="2818.62" y="-2720.2" font-family="Times,serif" font-size="14.00">update_distance_travelled(): float</text>
 <text text-anchor="start" x="2818.62" y="-2703.7" font-family="Times,serif" font-size="14.00">update_speed(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.DummyTrain&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.DummyTrain&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.Train -->
 <g id="edge22" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.DummyTrain&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train</title>
 <path fill="none" stroke="black" d="M3657.24,-2565.3C3638.03,-2589.96 3613.2,-2619.64 3588.12,-2643.5 3485.36,-2741.29 3359.68,-2836.96 3253.34,-2912.11"/>
 <polygon fill="none" stroke="black" points="3251.49,-2909.14 3245.33,-2917.76 3255.52,-2914.86 3251.49,-2909.14"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.DummyTrainDecorator -->
 <g id="node20" class="node">
 <title>mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator</title>
 <polygon fill="none" stroke="black" points="3639.62,-4175.5 3639.62,-4282 3784.62,-4282 3784.62,-4175.5 3639.62,-4175.5"/>
@@ -536,13 +536,13 @@
 <polyline fill="none" stroke="black" points="3639.62,-4200 3784.62,-4200"/>
 <text text-anchor="start" x="3710.25" y="-4182.7" font-family="Times,serif" font-size="14.00"> </text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrain -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.DummyTrainDecorator&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.DummyTrain -->
 <g id="edge23" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrain</title>
 <path fill="none" stroke="black" d="M3712.12,-4175.24C3712.12,-4130.62 3712.12,-4064.86 3712.12,-4007.5 3712.12,-3062.25 3712.12,-3062.25 3712.12,-3062.25 3712.12,-2885.79 3702.08,-2677.43 3696.6,-2576.83"/>
 <polygon fill="none" stroke="black" points="3700.1,-2576.7 3696.05,-2566.91 3693.11,-2577.09 3700.1,-2576.7"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.DwellingAtStationState -->
 <g id="node21" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState</title>
 <polygon fill="none" stroke="black" points="2898.75,-3574.25 2898.75,-3746.75 3059.5,-3746.75 3059.5,-3574.25 2898.75,-3574.25"/>
@@ -558,14 +558,14 @@
 <polyline fill="none" stroke="black" points="2898.75,-3598.75 3059.5,-3598.75"/>
 <text text-anchor="start" x="2938.25" y="-3581.45" font-family="Times,serif" font-size="14.00">handle(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.DwellingAtStationState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.Train -->
 <g id="edge71" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train</title>
 <path fill="none" stroke="black" d="M2977.4,-3573.96C2977.2,-3535.56 2977.75,-3489.72 2980.38,-3448.5 2980.49,-3446.71 2980.61,-3444.91 2980.72,-3443.11"/>
 <polygon fill="black" stroke="black" points="2980.72,-3443.12 2977.15,-3436.86 2981.55,-3431.15 2985.13,-3437.41 2980.72,-3443.12"/>
 <text text-anchor="middle" x="2993.5" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">state</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.TrainState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.TrainState -->
 <g id="node98" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.TrainState</title>
 <polygon fill="none" stroke="black" points="3211.88,-3969.75 3211.88,-4043.25 3310.38,-4043.25 3310.38,-3969.75 3211.88,-3969.75"/>
@@ -576,13 +576,13 @@
 <text text-anchor="start" x="3219.88" y="-3977.95" font-family="Times,serif" font-style="italic" font-size="14.00">handle</text>
 <text text-anchor="start" x="3256.62" y="-3977.95" font-family="Times,serif" font-size="14.00">(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.DwellingAtStationState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.TrainState -->
 <g id="edge39" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState</title>
 <path fill="none" stroke="black" d="M3014.08,-3747.18C3028.49,-3777.41 3046.83,-3810.65 3068.12,-3838 3106.51,-3887.31 3161.08,-3933.06 3202.41,-3964.25"/>
 <polygon fill="none" stroke="black" points="3200.22,-3966.98 3210.33,-3970.16 3204.41,-3961.37 3200.22,-3966.98"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy -->
 <g id="node22" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy</title>
 <polygon fill="none" stroke="black" points="9401.62,-535.75 9401.62,-584.75 9564.62,-584.75 9564.62,-535.75 9401.62,-535.75"/>
@@ -592,13 +592,13 @@
 <text text-anchor="start" x="9414.88" y="-543.95" font-family="Times,serif" font-style="italic" font-size="14.00">generate_dispatch_info</text>
 <text text-anchor="start" x="9542.38" y="-543.95" font-family="Times,serif" font-size="14.00">()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
 <g id="edge17" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy</title>
 <path fill="none" stroke="black" d="M9493.93,-585C9508.43,-614.59 9536.76,-665.08 9574.12,-696.5 9762.33,-854.8 10043.77,-947.27 10184.88,-986.27"/>
 <polygon fill="none" stroke="black" points="10183.59,-989.55 10194.16,-988.81 10185.43,-982.79 10183.59,-989.55"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.EmpiricalSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.EmpiricalSchedule -->
 <g id="node23" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.EmpiricalSchedule</title>
 <polygon fill="none" stroke="black" points="10389.62,-83 10389.62,-288.5 10738.62,-288.5 10738.62,-83 10389.62,-83"/>
@@ -616,7 +616,7 @@
 <text text-anchor="start" x="10400.25" y="-106.7" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info(): List[Tuple[float, int]]</text>
 <text text-anchor="start" x="10400.25" y="-90.2" font-family="Times,serif" font-size="14.00">generate_uic_halsted_dispatch_info(): List[Tuple[float, int]]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.EmpiricalSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.EmpiricalSchedule -->
 <g id="node24" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.EmpiricalSchedule</title>
 <polygon fill="none" stroke="black" points="7575.25,-141.5 7575.25,-230 7901,-230 7901,-141.5 7575.25,-141.5"/>
@@ -630,13 +630,13 @@
 <text text-anchor="start" x="7583.25" y="-161.2" font-family="Times,serif" font-size="14.00">get_strategy()</text>
 <text text-anchor="start" x="7583.25" y="-147.2" font-family="Times,serif" font-size="14.00">validate_params()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.EmpiricalSchedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.EmpiricalSchedule&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.BaseSchedule -->
 <g id="edge14" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.EmpiricalSchedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule</title>
 <path fill="none" stroke="black" d="M7778.23,-230.25C7812.95,-267.82 7864.61,-323.46 7910.12,-371.5 7938.16,-401.09 7968.86,-433.09 7996.89,-462.15"/>
 <polygon fill="none" stroke="black" points="7994.21,-464.41 8003.67,-469.17 7999.24,-459.54 7994.21,-464.41"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.GammaDispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.GammaDispatchStrategy -->
 <g id="node25" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.GammaDispatchStrategy</title>
 <polygon fill="none" stroke="black" points="10176,-535.75 10176,-584.75 10368.25,-584.75 10368.25,-535.75 10176,-535.75"/>
@@ -646,13 +646,13 @@
 <text text-anchor="start" x="10184" y="-543.95" font-family="Times,serif" font-style="italic" font-size="14.00">generate_dispatch_info</text>
 <text text-anchor="start" x="10311.5" y="-543.95" font-family="Times,serif" font-size="14.00">(params)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.GammaDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.GammaDispatchStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
 <g id="edge18" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.GammaDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy</title>
 <path fill="none" stroke="black" d="M10272.12,-584.97C10272.12,-658.83 10272.12,-885.05 10272.12,-972.88"/>
 <polygon fill="none" stroke="black" points="10268.63,-972.81 10272.13,-982.81 10275.63,-972.81 10268.63,-972.81"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.GammaSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.GammaSchedule -->
 <g id="node26" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.GammaSchedule</title>
 <polygon fill="none" stroke="black" points="10691,-935 10691,-1083.5 11015.25,-1083.5 11015.25,-935 10691,-935"/>
@@ -668,7 +668,7 @@
 <text text-anchor="start" x="10699" y="-940.7" font-family="Times,serif" font-style="italic" font-size="14.00">remove_all_northbound_trains</text>
 <text text-anchor="start" x="10867.75" y="-940.7" font-family="Times,serif" font-size="14.00">()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.GammaSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.GammaSchedule -->
 <g id="node27" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.GammaSchedule</title>
 <polygon fill="none" stroke="black" points="7918.88,-141.5 7918.88,-230 8263.38,-230 8263.38,-141.5 7918.88,-141.5"/>
@@ -682,13 +682,13 @@
 <text text-anchor="start" x="7926.88" y="-161.2" font-family="Times,serif" font-size="14.00">get_strategy()</text>
 <text text-anchor="start" x="7926.88" y="-147.2" font-family="Times,serif" font-size="14.00">validate_params()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.GammaSchedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.GammaSchedule&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.BaseSchedule -->
 <g id="edge15" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.GammaSchedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule</title>
 <path fill="none" stroke="black" d="M8091.12,-230.21C8091.12,-285.98 8091.12,-384.43 8091.12,-459.15"/>
 <polygon fill="none" stroke="black" points="8087.63,-458.95 8091.13,-468.95 8094.63,-458.95 8087.63,-458.95"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurning -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.GammaScheduleWithShortTurning -->
 <g id="node28" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurning</title>
 <polygon fill="none" stroke="black" points="10596,-482.25 10596,-638.25 10920.25,-638.25 10920.25,-482.25 10596,-482.25"/>
@@ -703,13 +703,13 @@
 <text text-anchor="start" x="10604" y="-505.95" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info(): List[Tuple[float, int]]</text>
 <text text-anchor="start" x="10604" y="-489.45" font-family="Times,serif" font-size="14.00">get_gamma_params(mean, coeff_var)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurning&#45;&gt;mit_rail_sim.simulation_engine.schedule.GammaSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.GammaScheduleWithShortTurning&#45;&gt;transit_lab_simmetro.simulation_engine.schedule.GammaSchedule -->
 <g id="edge11" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurning&#45;&gt;mit_rail_sim.simulation_engine.schedule.GammaSchedule</title>
 <path fill="none" stroke="black" d="M10774.56,-638.6C10791.47,-718.15 10817.73,-841.7 10835.17,-923.76"/>
 <polygon fill="none" stroke="black" points="10831.7,-924.28 10837.2,-933.33 10838.55,-922.82 10831.7,-924.28"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals -->
 <g id="node29" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals</title>
 <polygon fill="none" stroke="black" points="10938,-424.5 10938,-696 11334.25,-696 11334.25,-424.5 10938,-424.5"/>
@@ -731,13 +731,13 @@
 <text text-anchor="start" x="10946" y="-448.2" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info(): None</text>
 <text text-anchor="start" x="10946" y="-431.7" font-family="Times,serif" font-size="14.00">get_gamma_params(mean, coeff_var)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals&#45;&gt;mit_rail_sim.simulation_engine.schedule.GammaSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals&#45;&gt;transit_lab_simmetro.simulation_engine.schedule.GammaSchedule -->
 <g id="edge12" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals&#45;&gt;mit_rail_sim.simulation_engine.schedule.GammaSchedule</title>
 <path fill="none" stroke="black" d="M11050.64,-696.27C11003.51,-770.71 10946.5,-860.77 10905.86,-924.95"/>
 <polygon fill="none" stroke="black" points="10902.94,-923.02 10900.55,-933.34 10908.86,-926.77 10902.94,-923.02"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminalsPMPeak -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminalsPMPeak -->
 <g id="node30" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminalsPMPeak</title>
 <polygon fill="none" stroke="black" points="10966.5,-74.75 10966.5,-296.75 11305.75,-296.75 11305.75,-74.75 10966.5,-74.75"/>
@@ -756,13 +756,13 @@
 <text text-anchor="start" x="10974.5" y="-98.45" font-family="Times,serif" font-size="14.00">gen_random_dispatch_info_sb(): List[Tuple[float, int, str]]</text>
 <text text-anchor="start" x="10974.5" y="-81.95" font-family="Times,serif" font-size="14.00">remove_all_northbound_trains()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminalsPMPeak&#45;&gt;mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminalsPMPeak&#45;&gt;transit_lab_simmetro.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals -->
 <g id="edge13" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminalsPMPeak&#45;&gt;mit_rail_sim.simulation_engine.schedule.GammaScheduleWithShortTurningTwoTerminals</title>
 <path fill="none" stroke="black" d="M11136.12,-297C11136.12,-333.32 11136.12,-374.29 11136.12,-412.87"/>
 <polygon fill="none" stroke="black" points="11132.63,-412.7 11136.13,-422.7 11139.63,-412.7 11132.63,-412.7"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.headway_analysis_helper.HeadwayAnalysis -->
+<!-- transit_lab_simmetro.dash_app.helpers.headway_analysis_helper.HeadwayAnalysis -->
 <g id="node31" class="node">
 <title>mit_rail_sim.dash_app.helpers.headway_analysis_helper.HeadwayAnalysis</title>
 <polygon fill="none" stroke="black" points="11325.25,-0.5 11325.25,-371 11669,-371 11669,-0.5 11325.25,-0.5"/>
@@ -790,7 +790,7 @@
 <text text-anchor="start" x="11333.25" y="-24.2" font-family="Times,serif" font-size="14.00">plot_histogram(real_headway, sim_headway, station_name)</text>
 <text text-anchor="start" x="11333.25" y="-7.7" font-family="Times,serif" font-size="14.00">std(real_or_sim: str, station: str)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.HoldAllTrainsStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.HoldAllTrainsStrategy -->
 <g id="node32" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.HoldAllTrainsStrategy</title>
 <polygon fill="none" stroke="black" points="11401,-527.5 11401,-593 11563.25,-593 11563.25,-527.5 11401,-527.5"/>
@@ -800,7 +800,7 @@
 <text text-anchor="start" x="11409" y="-551.2" font-family="Times,serif" font-size="14.00">get_holding_regulator(cfg)</text>
 <text text-anchor="start" x="11409" y="-534.7" font-family="Times,serif" font-size="14.00">should_hold(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.HoldingStrategy -->
 <g id="node34" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy</title>
 <polygon fill="none" stroke="black" points="11819.88,-979 11819.88,-1039.5 11984.38,-1039.5 11984.38,-979 11819.88,-979"/>
@@ -812,13 +812,13 @@
 <text text-anchor="start" x="11827.88" y="-984.7" font-family="Times,serif" font-style="italic" font-size="14.00">should_hold</text>
 <text text-anchor="start" x="11894.62" y="-984.7" font-family="Times,serif" font-size="14.00">(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.HoldAllTrainsStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.HoldAllTrainsStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.HoldingStrategy -->
 <g id="edge40" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.HoldAllTrainsStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy</title>
 <path fill="none" stroke="black" d="M11501.63,-593.14C11542.16,-657.61 11640.94,-805.67 11751.12,-904.5 11779.21,-929.69 11813.68,-953.8 11842.59,-972.43"/>
 <polygon fill="none" stroke="black" points="11840.57,-975.3 11850.89,-977.72 11844.33,-969.4 11840.57,-975.3"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.HoldShortTurningOnlyStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.HoldShortTurningOnlyStrategy -->
 <g id="node33" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.HoldShortTurningOnlyStrategy</title>
 <polygon fill="none" stroke="black" points="11581.25,-527.5 11581.25,-593 11769,-593 11769,-527.5 11581.25,-527.5"/>
@@ -828,13 +828,13 @@
 <text text-anchor="start" x="11602" y="-551.2" font-family="Times,serif" font-size="14.00">get_holding_regulator(cfg)</text>
 <text text-anchor="start" x="11602" y="-534.7" font-family="Times,serif" font-size="14.00">should_hold(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.HoldShortTurningOnlyStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.HoldShortTurningOnlyStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.HoldingStrategy -->
 <g id="edge41" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.HoldShortTurningOnlyStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy</title>
 <path fill="none" stroke="black" d="M11691.45,-593.4C11732.09,-673.42 11837.69,-881.37 11882.05,-968.71"/>
 <polygon fill="none" stroke="black" points="11878.81,-970.07 11886.46,-977.4 11885.05,-966.9 11878.81,-970.07"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.HoldingStrategyFactory -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.HoldingStrategyFactory -->
 <g id="node35" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.HoldingStrategyFactory</title>
 <polygon fill="none" stroke="black" points="12423.25,-161.25 12423.25,-210.25 12623,-210.25 12623,-161.25 12423.25,-161.25"/>
@@ -843,7 +843,7 @@
 <polyline fill="none" stroke="black" points="12423.25,-185.75 12623,-185.75"/>
 <text text-anchor="start" x="12431.25" y="-168.45" font-family="Times,serif" font-size="14.00">create_strategy(holding_scenario)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.JSONLoggerStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.JSONLoggerStrategy -->
 <g id="node36" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.JSONLoggerStrategy</title>
 <polygon fill="none" stroke="black" points="8965.12,-153 8965.12,-218.5 9287.12,-218.5 9287.12,-153 8965.12,-153"/>
@@ -853,13 +853,13 @@
 <text text-anchor="start" x="8973.12" y="-176.7" font-family="Times,serif" font-size="14.00">write_header(log_file_path: str): None</text>
 <text text-anchor="start" x="8973.12" y="-160.2" font-family="Times,serif" font-size="14.00">write_row(log_file_path: str, data: Dict[str, Any]): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.JSONLoggerStrategy&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.LoggerStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.JSONLoggerStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.LoggerStrategy -->
 <g id="edge53" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.JSONLoggerStrategy&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.LoggerStrategy</title>
 <path fill="none" stroke="black" d="M9111.48,-218.83C9080.47,-286.79 9008.23,-445.07 8974.32,-519.38"/>
 <polygon fill="none" stroke="black" points="8971.2,-517.79 8970.23,-528.34 8977.57,-520.7 8971.2,-517.79"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState -->
 <g id="node37" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState</title>
 <polygon fill="none" stroke="black" points="4959.38,-3603 4959.38,-3718 5330.88,-3718 5330.88,-3603 4959.38,-3603"/>
@@ -872,13 +872,13 @@
 <text text-anchor="start" x="4967.38" y="-3626.7" font-family="Times,serif" font-size="14.00">readjust_acceleration(Overspeeding: bool): None</text>
 <text text-anchor="start" x="4967.38" y="-3610.2" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
 <g id="edge30" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState</title>
 <path fill="none" stroke="black" d="M5092.42,-3718.14C5055.3,-3755.68 5002.96,-3804.08 4950.12,-3838 4890.65,-3876.18 4821,-3909.26 4757.14,-3935.71"/>
 <polygon fill="none" stroke="black" points="4755.85,-3932.45 4747.93,-3939.49 4758.51,-3938.93 4755.85,-3932.45"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA -->
 <g id="node38" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA</title>
 <polygon fill="none" stroke="black" points="3178.88,-960 3178.88,-1058.5 3577.38,-1058.5 3577.38,-960 3178.88,-960"/>
@@ -890,13 +890,13 @@
 <text text-anchor="start" x="3186.88" y="-983.7" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="3186.88" y="-967.2" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="edge36" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <path fill="none" stroke="black" d="M3380.07,-1058.93C3382.88,-1129.28 3388.17,-1261.75 3392.12,-1360.58"/>
 <polygon fill="none" stroke="black" points="3388.61,-1360.49 3392.51,-1370.34 3395.6,-1360.21 3388.61,-1360.49"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.LeavingTheStationState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.LeavingTheStationState -->
 <g id="node39" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.LeavingTheStationState</title>
 <polygon fill="none" stroke="black" points="4990.5,-3026.5 4990.5,-3100 5299.75,-3100 5299.75,-3026.5 4990.5,-3026.5"/>
@@ -906,13 +906,13 @@
 <polyline fill="none" stroke="black" points="4990.5,-3051 5299.75,-3051"/>
 <text text-anchor="start" x="4998.5" y="-3033.7" font-family="Times,serif" font-size="14.00">get_next_state(): Optional[TrainSpeedRegulatorState]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.LeavingTheStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.LeavingTheStationState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState -->
 <g id="edge31" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.LeavingTheStationState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.KeepingTheSpeedUptoCodeState</title>
 <path fill="none" stroke="black" d="M5145.12,-3100.15C5145.12,-3196.91 5145.12,-3464.41 5145.12,-3591.17"/>
 <polygon fill="none" stroke="black" points="5141.63,-3591.11 5145.13,-3601.11 5148.63,-3591.11 5141.63,-3591.11"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.LeavingTheStationStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.LeavingTheStationStateCTA -->
 <g id="node40" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.LeavingTheStationStateCTA</title>
 <polygon fill="none" stroke="black" points="3210,-523.5 3210,-597 3546.25,-597 3546.25,-523.5 3210,-523.5"/>
@@ -922,13 +922,13 @@
 <polyline fill="none" stroke="black" points="3210,-548 3546.25,-548"/>
 <text text-anchor="start" x="3218" y="-530.7" font-family="Times,serif" font-size="14.00">get_next_state(): Optional[TrainSpeedRegulatorStateCTA]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.LeavingTheStationStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.LeavingTheStationStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA -->
 <g id="edge37" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.LeavingTheStationStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.KeepingTheSpeedUptoCodeStateCTA</title>
 <path fill="none" stroke="black" d="M3378.12,-597.45C3378.12,-674.27 3378.12,-854.24 3378.12,-948.41"/>
 <polygon fill="none" stroke="black" points="3374.63,-948.22 3378.13,-958.22 3381.63,-948.22 3374.63,-948.22"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy -->
 <g id="node41" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy</title>
 <polygon fill="none" stroke="black" points="11787.25,-527.5 11787.25,-593 12017,-593 12017,-527.5 11787.25,-527.5"/>
@@ -938,13 +938,13 @@
 <text text-anchor="start" x="11829" y="-551.2" font-family="Times,serif" font-size="14.00">get_holding_regulator(cfg)</text>
 <text text-anchor="start" x="11829" y="-534.7" font-family="Times,serif" font-size="14.00">should_hold(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.HoldingStrategy -->
 <g id="edge42" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy</title>
 <path fill="none" stroke="black" d="M11902.12,-593.4C11902.12,-673.01 11902.12,-879.26 11902.12,-967.37"/>
 <polygon fill="none" stroke="black" points="11898.63,-967.23 11902.13,-977.23 11905.63,-967.23 11898.63,-967.23"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategyOnlyShortTurning -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategyOnlyShortTurning -->
 <g id="node42" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategyOnlyShortTurning</title>
 <polygon fill="none" stroke="black" points="11687.38,-161.25 11687.38,-210.25 12016.88,-210.25 12016.88,-161.25 11687.38,-161.25"/>
@@ -953,13 +953,13 @@
 <polyline fill="none" stroke="black" points="11687.38,-185.75 12016.88,-185.75"/>
 <text text-anchor="start" x="11780.12" y="-168.45" font-family="Times,serif" font-size="14.00">should_hold(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategyOnlyShortTurning&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategyOnlyShortTurning&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy -->
 <g id="edge43" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategyOnlyShortTurning&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingEstimatedLoadStrategy</title>
 <path fill="none" stroke="black" d="M11855.33,-210.62C11863.6,-272.22 11885.75,-437.24 11896.33,-516.11"/>
 <polygon fill="none" stroke="black" points="11892.81,-516.16 11897.61,-525.6 11899.75,-515.22 11892.81,-516.16"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy -->
 <g id="node43" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy</title>
 <polygon fill="none" stroke="black" points="12035,-527.5 12035,-593 12275.25,-593 12275.25,-527.5 12035,-527.5"/>
@@ -969,13 +969,13 @@
 <text text-anchor="start" x="12082" y="-551.2" font-family="Times,serif" font-size="14.00">get_holding_regulator(cfg)</text>
 <text text-anchor="start" x="12082" y="-534.7" font-family="Times,serif" font-size="14.00">should_hold(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.HoldingStrategy -->
 <g id="edge44" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy</title>
 <path fill="none" stroke="black" d="M12136.93,-593.4C12091.59,-673.5 11973.7,-881.8 11924.35,-968.98"/>
 <polygon fill="none" stroke="black" points="11921.45,-967 11919.57,-977.43 11927.54,-970.45 11921.45,-967"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategyOnlyShortTurning -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategyOnlyShortTurning -->
 <g id="node44" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategyOnlyShortTurning</title>
 <polygon fill="none" stroke="black" points="12035.12,-161.25 12035.12,-210.25 12375.12,-210.25 12375.12,-161.25 12035.12,-161.25"/>
@@ -984,13 +984,13 @@
 <polyline fill="none" stroke="black" points="12035.12,-185.75 12375.12,-185.75"/>
 <text text-anchor="start" x="12133.12" y="-168.45" font-family="Times,serif" font-size="14.00">should_hold(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategyOnlyShortTurning&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategyOnlyShortTurning&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy -->
 <g id="edge45" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategyOnlyShortTurning&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.LoadEqualizingExactKnowledgeStrategy</title>
 <path fill="none" stroke="black" d="M12201.92,-210.62C12193.65,-272.22 12171.5,-437.24 12160.92,-516.11"/>
 <polygon fill="none" stroke="black" points="12157.5,-515.22 12159.64,-525.6 12164.44,-516.16 12157.5,-515.22"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context.LoggerContext -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context.LoggerContext -->
 <g id="node45" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_context.LoggerContext</title>
 <polygon fill="none" stroke="black" points="12720,-91.25 12720,-280.25 13038.25,-280.25 13038.25,-91.25 12720,-91.25"/>
@@ -1007,7 +1007,7 @@
 <text text-anchor="start" x="12728" y="-114.95" font-family="Times,serif" font-size="14.00">add_unsuccessful_replication(replication_id: int): None</text>
 <text text-anchor="start" x="12728" y="-98.45" font-family="Times,serif" font-size="14.00">filter_logs_by_unsuccessful_replications(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.replication_manager.ReplicationManager -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.replication_manager.ReplicationManager -->
 <g id="node67" class="node">
 <title>mit_rail_sim.simulation_engine.simulation.replication_manager.ReplicationManager</title>
 <polygon fill="none" stroke="black" points="12473.62,-490.5 12473.62,-630 13284.62,-630 13284.62,-490.5 12473.62,-490.5"/>
@@ -1021,14 +1021,14 @@
 <text text-anchor="start" x="12481.62" y="-514.2" font-family="Times,serif" font-size="14.00">generate_seed_numbers(): None</text>
 <text text-anchor="start" x="12481.62" y="-497.7" font-family="Times,serif" font-size="14.00">run_replications(schedule, path_initializer_function, data, slow_zones, total_time: float, start_hour: int, seed_numbers: Optional[List[int]]): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context.LoggerContext&#45;&gt;mit_rail_sim.simulation_engine.simulation.replication_manager.ReplicationManager -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context.LoggerContext&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.replication_manager.ReplicationManager -->
 <g id="edge96" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context.LoggerContext&#45;&gt;mit_rail_sim.simulation_engine.simulation.replication_manager.ReplicationManager</title>
 <path fill="none" stroke="black" d="M12879.12,-280.75C12879.12,-341.36 12879.12,-419.41 12879.12,-477.46"/>
 <polygon fill="none" stroke="black" points="12879.13,-477.37 12883.13,-483.37 12879.13,-489.37 12875.13,-483.37 12879.13,-477.37"/>
 <text text-anchor="middle" x="12919.62" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">logger_context</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.MovingBetweenStationsState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.MovingBetweenStationsState -->
 <g id="node47" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.MovingBetweenStationsState</title>
 <polygon fill="none" stroke="black" points="3077.5,-3636 3077.5,-3685 3254.75,-3685 3254.75,-3636 3077.5,-3636"/>
@@ -1037,19 +1037,19 @@
 <polyline fill="none" stroke="black" points="3077.5,-3660.5 3254.75,-3660.5"/>
 <text text-anchor="start" x="3125.25" y="-3643.2" font-family="Times,serif" font-size="14.00">handle(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.MovingBetweenStationsState&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.MovingBetweenStationsState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.TrainState -->
 <g id="edge46" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.MovingBetweenStationsState&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState</title>
 <path fill="none" stroke="black" d="M3172.73,-3685.42C3188.32,-3741.87 3227.63,-3884.21 3248.17,-3958.59"/>
 <polygon fill="none" stroke="black" points="3244.74,-3959.32 3250.78,-3968.03 3251.49,-3957.46 3244.74,-3959.32"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.MovingBlock&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.AbstractBlock -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.MovingBlock&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.AbstractBlock -->
 <g id="edge4" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.MovingBlock&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.AbstractBlock</title>
 <path fill="none" stroke="black" d="M175.56,-1353.37C162.7,-1431.1 149.12,-1535.1 149.12,-1627.75 149.12,-1627.75 149.12,-1627.75 149.12,-3661.5 149.12,-3739.94 185.34,-3818.82 224.54,-3881.23"/>
 <polygon fill="none" stroke="black" points="221.44,-3882.89 229.78,-3889.43 227.34,-3879.12 221.44,-3882.89"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.moving_control_center.MovingBlockControl -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.moving_control_center.MovingBlockControl -->
 <g id="node49" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.moving_control_center.MovingBlockControl</title>
 <polygon fill="none" stroke="black" points="13056.62,-132.5 13056.62,-239 13465.62,-239 13465.62,-132.5 13056.62,-132.5"/>
@@ -1061,7 +1061,7 @@
 <text text-anchor="start" x="13064.62" y="-156.2" font-family="Times,serif" font-size="14.00">get_speed_code(asking_train: Train, asking_block: MovingBlock): float</text>
 <text text-anchor="start" x="13064.62" y="-139.7" font-family="Times,serif" font-size="14.00">needed_braking_distance(asking_train: Train): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.NextBlockNotFoundError -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.NextBlockNotFoundError -->
 <g id="node50" class="node">
 <title>mit_rail_sim.simulation_engine.train.train.NextBlockNotFoundError</title>
 <polygon fill="none" stroke="black" points="13483.25,-161.25 13483.25,-210.25 13641,-210.25 13641,-161.25 13483.25,-161.25"/>
@@ -1070,7 +1070,7 @@
 <polyline fill="none" stroke="black" points="13483.25,-185.75 13641,-185.75"/>
 <text text-anchor="start" x="13560.25" y="-168.45" font-family="Times,serif" font-size="14.00" fill="red"> </text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.NoHoldingStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.NoHoldingStrategy -->
 <g id="node51" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.NoHoldingStrategy</title>
 <polygon fill="none" stroke="black" points="12293,-527.5 12293,-593 12455.25,-593 12455.25,-527.5 12293,-527.5"/>
@@ -1080,13 +1080,13 @@
 <text text-anchor="start" x="12301" y="-551.2" font-family="Times,serif" font-size="14.00">get_holding_regulator(cfg)</text>
 <text text-anchor="start" x="12301" y="-534.7" font-family="Times,serif" font-size="14.00">should_hold(train, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.NoHoldingStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.NoHoldingStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.HoldingStrategy -->
 <g id="edge47" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.NoHoldingStrategy&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.HoldingStrategy</title>
 <path fill="none" stroke="black" d="M12355.37,-593.47C12338.29,-621.76 12311.62,-663.42 12284.12,-696.5 12199.35,-798.51 12174.73,-822.95 12070.12,-904.5 12037.66,-929.81 11998.69,-954.2 11966.46,-972.97"/>
 <polygon fill="none" stroke="black" points="11964.91,-969.82 11958,-977.85 11968.41,-975.89 11964.91,-969.82"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.NullBlockActivationLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.NullBlockActivationLogger -->
 <g id="node52" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.NullBlockActivationLogger</title>
 <polygon fill="none" stroke="black" points="13659.25,-161.25 13659.25,-210.25 13835,-210.25 13835,-161.25 13659.25,-161.25"/>
@@ -1096,7 +1096,7 @@
 <text text-anchor="start" x="13667.25" y="-169.45" font-family="Times,serif" font-style="italic" font-size="14.00">log_block_activation</text>
 <text text-anchor="start" x="13781.25" y="-169.45" font-family="Times,serif" font-size="14.00">(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.NullPassengerLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.NullPassengerLogger -->
 <g id="node53" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.NullPassengerLogger</title>
 <polygon fill="none" stroke="black" points="13853.5,-161.25 13853.5,-210.25 14108.75,-210.25 14108.75,-161.25 13853.5,-161.25"/>
@@ -1106,7 +1106,7 @@
 <text text-anchor="start" x="13861.5" y="-169.45" font-family="Times,serif" font-style="italic" font-size="14.00">log_passenger</text>
 <text text-anchor="start" x="13940.25" y="-169.45" font-family="Times,serif" font-size="14.00">(passenger: Passenger): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.NullTrainLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.NullTrainLogger -->
 <g id="node54" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.NullTrainLogger</title>
 <polygon fill="none" stroke="black" points="7241.5,-148.5 7241.5,-223 7556.75,-223 7556.75,-148.5 7241.5,-148.5"/>
@@ -1120,7 +1120,7 @@
 <text text-anchor="start" x="7249.5" y="-154.2" font-family="Times,serif" font-style="italic" font-size="14.00">update</text>
 <text text-anchor="start" x="7286.25" y="-154.2" font-family="Times,serif" font-size="14.00">(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.TrainLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.TrainLogger -->
 <g id="node92" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.TrainLogger</title>
 <polygon fill="none" stroke="black" points="7140.25,-490.5 7140.25,-630 7658,-630 7658,-490.5 7140.25,-490.5"/>
@@ -1134,13 +1134,13 @@
 <text text-anchor="start" x="7148.25" y="-514.2" font-family="Times,serif" font-size="14.00">log_warning(warning_message: str, train: Train): Union[None, Coroutine[Any, Any, None]]</text>
 <text text-anchor="start" x="7148.25" y="-497.7" font-family="Times,serif" font-size="14.00">update(train: Train): Union[None, Coroutine[Any, Any, None]]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.NullTrainLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.TrainLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.NullTrainLogger&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.TrainLogger -->
 <g id="edge54" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.NullTrainLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.TrainLogger</title>
 <path fill="none" stroke="black" d="M7399.12,-223.49C7399.12,-282.44 7399.12,-399.57 7399.12,-478.68"/>
 <polygon fill="none" stroke="black" points="7395.63,-478.55 7399.13,-488.55 7402.63,-478.55 7395.63,-478.55"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy -->
 <g id="node55" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy</title>
 <polygon fill="none" stroke="black" points="9305.62,-124.25 9305.62,-247.25 9660.62,-247.25 9660.62,-124.25 9305.62,-124.25"/>
@@ -1153,13 +1153,13 @@
 <polyline fill="none" stroke="black" points="9305.62,-148.75 9660.62,-148.75"/>
 <text text-anchor="start" x="9313.62" y="-131.45" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info(): List[Tuple[int, int, str, str]]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy -->
 <g id="edge20" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.EmpiricalDispatchStrategy</title>
 <path fill="none" stroke="black" d="M9483.12,-247.43C9483.12,-326.06 9483.12,-460.59 9483.12,-524.09"/>
 <polygon fill="none" stroke="black" points="9479.63,-523.94 9483.13,-533.94 9486.63,-523.94 9479.63,-523.94"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule -->
 <g id="node57" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule</title>
 <polygon fill="none" stroke="black" points="9582.75,-465.75 9582.75,-654.75 10157.5,-654.75 10157.5,-465.75 9582.75,-465.75"/>
@@ -1176,14 +1176,14 @@
 <text text-anchor="start" x="9590.75" y="-489.45" font-family="Times,serif" font-size="14.00">remove_all_northbound_trains(): None</text>
 <text text-anchor="start" x="9590.75" y="-472.95" font-family="Times,serif" font-size="14.00">validate_params()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule -->
 <g id="edge62" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule</title>
 <path fill="none" stroke="black" d="M9543.39,-247.55C9579.58,-283.81 9626.67,-330.61 9669.12,-371.5 9697.99,-399.3 9729.52,-429.05 9758.88,-456.48"/>
 <polygon fill="black" stroke="black" points="9758.9,-456.5 9766.02,-457.67 9767.67,-464.69 9760.56,-463.52 9758.9,-456.5"/>
 <text text-anchor="middle" x="9749.38" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">dispatch_strategy</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.OHareEmpiricalSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.OHareEmpiricalSchedule -->
 <g id="node56" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.OHareEmpiricalSchedule</title>
 <polygon fill="none" stroke="black" points="14126.38,-91.25 14126.38,-280.25 14497.88,-280.25 14497.88,-91.25 14126.38,-91.25"/>
@@ -1200,7 +1200,7 @@
 <text text-anchor="start" x="14134.38" y="-114.95" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info_fp()</text>
 <text text-anchor="start" x="14134.38" y="-98.45" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info_ohare(): List[Tuple[int, int, str]]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalScheduleWithHolding -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalScheduleWithHolding -->
 <g id="node58" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalScheduleWithHolding</title>
 <polygon fill="none" stroke="black" points="9678.5,-124.25 9678.5,-247.25 10161.75,-247.25 10161.75,-124.25 9678.5,-124.25"/>
@@ -1213,13 +1213,13 @@
 <text text-anchor="start" x="9686.5" y="-147.95" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info()</text>
 <text text-anchor="start" x="9686.5" y="-131.45" font-family="Times,serif" font-size="14.00">suggested_holding(time_to_leading_train: float, time_to_following_train: float): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalScheduleWithHolding&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalScheduleWithHolding&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule -->
 <g id="edge21" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalScheduleWithHolding&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule.OHareEmpiricalSchedule</title>
 <path fill="none" stroke="black" d="M9911.98,-247.43C9904.49,-303.26 9893.21,-387.28 9884.25,-454.04"/>
 <polygon fill="none" stroke="black" points="9880.78,-453.56 9882.92,-463.94 9887.72,-454.5 9880.78,-453.56"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.OHareTerminalHoldingLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.OHareTerminalHoldingLogger -->
 <g id="node59" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.OHareTerminalHoldingLogger</title>
 <polygon fill="none" stroke="black" points="3895.75,-523.5 3895.75,-597 4692.5,-597 4692.5,-523.5 3895.75,-523.5"/>
@@ -1229,13 +1229,13 @@
 <polyline fill="none" stroke="black" points="3895.75,-548 4692.5,-548"/>
 <text text-anchor="start" x="3903.75" y="-530.7" font-family="Times,serif" font-size="14.00">log_terminal_holding(replication_id: int, scheduled_departure_time: float, actual_departure_time: float, holding_time: float, run_id: str): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.OHareTerminalHoldingLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.OHareTerminalHoldingLogger&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.BaseLogger -->
 <g id="edge55" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.OHareTerminalHoldingLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger</title>
 <path fill="none" stroke="black" d="M4356.16,-597.45C4481.09,-670.35 4765.24,-836.17 4931.82,-933.38"/>
 <polygon fill="none" stroke="black" points="4929.93,-936.33 4940.33,-938.34 4933.46,-930.28 4929.93,-936.33"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator -->
 <g id="node60" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator</title>
 <polygon fill="none" stroke="black" points="743.62,-498.75 743.62,-621.75 1032.62,-621.75 1032.62,-498.75 743.62,-498.75"/>
@@ -1248,13 +1248,13 @@
 <text text-anchor="start" x="751.62" y="-522.45" font-family="Times,serif" font-size="14.00">current_speed_code(requesting_train: Train): float</text>
 <text text-anchor="start" x="751.62" y="-505.95" font-family="Times,serif" font-size="14.00">set_unsymptomatic(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.Block -->
 <g id="edge5" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block</title>
 <path fill="none" stroke="black" d="M877.41,-622.12C863.27,-707.94 840.12,-869.52 840.12,-1008.25 840.12,-1008.25 840.12,-1008.25 840.12,-3064.25 840.12,-3200.93 830.02,-3354.91 820.24,-3472.01"/>
 <polygon fill="none" stroke="black" points="816.77,-3471.46 819.42,-3481.72 823.75,-3472.05 816.77,-3471.46"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA -->
 <g id="node84" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA</title>
 <polygon fill="none" stroke="black" points="1587.88,-931.25 1587.88,-1087.25 1986.38,-1087.25 1986.38,-931.25 1587.88,-931.25"/>
@@ -1269,14 +1269,14 @@
 <text text-anchor="start" x="1595.88" y="-954.95" font-family="Times,serif" font-size="14.00">readjust_acceleration(): None</text>
 <text text-anchor="start" x="1595.88" y="-938.45" font-family="Times,serif" font-size="14.00">set_the_acceleration(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA -->
 <g id="edge74" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA</title>
 <path fill="none" stroke="black" d="M948.14,-622.12C975.23,-647.36 1008.63,-675.57 1042.12,-696.5 1210.88,-801.95 1421.51,-886.3 1575.71,-940.53"/>
 <polygon fill="none" stroke="black" points="1575.46,-940.44 1582.45,-938.65 1586.79,-944.41 1579.8,-946.2 1575.46,-940.44"/>
 <text text-anchor="middle" x="1528.12" y="-804.45" font-family="Times,serif" font-size="14.00" fill="green">symptomatic_block</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.passenger.Passenger -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.passenger.Passenger -->
 <g id="node61" class="node">
 <title>mit_rail_sim.simulation_engine.passenger.passenger.Passenger</title>
 <polygon fill="none" stroke="black" points="14516.38,-25.25 14516.38,-346.25 14791.88,-346.25 14791.88,-25.25 14516.38,-25.25"/>
@@ -1301,7 +1301,7 @@
 <text text-anchor="start" x="14603.5" y="-48.95" font-family="Times,serif" font-size="14.00">denied_boarding()</text>
 <text text-anchor="start" x="14603.5" y="-32.45" font-family="Times,serif" font-size="14.00">set_not_loggable()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station.Station -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station.Station -->
 <g id="node82" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.station.Station</title>
 <polygon fill="none" stroke="black" points="1873.25,-2944 1873.25,-3182.5 2793,-3182.5 2793,-2944 1873.25,-2944"/>
@@ -1321,14 +1321,14 @@
 <text text-anchor="start" x="1881.25" y="-2967.7" font-family="Times,serif" font-size="14.00">generate_and_add_passengers(train: Train, holding_time: float): None</text>
 <text text-anchor="start" x="1881.25" y="-2951.2" font-family="Times,serif" font-size="14.00">get_dwell_time(door_metrics: List[Tuple(int, int, int)]): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.passenger_generator.PassengerGenerator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station.Station -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.passenger_generator.PassengerGenerator&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.station.Station -->
 <g id="edge61" class="edge">
 <title>mit_rail_sim.simulation_engine.passenger.passenger_generator.PassengerGenerator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station.Station</title>
 <path fill="none" stroke="black" d="M1314.55,-2552.73C1468.76,-2629.87 1835.73,-2813.44 2084.4,-2937.83"/>
 <polygon fill="black" stroke="black" points="2084.24,-2937.75 2091.4,-2936.86 2094.98,-2943.12 2087.82,-2944.01 2084.24,-2937.75"/>
 <text text-anchor="middle" x="1620.62" y="-2664.7" font-family="Times,serif" font-size="14.00" fill="green">passenger_generator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.PassengerLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.PassengerLogger -->
 <g id="node63" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.PassengerLogger</title>
 <polygon fill="none" stroke="black" points="4710.25,-523.5 4710.25,-597 4964,-597 4964,-523.5 4710.25,-523.5"/>
@@ -1338,13 +1338,13 @@
 <polyline fill="none" stroke="black" points="4710.25,-548 4964,-548"/>
 <text text-anchor="start" x="4718.25" y="-530.7" font-family="Times,serif" font-size="14.00">log_passenger(passenger: Passenger): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.PassengerLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.PassengerLogger&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.BaseLogger -->
 <g id="edge56" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.PassengerLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger</title>
 <path fill="none" stroke="black" d="M4855.19,-597.45C4891.04,-669.32 4971.93,-831.46 5020.68,-929.18"/>
 <polygon fill="none" stroke="black" points="5017.46,-930.57 5025.06,-937.95 5023.72,-927.44 5017.46,-930.57"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path -->
 <g id="node64" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path</title>
 <polygon fill="none" stroke="black" points="1088.12,-16 1088.12,-355.5 1668.12,-355.5 1668.12,-16 1088.12,-16"/>
@@ -1374,28 +1374,28 @@
 <text text-anchor="start" x="1096.12" y="-21.7" font-family="Times,serif" font-style="italic" font-size="14.00">short_turn</text>
 <text text-anchor="start" x="1153.12" y="-21.7" font-family="Times,serif" font-size="14.00">(train: Train)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.DispatchingBlockDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.DispatchingBlockDecorator -->
 <g id="edge75" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.DispatchingBlockDecorator</title>
 <path fill="none" stroke="black" d="M1087.72,-221.26C958.27,-252.44 816.66,-311.65 734.12,-424 675.94,-503.2 678.33,-618.27 690.9,-701.88"/>
 <polygon fill="none" stroke="black" points="690.92,-702.01 695.82,-707.31 692.81,-713.86 687.92,-708.57 690.92,-702.01"/>
 <text text-anchor="middle" x="770.75" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator -->
 <g id="edge76" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.DispatchingMovingBlockDecorator</title>
 <path fill="none" stroke="black" d="M1087.76,-231.06C953.17,-261 795.58,-310.1 669.88,-389.5 635.99,-410.9 605.34,-442.19 580.73,-472.09"/>
 <polygon fill="none" stroke="black" points="580.71,-472.11 580.06,-479.29 573.18,-481.45 573.83,-474.27 580.71,-472.11"/>
 <text text-anchor="middle" x="681.75" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator -->
 <g id="edge77" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.OffScanSymptomaticBlockDecorator</title>
 <path fill="none" stroke="black" d="M1132.28,-355.79C1101.56,-378.24 1070.86,-401.34 1042.12,-424 1015.98,-444.62 988.37,-468.24 963.86,-489.9"/>
 <polygon fill="none" stroke="black" points="963.92,-489.85 962.09,-496.82 954.95,-497.82 956.78,-490.84 963.92,-489.85"/>
 <text text-anchor="middle" x="1098.75" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningAtWestern -->
 <g id="node73" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern</title>
 <polygon fill="none" stroke="black" points="1051.12,-424.5 1051.12,-696 1631.12,-696 1631.12,-424.5 1051.12,-424.5"/>
@@ -1417,21 +1417,21 @@
 <text text-anchor="start" x="1059.12" y="-448.2" font-family="Times,serif" font-size="14.00">short_turn(train: Train)</text>
 <text text-anchor="start" x="1059.12" y="-431.7" font-family="Times,serif" font-size="14.00">short_turning_station(): Station</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningAtWestern -->
 <g id="edge78" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern</title>
 <path fill="none" stroke="black" d="M1366.86,-355.92C1365.41,-372.85 1363.83,-389.77 1362.12,-406 1361.94,-407.78 1361.75,-409.58 1361.55,-411.38"/>
 <polygon fill="none" stroke="black" points="1361.54,-411.52 1364.84,-417.93 1360.19,-423.45 1356.89,-417.04 1361.54,-411.52"/>
 <text text-anchor="middle" x="1385.12" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">sb_path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningAtWestern -->
 <g id="edge79" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern</title>
 <path fill="none" stroke="black" d="M1311.96,-355.94C1309.68,-372.67 1309,-389.55 1310.62,-406 1310.8,-407.76 1310.98,-409.54 1311.18,-411.32"/>
 <polygon fill="none" stroke="black" points="1311.17,-411.28 1315.87,-416.75 1312.62,-423.19 1307.93,-417.72 1311.17,-411.28"/>
 <text text-anchor="middle" x="1332.88" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">nb_path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningPath -->
 <g id="node75" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath</title>
 <polygon fill="none" stroke="black" points="1649.12,-424.5 1649.12,-696 2229.12,-696 2229.12,-424.5 1649.12,-424.5"/>
@@ -1453,28 +1453,28 @@
 <text text-anchor="start" x="1657.12" y="-448.2" font-family="Times,serif" font-size="14.00">is_short_turned_at_this_station(station: Station): bool</text>
 <text text-anchor="start" x="1657.12" y="-431.7" font-family="Times,serif" font-size="14.00">short_turn(train: Train)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningPath -->
 <g id="edge80" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath</title>
 <path fill="none" stroke="black" d="M1656.02,-355.82C1673.4,-367.07 1690.56,-378.36 1707.12,-389.5 1720.24,-398.32 1733.67,-407.56 1747.12,-416.97"/>
 <polygon fill="none" stroke="black" points="1746.85,-416.79 1754.06,-416.96 1756.67,-423.69 1749.46,-423.51 1746.85,-416.79"/>
 <text text-anchor="middle" x="1748.12" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">sb_path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningPath -->
 <g id="edge81" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath</title>
 <path fill="none" stroke="black" d="M1572.78,-355.89C1595.79,-373.53 1619.37,-390.61 1642.62,-406 1648.36,-409.8 1654.21,-413.57 1660.13,-417.32"/>
 <polygon fill="none" stroke="black" points="1659.94,-417.2 1667.15,-416.98 1670.12,-423.55 1662.92,-423.77 1659.94,-417.2"/>
 <text text-anchor="middle" x="1664.88" y="-392.7" font-family="Times,serif" font-size="14.00" fill="green">nb_path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.Path&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.Train -->
 <g id="edge82" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.Path&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train</title>
 <path fill="none" stroke="black" d="M1668.6,-207.92C2066.99,-245.09 2734.12,-340.06 2734.12,-559.25 2734.12,-559.25 2734.12,-559.25 2734.12,-2516.5 2734.12,-2573.64 2729.35,-2592.01 2754.12,-2643.5 2767.83,-2671.99 2783.1,-2670.75 2802.12,-2696 2802.29,-2696.22 2802.46,-2696.45 2802.63,-2696.67"/>
 <polygon fill="none" stroke="black" points="2802.49,-2696.48 2809.28,-2698.9 2809.66,-2706.1 2802.87,-2703.68 2802.49,-2696.48"/>
 <text text-anchor="middle" x="2745.75" y="-1623.7" font-family="Times,serif" font-size="14.00" fill="green">path</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.figure_helpers.PlotCreator -->
+<!-- transit_lab_simmetro.dash_app.helpers.figure_helpers.PlotCreator -->
 <g id="node65" class="node">
 <title>mit_rail_sim.dash_app.helpers.figure_helpers.PlotCreator</title>
 <polygon fill="none" stroke="black" points="14810.25,-8.75 14810.25,-362.75 15550,-362.75 15550,-8.75 14810.25,-8.75"/>
@@ -1501,7 +1501,7 @@
 <text text-anchor="start" x="14818.25" y="-32.45" font-family="Times,serif" font-size="14.00">visualize_time_profile_from_logs(replication_id: int, train_ids: List[str], profile_column: str, title: str)</text>
 <text text-anchor="start" x="14818.25" y="-15.95" font-family="Times,serif" font-size="14.00">visualize_trajectories_for_all_trains(replication_id: int)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.ReleasingNotOccupiedBlock -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.ReleasingNotOccupiedBlock -->
 <g id="node66" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.ReleasingNotOccupiedBlock</title>
 <polygon fill="none" stroke="black" points="15568.38,-161.25 15568.38,-210.25 15741.88,-210.25 15741.88,-161.25 15568.38,-161.25"/>
@@ -1510,7 +1510,7 @@
 <polyline fill="none" stroke="black" points="15568.38,-185.75 15741.88,-185.75"/>
 <text text-anchor="start" x="15653.25" y="-168.45" font-family="Times,serif" font-size="14.00" fill="red"> </text>
 </g>
-<!-- mit_rail_sim.validation.run_id_matching.RunIDClass -->
+<!-- transit_lab_simmetro.validation.run_id_matching.RunIDClass -->
 <g id="node68" class="node">
 <title>mit_rail_sim.validation.run_id_matching.RunIDClass</title>
 <polygon fill="none" stroke="black" points="15759.5,-107.75 15759.5,-263.75 15870.75,-263.75 15870.75,-107.75 15759.5,-107.75"/>
@@ -1525,7 +1525,7 @@
 <polyline fill="none" stroke="black" points="15759.5,-132.25 15870.75,-132.25"/>
 <text text-anchor="start" x="15813.25" y="-114.95" font-family="Times,serif" font-size="14.00"> </text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.Schedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.Schedule -->
 <g id="node69" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.Schedule</title>
 <polygon fill="none" stroke="black" points="15888.5,-107.75 15888.5,-263.75 16233.75,-263.75 16233.75,-107.75 15888.5,-107.75"/>
@@ -1540,7 +1540,7 @@
 <text text-anchor="start" x="15896.5" y="-131.45" font-family="Times,serif" font-size="14.00">copy()</text>
 <text text-anchor="start" x="15896.5" y="-114.95" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info(): List[Tuple[float, int, str]]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurning -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.SettingUpForShortTurning -->
 <g id="node70" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurning</title>
 <polygon fill="none" stroke="black" points="3273.12,-3607.25 3273.12,-3713.75 3439.12,-3713.75 3439.12,-3607.25 3273.12,-3607.25"/>
@@ -1552,13 +1552,13 @@
 <polyline fill="none" stroke="black" points="3273.12,-3631.75 3439.12,-3631.75"/>
 <text text-anchor="start" x="3315.25" y="-3614.45" font-family="Times,serif" font-size="14.00">handle(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurning&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.SettingUpForShortTurning&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.TrainState -->
 <g id="edge48" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurning&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState</title>
 <path fill="none" stroke="black" d="M3341.59,-3714.12C3323.16,-3780.88 3291.64,-3894.99 3274.02,-3958.8"/>
 <polygon fill="none" stroke="black" points="3270.7,-3957.7 3271.41,-3968.27 3277.44,-3959.56 3270.7,-3957.7"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.SettingUpForShortTurningAtStation -->
 <g id="node71" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation</title>
 <polygon fill="none" stroke="black" points="2559.88,-3566 2559.88,-3755 2820.38,-3755 2820.38,-3566 2559.88,-3566"/>
@@ -1575,13 +1575,13 @@
 <text text-anchor="start" x="2567.88" y="-3589.7" font-family="Times,serif" font-size="14.00">handle(): None</text>
 <text text-anchor="start" x="2567.88" y="-3573.2" font-family="Times,serif" font-size="14.00">log_train_visit(boarding_passengers, station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.SettingUpForShortTurningAtStation&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.TrainState -->
 <g id="edge49" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState</title>
 <path fill="none" stroke="black" d="M2739.4,-3755.3C2765.14,-3796.37 2800.08,-3842.04 2842.12,-3872.5 2952.74,-3952.63 3113.47,-3985.72 3200.18,-3998.39"/>
 <polygon fill="none" stroke="black" points="3199.52,-4001.83 3209.91,-3999.76 3200.49,-3994.89 3199.52,-4001.83"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.ShortTurner -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.ShortTurner -->
 <g id="node72" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.ShortTurner</title>
 <polygon fill="none" stroke="black" points="868.38,-3026.5 868.38,-3100 1083.88,-3100 1083.88,-3026.5 868.38,-3026.5"/>
@@ -1591,19 +1591,19 @@
 <polyline fill="none" stroke="black" points="868.38,-3051 1083.88,-3051"/>
 <text text-anchor="start" x="876.38" y="-3033.7" font-family="Times,serif" font-size="14.00">activate(entering_train: Train): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.ShortTurner&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.ShortTurner&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.Block -->
 <g id="edge6" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.ShortTurner&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block</title>
 <path fill="none" stroke="black" d="M965.63,-3100.15C944.53,-3172.34 895.65,-3339.56 856.79,-3472.48"/>
 <polygon fill="none" stroke="black" points="853.53,-3471.16 854.09,-3481.74 860.25,-3473.13 853.53,-3471.16"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.Path -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningAtWestern&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path.Path -->
 <g id="edge9" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningAtWestern&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.Path</title>
 <path fill="none" stroke="black" d="M1354.54,-424.15C1356.39,-405.6 1358.3,-386.32 1360.21,-367.12"/>
 <polygon fill="none" stroke="black" points="1363.67,-367.64 1361.18,-357.34 1356.71,-366.94 1363.67,-367.64"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.ShortTurningBlock -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.ShortTurningBlock -->
 <g id="node74" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.ShortTurningBlock</title>
 <polygon fill="none" stroke="black" points="177.62,-3005.5 177.62,-3121 466.62,-3121 466.62,-3005.5 177.62,-3005.5"/>
@@ -1618,19 +1618,19 @@
 <text text-anchor="start" x="185.62" y="-3011.2" font-family="Times,serif" font-style="italic" font-size="14.00">deactivate</text>
 <text text-anchor="start" x="241.12" y="-3011.2" font-family="Times,serif" font-size="14.00">(exiting_train: Train): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.ShortTurningBlock&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.ShortTurningBlock&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.Block -->
 <g id="edge7" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.ShortTurningBlock&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block</title>
 <path fill="none" stroke="black" d="M335.24,-3121.19C355.15,-3197.95 398.96,-3335.89 475.12,-3430.5 506.81,-3469.86 546.96,-3505.37 588.2,-3536.04"/>
 <polygon fill="none" stroke="black" points="585.94,-3538.72 596.07,-3541.81 590.08,-3533.07 585.94,-3538.72"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.Path -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.ShortTurningPath&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path.Path -->
 <g id="edge10" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.ShortTurningPath&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path.Path</title>
 <path fill="none" stroke="black" d="M1734.46,-424.12C1725.22,-418 1716.07,-411.94 1707.12,-406 1685.73,-391.81 1663.56,-377.08 1641.31,-362.28"/>
 <polygon fill="none" stroke="black" points="1643.29,-359.39 1633.03,-356.77 1639.41,-365.22 1643.29,-359.39"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.signal_control_center.SignalControlCenter -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.signal_control_center.SignalControlCenter -->
 <g id="node76" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.signal_control_center.SignalControlCenter</title>
 <polygon fill="none" stroke="black" points="16251.38,-124.25 16251.38,-247.25 16610.88,-247.25 16610.88,-124.25 16251.38,-124.25"/>
@@ -1643,7 +1643,7 @@
 <text text-anchor="start" x="16259.38" y="-147.95" font-family="Times,serif" font-size="14.00">send_speed_codes_to_upstream_blocks(block: Block): None</text>
 <text text-anchor="start" x="16259.38" y="-131.45" font-family="Times,serif" font-size="14.00">update(block: Block): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation.Simulation -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation -->
 <g id="node77" class="node">
 <title>mit_rail_sim.simulation_engine.simulation.simulation.Simulation</title>
 <polygon fill="none" stroke="black" points="3334.38,-2079.5 3334.38,-2334.5 3717.88,-2334.5 3717.88,-2079.5 3334.38,-2079.5"/>
@@ -1664,21 +1664,21 @@
 <text text-anchor="start" x="3436.5" y="-2103.2" font-family="Times,serif" font-size="14.00">remove_train(train: Train): None</text>
 <text text-anchor="start" x="3436.5" y="-2086.7" font-family="Times,serif" font-size="14.00">run(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrain -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.DummyTrain -->
 <g id="edge64" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrain</title>
 <path fill="none" stroke="black" d="M3595.26,-2334.88C3617.83,-2376.31 3641.85,-2420.39 3660.44,-2454.51"/>
 <polygon fill="black" stroke="black" points="3660.36,-2454.36 3666.74,-2457.71 3666.1,-2464.89 3659.71,-2461.54 3660.36,-2454.36"/>
 <text text-anchor="middle" x="3639" y="-2356.2" font-family="Times,serif" font-size="14.00" fill="green">simulation</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.DummyTrainDecorator -->
 <g id="edge65" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator</title>
 <path fill="none" stroke="black" d="M3718.17,-2307.67C3747.17,-2330.34 3773.8,-2356.93 3793.12,-2387.5 3823.62,-2435.74 3812.12,-2457.43 3812.12,-2514.5 3812.12,-2514.5 3812.12,-2514.5 3812.12,-4007.5 3812.12,-4063.98 3784.53,-4121.9 3758.33,-4164.16"/>
 <polygon fill="black" stroke="black" points="3758.29,-4164.22 3758.44,-4171.43 3751.84,-4174.34 3751.69,-4167.13 3758.29,-4164.22"/>
 <text text-anchor="middle" x="3841" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">simulation</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation.SimulationContext -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation.SimulationContext -->
 <g id="node78" class="node">
 <title>mit_rail_sim.simulation_engine.simulation.simulation.SimulationContext</title>
 <polygon fill="none" stroke="black" points="3371.75,-2478.75 3371.75,-2552.25 3490.5,-2552.25 3490.5,-2478.75 3371.75,-2478.75"/>
@@ -1688,28 +1688,28 @@
 <polyline fill="none" stroke="black" points="3371.75,-2503.25 3490.5,-2503.25"/>
 <text text-anchor="start" x="3429.25" y="-2485.95" font-family="Times,serif" font-size="14.00"> </text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation.SimulationContext -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.simulation.SimulationContext -->
 <g id="edge86" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation.SimulationContext</title>
 <path fill="none" stroke="black" d="M3460.62,-2334.77C3458.35,-2340.87 3456.25,-2346.97 3454.38,-2353 3442.93,-2389.85 3437.08,-2433.22 3434.11,-2465.73"/>
 <polygon fill="none" stroke="black" points="3434.12,-2465.64 3437.6,-2471.96 3433.12,-2477.6 3429.63,-2471.29 3434.12,-2465.64"/>
 <text text-anchor="middle" x="3484" y="-2356.2" font-family="Times,serif" font-size="14.00" fill="green">simulation</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station.Station -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.station.Station -->
 <g id="edge63" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station.Station</title>
 <path fill="none" stroke="black" d="M3334.29,-2237.93C3154.81,-2269.3 2903.3,-2322.96 2827.38,-2387.5 2732.72,-2467.96 2782.83,-2539.34 2715.12,-2643.5 2645.67,-2750.35 2548.72,-2856.26 2469.88,-2934.84"/>
 <polygon fill="black" stroke="black" points="2470,-2934.71 2468.56,-2941.78 2461.48,-2943.17 2462.93,-2936.1 2470,-2934.71"/>
 <text text-anchor="middle" x="2857" y="-2510.45" font-family="Times,serif" font-size="14.00" fill="green">simulation</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.Train -->
 <g id="edge66" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation.Simulation&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train</title>
 <path fill="none" stroke="black" d="M3528.85,-2334.82C3529.28,-2443.64 3524.72,-2590.98 3499.12,-2643.5 3445.06,-2754.43 3347.18,-2848.82 3254.51,-2919.74"/>
 <polygon fill="black" stroke="black" points="3254.4,-2919.83 3252.03,-2926.64 3244.83,-2927.08 3247.2,-2920.26 3254.4,-2919.83"/>
 <text text-anchor="middle" x="3558" y="-2510.45" font-family="Times,serif" font-size="14.00" fill="green">simulation</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.SimulationLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.SimulationLogger -->
 <g id="node79" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.SimulationLogger</title>
 <polygon fill="none" stroke="black" points="4981.75,-515.25 4981.75,-605.25 5250.5,-605.25 5250.5,-515.25 4981.75,-515.25"/>
@@ -1720,13 +1720,13 @@
 <text text-anchor="start" x="4989.75" y="-538.95" font-family="Times,serif" font-size="14.00">log_simulation(simulation: Simulation): None</text>
 <text text-anchor="start" x="4989.75" y="-522.45" font-family="Times,serif" font-size="14.00">log_warning(warning_message: str): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.SimulationLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.SimulationLogger&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.BaseLogger -->
 <g id="edge57" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.SimulationLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger</title>
 <path fill="none" stroke="black" d="M5110.55,-605.74C5101.14,-680.86 5081.97,-833.84 5070.17,-928.06"/>
 <polygon fill="none" stroke="black" points="5066.73,-927.39 5068.96,-937.75 5073.67,-928.26 5066.73,-927.39"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path.SlowZone -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path.SlowZone -->
 <g id="node80" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.path.SlowZone</title>
 <polygon fill="none" stroke="black" points="16628.75,-132.5 16628.75,-239 16825.5,-239 16825.5,-132.5 16628.75,-132.5"/>
@@ -1738,7 +1738,7 @@
 <text text-anchor="start" x="16636.75" y="-156.2" font-family="Times,serif" font-size="14.00">from_dict(data: dict): &#39;SlowZone&#39;</text>
 <text text-anchor="start" x="16636.75" y="-139.7" font-family="Times,serif" font-size="14.00">to_dict(): dict</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue.SortedPassengerQueue -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.stored_passenger_queue.SortedPassengerQueue -->
 <g id="node81" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue.SortedPassengerQueue</title>
 <polygon fill="none" stroke="black" points="1634.12,-2454 1634.12,-2577 2706.12,-2577 2706.12,-2454 1634.12,-2454"/>
@@ -1751,28 +1751,28 @@
 <text text-anchor="start" x="1642.12" y="-2477.7" font-family="Times,serif" font-size="14.00">dequeue_passengers_and_update_remaining_based_on_destinations_and_probability(train_capacity: int, served_destinations: List[str], probability_of_boarding_any_train: float): List[Passenger]</text>
 <text text-anchor="start" x="1642.12" y="-2461.2" font-family="Times,serif" font-size="14.00">size()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue.SortedPassengerQueue&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station.Station -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.stored_passenger_queue.SortedPassengerQueue&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.station.Station -->
 <g id="edge60" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue.SortedPassengerQueue&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station.Station</title>
 <path fill="none" stroke="black" d="M2188.27,-2577.25C2213.66,-2662.28 2260.45,-2818.93 2293.99,-2931.21"/>
 <polygon fill="black" stroke="black" points="2294.01,-2931.28 2299.56,-2935.89 2297.44,-2942.78 2291.89,-2938.18 2294.01,-2931.28"/>
 <text text-anchor="middle" x="2285.12" y="-2664.7" font-family="Times,serif" font-size="14.00" fill="green">sorted_passenger_queue</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station.Station&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station.Station&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.DwellingAtStationState -->
 <g id="edge83" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.station.Station&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState</title>
 <path fill="none" stroke="black" d="M2476.63,-3182.94C2567.74,-3256.68 2689.18,-3352.04 2801.12,-3430.5 2837.18,-3455.77 2855.09,-3450.81 2885.12,-3483 2906.67,-3506.09 2924.77,-3535.06 2939.16,-3562.81"/>
 <polygon fill="none" stroke="black" points="2939.09,-3562.67 2945.36,-3566.23 2944.49,-3573.39 2938.22,-3569.83 2939.09,-3562.67"/>
 <text text-anchor="middle" x="2882.12" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">station</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station.Station&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station.Station&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.SettingUpForShortTurningAtStation -->
 <g id="edge84" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.station.Station&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation</title>
 <path fill="none" stroke="black" d="M2350.06,-3182.56C2366.4,-3266.79 2397.34,-3379.7 2454.12,-3465 2479.41,-3502.97 2514.3,-3537.37 2549.51,-3566.31"/>
 <polygon fill="none" stroke="black" points="2549.4,-3566.22 2556.58,-3566.87 2558.74,-3573.76 2551.56,-3573.1 2549.4,-3566.22"/>
 <text text-anchor="middle" x="2472.12" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">station</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.StationLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.StationLogger -->
 <g id="node83" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.StationLogger</title>
 <polygon fill="none" stroke="black" points="5268.38,-523.5 5268.38,-597 7121.88,-597 7121.88,-523.5 5268.38,-523.5"/>
@@ -1782,19 +1782,19 @@
 <polyline fill="none" stroke="black" points="5268.38,-548 7121.88,-548"/>
 <text text-anchor="start" x="5276.38" y="-530.7" font-family="Times,serif" font-size="14.00">log_train_visit(station: Station, current_time: float, train_id: str, dwell_time: float, applied_holding: float, number_of_passengers_boarded: int, number_of_passengers_alighted: int, number_of_passengers_on_train_after_stop: int, number_of_passengers_on_platform_before_stop: int, is_short_turning: bool, denied_boarding: int): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.StationLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.StationLogger&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.BaseLogger -->
 <g id="edge58" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.StationLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger</title>
 <path fill="none" stroke="black" d="M6103.2,-597.45C5912.36,-672.61 5470.76,-846.53 5227.82,-942.21"/>
 <polygon fill="none" stroke="black" points="5226.55,-938.95 5218.52,-945.87 5229.11,-945.46 5226.55,-938.95"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="edge38" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.StopAtSymptomaticBlockStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <path fill="none" stroke="black" d="M1986.56,-1069.18C2271.1,-1153.26 2794.78,-1308.01 3117.8,-1403.46"/>
 <polygon fill="none" stroke="black" points="3116.69,-1406.78 3127.27,-1406.26 3118.68,-1400.07 3116.69,-1406.78"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.Terminal -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.Terminal -->
 <g id="node85" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.Terminal</title>
 <polygon fill="none" stroke="black" points="484.62,-3001.75 484.62,-3124.75 773.62,-3124.75 773.62,-3001.75 484.62,-3001.75"/>
@@ -1807,34 +1807,34 @@
 <text text-anchor="start" x="492.62" y="-3025.45" font-family="Times,serif" font-size="14.00">activate(entering_train: Train): None</text>
 <text text-anchor="start" x="492.62" y="-3008.95" font-family="Times,serif" font-size="14.00">current_speed_code(requesting_train: Train): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block.Terminal&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block.Terminal&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.Block -->
 <g id="edge8" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block.Terminal&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block</title>
 <path fill="none" stroke="black" d="M646.83,-3125.15C670.38,-3206.19 713.08,-3353.12 747.76,-3472.43"/>
 <polygon fill="none" stroke="black" points="744.3,-3473.07 750.45,-3481.7 751.02,-3471.12 744.3,-3473.07"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.Train&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block.Block -->
 <g id="edge87" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block.Block</title>
 <path fill="none" stroke="black" d="M2810.54,-3424.95C2807.76,-3426.85 2804.96,-3428.7 2802.12,-3430.5 2771.78,-3449.77 2677.09,-3444.45 2641.38,-3448.5 2055.15,-3514.95 1363.98,-3594.59 1019.77,-3634.34"/>
 <polygon fill="none" stroke="black" points="1019.73,-3634.34 1014.23,-3639 1007.81,-3635.72 1013.31,-3631.06 1019.73,-3634.34"/>
 <text text-anchor="middle" x="2677" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">current_train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.Train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.DwellingAtStationState -->
 <g id="edge90" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.DwellingAtStationState</title>
 <path fill="none" stroke="black" d="M3008.19,-3430.43C3007.22,-3442.09 3006.19,-3453.64 3005.12,-3465 3002.16,-3496.45 2997.94,-3530.63 2993.75,-3561.45"/>
 <polygon fill="none" stroke="black" points="2993.78,-3561.19 2996.93,-3567.68 2992.15,-3573.08 2989,-3566.59 2993.78,-3561.19"/>
 <text text-anchor="middle" x="3018.5" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.Train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.SettingUpForShortTurningAtStation -->
 <g id="edge91" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.SettingUpForShortTurningAtStation</title>
 <path fill="none" stroke="black" d="M2810.22,-3424.47C2807.54,-3426.53 2804.85,-3428.53 2802.12,-3430.5 2773.71,-3451 2749.33,-3422.94 2725.38,-3448.5 2699.31,-3476.32 2688.48,-3515.75 2684.85,-3553.01"/>
 <polygon fill="none" stroke="black" points="2684.88,-3552.68 2688.41,-3558.97 2683.96,-3564.64 2680.43,-3558.36 2684.88,-3552.68"/>
 <text text-anchor="middle" x="2738.5" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator -->
 <g id="node94" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator</title>
 <polygon fill="none" stroke="black" points="3840.5,-3514.5 3840.5,-3806.5 4161.75,-3806.5 4161.75,-3514.5 3840.5,-3514.5"/>
@@ -1859,14 +1859,14 @@
 <text text-anchor="start" x="3848.5" y="-3534.2" font-family="Times,serif" font-size="14.00">train_stopped_at_station(station: Station): None</text>
 <text text-anchor="start" x="3848.5" y="-3520.2" font-family="Times,serif" font-size="14.00">update_train_speed(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.Train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator -->
 <g id="edge88" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator</title>
 <path fill="none" stroke="black" d="M3243.86,-3195.34C3379.7,-3277.65 3558.33,-3386.19 3716.12,-3483 3752.81,-3505.51 3792.08,-3529.74 3829.39,-3552.82"/>
 <polygon fill="none" stroke="black" points="3829.4,-3552.83 3836.61,-3552.59 3839.6,-3559.15 3832.4,-3559.39 3829.4,-3552.83"/>
 <text text-anchor="middle" x="3695.88" y="-3451.7" font-family="Times,serif" font-size="14.00" fill="green">_train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA -->
 <g id="node95" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA</title>
 <polygon fill="none" stroke="black" points="3122.88,-1655.5 3122.88,-2026 3659.38,-2026 3659.38,-1655.5 3122.88,-1655.5"/>
@@ -1894,21 +1894,21 @@
 <text text-anchor="start" x="3130.88" y="-1679.2" font-family="Times,serif" font-size="14.00">update_desired_speed(): None</text>
 <text text-anchor="start" x="3130.88" y="-1662.7" font-family="Times,serif" font-size="14.00">update_train_speed(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.Train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA -->
 <g id="edge89" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA</title>
 <path fill="none" stroke="black" d="M2810.23,-2715.64C2800.77,-2691.77 2792.57,-2667.61 2786.12,-2643.5 2756.75,-2533.58 2741.11,-2491.99 2786.12,-2387.5 2852.47,-2233.5 2987.09,-2105.11 3112.53,-2011.62"/>
 <polygon fill="none" stroke="black" points="3112.33,-2011.77 3114.78,-2004.99 3121.98,-2004.64 3119.53,-2011.42 3112.33,-2011.77"/>
 <text text-anchor="middle" x="2816.88" y="-2356.2" font-family="Times,serif" font-size="14.00" fill="green">_train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train.Train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.TrainState -->
 <g id="edge92" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train.Train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState</title>
 <path fill="none" stroke="black" d="M3243.98,-3219.46C3323.96,-3289.81 3405.43,-3380.31 3448.12,-3483 3478.41,-3555.84 3480.31,-3765.97 3448.12,-3838 3422.39,-3895.6 3365.98,-3941.61 3321.81,-3970.72"/>
 <polygon fill="none" stroke="black" points="3321.72,-3970.78 3318.84,-3977.39 3311.63,-3977.27 3314.51,-3970.66 3321.72,-3970.78"/>
 <text text-anchor="middle" x="3484.5" y="-3655.45" font-family="Times,serif" font-size="14.00" fill="green">train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulator -->
 <g id="node87" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulator</title>
 <polygon fill="none" stroke="black" points="16843.5,-161.25 16843.5,-210.25 17062.75,-210.25 17062.75,-161.25 16843.5,-161.25"/>
@@ -1917,7 +1917,7 @@
 <polyline fill="none" stroke="black" points="16843.5,-185.75 17062.75,-185.75"/>
 <text text-anchor="start" x="16851.5" y="-168.45" font-family="Times,serif" font-size="14.00">suggested_holding(train: Train): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
 <g id="node88" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation</title>
 <polygon fill="none" stroke="black" points="17543.5,-515.25 17543.5,-605.25 17762.75,-605.25 17762.75,-515.25 17543.5,-515.25"/>
@@ -1928,7 +1928,7 @@
 <polyline fill="none" stroke="black" points="17543.5,-539.75 17762.75,-539.75"/>
 <text text-anchor="start" x="17551.5" y="-522.45" font-family="Times,serif" font-size="14.00">suggested_holding(train: Train): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStationInformedByCrowding -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStationInformedByCrowding -->
 <g id="node89" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStationInformedByCrowding</title>
 <polygon fill="none" stroke="black" points="17081.12,-161.25 17081.12,-210.25 17403.12,-210.25 17403.12,-161.25 17081.12,-161.25"/>
@@ -1937,13 +1937,13 @@
 <polyline fill="none" stroke="black" points="17081.12,-185.75 17403.12,-185.75"/>
 <text text-anchor="start" x="17140.5" y="-168.45" font-family="Times,serif" font-size="14.00">suggested_holding(train: Train): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStationInformedByCrowding&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStationInformedByCrowding&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
 <g id="edge24" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStationInformedByCrowding&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation</title>
 <path fill="none" stroke="black" d="M17262.06,-210.63C17292.86,-246.98 17354.6,-317.63 17413.12,-371.5 17466.88,-420.97 17532.48,-471.71 17581.5,-507.94"/>
 <polygon fill="none" stroke="black" points="17579.42,-510.76 17589.55,-513.87 17583.57,-505.12 17579.42,-510.76"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithEstimatedLoads -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithEstimatedLoads -->
 <g id="node90" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithEstimatedLoads</title>
 <polygon fill="none" stroke="black" points="17421.62,-136.25 17421.62,-235.25 17884.62,-235.25 17884.62,-136.25 17421.62,-136.25"/>
@@ -1956,13 +1956,13 @@
 <text text-anchor="start" x="17429.62" y="-155.95" font-family="Times,serif" font-size="14.00">estimate_following_train_load(train: Train, following_train_headway: float): float</text>
 <text text-anchor="start" x="17429.62" y="-141.95" font-family="Times,serif" font-size="14.00">suggested_holding(train: Train): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithEstimatedLoads&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithEstimatedLoads&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
 <g id="edge25" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithEstimatedLoads&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation</title>
 <path fill="none" stroke="black" d="M17653.12,-235.45C17653.12,-304.62 17653.12,-430.97 17653.12,-503.7"/>
 <polygon fill="none" stroke="black" points="17649.63,-503.38 17653.13,-513.38 17656.63,-503.38 17649.63,-503.38"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge -->
 <g id="node91" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge</title>
 <polygon fill="none" stroke="black" points="17902.5,-149 17902.5,-222.5 18277.75,-222.5 18277.75,-149 17902.5,-149"/>
@@ -1972,19 +1972,19 @@
 <polyline fill="none" stroke="black" points="17902.5,-173.5 18277.75,-173.5"/>
 <text text-anchor="start" x="17988.5" y="-156.2" font-family="Times,serif" font-size="14.00">suggested_holding(train: Train): float</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation -->
 <g id="edge26" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorWithLoadBalancingAndExactKnowledge&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator.TrainHeadwayRegulatorAtStation</title>
 <path fill="none" stroke="black" d="M18053.87,-222.89C18015.23,-260.93 17951.81,-322.03 17894.12,-371.5 17837.84,-419.77 17771.16,-471.31 17722.22,-508.15"/>
 <polygon fill="none" stroke="black" points="17720.4,-505.14 17714.51,-513.95 17724.6,-510.74 17720.4,-505.14"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils.TrainLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils.TrainLogger&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils.BaseLogger -->
 <g id="edge59" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils.TrainLogger&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils.BaseLogger</title>
 <path fill="none" stroke="black" d="M7281.79,-630.47C7236.11,-654.71 7182.48,-679.98 7131.12,-696.5 6447.83,-916.28 5586.88,-982.48 5228.56,-1001.27"/>
 <polygon fill="none" stroke="black" points="5228.64,-997.76 5218.83,-1001.78 5229,-1004.75 5228.64,-997.76"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_passenger_manager.TrainPassengerManager -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_passenger_manager.TrainPassengerManager -->
 <g id="node93" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_passenger_manager.TrainPassengerManager</title>
 <polygon fill="none" stroke="black" points="2894.12,-2388 2894.12,-2643 3354.12,-2643 3354.12,-2388 2894.12,-2388"/>
@@ -2005,70 +2005,70 @@
 <text text-anchor="start" x="2902.12" y="-2411.7" font-family="Times,serif" font-size="14.00">get_door_metrics(alight_counts, boarding_counts)</text>
 <text text-anchor="start" x="2902.12" y="-2395.2" font-family="Times,serif" font-size="14.00">remaining_capacity(): int</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_passenger_manager.TrainPassengerManager&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_passenger_manager.TrainPassengerManager&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.Train -->
 <g id="edge93" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_passenger_manager.TrainPassengerManager&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train</title>
 <path fill="none" stroke="black" d="M3101.57,-2643.42C3099.3,-2656.2 3096.92,-2669.58 3094.46,-2683.4"/>
 <polygon fill="none" stroke="black" points="3094.44,-2683.5 3097.33,-2690.1 3092.34,-2695.31 3089.46,-2688.7 3094.44,-2683.5"/>
 <text text-anchor="middle" x="3151.75" y="-2664.7" font-family="Times,serif" font-size="14.00" fill="green">passenger_manager</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation.Simulation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation -->
 <g id="edge67" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation.Simulation</title>
 <path fill="none" stroke="black" d="M4023.06,-3514.23C4054.02,-3254.61 4081.27,-2705.26 3826.12,-2353 3801.42,-2318.89 3766.49,-2292.45 3729.17,-2272.08"/>
 <polygon fill="black" stroke="black" points="3729.47,-2272.24 3722.29,-2272.98 3718.85,-2266.64 3726.02,-2265.9 3729.47,-2272.24"/>
 <text text-anchor="middle" x="4036" y="-2664.7" font-family="Times,serif" font-size="14.00" fill="green">train_speed_regulator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState -->
 <g id="edge94" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState</title>
 <path fill="none" stroke="black" d="M4082.02,-3806.82C4100.64,-3831.28 4122.2,-3854.52 4146.38,-3872.5 4208.97,-3919.05 4288.5,-3949.7 4361.07,-3969.69"/>
 <polygon fill="none" stroke="black" points="4361.13,-3969.71 4367.96,-3967.4 4372.71,-3972.82 4365.88,-3975.13 4361.13,-3969.71"/>
 <text text-anchor="middle" x="4171.5" y="-3859.2" font-family="Times,serif" font-size="14.00" fill="green">regulator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation.Simulation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.simulation.Simulation -->
 <g id="edge68" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation.Simulation</title>
 <path fill="none" stroke="black" d="M3459.51,-2026.28C3464.59,-2039.97 3469.66,-2053.66 3474.61,-2067.01"/>
 <polygon fill="black" stroke="black" points="3474.63,-2067.07 3480.47,-2071.31 3478.81,-2078.32 3472.97,-2074.09 3474.63,-2067.07"/>
 <text text-anchor="middle" x="3530" y="-2047.7" font-family="Times,serif" font-size="14.00" fill="green">train_speed_regulator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA -->
 <g id="edge95" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA</title>
 <path fill="none" stroke="black" d="M3399.03,-1655.25C3399.17,-1643.49 3399.21,-1631.83 3399.12,-1620.5 3399.11,-1618.72 3399.1,-1616.94 3399.08,-1615.14"/>
 <polygon fill="none" stroke="black" points="3399.08,-1615.09 3395.02,-1609.13 3398.97,-1603.09 3403.02,-1609.06 3399.08,-1615.09"/>
 <text text-anchor="middle" x="3424.5" y="-1623.7" font-family="Times,serif" font-size="14.00" fill="green">regulator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator -->
 <g id="edge69" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state.TrainSpeedRegulatorState&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator.TrainSpeedRegulator</title>
 <path fill="none" stroke="black" d="M4373.58,-3943.09C4306.35,-3916.13 4231.89,-3880.84 4170.12,-3838 4159.93,-3830.93 4149.86,-3823.17 4140.01,-3814.97"/>
 <polygon fill="black" stroke="black" points="4140.06,-3815.01 4132.9,-3814.16 4130.93,-3807.22 4138.09,-3808.07 4140.06,-3815.01"/>
 <text text-anchor="middle" x="4231.5" y="-3859.2" font-family="Times,serif" font-size="14.00" fill="green">state</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA -->
 <g id="edge70" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA.TrainSpeedRegulatorStateCTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA.TrainSpeedRegulatorCTA</title>
 <path fill="none" stroke="black" d="M3376.24,-1602.39C3375.51,-1608.51 3374.88,-1614.57 3374.38,-1620.5 3373.76,-1627.66 3373.33,-1634.95 3373.06,-1642.32"/>
 <polygon fill="black" stroke="black" points="3373.06,-1642.31 3376.91,-1648.41 3372.76,-1654.31 3368.91,-1648.21 3373.06,-1642.31"/>
 <text text-anchor="middle" x="3387.5" y="-1623.7" font-family="Times,serif" font-size="14.00" fill="green">state</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.TrainState&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.TrainState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.DummyTrainDecorator -->
 <g id="edge72" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.TrainState&#45;&gt;mit_rail_sim.simulation_engine.train.train.DummyTrainDecorator</title>
 <path fill="none" stroke="black" d="M3310.68,-4031.7C3387.04,-4068.99 3534.41,-4140.96 3627.78,-4186.56"/>
 <polygon fill="black" stroke="black" points="3627.86,-4186.6 3635.01,-4185.64 3638.65,-4191.87 3631.5,-4192.83 3627.86,-4186.6"/>
 <text text-anchor="middle" x="3579.5" y="-4143.7" font-family="Times,serif" font-size="14.00" fill="green">state</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.TrainState&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.TrainState&#45;&gt;transit_lab_simmetro.simulation_engine.train.train.Train -->
 <g id="edge73" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.TrainState&#45;&gt;mit_rail_sim.simulation_engine.train.train.Train</title>
 <path fill="none" stroke="black" d="M3211.39,-4001.4C3123.74,-3991.2 2943.68,-3956.17 2865.38,-3838 2821.8,-3772.24 2850.92,-3560.55 2865.38,-3483 2867.86,-3469.66 2870.76,-3456.19 2874,-3442.68"/>
 <polygon fill="black" stroke="black" points="2873.98,-3442.78 2871.53,-3436 2876.86,-3431.13 2879.3,-3437.92 2873.98,-3442.78"/>
 <text text-anchor="middle" x="2878.5" y="-3655.45" font-family="Times,serif" font-size="14.00" fill="green">state</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.travel_times_analysis_helper.TravelTimeAnalysis -->
+<!-- transit_lab_simmetro.dash_app.helpers.travel_times_analysis_helper.TravelTimeAnalysis -->
 <g id="node99" class="node">
 <title>mit_rail_sim.dash_app.helpers.travel_times_analysis_helper.TravelTimeAnalysis</title>
 <polygon fill="none" stroke="black" points="18295.75,-99.5 18295.75,-272 18666.5,-272 18666.5,-99.5 18295.75,-99.5"/>
@@ -2084,7 +2084,7 @@
 <text text-anchor="start" x="18303.75" y="-123.2" font-family="Times,serif" font-size="14.00">plot_histogram(origin_station, destination_station)</text>
 <text text-anchor="start" x="18303.75" y="-106.7" font-family="Times,serif" font-size="14.00">prepare_travel_times(origin_station, destination_station)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.WaitingToBeDispatched -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.WaitingToBeDispatched -->
 <g id="node100" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state.WaitingToBeDispatched</title>
 <polygon fill="none" stroke="black" points="3518.25,-3599 3518.25,-3722 3676,-3722 3676,-3599 3518.25,-3599"/>
@@ -2097,13 +2097,13 @@
 <polyline fill="none" stroke="black" points="3518.25,-3623.5 3676,-3623.5"/>
 <text text-anchor="start" x="3556.25" y="-3606.2" font-family="Times,serif" font-size="14.00">handle(): None</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state.WaitingToBeDispatched&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state.WaitingToBeDispatched&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state.TrainState -->
 <g id="edge50" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state.WaitingToBeDispatched&#45;&gt;mit_rail_sim.simulation_engine.train.train_state.TrainState</title>
 <path fill="none" stroke="black" d="M3576.77,-3722.14C3559.14,-3767.65 3530,-3829.31 3489.12,-3872.5 3441.63,-3922.68 3370.99,-3959.89 3320.95,-3982"/>
 <polygon fill="none" stroke="black" points="3319.77,-3978.69 3311.98,-3985.88 3322.55,-3985.11 3319.77,-3978.69"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.WeibullDispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.WeibullDispatchStrategy -->
 <g id="node101" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.WeibullDispatchStrategy</title>
 <polygon fill="none" stroke="black" points="10386,-535.75 10386,-584.75 10578.25,-584.75 10578.25,-535.75 10386,-535.75"/>
@@ -2113,13 +2113,13 @@
 <text text-anchor="start" x="10394" y="-543.95" font-family="Times,serif" font-style="italic" font-size="14.00">generate_dispatch_info</text>
 <text text-anchor="start" x="10521.5" y="-543.95" font-family="Times,serif" font-size="14.00">(params)</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.WeibullDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.WeibullDispatchStrategy&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy -->
 <g id="edge19" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.WeibullDispatchStrategy&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies.DispatchStrategy</title>
 <path fill="none" stroke="black" d="M10470.98,-584.97C10436.14,-659.14 10329.13,-886.91 10288.24,-973.95"/>
 <polygon fill="none" stroke="black" points="10285.1,-972.41 10284.01,-982.95 10291.43,-975.39 10285.1,-972.41"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule.WeibullSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule.WeibullSchedule -->
 <g id="node102" class="node">
 <title>mit_rail_sim.simulation_engine.schedule.WeibullSchedule</title>
 <polygon fill="none" stroke="black" points="18685,-116 18685,-255.5 19009.25,-255.5 19009.25,-116 18685,-116"/>
@@ -2133,7 +2133,7 @@
 <text text-anchor="start" x="18693" y="-139.7" font-family="Times,serif" font-size="14.00">copy()</text>
 <text text-anchor="start" x="18693" y="-123.2" font-family="Times,serif" font-size="14.00">generate_random_dispatch_info(): List[Tuple[float, int]]</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.WeibullSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.WeibullSchedule -->
 <g id="node103" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.WeibullSchedule</title>
 <polygon fill="none" stroke="black" points="8281.25,-148.5 8281.25,-223 8607,-223 8607,-148.5 8281.25,-148.5"/>
@@ -2145,7 +2145,7 @@
 <text text-anchor="start" x="8289.25" y="-168.2" font-family="Times,serif" font-size="14.00">get_strategy()</text>
 <text text-anchor="start" x="8289.25" y="-154.2" font-family="Times,serif" font-size="14.00">validate_params()</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.WeibullSchedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.WeibullSchedule&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.BaseSchedule -->
 <g id="edge16" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.WeibullSchedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.BaseSchedule</title>
 <path fill="none" stroke="black" d="M8410.37,-223.38C8375.82,-260.78 8320.5,-320.44 8272.12,-371.5 8244.09,-401.09 8213.39,-433.09 8185.36,-462.15"/>

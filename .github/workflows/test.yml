@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build docker image
-        run: docker build . -t mit_rail_sim:test
+        run: docker build . -t transit_lab_simmetro:test
 
       - name: Smoke test docker image
         run: |

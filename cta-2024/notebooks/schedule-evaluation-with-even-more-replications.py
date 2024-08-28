@@ -20,7 +20,7 @@ if not os.path.exists(OUTPUT_DIRECTORY):
 import plotly.express as px
 import plotly.graph_objects as go
 
-from mit_rail_sim.validation.validation_dash import STATION_ORDER
+from transit_lab_simmetro.validation.validation_dash import STATION_ORDER
 
 
 def read_csv_files_in_subdir(subdir_path):
@@ -61,7 +61,7 @@ def read_csv_files_in_subdir(subdir_path):
     return data_frames
 
 
-directory = "/Users/moji/Projects/mit_rail_sim/cta-2024/mid_route_holding_even_more_replications/"
+directory = "/Users/moji/Projects/transit_lab_simmetro/cta-2024/mid_route_holding_even_more_replications/"
 
 subdirs = [d for d in glob.glob(os.path.join(directory, "**/")) if os.path.isdir(d)]
 all_data = {}

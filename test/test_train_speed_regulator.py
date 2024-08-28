@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import MagicMock
 
-from mit_rail_sim.simulation_engine.train.train_speed_regulator import (  # AccelerateToSpeedCodeState,
+from transit_lab_simmetro.simulation_engine.train.train_speed_regulator import (  # AccelerateToSpeedCodeState,
     TrainSpeedRegulator,
 )
-from mit_rail_sim.simulation_engine.train.train_speed_regulator_state import (
+from transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state import (
     BrakeNormalToStationState,
     BrakeWithMaximumRateState,
     DecelerateToSpeedNormalRateForPlanningState,

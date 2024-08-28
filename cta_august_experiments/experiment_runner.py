@@ -6,19 +6,19 @@ from test.test_trb_submission_experiments.util.data_loader import DataLoader
 import hydra
 from omegaconf import DictConfig
 
-from mit_rail_sim.simulation_engine.passenger.arrival_rate import ArrivalRate
-from mit_rail_sim.simulation_engine.schedule import GammaSchedule
-from mit_rail_sim.simulation_engine.simulation.replication_manager import (
+from transit_lab_simmetro.simulation_engine.passenger.arrival_rate import ArrivalRate
+from transit_lab_simmetro.simulation_engine.schedule import GammaSchedule
+from transit_lab_simmetro.simulation_engine.simulation.replication_manager import (
     ReplicationManager,
 )
-from mit_rail_sim.simulation_engine.utils.logger_context import LoggerContext
-from mit_rail_sim.simulation_engine.utils.logger_utils import (
+from transit_lab_simmetro.simulation_engine.utils.logger_context import LoggerContext
+from transit_lab_simmetro.simulation_engine.utils.logger_utils import (
     NullPassengerLogger,
     NullTrainLogger,
     SimulationLogger,
     StationLogger,
 )
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 
 class CTABlueLineSimulator:

@@ -1,6 +1,9 @@
 from test.base_test_case import BaseTestCase
 
-from mit_rail_sim.simulation_engine.infrastructure import Block, SignalControlCenter
+from transit_lab_simmetro.simulation_engine.infrastructure import (
+    Block,
+    SignalControlCenter,
+)
 
 
 class TestSignalControlCenter(BaseTestCase):

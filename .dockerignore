@@ -4,4 +4,4 @@
 # ... except for dependencies and source
 !Pipfile
 !Pipfile.lock
-!mit_rail_sim
+!transit_lab_simmetro
