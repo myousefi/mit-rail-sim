@@ -2,7 +2,7 @@ import json
 
 import pandas as pd
 
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 # Read the Excel file
 file_path = (

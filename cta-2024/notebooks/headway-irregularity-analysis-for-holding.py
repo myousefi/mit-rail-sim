@@ -3,11 +3,11 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-from mit_rail_sim.utils.station_block_constants import (
+from transit_lab_simmetro.utils.station_block_constants import (
     NORTHBOUND_DEPARTING_BLOCKS,
     SOUTHBOUND_DEPARTING_BLOCKS,
 )
-from mit_rail_sim.utils.db_con import engine, text
+from transit_lab_simmetro.utils.db_con import engine, text
 
 OUTPUT_DIRECTORY = "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
 
@@ -194,11 +194,11 @@ for direction in ["Northbound", "Southbound"]:
 import pandas as pd
 import plotly.graph_objects as go
 
-from mit_rail_sim.utils.station_block_constants import (
+from transit_lab_simmetro.utils.station_block_constants import (
     NORTHBOUND_DEPARTING_BLOCKS,
     SOUTHBOUND_DEPARTING_BLOCKS,
 )
-from mit_rail_sim.utils.db_con import engine, text
+from transit_lab_simmetro.utils.db_con import engine, text
 
 OUTPUT_DIRECTORY = "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
 

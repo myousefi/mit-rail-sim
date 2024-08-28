@@ -2,7 +2,7 @@ import json
 import os
 from typing import List
 
-from mit_rail_sim.simulation_engine.infrastructure.path import SlowZone
+from transit_lab_simmetro.simulation_engine.infrastructure.path import SlowZone
 
 
 class DataLoader:

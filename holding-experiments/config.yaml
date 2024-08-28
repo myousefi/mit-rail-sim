@@ -36,11 +36,11 @@ min_holding: 60
 
 hydra:
     run:
-        dir: /Users/moji/Projects/mit_rail_sim/cta_experiments_jan/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+        dir: /Users/moji/Projects/transit_lab_simmetro/cta_experiments_jan/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
     job:
         chdir: true
     sweep:
-        dir: /Users/moji/Projects/mit_rail_sim/holding-experiments/${scen}/
+        dir: /Users/moji/Projects/transit_lab_simmetro/holding-experiments/${scen}/
         subdir: ${hydra.job.override_dirname}
     sweeper:
         params:

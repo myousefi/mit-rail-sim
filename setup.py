@@ -1,6 +1,6 @@
 from distutils.core import setup
 
 setup(
-    name="mit_rail_sim",
-    packages=["mit_rail_sim"],
+    name="transit_lab_simmetro",
+    packages=["transit_lab_simmetro"],
 )

@@ -9,1411 +9,1411 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1048)">
 <title>packages</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-1048 6704.78,-1048 6704.78,4 -4,4"/>
-<!-- mit_rail_sim -->
+<!-- transit_lab_simmetro -->
 <g id="node1" class="node">
 <title>mit_rail_sim</title>
 <polygon fill="none" stroke="black" points="2161.66,-252 2075.16,-252 2075.16,-216 2161.66,-216 2161.66,-252"/>
 <text text-anchor="middle" x="2118.41" y="-228.95" font-family="Times,serif" font-size="14.00">mit_rail_sim</text>
 </g>
-<!-- mit_rail_sim.config_handler -->
+<!-- transit_lab_simmetro.config_handler -->
 <g id="node2" class="node">
 <title>mit_rail_sim.config_handler</title>
 <polygon fill="none" stroke="black" points="1958.41,-396 1786.41,-396 1786.41,-360 1958.41,-360 1958.41,-396"/>
 <text text-anchor="middle" x="1872.41" y="-372.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.config_handler</text>
 </g>
-<!-- mit_rail_sim.cta&#45;data&#45;queries -->
+<!-- transit_lab_simmetro.cta&#45;data&#45;queries -->
 <g id="node3" class="node">
 <title>mit_rail_sim.cta&#45;data&#45;queries</title>
 <polygon fill="none" stroke="black" points="1946.66,-36 1770.16,-36 1770.16,0 1946.66,0 1946.66,-36"/>
 <text text-anchor="middle" x="1858.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.cta&#45;data&#45;queries</text>
 </g>
-<!-- mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule -->
+<!-- transit_lab_simmetro.cta&#45;data&#45;queries.empirical_schedule -->
 <g id="node4" class="node">
 <title>mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule</title>
 <polygon fill="none" stroke="black" points="2250.41,-36 1964.41,-36 1964.41,0 2250.41,0 2250.41,-36"/>
 <text text-anchor="middle" x="2107.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule</text>
 </g>
-<!-- mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator -->
+<!-- transit_lab_simmetro.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator -->
 <g id="node5" class="node">
 <title>mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator</title>
 <polygon fill="none" stroke="black" points="4003.03,-828 3549.78,-828 3549.78,-792 4003.03,-792 4003.03,-828"/>
 <text text-anchor="middle" x="3776.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator</text>
 </g>
-<!-- mit_rail_sim.utils.db_con -->
+<!-- transit_lab_simmetro.utils.db_con -->
 <g id="node60" class="node">
 <title>mit_rail_sim.utils.db_con</title>
 <polygon fill="none" stroke="black" points="4020.91,-900 3863.91,-900 3863.91,-864 4020.91,-864 4020.91,-900"/>
 <text text-anchor="middle" x="3942.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.utils.db_con</text>
 </g>
-<!-- mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator&#45;&gt;mit_rail_sim.utils.db_con -->
+<!-- transit_lab_simmetro.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator&#45;&gt;transit_lab_simmetro.utils.db_con -->
 <g id="edge1" class="edge">
 <title>mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator&#45;&gt;mit_rail_sim.utils.db_con</title>
 <path fill="none" stroke="black" d="M3817.87,-828.48C3840.04,-837.83 3867.53,-849.43 3891.04,-859.34"/>
 <polygon fill="black" stroke="black" points="3900.07,-863.14 3889.1,-863.41 3896.58,-861.68 3890.85,-859.26 3890.85,-859.26 3890.85,-859.26 3896.58,-861.68 3892.6,-855.11 3900.07,-863.14"/>
 </g>
-<!-- mit_rail_sim.utils.root_path -->
+<!-- transit_lab_simmetro.utils.root_path -->
 <g id="node62" class="node">
 <title>mit_rail_sim.utils.root_path</title>
 <polygon fill="none" stroke="black" points="3845.91,-900 3676.91,-900 3676.91,-864 3845.91,-864 3845.91,-900"/>
 <text text-anchor="middle" x="3761.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.utils.root_path</text>
 </g>
-<!-- mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator&#45;&gt;mit_rail_sim.utils.root_path -->
+<!-- transit_lab_simmetro.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator&#45;&gt;transit_lab_simmetro.utils.root_path -->
 <g id="edge2" class="edge">
 <title>mit_rail_sim.cta&#45;data&#45;queries.empirical_schedule.empirical_schedule_generator&#45;&gt;mit_rail_sim.utils.root_path</title>
 <path fill="none" stroke="black" d="M3772.7,-828.3C3771.1,-835.76 3769.19,-844.68 3767.4,-853.03"/>
 <polygon fill="black" stroke="black" points="3765.33,-862.7 3763.02,-851.98 3766.12,-859.01 3767.42,-852.93 3767.42,-852.93 3767.42,-852.93 3766.12,-859.01 3771.82,-853.87 3765.33,-862.7"/>
 </g>
-<!-- mit_rail_sim.cta_dash_app -->
+<!-- transit_lab_simmetro.cta_dash_app -->
 <g id="node6" class="node">
 <title>mit_rail_sim.cta_dash_app</title>
 <polygon fill="none" stroke="black" points="2432.28,-36 2268.53,-36 2268.53,0 2432.28,0 2432.28,-36"/>
 <text text-anchor="middle" x="2350.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.cta_dash_app</text>
 </g>
-<!-- mit_rail_sim.dash_app -->
+<!-- transit_lab_simmetro.dash_app -->
 <g id="node7" class="node">
 <title>mit_rail_sim.dash_app</title>
 <polygon fill="none" stroke="black" points="2592.03,-36 2450.78,-36 2450.78,0 2592.03,0 2592.03,-36"/>
 <text text-anchor="middle" x="2521.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app</text>
 </g>
-<!-- mit_rail_sim.dash_app&#45;&gt;mit_rail_sim.dash_app -->
+<!-- transit_lab_simmetro.dash_app&#45;&gt;transit_lab_simmetro.dash_app -->
 <g id="edge3" class="edge">
 <title>mit_rail_sim.dash_app&#45;&gt;mit_rail_sim.dash_app</title>
 <path fill="none" stroke="black" d="M2592.33,-5.75C2602.89,-7.66 2610.03,-11.74 2610.03,-18 2610.03,-21.81 2607.38,-24.82 2602.92,-27.02"/>
 <polygon fill="black" stroke="black" points="2593.5,-29.89 2601.75,-22.67 2597.12,-28.79 2603.06,-26.97 2603.06,-26.97 2603.06,-26.97 2597.12,-28.79 2604.38,-31.28 2593.5,-29.89"/>
 </g>
-<!-- mit_rail_sim.dash_app.callbacks -->
+<!-- transit_lab_simmetro.dash_app.callbacks -->
 <g id="node8" class="node">
 <title>mit_rail_sim.dash_app.callbacks</title>
 <polygon fill="none" stroke="black" points="2823.03,-36 2627.78,-36 2627.78,0 2823.03,0 2823.03,-36"/>
 <text text-anchor="middle" x="2725.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.callbacks</text>
 </g>
-<!-- mit_rail_sim.dash_app.callbacks.callbacks -->
+<!-- transit_lab_simmetro.dash_app.callbacks.callbacks -->
 <g id="node9" class="node">
 <title>mit_rail_sim.dash_app.callbacks.callbacks</title>
 <polygon fill="none" stroke="black" points="5995.03,-828 5745.78,-828 5745.78,-792 5995.03,-792 5995.03,-828"/>
 <text text-anchor="middle" x="5870.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.callbacks.callbacks</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers -->
+<!-- transit_lab_simmetro.dash_app.helpers -->
 <g id="node11" class="node">
 <title>mit_rail_sim.dash_app.helpers</title>
 <polygon fill="none" stroke="black" points="5857.41,-972 5673.41,-972 5673.41,-936 5857.41,-936 5857.41,-972"/>
 <text text-anchor="middle" x="5765.41" y="-948.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.helpers</text>
 </g>
-<!-- mit_rail_sim.dash_app.callbacks.callbacks&#45;&gt;mit_rail_sim.dash_app.helpers -->
+<!-- transit_lab_simmetro.dash_app.callbacks.callbacks&#45;&gt;transit_lab_simmetro.dash_app.helpers -->
 <g id="edge108" class="edge">
 <title>mit_rail_sim.dash_app.callbacks.callbacks&#45;&gt;mit_rail_sim.dash_app.helpers</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M5857.53,-828.41C5839.25,-853.14 5805.64,-898.59 5784.46,-927.23"/>
 <polygon fill="black" stroke="black" points="5778.78,-934.91 5781.11,-924.19 5781.03,-931.87 5784.73,-926.87 5784.73,-926.87 5784.73,-926.87 5781.03,-931.87 5788.35,-929.54 5778.78,-934.91"/>
 </g>
-<!-- mit_rail_sim.dash_app.dash_app -->
+<!-- transit_lab_simmetro.dash_app.dash_app -->
 <g id="node10" class="node">
 <title>mit_rail_sim.dash_app.dash_app</title>
 <polygon fill="none" stroke="black" points="6047.41,-756 5851.41,-756 5851.41,-720 6047.41,-720 6047.41,-756"/>
 <text text-anchor="middle" x="5949.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.dash_app</text>
 </g>
-<!-- mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.callbacks.callbacks -->
+<!-- transit_lab_simmetro.dash_app.dash_app&#45;&gt;transit_lab_simmetro.dash_app.callbacks.callbacks -->
 <g id="edge4" class="edge">
 <title>mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.callbacks.callbacks</title>
 <path fill="none" stroke="black" d="M5929.88,-756.3C5920.29,-764.8 5908.57,-775.19 5898.07,-784.49"/>
 <polygon fill="black" stroke="black" points="5890.9,-790.85 5895.4,-780.85 5893.73,-788.34 5898.38,-784.21 5898.38,-784.21 5898.38,-784.21 5893.73,-788.34 5901.37,-787.58 5890.9,-790.85"/>
 </g>
-<!-- mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.helpers -->
+<!-- transit_lab_simmetro.dash_app.dash_app&#45;&gt;transit_lab_simmetro.dash_app.helpers -->
 <g id="edge5" class="edge">
 <title>mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.helpers</title>
 <path fill="none" stroke="black" d="M5850.98,-751.64C5802.41,-760.11 5751.1,-773.2 5736.41,-792 5705.92,-831 5730.39,-891.53 5749.12,-926.19"/>
 <polygon fill="black" stroke="black" points="5753.84,-934.59 5745.01,-928.07 5751.98,-931.29 5748.94,-925.87 5748.94,-925.87 5748.94,-925.87 5751.98,-931.29 5752.86,-923.67 5753.84,-934.59"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.data_helpers -->
+<!-- transit_lab_simmetro.dash_app.helpers.data_helpers -->
 <g id="node13" class="node">
 <title>mit_rail_sim.dash_app.helpers.data_helpers</title>
 <polygon fill="none" stroke="black" points="6505.41,-1044 6249.41,-1044 6249.41,-1008 6505.41,-1008 6505.41,-1044"/>
 <text text-anchor="middle" x="6377.41" y="-1020.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.helpers.data_helpers</text>
 </g>
-<!-- mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.helpers.data_helpers -->
+<!-- transit_lab_simmetro.dash_app.dash_app&#45;&gt;transit_lab_simmetro.dash_app.helpers.data_helpers -->
 <g id="edge6" class="edge">
 <title>mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.helpers.data_helpers</title>
 <path fill="none" stroke="black" d="M6047.79,-755.88C6112.54,-767.65 6187.63,-782.84 6200.41,-792 6245.75,-824.51 6234.7,-852.77 6264.41,-900 6284.89,-932.55 6286.55,-943.53 6312.41,-972 6321.82,-982.36 6333.32,-992.41 6344.02,-1000.92"/>
 <polygon fill="black" stroke="black" points="6351.79,-1006.94 6341.13,-1004.37 6348.8,-1004.62 6343.88,-1000.82 6343.88,-1000.82 6343.88,-1000.82 6348.8,-1004.62 6346.64,-997.26 6351.79,-1006.94"/>
 </g>
-<!-- mit_rail_sim.dash_app.layout -->
+<!-- transit_lab_simmetro.dash_app.layout -->
 <g id="node17" class="node">
 <title>mit_rail_sim.dash_app.layout</title>
 <polygon fill="none" stroke="black" points="6191.78,-828 6013.03,-828 6013.03,-792 6191.78,-792 6191.78,-828"/>
 <text text-anchor="middle" x="6102.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.layout</text>
 </g>
-<!-- mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.layout -->
+<!-- transit_lab_simmetro.dash_app.dash_app&#45;&gt;transit_lab_simmetro.dash_app.layout -->
 <g id="edge7" class="edge">
 <title>mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.dash_app.layout</title>
 <path fill="none" stroke="black" d="M5987.62,-756.48C6007.87,-765.75 6032.94,-777.22 6054.48,-787.07"/>
 <polygon fill="black" stroke="black" points="6063.31,-791.11 6052.34,-791.04 6059.87,-789.54 6054.22,-786.95 6054.22,-786.95 6054.22,-786.95 6059.87,-789.54 6056.09,-782.86 6063.31,-791.11"/>
 </g>
-<!-- mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.utils -->
 <g id="node58" class="node">
 <title>mit_rail_sim.utils</title>
 <polygon fill="none" stroke="black" points="4149.16,-828 4035.66,-828 4035.66,-792 4149.16,-792 4149.16,-828"/>
 <text text-anchor="middle" x="4092.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.utils</text>
 </g>
-<!-- mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.dash_app.dash_app&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge8" class="edge">
 <title>mit_rail_sim.dash_app.dash_app&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M5851.15,-754.6C5846.51,-755.12 5841.91,-755.59 5837.41,-756 5503.03,-786.34 4440.43,-803.86 4160.52,-808.03"/>
 <polygon fill="black" stroke="black" points="4150.56,-808.18 4160.49,-803.53 4154.34,-808.12 4160.56,-808.03 4160.56,-808.03 4160.56,-808.03 4154.34,-808.12 4160.62,-812.53 4150.56,-808.18"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.arrival_rates_helper -->
+<!-- transit_lab_simmetro.dash_app.helpers.arrival_rates_helper -->
 <g id="node12" class="node">
 <title>mit_rail_sim.dash_app.helpers.arrival_rates_helper</title>
 <polygon fill="none" stroke="black" points="5603.28,-1044 5307.53,-1044 5307.53,-1008 5603.28,-1008 5603.28,-1044"/>
 <text text-anchor="middle" x="5455.41" y="-1020.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.helpers.arrival_rates_helper</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.arrival_rates_helper -->
+<!-- transit_lab_simmetro.dash_app.helpers&#45;&gt;transit_lab_simmetro.dash_app.helpers.arrival_rates_helper -->
 <g id="edge9" class="edge">
 <title>mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.arrival_rates_helper</title>
 <path fill="none" stroke="black" d="M5687.98,-972.48C5644.07,-982.4 5588.96,-994.84 5543.41,-1005.13"/>
 <polygon fill="black" stroke="black" points="5533.84,-1007.29 5542.6,-1000.7 5537.53,-1006.46 5543.6,-1005.09 5543.6,-1005.09 5543.6,-1005.09 5537.53,-1006.46 5544.59,-1009.48 5533.84,-1007.29"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.data_helpers -->
+<!-- transit_lab_simmetro.dash_app.helpers&#45;&gt;transit_lab_simmetro.dash_app.helpers.data_helpers -->
 <g id="edge10" class="edge">
 <title>mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.data_helpers</title>
 <path fill="none" stroke="black" d="M5857.84,-964.97C5951.16,-975.12 6099.75,-991.49 6238.26,-1007.75"/>
 <polygon fill="black" stroke="black" points="6247.86,-1008.88 6237.4,-1012.18 6244.1,-1008.44 6237.93,-1007.71 6237.93,-1007.71 6237.93,-1007.71 6244.1,-1008.44 6238.45,-1003.25 6247.86,-1008.88"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.figure_helpers -->
+<!-- transit_lab_simmetro.dash_app.helpers.figure_helpers -->
 <g id="node14" class="node">
 <title>mit_rail_sim.dash_app.helpers.figure_helpers</title>
 <polygon fill="none" stroke="black" points="5887.28,-1044 5621.53,-1044 5621.53,-1008 5887.28,-1008 5887.28,-1044"/>
 <text text-anchor="middle" x="5754.41" y="-1020.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.helpers.figure_helpers</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.figure_helpers -->
+<!-- transit_lab_simmetro.dash_app.helpers&#45;&gt;transit_lab_simmetro.dash_app.helpers.figure_helpers -->
 <g id="edge11" class="edge">
 <title>mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.figure_helpers</title>
 <path fill="none" stroke="black" d="M5756.77,-972.3C5754.85,-979.68 5753.23,-988.48 5752.21,-996.75"/>
 <polygon fill="black" stroke="black" points="5751.31,-1006.68 5747.73,-996.32 5751.65,-1002.92 5752.21,-996.72 5752.21,-996.72 5752.21,-996.72 5751.65,-1002.92 5756.69,-997.13 5751.31,-1006.68"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.headway_analysis_helper -->
+<!-- transit_lab_simmetro.dash_app.helpers.headway_analysis_helper -->
 <g id="node15" class="node">
 <title>mit_rail_sim.dash_app.helpers.headway_analysis_helper</title>
 <polygon fill="none" stroke="black" points="6231.66,-1044 5905.16,-1044 5905.16,-1008 6231.66,-1008 6231.66,-1044"/>
 <text text-anchor="middle" x="6068.41" y="-1020.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.helpers.headway_analysis_helper</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.headway_analysis_helper -->
+<!-- transit_lab_simmetro.dash_app.helpers&#45;&gt;transit_lab_simmetro.dash_app.helpers.headway_analysis_helper -->
 <g id="edge12" class="edge">
 <title>mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.headway_analysis_helper</title>
 <path fill="none" stroke="black" d="M5841.09,-972.48C5883.92,-982.38 5937.64,-994.79 5982.11,-1005.06"/>
 <polygon fill="black" stroke="black" points="5991.72,-1007.28 5980.96,-1009.42 5988.04,-1006.43 5981.98,-1005.03 5981.98,-1005.03 5981.98,-1005.03 5988.04,-1006.43 5982.99,-1000.65 5991.72,-1007.28"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.travel_times_analysis_helper -->
+<!-- transit_lab_simmetro.dash_app.helpers.travel_times_analysis_helper -->
 <g id="node16" class="node">
 <title>mit_rail_sim.dash_app.helpers.travel_times_analysis_helper</title>
 <polygon fill="none" stroke="black" points="5289.41,-1044 4943.41,-1044 4943.41,-1008 5289.41,-1008 5289.41,-1044"/>
 <text text-anchor="middle" x="5116.41" y="-1020.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.helpers.travel_times_analysis_helper</text>
 </g>
-<!-- mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.travel_times_analysis_helper -->
+<!-- transit_lab_simmetro.dash_app.helpers&#45;&gt;transit_lab_simmetro.dash_app.helpers.travel_times_analysis_helper -->
 <g id="edge13" class="edge">
 <title>mit_rail_sim.dash_app.helpers&#45;&gt;mit_rail_sim.dash_app.helpers.travel_times_analysis_helper</title>
 <path fill="none" stroke="black" d="M5673.11,-964.95C5573.58,-975.69 5412.84,-993.03 5289.61,-1006.32"/>
 <polygon fill="black" stroke="black" points="5279.77,-1007.38 5289.23,-1001.83 5283.53,-1006.97 5289.71,-1006.31 5289.71,-1006.31 5289.71,-1006.31 5283.53,-1006.97 5290.19,-1010.78 5279.77,-1007.38"/>
 </g>
-<!-- mit_rail_sim.dash_app.helpers.figure_helpers&#45;&gt;mit_rail_sim.dash_app.helpers -->
+<!-- transit_lab_simmetro.dash_app.helpers.figure_helpers&#45;&gt;transit_lab_simmetro.dash_app.helpers -->
 <g id="edge14" class="edge">
 <title>mit_rail_sim.dash_app.helpers.figure_helpers&#45;&gt;mit_rail_sim.dash_app.helpers</title>
 <path fill="none" stroke="black" d="M5762.99,-1007.9C5764.92,-1000.55 5766.55,-991.76 5767.58,-983.47"/>
 <polygon fill="black" stroke="black" points="5768.49,-973.52 5772.06,-983.89 5768.15,-977.28 5767.58,-983.47 5767.58,-983.47 5767.58,-983.47 5768.15,-977.28 5763.1,-983.06 5768.49,-973.52"/>
 </g>
-<!-- mit_rail_sim.dash_app.layout.layout -->
+<!-- transit_lab_simmetro.dash_app.layout.layout -->
 <g id="node18" class="node">
 <title>mit_rail_sim.dash_app.layout.layout</title>
 <polygon fill="none" stroke="black" points="6124.53,-900 5908.28,-900 5908.28,-864 6124.53,-864 6124.53,-900"/>
 <text text-anchor="middle" x="6016.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.layout.layout</text>
 </g>
-<!-- mit_rail_sim.dash_app.layout&#45;&gt;mit_rail_sim.dash_app.layout.layout -->
+<!-- transit_lab_simmetro.dash_app.layout&#45;&gt;transit_lab_simmetro.dash_app.layout.layout -->
 <g id="edge15" class="edge">
 <title>mit_rail_sim.dash_app.layout&#45;&gt;mit_rail_sim.dash_app.layout.layout</title>
 <path fill="none" stroke="black" d="M6081.15,-828.3C6070.61,-836.89 6057.7,-847.39 6046.19,-856.76"/>
 <polygon fill="black" stroke="black" points="6038.67,-862.88 6043.58,-853.08 6041.6,-860.5 6046.42,-856.57 6046.42,-856.57 6046.42,-856.57 6041.6,-860.5 6049.26,-860.06 6038.67,-862.88"/>
 </g>
-<!-- mit_rail_sim.dash_app.layout.layout&#45;&gt;mit_rail_sim.dash_app.helpers -->
+<!-- transit_lab_simmetro.dash_app.layout.layout&#45;&gt;transit_lab_simmetro.dash_app.helpers -->
 <g id="edge109" class="edge">
 <title>mit_rail_sim.dash_app.layout.layout&#45;&gt;mit_rail_sim.dash_app.helpers</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M5953.72,-900.48C5918.7,-910.25 5874.88,-922.47 5838.33,-932.66"/>
 <polygon fill="black" stroke="black" points="5828.91,-935.29 5837.33,-928.27 5832.55,-934.28 5838.54,-932.6 5838.54,-932.6 5838.54,-932.6 5832.55,-934.28 5839.75,-936.94 5828.91,-935.29"/>
 </g>
-<!-- mit_rail_sim.dash_app.reliability_dash -->
+<!-- transit_lab_simmetro.dash_app.reliability_dash -->
 <g id="node19" class="node">
 <title>mit_rail_sim.dash_app.reliability_dash</title>
 <polygon fill="none" stroke="black" points="6294.91,-756 6065.91,-756 6065.91,-720 6294.91,-720 6294.91,-756"/>
 <text text-anchor="middle" x="6180.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app.reliability_dash</text>
 </g>
-<!-- mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.callbacks.callbacks -->
+<!-- transit_lab_simmetro.dash_app.reliability_dash&#45;&gt;transit_lab_simmetro.dash_app.callbacks.callbacks -->
 <g id="edge16" class="edge">
 <title>mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.callbacks.callbacks</title>
 <path fill="none" stroke="black" d="M6102.98,-756.48C6059.07,-766.4 6003.96,-778.84 5958.41,-789.13"/>
 <polygon fill="black" stroke="black" points="5948.84,-791.29 5957.6,-784.7 5952.53,-790.46 5958.6,-789.09 5958.6,-789.09 5958.6,-789.09 5952.53,-790.46 5959.59,-793.48 5948.84,-791.29"/>
 </g>
-<!-- mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.helpers -->
+<!-- transit_lab_simmetro.dash_app.reliability_dash&#45;&gt;transit_lab_simmetro.dash_app.helpers -->
 <g id="edge17" class="edge">
 <title>mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.helpers</title>
 <path fill="none" stroke="black" d="M6190.15,-756.19C6199.16,-774.46 6209.86,-803.98 6200.41,-828 6184.41,-868.68 6172.14,-879.73 6133.41,-900 6088.69,-923.41 5961.27,-937.99 5868.88,-945.8"/>
 <polygon fill="black" stroke="black" points="5859.01,-946.62 5868.6,-941.31 5862.78,-946.31 5868.98,-945.8 5868.98,-945.8 5868.98,-945.8 5862.78,-946.31 5869.35,-950.28 5859.01,-946.62"/>
 </g>
-<!-- mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.helpers.data_helpers -->
+<!-- transit_lab_simmetro.dash_app.reliability_dash&#45;&gt;transit_lab_simmetro.dash_app.helpers.data_helpers -->
 <g id="edge18" class="edge">
 <title>mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.helpers.data_helpers</title>
 <path fill="none" stroke="black" d="M6192.43,-756.46C6225.76,-804.84 6319.45,-940.85 6359.2,-998.57"/>
 <polygon fill="black" stroke="black" points="6364.85,-1006.77 6355.47,-1001.08 6362.7,-1003.65 6359.18,-998.53 6359.18,-998.53 6359.18,-998.53 6362.7,-1003.65 6362.88,-995.98 6364.85,-1006.77"/>
 </g>
-<!-- mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.layout -->
+<!-- transit_lab_simmetro.dash_app.reliability_dash&#45;&gt;transit_lab_simmetro.dash_app.layout -->
 <g id="edge19" class="edge">
 <title>mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.dash_app.layout</title>
 <path fill="none" stroke="black" d="M6161.13,-756.3C6151.75,-764.72 6140.31,-774.98 6130.03,-784.21"/>
 <polygon fill="black" stroke="black" points="6122.64,-790.84 6127.08,-780.81 6125.46,-788.31 6130.09,-784.16 6130.09,-784.16 6130.09,-784.16 6125.46,-788.31 6133.09,-787.51 6122.64,-790.84"/>
 </g>
-<!-- mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.dash_app.reliability_dash&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge20" class="edge">
 <title>mit_rail_sim.dash_app.reliability_dash&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M6065.61,-755.19C6062.51,-755.48 6059.44,-755.75 6056.41,-756 5676.29,-787.09 4461.61,-804.31 4160.46,-808.16"/>
 <polygon fill="black" stroke="black" points="4150.52,-808.29 4160.46,-803.66 4154.3,-808.24 4160.52,-808.16 4160.52,-808.16 4160.52,-808.16 4154.3,-808.24 4160.57,-812.66 4150.52,-808.29"/>
 </g>
-<!-- mit_rail_sim.dash_app_temp -->
+<!-- transit_lab_simmetro.dash_app_temp -->
 <g id="node20" class="node">
 <title>mit_rail_sim.dash_app_temp</title>
 <polygon fill="none" stroke="black" points="3017.28,-36 2841.53,-36 2841.53,0 3017.28,0 3017.28,-36"/>
 <text text-anchor="middle" x="2929.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.dash_app_temp</text>
 </g>
-<!-- mit_rail_sim.plotting_template -->
+<!-- transit_lab_simmetro.plotting_template -->
 <g id="node21" class="node">
 <title>mit_rail_sim.plotting_template</title>
 <polygon fill="none" stroke="black" points="3221.53,-36 3035.28,-36 3035.28,0 3221.53,0 3221.53,-36"/>
 <text text-anchor="middle" x="3128.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.plotting_template</text>
 </g>
-<!-- mit_rail_sim.simulation_engine -->
+<!-- transit_lab_simmetro.simulation_engine -->
 <g id="node22" class="node">
 <title>mit_rail_sim.simulation_engine</title>
 <polygon fill="none" stroke="black" points="3430.78,-36 3240.03,-36 3240.03,0 3430.78,0 3430.78,-36"/>
 <text text-anchor="middle" x="3335.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="node23" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure</title>
 <polygon fill="none" stroke="black" points="1624.03,-252 1356.78,-252 1356.78,-216 1624.03,-216 1624.03,-252"/>
 <text text-anchor="middle" x="1490.41" y="-228.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block -->
 <g id="node24" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.block</title>
 <polygon fill="none" stroke="black" points="1271.91,-396 970.91,-396 970.91,-360 1271.91,-360 1271.91,-396"/>
 <text text-anchor="middle" x="1121.41" y="-372.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure.block</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block -->
 <g id="edge21" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block</title>
 <path fill="none" stroke="black" d="M1496.49,-252.16C1506.63,-271.79 1522.05,-303.81 1504.41,-324 1496.65,-332.88 1384.34,-347.49 1283.32,-359.12"/>
 <polygon fill="black" stroke="black" points="1273.53,-360.25 1282.96,-354.64 1277.29,-359.82 1283.47,-359.11 1283.47,-359.11 1283.47,-359.11 1277.29,-359.82 1283.98,-363.58 1273.53,-360.25"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.moving_control_center -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.moving_control_center -->
 <g id="node26" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.moving_control_center</title>
 <polygon fill="none" stroke="black" points="1060.28,-324 662.53,-324 662.53,-288 1060.28,-288 1060.28,-324"/>
 <text text-anchor="middle" x="861.41" y="-300.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure.moving_control_center</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.moving_control_center -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.moving_control_center -->
 <g id="edge22" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.moving_control_center</title>
 <path fill="none" stroke="black" d="M1356.42,-249.29C1259.07,-259.97 1126.87,-274.66 1023.56,-286.28"/>
 <polygon fill="black" stroke="black" points="1013.91,-287.37 1023.35,-281.78 1017.67,-286.94 1023.85,-286.25 1023.85,-286.25 1023.85,-286.25 1017.67,-286.94 1024.36,-290.72 1013.91,-287.37"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path -->
 <g id="node27" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.path</title>
 <polygon fill="none" stroke="black" points="2156.53,-324 1862.28,-324 1862.28,-288 2156.53,-288 2156.53,-324"/>
 <text text-anchor="middle" x="2009.41" y="-300.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure.path</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path -->
 <g id="edge23" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path</title>
 <path fill="none" stroke="black" d="M1614.1,-252.48C1688.91,-262.71 1784.65,-275.63 1863.19,-286.1"/>
 <polygon fill="black" stroke="black" points="1872.95,-287.4 1862.44,-290.54 1869.2,-286.9 1863.04,-286.08 1863.04,-286.08 1863.04,-286.08 1869.2,-286.9 1863.63,-281.62 1872.95,-287.4"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.signal_control_center -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.signal_control_center -->
 <g id="node28" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.signal_control_center</title>
 <polygon fill="none" stroke="black" points="1504.41,-324 1116.41,-324 1116.41,-288 1504.41,-288 1504.41,-324"/>
 <text text-anchor="middle" x="1310.41" y="-300.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure.signal_control_center</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.signal_control_center -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.signal_control_center -->
 <g id="edge24" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.signal_control_center</title>
 <path fill="none" stroke="black" d="M1439.52,-252.48C1414.42,-261.87 1384.33,-273.53 1359.48,-283.47"/>
 <polygon fill="black" stroke="black" points="1350.31,-287.16 1357.91,-279.25 1353.82,-285.75 1359.59,-283.43 1359.59,-283.43 1359.59,-283.43 1353.82,-285.75 1361.27,-287.6 1350.31,-287.16"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station -->
 <g id="node29" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.station</title>
 <polygon fill="none" stroke="black" points="1635.91,-396 1328.91,-396 1328.91,-360 1635.91,-360 1635.91,-396"/>
 <text text-anchor="middle" x="1482.41" y="-372.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure.station</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.station -->
 <g id="edge25" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station</title>
 <path fill="none" stroke="black" d="M1528.19,-252.44C1542.22,-261.02 1556.61,-272.82 1564.41,-288 1571.72,-302.23 1572.06,-309.95 1564.41,-324 1557.76,-336.22 1546.94,-346.05 1535.32,-353.77"/>
 <polygon fill="black" stroke="black" points="1526.93,-358.88 1533.13,-349.83 1530.16,-356.91 1535.47,-353.68 1535.47,-353.68 1535.47,-353.68 1530.16,-356.91 1537.81,-357.52 1526.93,-358.88"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge110" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1272.14,-362.04C1382.36,-350.03 1513.98,-333.64 1522.41,-324 1537.57,-306.65 1528.31,-280.56 1515.75,-261.11"/>
 <polygon fill="black" stroke="black" points="1510.11,-253.16 1519.56,-258.71 1512.3,-256.24 1515.89,-261.32 1515.89,-261.32 1515.89,-261.32 1512.3,-256.24 1512.22,-263.92 1510.11,-253.16"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train -->
 <g id="node43" class="node">
 <title>mit_rail_sim.simulation_engine.train</title>
 <polygon fill="none" stroke="black" points="866.03,-756 646.78,-756 646.78,-720 866.03,-720 866.03,-756"/>
 <text text-anchor="middle" x="756.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge111" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M976.48,-396.44C904.38,-414.08 832.41,-449.58 832.41,-521 832.41,-521 832.41,-521 832.41,-595 832.41,-639.97 802.42,-684.48 780.11,-711.36"/>
 <polygon fill="black" stroke="black" points="773.69,-718.85 776.78,-708.33 776.15,-715.98 780.2,-711.26 780.2,-711.26 780.2,-711.26 776.15,-715.98 783.62,-714.18 773.69,-718.85"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils -->
+<!-- transit_lab_simmetro.simulation_engine.utils -->
 <g id="node53" class="node">
 <title>mit_rail_sim.simulation_engine.utils</title>
 <polygon fill="none" stroke="black" points="2027.28,-468 1809.53,-468 1809.53,-432 2027.28,-432 2027.28,-468"/>
 <text text-anchor="middle" x="1918.41" y="-444.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.utils</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.block&#45;&gt;mit_rail_sim.simulation_engine.utils -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.block&#45;&gt;transit_lab_simmetro.simulation_engine.utils -->
 <g id="edge112" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.block&#45;&gt;mit_rail_sim.simulation_engine.utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1272.25,-392.25C1424.87,-405.65 1657.79,-426.11 1798.34,-438.45"/>
 <polygon fill="black" stroke="black" points="1807.92,-439.3 1797.56,-442.9 1804.15,-438.96 1797.96,-438.42 1797.96,-438.42 1797.96,-438.42 1804.15,-438.96 1798.35,-433.94 1807.92,-439.3"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.moving_block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.moving_block -->
 <g id="node25" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.moving_block</title>
 <polygon fill="none" stroke="black" points="708.28,-180 358.53,-180 358.53,-144 708.28,-144 708.28,-180"/>
 <text text-anchor="middle" x="533.41" y="-156.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure.moving_block</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.moving_block&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.moving_block&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge26" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.moving_block&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M708.66,-175.82C891.44,-189.19 1174.64,-209.9 1345.32,-222.39"/>
 <polygon fill="black" stroke="black" points="1355.18,-223.11 1344.88,-226.87 1351.41,-222.83 1345.21,-222.38 1345.21,-222.38 1345.21,-222.38 1351.41,-222.83 1345.54,-217.89 1355.18,-223.11"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.moving_block&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.moving_block&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge113" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.moving_block&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M448.36,-180.46C427.68,-188.31 407.26,-199.64 392.41,-216 364.86,-246.33 368.41,-264.03 368.41,-305 368.41,-305 368.41,-305 368.41,-523 368.41,-646.8 521.74,-699.52 635.63,-721.6"/>
 <polygon fill="black" stroke="black" points="645.32,-723.42 634.66,-726 641.61,-722.72 635.49,-721.58 635.49,-721.58 635.49,-721.58 641.61,-722.72 636.32,-717.15 645.32,-723.42"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.moving_control_center&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.moving_control_center&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge27" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.moving_control_center&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M1024.52,-287.51C1123.9,-276.57 1249.74,-262.57 1345.59,-251.77"/>
 <polygon fill="black" stroke="black" points="1355.32,-250.67 1345.89,-256.26 1351.56,-251.1 1345.38,-251.79 1345.38,-251.79 1345.38,-251.79 1351.56,-251.1 1344.88,-247.32 1355.32,-250.67"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.moving_control_center&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.moving_control_center&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge28" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.moving_control_center&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" d="M836.79,-324.33C805.76,-348.42 756.41,-395.19 756.41,-449 756.41,-449 756.41,-449 756.41,-595 756.41,-634.26 756.41,-679.62 756.41,-708.31"/>
 <polygon fill="black" stroke="black" points="756.41,-718.29 751.91,-708.29 756.41,-714.51 756.41,-708.29 756.41,-708.29 756.41,-708.29 756.41,-714.51 760.91,-708.29 756.41,-718.29"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.config_handler -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path&#45;&gt;transit_lab_simmetro.config_handler -->
 <g id="edge29" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.config_handler</title>
 <path fill="none" stroke="black" d="M1975.19,-324.48C1957.32,-333.61 1935.26,-344.89 1916.16,-354.65"/>
 <polygon fill="black" stroke="black" points="1907.27,-359.19 1914.13,-350.63 1910.64,-357.46 1916.18,-354.64 1916.18,-354.64 1916.18,-354.64 1910.64,-357.46 1918.23,-358.64 1907.27,-359.19"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge30" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M1885.66,-287.51C1810.44,-277.22 1714.05,-264.22 1635.27,-253.72"/>
 <polygon fill="black" stroke="black" points="1625.49,-252.42 1635.99,-249.28 1629.23,-252.92 1635.4,-253.74 1635.4,-253.74 1635.4,-253.74 1629.23,-252.92 1634.8,-258.2 1625.49,-252.42"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block -->
 <g id="edge31" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block</title>
 <path fill="none" stroke="black" d="M1861.91,-319.88C1844.55,-321.31 1827.09,-322.71 1810.41,-324 1577.66,-341.94 1518.99,-340.03 1286.41,-360 1285.22,-360.1 1284.04,-360.2 1282.84,-360.31"/>
 <polygon fill="black" stroke="black" points="1273.22,-361.16 1282.79,-355.8 1276.99,-360.83 1283.18,-360.28 1283.18,-360.28 1283.18,-360.28 1276.99,-360.83 1283.58,-364.76 1273.22,-361.16"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.station -->
 <g id="edge114" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1877.78,-324.48C1800.77,-334.71 1703.5,-347.63 1624.71,-358.1"/>
 <polygon fill="black" stroke="black" points="1614.93,-359.4 1624.25,-353.62 1618.68,-358.9 1624.85,-358.08 1624.85,-358.08 1624.85,-358.08 1618.68,-358.9 1625.44,-362.54 1614.93,-359.4"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge115" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1862.08,-315.87C1667.06,-327.97 1344.83,-349.36 1320.41,-360 1298.78,-369.43 1302.49,-385.42 1281.41,-396 1203.41,-435.12 1171.19,-404.4 1088.41,-432 1003.74,-460.23 908.41,-431.76 908.41,-521 908.41,-521 908.41,-521 908.41,-595 908.41,-651.24 852.17,-691.6 808.1,-714.59"/>
 <polygon fill="black" stroke="black" points="799.43,-718.96 806.34,-710.44 802.81,-717.26 808.36,-714.46 808.36,-714.46 808.36,-714.46 802.81,-717.26 810.39,-718.48 799.43,-718.96"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state -->
 <g id="node52" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_state</title>
 <polygon fill="none" stroke="black" points="1768.03,-108 1488.78,-108 1488.78,-72 1768.03,-72 1768.03,-108"/>
 <text text-anchor="middle" x="1628.41" y="-84.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train_state</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.train.train_state -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state -->
 <g id="edge32" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.simulation_engine.train.train_state</title>
 <path fill="none" stroke="black" d="M1978.26,-287.51C1909.67,-248.98 1745.58,-156.82 1669.03,-113.82"/>
 <polygon fill="black" stroke="black" points="1660.33,-108.93 1671.25,-109.9 1663.62,-110.78 1669.05,-113.83 1669.05,-113.83 1669.05,-113.83 1663.62,-110.78 1666.84,-117.75 1660.33,-108.93"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.path&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge33" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.path&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M2156.93,-312.85C2212.72,-319.77 2275.28,-333.48 2327.41,-360 2449.53,-422.14 2459.65,-470.77 2547.41,-576 2609.31,-650.22 2584.64,-709.58 2669.41,-756 2734.87,-791.85 3938.29,-783.21 4012.41,-792 4016.38,-792.47 4020.44,-793.04 4024.53,-793.69"/>
 <polygon fill="black" stroke="black" points="4034.17,-795.35 4023.55,-798.09 4030.44,-794.71 4024.32,-793.65 4024.32,-793.65 4024.32,-793.65 4030.44,-794.71 4025.08,-789.22 4034.17,-795.35"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.signal_control_center&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.signal_control_center&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge116" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.signal_control_center&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1361.03,-287.62C1386.09,-278.24 1416.18,-266.59 1441.07,-256.63"/>
 <polygon fill="black" stroke="black" points="1450.25,-252.94 1442.66,-260.85 1446.75,-254.35 1440.98,-256.67 1440.98,-256.67 1440.98,-256.67 1446.75,-254.35 1439.3,-252.5 1450.25,-252.94"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.stored_passenger_queue -->
 <g id="node30" class="node">
 <title>mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue</title>
 <polygon fill="none" stroke="black" points="1453.91,-540 1050.91,-540 1050.91,-504 1453.91,-504 1453.91,-540"/>
 <text text-anchor="middle" x="1252.41" y="-516.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.stored_passenger_queue -->
 <g id="edge34" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue</title>
 <path fill="none" stroke="black" d="M1454.21,-396.41C1412.88,-421.92 1335.81,-469.51 1289.8,-497.91"/>
 <polygon fill="black" stroke="black" points="1281.52,-503.03 1287.66,-493.95 1284.74,-501.04 1290.03,-497.77 1290.03,-497.77 1290.03,-497.77 1284.74,-501.04 1292.39,-501.6 1281.52,-503.03"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.passenger -->
 <g id="node31" class="node">
 <title>mit_rail_sim.simulation_engine.passenger</title>
 <polygon fill="none" stroke="black" points="1531.28,-900 1283.53,-900 1283.53,-864 1531.28,-864 1531.28,-900"/>
 <text text-anchor="middle" x="1407.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.passenger</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge35" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" d="M1484.48,-396.28C1487.34,-427.25 1489.53,-493.34 1463.41,-540 1425.53,-607.65 1360.24,-578.24 1326.41,-648 1303.18,-695.9 1368.64,-777.83 1374.41,-792 1382.71,-812.38 1391.32,-835.71 1397.67,-853.37"/>
 <polygon fill="black" stroke="black" points="1400.99,-862.67 1393.39,-854.76 1399.72,-859.11 1397.63,-853.25 1397.63,-853.25 1397.63,-853.25 1399.72,-859.11 1401.87,-851.74 1400.99,-862.67"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation -->
 <g id="node41" class="node">
 <title>mit_rail_sim.simulation_engine.simulation.simulation</title>
 <polygon fill="none" stroke="black" points="2155.28,-684 1841.53,-684 1841.53,-648 2155.28,-648 2155.28,-684"/>
 <text text-anchor="middle" x="1998.41" y="-660.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.simulation.simulation</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.simulation -->
 <g id="edge117" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1496.38,-396.36C1523.17,-428.65 1584.93,-498.42 1650.41,-540 1731.37,-591.42 1836.36,-625.4 1909.76,-644.78"/>
 <polygon fill="black" stroke="black" points="1919.17,-647.22 1908.36,-649.06 1915.51,-646.27 1909.49,-644.71 1909.49,-644.71 1909.49,-644.71 1915.51,-646.27 1910.62,-640.35 1919.17,-647.22"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge118" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1386.98,-396.45C1242.38,-424.23 984.41,-479.59 984.41,-521 984.41,-521 984.41,-521 984.41,-595 984.41,-660.46 915.85,-696.83 853.92,-716.33"/>
 <polygon fill="black" stroke="black" points="844.42,-719.19 852.7,-712 848.04,-718.1 854,-716.3 854,-716.3 854,-716.3 848.04,-718.1 855.3,-720.61 844.42,-719.19"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.utils -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.station&#45;&gt;transit_lab_simmetro.simulation_engine.utils -->
 <g id="edge119" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.station&#45;&gt;mit_rail_sim.simulation_engine.utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1591.3,-396.48C1654.5,-406.63 1734.18,-419.42 1799.07,-429.84"/>
 <polygon fill="black" stroke="black" points="1808.56,-431.36 1797.98,-434.22 1804.83,-430.76 1798.69,-429.78 1798.69,-429.78 1798.69,-429.78 1804.83,-430.76 1799.4,-425.34 1808.56,-431.36"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.infrastructure.stored_passenger_queue&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge36" class="edge">
 <title>mit_rail_sim.simulation_engine.infrastructure.stored_passenger_queue&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" d="M1255.22,-540.41C1260.42,-570.49 1272.94,-633.78 1293.41,-684 1319.76,-748.66 1364.05,-817.92 1388.96,-854.62"/>
 <polygon fill="black" stroke="black" points="1394.46,-862.65 1385.09,-856.94 1392.32,-859.53 1388.8,-854.4 1388.8,-854.4 1388.8,-854.4 1392.32,-859.53 1392.52,-851.85 1394.46,-862.65"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.passenger&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge37" class="edge">
 <title>mit_rail_sim.simulation_engine.passenger&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" d="M1531.45,-871.37C1542.41,-873.6 1549.28,-877.15 1549.28,-882 1549.28,-885.03 1546.6,-887.55 1541.91,-889.56"/>
 <polygon fill="black" stroke="black" points="1532.62,-892.29 1540.95,-885.16 1536.25,-891.22 1542.21,-889.48 1542.21,-889.48 1542.21,-889.48 1536.25,-891.22 1543.48,-893.79 1532.62,-892.29"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.arrival_rate -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.arrival_rate -->
 <g id="node32" class="node">
 <title>mit_rail_sim.simulation_engine.passenger.arrival_rate</title>
 <polygon fill="none" stroke="black" points="1354.91,-1044 1041.91,-1044 1041.91,-1008 1354.91,-1008 1354.91,-1044"/>
 <text text-anchor="middle" x="1198.41" y="-1020.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.passenger.arrival_rate</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger&#45;&gt;mit_rail_sim.simulation_engine.passenger.arrival_rate -->
+<!-- transit_lab_simmetro.simulation_engine.passenger&#45;&gt;transit_lab_simmetro.simulation_engine.passenger.arrival_rate -->
 <g id="edge38" class="edge">
 <title>mit_rail_sim.simulation_engine.passenger&#45;&gt;mit_rail_sim.simulation_engine.passenger.arrival_rate</title>
 <path fill="none" stroke="black" d="M1283.16,-896.95C1258.59,-904.99 1235,-917.29 1217.41,-936 1202.28,-952.09 1198.01,-977.14 1197.25,-996.58"/>
 <polygon fill="black" stroke="black" points="1197.17,-1006.32 1192.75,-996.28 1197.2,-1002.54 1197.25,-996.32 1197.25,-996.32 1197.25,-996.32 1197.2,-1002.54 1201.75,-996.36 1197.17,-1006.32"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.passenger_generator -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.passenger_generator -->
 <g id="node34" class="node">
 <title>mit_rail_sim.simulation_engine.passenger.passenger_generator</title>
 <polygon fill="none" stroke="black" points="1588.28,-972 1226.53,-972 1226.53,-936 1588.28,-936 1588.28,-972"/>
 <text text-anchor="middle" x="1407.41" y="-948.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.passenger.passenger_generator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger&#45;&gt;mit_rail_sim.simulation_engine.passenger.passenger_generator -->
+<!-- transit_lab_simmetro.simulation_engine.passenger&#45;&gt;transit_lab_simmetro.simulation_engine.passenger.passenger_generator -->
 <g id="edge39" class="edge">
 <title>mit_rail_sim.simulation_engine.passenger&#45;&gt;mit_rail_sim.simulation_engine.passenger.passenger_generator</title>
 <path fill="none" stroke="black" d="M1407.41,-900.3C1407.41,-907.68 1407.41,-916.48 1407.41,-924.75"/>
 <polygon fill="black" stroke="black" points="1407.41,-934.68 1402.91,-924.68 1407.41,-930.9 1407.41,-924.68 1407.41,-924.68 1407.41,-924.68 1407.41,-930.9 1411.91,-924.68 1407.41,-934.68"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.passenger -->
 <g id="node33" class="node">
 <title>mit_rail_sim.simulation_engine.passenger.passenger</title>
 <polygon fill="none" stroke="black" points="2318.41,-396 2014.41,-396 2014.41,-360 2318.41,-360 2318.41,-396"/>
 <text text-anchor="middle" x="2166.41" y="-372.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.passenger.passenger</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.passenger&#45;&gt;mit_rail_sim.simulation_engine.utils -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.passenger&#45;&gt;transit_lab_simmetro.simulation_engine.utils -->
 <g id="edge120" class="edge">
 <title>mit_rail_sim.simulation_engine.passenger.passenger&#45;&gt;mit_rail_sim.simulation_engine.utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M2104.47,-396.48C2069.86,-406.25 2026.57,-418.47 1990.46,-428.66"/>
 <polygon fill="black" stroke="black" points="1981.16,-431.29 1989.56,-424.24 1984.8,-430.26 1990.79,-428.57 1990.79,-428.57 1990.79,-428.57 1984.8,-430.26 1992.01,-432.9 1981.16,-431.29"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.passenger.passenger_generator&#45;&gt;mit_rail_sim.simulation_engine.passenger.arrival_rate -->
+<!-- transit_lab_simmetro.simulation_engine.passenger.passenger_generator&#45;&gt;transit_lab_simmetro.simulation_engine.passenger.arrival_rate -->
 <g id="edge40" class="edge">
 <title>mit_rail_sim.simulation_engine.passenger.passenger_generator&#45;&gt;mit_rail_sim.simulation_engine.passenger.arrival_rate</title>
 <path fill="none" stroke="black" d="M1355.21,-972.48C1326.55,-982.08 1290.81,-994.05 1260.7,-1004.14"/>
 <polygon fill="black" stroke="black" points="1251.46,-1007.23 1259.51,-999.79 1255.05,-1006.03 1260.94,-1004.06 1260.94,-1004.06 1260.94,-1004.06 1255.05,-1006.03 1262.37,-1008.32 1251.46,-1007.23"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule -->
 <g id="node35" class="node">
 <title>mit_rail_sim.simulation_engine.schedule</title>
 <polygon fill="none" stroke="black" points="2516.28,-756 2274.53,-756 2274.53,-720 2516.28,-720 2516.28,-756"/>
 <text text-anchor="middle" x="2395.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.schedule</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.simulation_engine.schedule&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge41" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M2516.62,-748.8C2553.46,-751.49 2594.07,-754.17 2631.41,-756 3244.66,-786.06 3402.67,-719.89 4012.41,-792 4016.38,-792.47 4020.44,-793.04 4024.53,-793.69"/>
 <polygon fill="black" stroke="black" points="4034.17,-795.35 4023.55,-798.09 4030.45,-794.7 4024.32,-793.65 4024.32,-793.65 4024.32,-793.65 4030.45,-794.7 4025.08,-789.22 4034.17,-795.35"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored -->
 <g id="node36" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored</title>
 <polygon fill="none" stroke="black" points="2064.03,-756 1760.78,-756 1760.78,-720 2064.03,-720 2064.03,-756"/>
 <text text-anchor="middle" x="1912.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.schedule_refactored</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies -->
 <g id="node37" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies</title>
 <polygon fill="none" stroke="black" points="2117.28,-828 1707.53,-828 1707.53,-792 2117.28,-792 2117.28,-828"/>
 <text text-anchor="middle" x="1912.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.dispatch_strategies -->
 <g id="edge42" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.dispatch_strategies</title>
 <path fill="none" stroke="black" d="M1912.41,-756.3C1912.41,-763.68 1912.41,-772.48 1912.41,-780.75"/>
 <polygon fill="black" stroke="black" points="1912.41,-790.68 1907.91,-780.68 1912.41,-786.9 1912.41,-780.68 1912.41,-780.68 1912.41,-780.68 1912.41,-786.9 1916.91,-780.68 1912.41,-790.68"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule -->
 <g id="node38" class="node">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule</title>
 <polygon fill="none" stroke="black" points="1785.16,-684 1335.66,-684 1335.66,-648 1785.16,-648 1785.16,-684"/>
 <text text-anchor="middle" x="1560.41" y="-660.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored -->
 <g id="edge43" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored</title>
 <path fill="none" stroke="black" d="M1648.32,-684.48C1698.61,-694.48 1761.82,-707.05 1813.79,-717.39"/>
 <polygon fill="black" stroke="black" points="1823.5,-719.32 1812.82,-721.78 1819.79,-718.58 1813.69,-717.37 1813.69,-717.37 1813.69,-717.37 1819.79,-718.58 1814.57,-712.96 1823.5,-719.32"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge44" class="edge">
 <title>mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" d="M1359.6,-684.48C1207.97,-697.68 1004.89,-715.37 877.35,-726.47"/>
 <polygon fill="black" stroke="black" points="867.61,-727.32 877.18,-721.97 871.38,-726.99 877.57,-726.45 877.57,-726.45 877.57,-726.45 871.38,-726.99 877.97,-730.93 867.61,-727.32"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.simulation -->
 <g id="node39" class="node">
 <title>mit_rail_sim.simulation_engine.simulation</title>
 <polygon fill="none" stroke="black" points="2521.53,-612 2269.28,-612 2269.28,-576 2521.53,-576 2521.53,-612"/>
 <text text-anchor="middle" x="2395.41" y="-588.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.simulation</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.replication_manager -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.replication_manager -->
 <g id="node40" class="node">
 <title>mit_rail_sim.simulation_engine.simulation.replication_manager</title>
 <polygon fill="none" stroke="black" points="2579.28,-684 2211.53,-684 2211.53,-648 2579.28,-648 2579.28,-684"/>
 <text text-anchor="middle" x="2395.41" y="-660.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.simulation.replication_manager</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation&#45;&gt;mit_rail_sim.simulation_engine.simulation.replication_manager -->
+<!-- transit_lab_simmetro.simulation_engine.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.replication_manager -->
 <g id="edge45" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation&#45;&gt;mit_rail_sim.simulation_engine.simulation.replication_manager</title>
 <path fill="none" stroke="black" d="M2389.49,-612.3C2388.73,-619.68 2388.49,-628.48 2388.77,-636.75"/>
 <polygon fill="black" stroke="black" points="2389.43,-646.68 2384.28,-637 2389.18,-642.91 2388.77,-636.7 2388.77,-636.7 2388.77,-636.7 2389.18,-642.91 2393.26,-636.4 2389.43,-646.68"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.simulation -->
 <g id="edge46" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation</title>
 <path fill="none" stroke="black" d="M2296.25,-612.48C2239.07,-622.57 2167.06,-635.26 2108.17,-645.65"/>
 <polygon fill="black" stroke="black" points="2098.53,-647.35 2107.6,-641.18 2102.26,-646.69 2108.38,-645.61 2108.38,-645.61 2108.38,-645.61 2102.26,-646.69 2109.16,-650.04 2098.53,-647.35"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.replication_manager&#45;&gt;mit_rail_sim.simulation_engine.schedule -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.replication_manager&#45;&gt;transit_lab_simmetro.simulation_engine.schedule -->
 <g id="edge47" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.replication_manager&#45;&gt;mit_rail_sim.simulation_engine.schedule</title>
 <path fill="none" stroke="black" d="M2395.41,-684.3C2395.41,-691.68 2395.41,-700.48 2395.41,-708.75"/>
 <polygon fill="black" stroke="black" points="2395.41,-718.68 2390.91,-708.68 2395.41,-714.9 2395.41,-708.68 2395.41,-708.68 2395.41,-708.68 2395.41,-714.9 2399.91,-708.68 2395.41,-718.68"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.replication_manager&#45;&gt;mit_rail_sim.simulation_engine.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.replication_manager&#45;&gt;transit_lab_simmetro.simulation_engine.simulation -->
 <g id="edge48" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.replication_manager&#45;&gt;mit_rail_sim.simulation_engine.simulation</title>
 <path fill="none" stroke="black" d="M2401.3,-647.9C2402.07,-640.55 2402.32,-631.76 2402.05,-623.47"/>
 <polygon fill="black" stroke="black" points="2401.4,-613.52 2406.54,-623.2 2401.65,-617.29 2402.05,-623.5 2402.05,-623.5 2402.05,-623.5 2401.65,-617.29 2397.56,-623.79 2401.4,-613.52"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context -->
 <g id="node54" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_context</title>
 <polygon fill="none" stroke="black" points="2012.66,-540 1710.16,-540 1710.16,-504 2012.66,-504 2012.66,-540"/>
 <text text-anchor="middle" x="1861.41" y="-516.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.utils.logger_context</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.replication_manager&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_context -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.replication_manager&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_context -->
 <g id="edge121" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.replication_manager&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_context</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M2483.71,-647.6C2502.06,-639.77 2519.2,-628.44 2530.41,-612 2539.42,-598.78 2541.27,-587.75 2530.41,-576 2496.69,-539.5 2210.8,-528.11 2023.82,-524.57"/>
 <polygon fill="black" stroke="black" points="2013.99,-524.39 2024.07,-520.08 2017.77,-524.46 2023.98,-524.58 2023.98,-524.58 2023.98,-524.58 2017.77,-524.46 2023.9,-529.08 2013.99,-524.39"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge49" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M1949.15,-647.58C1864.83,-615.62 1701.46,-549.97 1692.41,-540 1636.1,-477.96 1677.89,-432.79 1636.41,-360 1615.06,-322.54 1604.81,-315.25 1571.41,-288 1557.71,-276.82 1541.39,-266.47 1526.93,-257.94"/>
 <polygon fill="black" stroke="black" points="1518.33,-252.95 1529.23,-254.07 1521.6,-254.84 1526.98,-257.97 1526.98,-257.97 1526.98,-257.97 1521.6,-254.84 1524.72,-261.86 1518.33,-252.95"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge122" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1959.5,-647.58C1882.83,-615.62 1719.46,-549.97 1710.41,-540 1654.1,-477.96 1695.89,-432.79 1654.41,-360 1633.06,-322.54 1622.81,-315.25 1589.41,-288 1575.45,-276.61 1558.76,-266.07 1543.05,-257.45"/>
 <polygon fill="black" stroke="black" points="1534.5,-252.91 1545.44,-253.62 1537.83,-254.68 1543.33,-257.6 1543.33,-257.6 1543.33,-257.6 1537.83,-254.68 1541.21,-261.57 1534.5,-252.91"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge50" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" d="M2029.97,-684.39C2081.17,-714.7 2172.22,-778.69 2126.41,-828 2087.61,-869.77 1739.9,-878.93 1542.6,-880.74"/>
 <polygon fill="black" stroke="black" points="1532.8,-880.82 1542.76,-876.24 1536.58,-880.79 1542.8,-880.74 1542.8,-880.74 1542.8,-880.74 1536.58,-880.79 1542.84,-885.24 1532.8,-880.82"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.schedule -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.schedule -->
 <g id="edge123" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.schedule</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M2097.56,-684.48C2154.75,-694.57 2226.76,-707.26 2285.65,-717.65"/>
 <polygon fill="black" stroke="black" points="2295.29,-719.35 2284.66,-722.04 2291.56,-718.69 2285.44,-717.61 2285.44,-717.61 2285.44,-717.61 2291.56,-718.69 2286.22,-713.18 2295.29,-719.35"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored -->
 <g id="edge124" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1977.15,-684.3C1966.61,-692.89 1953.7,-703.39 1942.19,-712.76"/>
 <polygon fill="black" stroke="black" points="1934.67,-718.88 1939.58,-709.08 1937.6,-716.5 1942.42,-712.57 1942.42,-712.57 1942.42,-712.57 1937.6,-716.5 1945.26,-716.06 1934.67,-718.88"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge51" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" d="M1841.13,-680.62C1825.35,-681.83 1809.57,-682.98 1794.41,-684 1462.83,-706.28 1071.09,-723.93 877.38,-732.09"/>
 <polygon fill="black" stroke="black" points="867.54,-732.5 877.35,-727.58 871.32,-732.34 877.53,-732.08 877.53,-732.08 877.53,-732.08 871.32,-732.34 877.72,-736.57 867.54,-732.5"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils -->
 <g id="node55" class="node">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils</title>
 <polygon fill="none" stroke="black" points="2183.41,-612 1897.41,-612 1897.41,-576 2183.41,-576 2183.41,-612"/>
 <text text-anchor="middle" x="2040.41" y="-588.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.utils.logger_utils</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils -->
 <g id="edge125" class="edge">
 <title>mit_rail_sim.simulation_engine.simulation.simulation&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M2014.57,-647.9C2020.04,-640.12 2025.9,-630.74 2030.77,-622.05"/>
 <polygon fill="black" stroke="black" points="2035.37,-613.38 2034.66,-624.32 2033.6,-616.72 2030.68,-622.21 2030.68,-622.21 2030.68,-622.21 2033.6,-616.72 2026.71,-620.1 2035.37,-613.38"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.simulation.simulation_context -->
+<!-- transit_lab_simmetro.simulation_engine.simulation.simulation_context -->
 <g id="node42" class="node">
 <title>mit_rail_sim.simulation_engine.simulation.simulation_context</title>
 <polygon fill="none" stroke="black" points="3809.53,-36 3449.28,-36 3449.28,0 3809.53,0 3809.53,-36"/>
 <text text-anchor="middle" x="3629.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.simulation.simulation_context</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge52" class="edge">
 <title>mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" d="M866.24,-726.99C877.11,-729.2 884.03,-732.87 884.03,-738 884.03,-741.21 881.33,-743.84 876.65,-745.91"/>
 <polygon fill="black" stroke="black" points="867.4,-748.66 875.71,-741.49 871.03,-747.58 876.99,-745.81 876.99,-745.81 876.99,-745.81 871.03,-747.58 878.27,-750.12 867.4,-748.66"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_passenger_manager -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_passenger_manager -->
 <g id="node47" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_passenger_manager</title>
 <polygon fill="none" stroke="black" points="1265.28,-828 903.53,-828 903.53,-792 1265.28,-792 1265.28,-828"/>
 <text text-anchor="middle" x="1084.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train_passenger_manager</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_passenger_manager -->
+<!-- transit_lab_simmetro.simulation_engine.train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_passenger_manager -->
 <g id="edge53" class="edge">
 <title>mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_passenger_manager</title>
 <path fill="none" stroke="black" d="M838.33,-756.48C884.99,-766.44 943.59,-778.95 991.9,-789.26"/>
 <polygon fill="black" stroke="black" points="1001.49,-791.3 990.77,-793.62 997.79,-790.51 991.71,-789.22 991.71,-789.22 991.71,-789.22 997.79,-790.51 992.65,-784.82 1001.49,-791.3"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator -->
 <g id="node48" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator</title>
 <polygon fill="none" stroke="black" points="454.78,-828 114.03,-828 114.03,-792 454.78,-792 454.78,-828"/>
 <text text-anchor="middle" x="284.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train_speed_regulator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator -->
+<!-- transit_lab_simmetro.simulation_engine.train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator -->
 <g id="edge54" class="edge">
 <title>mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator</title>
 <path fill="none" stroke="black" d="M646.53,-754.45C574.77,-764.91 481.02,-778.79 406.87,-789.94"/>
 <polygon fill="black" stroke="black" points="397.28,-791.38 406.5,-785.44 401.02,-790.82 407.17,-789.89 407.17,-789.89 407.17,-789.89 401.02,-790.82 407.84,-794.34 397.28,-791.38"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA -->
 <g id="node49" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA</title>
 <polygon fill="none" stroke="black" points="847.66,-828 473.16,-828 473.16,-792 847.66,-792 847.66,-828"/>
 <text text-anchor="middle" x="660.41" y="-804.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA -->
+<!-- transit_lab_simmetro.simulation_engine.train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA -->
 <g id="edge55" class="edge">
 <title>mit_rail_sim.simulation_engine.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA</title>
 <path fill="none" stroke="black" d="M726.5,-756.48C713.85,-765.07 699.31,-775.54 687.04,-784.88"/>
 <polygon fill="black" stroke="black" points="679.13,-790.99 684.29,-781.32 682.12,-788.68 687.04,-784.88 687.04,-784.88 687.04,-784.88 682.12,-788.68 689.8,-788.43 679.13,-790.99"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.acceleration_profile_function -->
+<!-- transit_lab_simmetro.simulation_engine.train.acceleration_profile_function -->
 <g id="node44" class="node">
 <title>mit_rail_sim.simulation_engine.train.acceleration_profile_function</title>
 <polygon fill="none" stroke="black" points="811.78,-900 429.03,-900 429.03,-864 811.78,-864 811.78,-900"/>
 <text text-anchor="middle" x="620.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.acceleration_profile_function</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train -->
 <g id="node45" class="node">
 <title>mit_rail_sim.simulation_engine.train.train</title>
 <polygon fill="none" stroke="black" points="1752.28,-36 1504.53,-36 1504.53,0 1752.28,0 1752.28,-36"/>
 <text text-anchor="middle" x="1628.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge126" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1526.56,-36.42C1508.05,-44.28 1490.96,-55.62 1479.41,-72 1451.57,-111.45 1466.2,-170.76 1478.73,-205.3"/>
 <polygon fill="black" stroke="black" points="1482.24,-214.45 1474.46,-206.72 1480.89,-210.92 1478.66,-205.11 1478.66,-205.11 1478.66,-205.11 1480.89,-210.92 1482.86,-203.5 1482.24,-214.45"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block -->
 <g id="edge56" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block</title>
 <path fill="none" stroke="black" d="M1722.71,-36.43C1743.2,-44.25 1763.02,-55.59 1777.41,-72 1804.07,-102.42 1796.41,-120.55 1796.41,-161 1796.41,-161 1796.41,-161 1796.41,-235 1796.41,-335.96 1685.03,-298.25 1587.41,-324 1572.48,-327.94 1411.53,-345.83 1282.91,-359.75"/>
 <polygon fill="black" stroke="black" points="1273.36,-360.78 1282.82,-355.23 1277.12,-360.37 1283.3,-359.7 1283.3,-359.7 1283.3,-359.7 1277.12,-360.37 1283.78,-364.18 1273.36,-360.78"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.simulation -->
 <g id="edge127" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1752.62,-35.15C1755.58,-35.45 1758.51,-35.73 1761.41,-36 1898.61,-48.74 2248.46,-32.32 2380.41,-72 2473.3,-99.93 2515.56,-123.39 2544.41,-216 2579.96,-330.13 2546.26,-396.58 2450.41,-468 2437.25,-477.81 2207.6,-605.79 2192.41,-612 2159.74,-625.35 2122.63,-636.41 2089.68,-644.92"/>
 <polygon fill="black" stroke="black" points="2080.32,-647.3 2088.91,-640.48 2083.99,-646.37 2090.01,-644.84 2090.01,-644.84 2090.01,-644.84 2083.99,-646.37 2091.12,-649.2 2080.32,-647.3"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge128" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1504.22,-19.32C1172.79,-21.81 292.41,-39.82 292.41,-161 292.41,-161 292.41,-161 292.41,-595 292.41,-642.95 312.53,-658.92 353.41,-684 399.4,-712.22 534.26,-725.64 635.39,-731.87"/>
 <polygon fill="black" stroke="black" points="645.09,-732.45 634.84,-736.34 641.32,-732.22 635.11,-731.85 635.11,-731.85 635.11,-731.85 641.32,-732.22 635.38,-727.36 645.09,-732.45"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_passenger_manager -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_passenger_manager -->
 <g id="edge129" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_passenger_manager</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1504.19,-27.83C1358.42,-41.08 1111.14,-72.64 910.41,-144 787.04,-187.85 719.6,-175.03 653.41,-288 645.32,-301.8 647.72,-309.04 653.41,-324 658.91,-338.47 972.87,-685.83 1061.4,-783.6"/>
 <polygon fill="black" stroke="black" points="1067.97,-790.85 1057.92,-786.46 1065.43,-788.05 1061.25,-783.44 1061.25,-783.44 1061.25,-783.44 1065.43,-788.05 1064.59,-780.42 1067.97,-790.85"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state -->
 <g id="edge57" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state</title>
 <path fill="none" stroke="black" d="M1622.49,-36.3C1621.73,-43.68 1621.49,-52.48 1621.77,-60.75"/>
 <polygon fill="black" stroke="black" points="1622.43,-70.68 1617.28,-61 1622.18,-66.91 1621.77,-60.7 1621.77,-60.7 1621.77,-60.7 1622.18,-66.91 1626.26,-60.4 1622.43,-70.68"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_state -->
 <g id="edge130" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.train.train_state</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1634.32,-36.3C1635.08,-43.68 1635.33,-52.48 1635.05,-60.75"/>
 <polygon fill="black" stroke="black" points="1634.38,-70.68 1630.56,-60.4 1634.64,-66.91 1635.05,-60.7 1635.05,-60.7 1635.05,-60.7 1634.64,-66.91 1639.54,-61 1634.38,-70.68"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.utils -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.utils -->
 <g id="edge131" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1752.71,-36.17C1976.09,-67.32 2423.36,-131.11 2434.41,-144 2495.18,-214.92 2623.83,-183.36 2350.41,-396 2303.22,-432.7 2149.32,-444.28 2038.66,-447.77"/>
 <polygon fill="black" stroke="black" points="2028.97,-448.06 2038.83,-443.26 2032.75,-447.95 2038.97,-447.76 2038.97,-447.76 2038.97,-447.76 2032.75,-447.95 2039.1,-452.26 2028.97,-448.06"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils -->
+<!-- transit_lab_simmetro.simulation_engine.train.train&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils -->
 <g id="edge132" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1752.64,-35C1755.59,-35.34 1758.52,-35.68 1761.41,-36 2078.18,-71.44 2200.52,25.59 2470.41,-144 2504.73,-165.57 2513.25,-177.65 2526.41,-216 2586.51,-391.17 2433.58,-464.67 2264.41,-540 2231.99,-554.44 2195.1,-565.24 2160.75,-573.18"/>
 <polygon fill="black" stroke="black" points="2151.37,-575.29 2160.14,-568.71 2155.06,-574.46 2161.12,-573.1 2161.12,-573.1 2161.12,-573.1 2155.06,-574.46 2162.11,-577.49 2151.37,-575.29"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator -->
 <g id="node46" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator</title>
 <polygon fill="none" stroke="black" points="1277.41,-180 919.41,-180 919.41,-144 1277.41,-144 1277.41,-180"/>
 <text text-anchor="middle" x="1098.41" y="-156.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train_headway_regulator</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge58" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M1196.32,-180.48C1252.78,-190.57 1323.88,-203.26 1382.03,-213.65"/>
 <polygon fill="black" stroke="black" points="1391.53,-215.34 1380.9,-218.02 1387.81,-214.68 1381.69,-213.59 1381.69,-213.59 1381.69,-213.59 1387.81,-214.68 1382.48,-209.16 1391.53,-215.34"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.station -->
 <g id="edge59" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.station</title>
 <path fill="none" stroke="black" d="M1277.61,-169.02C1423.63,-175.82 1609.48,-189.58 1633.41,-216 1678.86,-266.18 1589.67,-323.77 1530.02,-354.65"/>
 <polygon fill="black" stroke="black" points="1521.45,-359 1528.33,-350.47 1524.82,-357.29 1530.37,-354.48 1530.37,-354.48 1530.37,-354.48 1524.82,-357.29 1532.4,-358.49 1521.45,-359"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge60" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" d="M963.28,-180.46C839.1,-199.6 668.29,-234.86 627.41,-288 617.65,-300.68 621.07,-309.31 627.41,-324 767.91,-649.9 969.48,-610.42 1274.41,-792 1309.43,-812.85 1347.99,-839.03 1374.53,-857.59"/>
 <polygon fill="black" stroke="black" points="1382.39,-863.11 1371.62,-861.05 1379.3,-860.94 1374.21,-857.36 1374.21,-857.36 1374.21,-857.36 1379.3,-860.94 1376.8,-853.68 1382.39,-863.11"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.passenger.arrival_rate -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.passenger.arrival_rate -->
 <g id="edge61" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.passenger.arrival_rate</title>
 <path fill="none" stroke="black" d="M918.94,-169.24C742.63,-176.74 494.61,-191.48 456.41,-216 418.23,-240.51 406.41,-259.63 406.41,-305 406.41,-305 406.41,-305 406.41,-523 406.41,-759.96 -128.99,-723.76 29.41,-900 95.1,-973.09 723.57,-1006.95 1030.87,-1019.25"/>
 <polygon fill="black" stroke="black" points="1040.45,-1019.62 1030.28,-1023.72 1036.67,-1019.47 1030.46,-1019.23 1030.46,-1019.23 1030.46,-1019.23 1036.67,-1019.47 1030.63,-1014.73 1040.45,-1019.62"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_headway_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge133" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_headway_regulator&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M918.92,-171.42C757.87,-180.22 541.58,-195.59 506.41,-216 464.71,-240.2 444.41,-256.79 444.41,-305 444.41,-305 444.41,-305 444.41,-379 444.41,-540.78 627.73,-664.89 713.33,-714.02"/>
 <polygon fill="black" stroke="black" points="721.96,-718.91 711.04,-717.9 718.67,-717.04 713.25,-713.98 713.25,-713.98 713.25,-713.98 718.67,-717.04 715.47,-710.07 721.96,-718.91"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_passenger_manager&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_passenger_manager&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge134" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_passenger_manager&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1165.08,-828.48C1210.93,-838.42 1268.5,-850.9 1316.01,-861.19"/>
 <polygon fill="black" stroke="black" points="1325.73,-863.3 1315.01,-865.58 1322.04,-862.5 1315.96,-861.18 1315.96,-861.18 1315.96,-861.18 1322.04,-862.5 1316.91,-856.78 1325.73,-863.3"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge135" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M413.38,-791.51C484.45,-773.8 558.41,-738.26 558.41,-667 558.41,-521 558.41,-521 558.41,-521 558.41,-413 542.9,-355.25 627.41,-288 682.09,-244.49 1113.78,-236.24 1345.12,-234.97"/>
 <polygon fill="black" stroke="black" points="1355.1,-234.92 1345.13,-239.47 1351.32,-234.94 1345.1,-234.97 1345.1,-234.97 1345.1,-234.97 1351.32,-234.94 1345.08,-230.47 1355.1,-234.92"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge136" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M408.16,-791.53C478.35,-781.27 565.79,-768.31 635.51,-757.83"/>
 <polygon fill="black" stroke="black" points="645.34,-756.35 636.12,-762.29 641.6,-756.91 635.45,-757.84 635.45,-757.84 635.45,-757.84 641.6,-756.91 634.78,-753.39 645.34,-756.35"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.train.acceleration_profile_function -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.train.acceleration_profile_function -->
 <g id="edge62" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.train.acceleration_profile_function</title>
 <path fill="none" stroke="black" d="M368.33,-828.48C416.23,-838.46 476.41,-851 525.96,-861.32"/>
 <polygon fill="black" stroke="black" points="535.49,-863.31 524.78,-865.67 531.79,-862.54 525.7,-861.27 525.7,-861.27 525.7,-861.27 531.79,-862.54 526.62,-856.86 535.49,-863.31"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state -->
 <g id="node50" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state</title>
 <polygon fill="none" stroke="black" points="410.53,-900 38.28,-900 38.28,-864 410.53,-864 410.53,-900"/>
 <text text-anchor="middle" x="224.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train_speed_regulator_state</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state -->
 <g id="edge63" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state</title>
 <path fill="none" stroke="black" d="M269.58,-828.3C262.53,-836.53 253.97,-846.52 246.2,-855.58"/>
 <polygon fill="black" stroke="black" points="239.86,-862.97 242.95,-852.45 242.32,-860.1 246.37,-855.38 246.37,-855.38 246.37,-855.38 242.32,-860.1 249.79,-858.31 239.86,-862.97"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge137" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M651.42,-791.81C639.71,-768.26 619.94,-724.28 613.41,-684 599.24,-596.69 589.4,-349.04 653.41,-288 702.23,-241.44 1119.07,-234.52 1345.47,-234.24"/>
 <polygon fill="black" stroke="black" points="1355.22,-234.24 1345.22,-238.74 1351.43,-234.24 1345.22,-234.24 1345.22,-234.24 1345.22,-234.24 1351.43,-234.24 1345.21,-229.74 1355.22,-234.24"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge138" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M690.12,-791.65C702.9,-782.98 717.66,-772.35 730.05,-762.92"/>
 <polygon fill="black" stroke="black" points="737.63,-757.05 732.48,-766.73 734.64,-759.36 729.72,-763.17 729.72,-763.17 729.72,-763.17 734.64,-759.36 726.97,-759.61 737.63,-757.05"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.train.acceleration_profile_function -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.acceleration_profile_function -->
 <g id="edge64" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.train.acceleration_profile_function</title>
 <path fill="none" stroke="black" d="M650.52,-828.3C646.06,-836.1 640.7,-845.49 635.74,-854.17"/>
 <polygon fill="black" stroke="black" points="630.79,-862.84 631.84,-851.92 632.66,-859.55 635.75,-854.16 635.75,-854.16 635.75,-854.16 632.66,-859.55 639.66,-856.39 630.79,-862.84"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA -->
 <g id="node51" class="node">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA</title>
 <polygon fill="none" stroke="black" points="1235.41,-900 829.41,-900 829.41,-864 1235.41,-864 1235.41,-900"/>
 <text text-anchor="middle" x="1032.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA</text>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA -->
 <g id="edge65" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_CTA&#45;&gt;mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA</title>
 <path fill="none" stroke="black" d="M753.32,-828.48C806.68,-838.52 873.82,-851.16 928.87,-861.52"/>
 <polygon fill="black" stroke="black" points="938.52,-863.33 927.86,-865.91 934.8,-862.63 928.69,-861.48 928.69,-861.48 928.69,-861.48 934.8,-862.63 929.52,-857.06 938.52,-863.33"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge139" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M140.66,-863.53C122.48,-855.71 105.42,-844.38 94.41,-828 85.48,-814.72 84.89,-804.86 94.41,-792 127.04,-747.93 160.54,-773.77 212.41,-756 297.45,-726.87 335.5,-745.13 401.41,-684 543.97,-551.77 426.39,-397.01 587.41,-288 648.48,-246.65 1106.2,-237.45 1345.53,-235.48"/>
 <polygon fill="black" stroke="black" points="1355.19,-235.4 1345.23,-239.98 1351.41,-235.43 1345.19,-235.48 1345.19,-235.48 1345.19,-235.48 1351.41,-235.43 1345.15,-230.98 1355.19,-235.4"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge140" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M150.69,-863.51C132.91,-855.65 116,-844.31 105.41,-828 96.69,-814.58 94.56,-803.76 105.41,-792 140.51,-753.93 457,-743.2 635.42,-740.18"/>
 <polygon fill="black" stroke="black" points="645.22,-740.02 635.3,-744.69 641.44,-740.08 635.22,-740.19 635.22,-740.19 635.22,-740.19 641.44,-740.08 635.15,-735.69 645.22,-740.02"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge141" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1183,-863.55C1224.39,-855.5 1261.5,-844.04 1274.41,-828 1284.44,-815.53 1280.24,-806.9 1274.41,-792 1246.06,-719.59 884.78,-466.32 961.41,-360 990.99,-318.95 1026.01,-350.02 1069.41,-324 1089.36,-312.04 1086.44,-298.08 1107.41,-288 1148.83,-268.09 1255.52,-254.32 1345.81,-245.81"/>
 <polygon fill="black" stroke="black" points="1355.52,-244.91 1345.97,-250.32 1351.75,-245.26 1345.56,-245.84 1345.56,-245.84 1345.56,-245.84 1351.75,-245.26 1345.14,-241.35 1355.52,-244.91"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state_CTA&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge142" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_speed_regulator_state_CTA&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M971.91,-863.52C946.86,-854.85 918.18,-842.99 894.41,-828 874.73,-815.59 875.3,-805.57 856.41,-792 840.4,-780.5 821.58,-769.88 804.62,-761.21"/>
 <polygon fill="black" stroke="black" points="795.96,-756.88 806.92,-757.33 799.35,-758.57 804.91,-761.35 804.91,-761.35 804.91,-761.35 799.35,-758.57 802.9,-765.38 795.96,-756.88"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state&#45;&gt;transit_lab_simmetro -->
 <g id="edge66" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim</title>
 <path fill="none" stroke="black" d="M1768.43,-95.36C1875.96,-101.04 2013.85,-114.08 2061.41,-144 2083.92,-158.16 2099.21,-184.82 2108.24,-205.28"/>
 <polygon fill="black" stroke="black" points="2112.05,-214.48 2104.07,-206.96 2110.6,-210.98 2108.23,-205.24 2108.23,-205.24 2108.23,-205.24 2110.6,-210.98 2112.39,-203.52 2112.05,-214.48"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.config_handler -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state&#45;&gt;transit_lab_simmetro.config_handler -->
 <g id="edge67" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.config_handler</title>
 <path fill="none" stroke="black" d="M1675.7,-108.45C1756,-138.05 1924.12,-199.98 2066.41,-252 2110.38,-268.08 2138.55,-249.65 2165.41,-288 2174.59,-301.11 2175.67,-311.72 2165.41,-324 2163.79,-325.94 2054.46,-345.35 1969.84,-360.12"/>
 <polygon fill="black" stroke="black" points="1960.06,-361.83 1969.14,-355.68 1963.79,-361.18 1969.91,-360.11 1969.91,-360.11 1969.91,-360.11 1963.79,-361.18 1970.69,-364.54 1960.06,-361.83"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge68" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M1611.49,-108.41C1587.25,-133.35 1542.52,-179.38 1514.73,-207.97"/>
 <polygon fill="black" stroke="black" points="1507.89,-215.02 1511.63,-204.71 1510.52,-212.3 1514.86,-207.84 1514.86,-207.84 1514.86,-207.84 1510.52,-212.3 1518.08,-210.98 1507.89,-215.02"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.block -->
 <g id="edge69" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.block</title>
 <path fill="none" stroke="black" d="M1633.92,-108.09C1642.78,-138.75 1656.93,-204.36 1633.41,-252 1610.11,-299.19 1588.08,-304 1539.41,-324 1527.18,-329.02 1395.43,-345.28 1283.06,-358.48"/>
 <polygon fill="black" stroke="black" points="1273.47,-359.6 1282.87,-353.97 1277.22,-359.16 1283.4,-358.44 1283.4,-358.44 1283.4,-358.44 1277.22,-359.16 1283.92,-362.91 1273.47,-359.6"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge143" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1488.31,-92.24C1165.26,-95.71 392.33,-107.78 349.41,-144 318.5,-170.09 330.41,-192.55 330.41,-233 330.41,-233 330.41,-233 330.41,-595 330.41,-658.23 383.7,-658.14 441.41,-684 502.03,-711.17 574.9,-724.51 635.27,-731.03"/>
 <polygon fill="black" stroke="black" points="645.18,-732.04 634.77,-735.5 641.42,-731.65 635.23,-731.02 635.23,-731.02 635.23,-731.02 641.42,-731.65 635.69,-726.54 645.18,-732.04"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator -->
+<!-- transit_lab_simmetro.simulation_engine.train.train_state&#45;&gt;transit_lab_simmetro.simulation_engine.train.train_headway_regulator -->
 <g id="edge70" class="edge">
 <title>mit_rail_sim.simulation_engine.train.train_state&#45;&gt;mit_rail_sim.simulation_engine.train.train_headway_regulator</title>
 <path fill="none" stroke="black" d="M1496.03,-108.48C1418.58,-118.71 1320.76,-131.63 1241.52,-142.1"/>
 <polygon fill="black" stroke="black" points="1231.68,-143.4 1241,-137.63 1235.43,-142.9 1241.59,-142.09 1241.59,-142.09 1241.59,-142.09 1235.43,-142.9 1242.18,-146.55 1231.68,-143.4"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_context -->
+<!-- transit_lab_simmetro.simulation_engine.utils&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_context -->
 <g id="edge71" class="edge">
 <title>mit_rail_sim.simulation_engine.utils&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_context</title>
 <path fill="none" stroke="black" d="M1898.4,-468.3C1891.01,-476.36 1882.87,-486.11 1876.02,-495.02"/>
 <polygon fill="black" stroke="black" points="1870.17,-502.92 1872.5,-492.2 1872.42,-499.88 1876.12,-494.88 1876.12,-494.88 1876.12,-494.88 1872.42,-499.88 1879.74,-497.56 1870.17,-502.92"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils -->
+<!-- transit_lab_simmetro.simulation_engine.utils&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils -->
 <g id="edge72" class="edge">
 <title>mit_rail_sim.simulation_engine.utils&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils</title>
 <path fill="none" stroke="black" d="M1973.19,-468.38C1990.99,-476.56 2009.25,-488.11 2021.41,-504 2034.68,-521.36 2039.16,-545.93 2040.47,-564.86"/>
 <polygon fill="black" stroke="black" points="2040.88,-574.59 2035.96,-564.79 2040.72,-570.81 2040.46,-564.6 2040.46,-564.6 2040.46,-564.6 2040.72,-570.81 2044.96,-564.41 2040.88,-574.59"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge73" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M1839.34,-503.54C1827.34,-493.62 1812.51,-480.69 1800.41,-468 1796.01,-463.39 1663.65,-291.62 1658.41,-288 1638.02,-273.92 1613.71,-263.45 1590,-255.71"/>
 <polygon fill="black" stroke="black" points="1580.7,-252.81 1591.58,-251.48 1584.31,-253.93 1590.25,-255.78 1590.25,-255.78 1590.25,-255.78 1584.31,-253.93 1588.91,-260.08 1580.7,-252.81"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge74" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" d="M1858.29,-540.41C1851.75,-572.48 1833.81,-641.47 1794.41,-684 1745.58,-736.71 1554.93,-820.14 1460.71,-859.32"/>
 <polygon fill="black" stroke="black" points="1451.66,-863.07 1459.17,-855.09 1455.15,-861.62 1460.9,-859.24 1460.9,-859.24 1460.9,-859.24 1455.15,-861.62 1462.62,-863.4 1451.66,-863.07"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context&#45;&gt;transit_lab_simmetro.simulation_engine.simulation -->
 <g id="edge75" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.simulation</title>
 <path fill="none" stroke="black" d="M1994.78,-540.48C2075.2,-551.02 2177.4,-564.42 2258.45,-575.05"/>
 <polygon fill="black" stroke="black" points="2268.03,-576.3 2257.53,-579.46 2264.28,-575.81 2258.11,-575 2258.11,-575 2258.11,-575 2264.28,-575.81 2258.7,-570.54 2268.03,-576.3"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge76" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" d="M1709.68,-533.66C1548.55,-548.06 1287.87,-580.18 1072.41,-648 1037.52,-658.98 1032.96,-672 998.41,-684 958.31,-697.92 913.15,-708.99 872.81,-717.33"/>
 <polygon fill="black" stroke="black" points="863.03,-719.31 871.94,-712.92 866.74,-718.56 872.83,-717.33 872.83,-717.33 872.83,-717.33 866.74,-718.56 873.73,-721.74 863.03,-719.31"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.utils -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context&#45;&gt;transit_lab_simmetro.simulation_engine.utils -->
 <g id="edge144" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1881.23,-503.9C1888.61,-495.87 1896.76,-486.13 1903.63,-477.2"/>
 <polygon fill="black" stroke="black" points="1909.51,-469.28 1907.16,-479.99 1907.25,-472.32 1903.55,-477.31 1903.55,-477.31 1903.55,-477.31 1907.25,-472.32 1899.93,-474.63 1909.51,-469.28"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils -->
 <g id="edge77" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils</title>
 <path fill="none" stroke="black" d="M1900.18,-540.48C1923.44,-549.96 1953.46,-561.74 1979.78,-571.74"/>
 <polygon fill="black" stroke="black" points="1988.9,-575.19 1977.95,-575.86 1985.36,-573.85 1979.54,-571.65 1979.54,-571.65 1979.54,-571.65 1985.36,-573.85 1981.13,-567.44 1988.9,-575.19"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_context&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils -->
 <g id="edge145" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_context&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1912.05,-540.48C1937.02,-549.87 1966.94,-561.53 1991.65,-571.47"/>
 <polygon fill="black" stroke="black" points="2000.75,-575.16 1989.8,-575.58 1997.25,-573.74 1991.49,-571.41 1991.49,-571.41 1991.49,-571.41 1997.25,-573.74 1993.17,-567.24 2000.75,-575.16"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge146" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M2046.54,-575.67C2056.94,-542.8 2073.5,-471.19 2036.41,-432 1956.52,-347.59 1879.15,-452.16 1777.41,-396 1749.93,-380.83 1712.87,-304.87 1686.41,-288 1663.87,-273.64 1637.5,-263.14 1611.53,-255.47"/>
 <polygon fill="black" stroke="black" points="1602.01,-252.78 1612.85,-251.16 1605.65,-253.81 1611.63,-255.49 1611.63,-255.49 1611.63,-255.49 1605.65,-253.81 1610.41,-259.83 1602.01,-252.78"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge147" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M2118.45,-612.4C2136.5,-620.24 2153.57,-631.59 2164.41,-648 2191.62,-689.23 2230.13,-748.58 2146.41,-828 2103.68,-868.53 1743.92,-878.19 1542.56,-880.41"/>
 <polygon fill="black" stroke="black" points="1532.83,-880.52 1542.79,-875.91 1536.61,-880.48 1542.83,-880.41 1542.83,-880.41 1542.83,-880.41 1536.61,-880.48 1542.88,-884.91 1532.83,-880.52"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils&#45;&gt;transit_lab_simmetro.simulation_engine.simulation.simulation -->
 <g id="edge148" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.simulation.simulation</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M2024.11,-612.3C2018.63,-620.1 2012.77,-629.49 2007.92,-638.17"/>
 <polygon fill="black" stroke="black" points="2003.35,-646.82 2004.05,-635.88 2005.11,-643.48 2008.02,-637.98 2008.02,-637.98 2008.02,-637.98 2005.11,-643.48 2012,-640.08 2003.35,-646.82"/>
 </g>
-<!-- mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.train -->
+<!-- transit_lab_simmetro.simulation_engine.utils.logger_utils&#45;&gt;transit_lab_simmetro.simulation_engine.train -->
 <g id="edge149" class="edge">
 <title>mit_rail_sim.simulation_engine.utils.logger_utils&#45;&gt;mit_rail_sim.simulation_engine.train</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M1897.17,-602.22C1752.78,-610.3 1523.68,-625.32 1326.41,-648 1164.35,-666.64 977.78,-697.58 863.48,-717.63"/>
 <polygon fill="black" stroke="black" points="853.85,-719.33 862.92,-713.16 857.58,-718.67 863.7,-717.6 863.7,-717.6 863.7,-717.6 857.58,-718.67 864.48,-722.03 853.85,-719.33"/>
 </g>
-<!-- mit_rail_sim.simulation_runner -->
+<!-- transit_lab_simmetro.simulation_runner -->
 <g id="node56" class="node">
 <title>mit_rail_sim.simulation_runner</title>
 <polygon fill="none" stroke="black" points="4017.41,-36 3827.41,-36 3827.41,0 4017.41,0 4017.41,-36"/>
 <text text-anchor="middle" x="3922.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_runner</text>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner -->
+<!-- transit_lab_simmetro.simulation_runner.runner -->
 <g id="node57" class="node">
 <title>mit_rail_sim.simulation_runner.runner</title>
 <polygon fill="none" stroke="black" points="2425.53,-180 2197.28,-180 2197.28,-144 2425.53,-144 2425.53,-180"/>
 <text text-anchor="middle" x="2311.41" y="-156.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.simulation_runner.runner</text>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro -->
 <g id="edge78" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim</title>
 <path fill="none" stroke="black" d="M2263.2,-180.48C2235.56,-190.51 2200.79,-203.12 2172.25,-213.47"/>
 <polygon fill="black" stroke="black" points="2163.19,-216.76 2171.06,-209.12 2166.75,-215.47 2172.59,-213.35 2172.59,-213.35 2172.59,-213.35 2166.75,-215.47 2174.13,-217.58 2163.19,-216.76"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.config_handler -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.config_handler -->
 <g id="edge79" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.config_handler</title>
 <path fill="none" stroke="black" d="M2287.75,-180.28C2275.8,-189.85 2261.69,-202.52 2251.41,-216 2218.98,-258.51 2241.41,-292.23 2198.41,-324 2116.6,-384.44 2072.77,-343.48 1972.41,-360 1971.58,-360.14 1970.74,-360.27 1969.9,-360.41"/>
 <polygon fill="black" stroke="black" points="1960.05,-362.05 1969.18,-355.97 1963.79,-361.43 1969.92,-360.41 1969.92,-360.41 1969.92,-360.41 1963.79,-361.43 1970.66,-364.85 1960.05,-362.05"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.infrastructure -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure -->
 <g id="edge80" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.infrastructure</title>
 <path fill="none" stroke="black" d="M2196.82,-172.77C2049.94,-185.29 1795.18,-207.01 1635.08,-220.66"/>
 <polygon fill="black" stroke="black" points="1625.41,-221.49 1634.99,-216.16 1629.18,-221.17 1635.38,-220.64 1635.38,-220.64 1635.38,-220.64 1629.18,-221.17 1635.76,-225.12 1625.41,-221.49"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.simulation_engine.infrastructure.path -->
 <g id="edge81" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.infrastructure.path</title>
 <path fill="none" stroke="black" d="M2275.01,-180.47C2256.1,-190.09 2232.93,-202.75 2213.41,-216 2192.79,-230 2192.19,-239.89 2170.41,-252 2146.22,-265.45 2118.08,-276.17 2092.15,-284.35"/>
 <polygon fill="black" stroke="black" points="2082.74,-287.23 2090.98,-280 2086.36,-286.13 2092.3,-284.31 2092.3,-284.31 2092.3,-284.31 2086.36,-286.13 2093.62,-288.61 2082.74,-287.23"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.passenger -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.simulation_engine.passenger -->
 <g id="edge82" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.passenger</title>
 <path fill="none" stroke="black" d="M2357.85,-180.38C2375.77,-188.92 2395.31,-200.72 2409.41,-216 2557.3,-376.29 2607.41,-446.9 2607.41,-665 2607.41,-665 2607.41,-665 2607.41,-739 2607.41,-845.22 1856.3,-872.25 1542.56,-878.91"/>
 <polygon fill="black" stroke="black" points="1532.81,-879.11 1542.71,-874.4 1536.59,-879.03 1542.81,-878.9 1542.81,-878.9 1542.81,-878.9 1536.59,-879.03 1542.9,-883.4 1532.81,-879.11"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule -->
 <g id="edge83" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule</title>
 <path fill="none" stroke="black" d="M2307.52,-180.46C2299.01,-214.21 2275.4,-288.22 2225.41,-324 2144.84,-381.66 2094.17,-315.99 2005.41,-360 1984.56,-370.33 1987.99,-385.15 1967.41,-396 1900.25,-431.42 1869.72,-401 1800.41,-432 1697.57,-478 1612.77,-588.08 1577.73,-638.71"/>
 <polygon fill="black" stroke="black" points="1572.27,-646.72 1574.18,-635.92 1574.4,-643.6 1577.9,-638.46 1577.9,-638.46 1577.9,-638.46 1574.4,-643.6 1581.62,-640.99 1572.27,-646.72"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.simulation -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.simulation_engine.simulation -->
 <g id="edge84" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.simulation</title>
 <path fill="none" stroke="black" d="M2343.6,-180.42C2357.75,-189.45 2373.58,-201.6 2384.41,-216 2425.3,-270.39 2424.68,-292.97 2436.41,-360 2450.2,-438.8 2462.27,-464.3 2436.41,-540 2433.07,-549.76 2427.13,-559.11 2420.79,-567.17"/>
 <polygon fill="black" stroke="black" points="2414.37,-574.75 2417.4,-564.21 2416.81,-571.86 2420.83,-567.12 2420.83,-567.12 2420.83,-567.12 2416.81,-571.86 2424.27,-570.03 2414.37,-574.75"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.utils -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.simulation_engine.utils -->
 <g id="edge85" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.utils</title>
 <path fill="none" stroke="black" d="M2319.88,-180.24C2339.43,-222.8 2382.01,-333.87 2327.41,-396 2308.44,-417.59 2152.36,-432.95 2038.63,-441.4"/>
 <polygon fill="black" stroke="black" points="2028.98,-442.1 2038.62,-436.89 2032.75,-441.83 2038.95,-441.37 2038.95,-441.37 2038.95,-441.37 2032.75,-441.83 2039.28,-445.86 2028.98,-442.1"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.simulation_engine.utils.logger_utils -->
 <g id="edge86" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.simulation_engine.utils.logger_utils</title>
 <path fill="none" stroke="black" d="M2327.85,-180.3C2363.75,-220.26 2442.57,-321.29 2398.41,-396 2340.19,-494.49 2213.24,-547.07 2127.27,-572.5"/>
 <polygon fill="black" stroke="black" points="2117.9,-575.2 2126.26,-568.1 2121.54,-574.15 2127.51,-572.43 2127.51,-572.43 2127.51,-572.43 2121.54,-574.15 2128.76,-576.75 2117.9,-575.2"/>
 </g>
-<!-- mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.simulation_runner.runner&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge87" class="edge">
 <title>mit_rail_sim.simulation_runner.runner&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M2376.8,-180.44C2403.71,-189.07 2434.56,-200.92 2460.41,-216 2544.77,-265.22 2575.11,-276.89 2626.41,-360 2721.81,-514.56 2585.55,-642.56 2727.41,-756 2783.18,-800.6 3941.49,-783.54 4012.41,-792 4016.38,-792.47 4020.44,-793.05 4024.53,-793.7"/>
 <polygon fill="black" stroke="black" points="4034.17,-795.36 4023.55,-798.09 4030.44,-794.72 4024.32,-793.66 4024.32,-793.66 4024.32,-793.66 4030.44,-794.72 4025.08,-789.22 4034.17,-795.36"/>
 </g>
-<!-- mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.db_con -->
+<!-- transit_lab_simmetro.utils&#45;&gt;transit_lab_simmetro.utils.db_con -->
 <g id="edge88" class="edge">
 <title>mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.db_con</title>
 <path fill="none" stroke="black" d="M4054.94,-828.48C4035.18,-837.71 4010.74,-849.11 3989.68,-858.94"/>
 <polygon fill="black" stroke="black" points="3980.76,-863.1 3987.92,-854.8 3984.19,-861.5 3989.82,-858.87 3989.82,-858.87 3989.82,-858.87 3984.19,-861.5 3991.72,-862.95 3980.76,-863.1"/>
 </g>
-<!-- mit_rail_sim.utils.free_port -->
+<!-- transit_lab_simmetro.utils.free_port -->
 <g id="node61" class="node">
 <title>mit_rail_sim.utils.free_port</title>
 <polygon fill="none" stroke="black" points="4205.78,-900 4039.03,-900 4039.03,-864 4205.78,-864 4205.78,-900"/>
 <text text-anchor="middle" x="4122.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.utils.free_port</text>
 </g>
-<!-- mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.free_port -->
+<!-- transit_lab_simmetro.utils&#45;&gt;transit_lab_simmetro.utils.free_port -->
 <g id="edge89" class="edge">
 <title>mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.free_port</title>
 <path fill="none" stroke="black" d="M4099.82,-828.3C4103.09,-835.93 4107.02,-845.08 4110.67,-853.6"/>
 <polygon fill="black" stroke="black" points="4114.6,-862.78 4106.52,-855.36 4113.11,-859.3 4110.66,-853.58 4110.66,-853.58 4110.66,-853.58 4113.11,-859.3 4114.79,-851.81 4114.6,-862.78"/>
 </g>
-<!-- mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.root_path -->
+<!-- transit_lab_simmetro.utils&#45;&gt;transit_lab_simmetro.utils.root_path -->
 <g id="edge90" class="edge">
 <title>mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.root_path</title>
 <path fill="none" stroke="black" d="M4035.16,-823.17C4027.51,-824.8 4019.77,-826.44 4012.41,-828 3960.37,-839.02 3902.24,-851.3 3855.05,-861.26"/>
 <polygon fill="black" stroke="black" points="3845.42,-863.29 3854.27,-856.82 3849.12,-862.51 3855.2,-861.22 3855.2,-861.22 3855.2,-861.22 3849.12,-862.51 3856.13,-865.63 3845.42,-863.29"/>
 </g>
-<!-- mit_rail_sim.utils.station_block_constants -->
+<!-- transit_lab_simmetro.utils.station_block_constants -->
 <g id="node63" class="node">
 <title>mit_rail_sim.utils.station_block_constants</title>
 <polygon fill="none" stroke="black" points="4470.91,-900 4223.91,-900 4223.91,-864 4470.91,-864 4470.91,-900"/>
 <text text-anchor="middle" x="4347.41" y="-876.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.utils.station_block_constants</text>
 </g>
-<!-- mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.station_block_constants -->
+<!-- transit_lab_simmetro.utils&#45;&gt;transit_lab_simmetro.utils.station_block_constants -->
 <g id="edge91" class="edge">
 <title>mit_rail_sim.utils&#45;&gt;mit_rail_sim.utils.station_block_constants</title>
 <path fill="none" stroke="black" d="M4149.64,-826.71C4186.22,-836.75 4234.03,-849.88 4273.48,-860.71"/>
 <polygon fill="black" stroke="black" points="4282.93,-863.3 4272.1,-864.99 4279.29,-862.3 4273.29,-860.65 4273.29,-860.65 4273.29,-860.65 4279.29,-862.3 4274.48,-856.31 4282.93,-863.3"/>
 </g>
-<!-- mit_rail_sim.utils.data_loader -->
+<!-- transit_lab_simmetro.utils.data_loader -->
 <g id="node59" class="node">
 <title>mit_rail_sim.utils.data_loader</title>
 <polygon fill="none" stroke="black" points="4215.53,-36 4035.28,-36 4035.28,0 4215.53,0 4215.53,-36"/>
 <text text-anchor="middle" x="4125.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.utils.data_loader</text>
 </g>
-<!-- mit_rail_sim.validation -->
+<!-- transit_lab_simmetro.validation -->
 <g id="node64" class="node">
 <title>mit_rail_sim.validation</title>
 <polygon fill="none" stroke="black" points="4377.53,-36 4233.28,-36 4233.28,0 4377.53,0 4377.53,-36"/>
 <text text-anchor="middle" x="4305.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation</text>
 </g>
-<!-- mit_rail_sim.validation.avl&#45;diff -->
+<!-- transit_lab_simmetro.validation.avl&#45;diff -->
 <g id="node65" class="node">
 <title>mit_rail_sim.validation.avl&#45;diff</title>
 <polygon fill="none" stroke="black" points="5844.66,-684 5656.16,-684 5656.16,-648 5844.66,-648 5844.66,-684"/>
 <text text-anchor="middle" x="5750.41" y="-660.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.avl&#45;diff</text>
 </g>
-<!-- mit_rail_sim.validation.avl&#45;diff&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.avl&#45;diff&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge92" class="edge">
 <title>mit_rail_sim.validation.avl&#45;diff&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M5773.48,-684.28C5796.39,-703.43 5825.29,-734.46 5804.41,-756 5775.3,-786.02 4475.23,-804.21 4160.49,-808.18"/>
 <polygon fill="black" stroke="black" points="4150.49,-808.3 4160.44,-803.68 4154.27,-808.25 4160.49,-808.18 4160.49,-808.18 4160.49,-808.18 4154.27,-808.25 4160.55,-812.68 4150.49,-808.3"/>
 </g>
-<!-- mit_rail_sim.validation.validation_dash -->
+<!-- transit_lab_simmetro.validation.validation_dash -->
 <g id="node86" class="node">
 <title>mit_rail_sim.validation.validation_dash</title>
 <polygon fill="none" stroke="black" points="5795.16,-756 5561.66,-756 5561.66,-720 5795.16,-720 5795.16,-756"/>
 <text text-anchor="middle" x="5678.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.validation_dash</text>
 </g>
-<!-- mit_rail_sim.validation.avl&#45;diff&#45;&gt;mit_rail_sim.validation.validation_dash -->
+<!-- transit_lab_simmetro.validation.avl&#45;diff&#45;&gt;transit_lab_simmetro.validation.validation_dash -->
 <g id="edge93" class="edge">
 <title>mit_rail_sim.validation.avl&#45;diff&#45;&gt;mit_rail_sim.validation.validation_dash</title>
 <path fill="none" stroke="black" d="M5732.61,-684.3C5724.04,-692.63 5713.61,-702.78 5704.19,-711.93"/>
 <polygon fill="black" stroke="black" points="5697.12,-718.8 5701.16,-708.61 5699.84,-716.17 5704.29,-711.83 5704.29,-711.83 5704.29,-711.83 5699.84,-716.17 5707.43,-715.06 5697.12,-718.8"/>
 </g>
-<!-- mit_rail_sim.validation.block_matching -->
+<!-- transit_lab_simmetro.validation.block_matching -->
 <g id="node66" class="node">
 <title>mit_rail_sim.validation.block_matching</title>
 <polygon fill="none" stroke="black" points="2985.28,-756 2749.53,-756 2749.53,-720 2985.28,-720 2985.28,-756"/>
 <text text-anchor="middle" x="2867.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.block_matching</text>
 </g>
-<!-- mit_rail_sim.validation.block_matching&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.block_matching&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge94" class="edge">
 <title>mit_rail_sim.validation.block_matching&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M2985.67,-755.22C2988.61,-755.49 2991.53,-755.76 2994.41,-756 3445.53,-794.08 3563.07,-736.74 4012.41,-792 4016.38,-792.49 4020.44,-793.07 4024.53,-793.73"/>
 <polygon fill="black" stroke="black" points="4034.16,-795.41 4023.54,-798.13 4030.44,-794.76 4024.31,-793.69 4024.31,-793.69 4024.31,-793.69 4030.44,-794.76 4025.08,-789.26 4034.16,-795.41"/>
 </g>
-<!-- mit_rail_sim.validation.block_runtimes -->
+<!-- transit_lab_simmetro.validation.block_runtimes -->
 <g id="node67" class="node">
 <title>mit_rail_sim.validation.block_runtimes</title>
 <polygon fill="none" stroke="black" points="3235.78,-756 3003.03,-756 3003.03,-720 3235.78,-720 3235.78,-756"/>
 <text text-anchor="middle" x="3119.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.block_runtimes</text>
 </g>
-<!-- mit_rail_sim.validation.block_runtimes&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.block_runtimes&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge95" class="edge">
 <title>mit_rail_sim.validation.block_runtimes&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M3236.14,-755.21C3238.92,-755.49 3241.68,-755.75 3244.41,-756 3584.7,-787.05 3673.5,-748.34 4012.41,-792 4016.37,-792.51 4020.43,-793.11 4024.52,-793.79"/>
 <polygon fill="black" stroke="black" points="4034.16,-795.49 4023.52,-798.18 4030.43,-794.83 4024.31,-793.75 4024.31,-793.75 4024.31,-793.75 4030.43,-794.83 4025.09,-789.32 4034.16,-795.49"/>
 </g>
-<!-- mit_rail_sim.validation.block_station_matching -->
+<!-- transit_lab_simmetro.validation.block_station_matching -->
 <g id="node68" class="node">
 <title>mit_rail_sim.validation.block_station_matching</title>
 <polygon fill="none" stroke="black" points="4673.66,-36 4395.16,-36 4395.16,0 4673.66,0 4673.66,-36"/>
 <text text-anchor="middle" x="4534.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.block_station_matching</text>
 </g>
-<!-- mit_rail_sim.validation.combined_query -->
+<!-- transit_lab_simmetro.validation.combined_query -->
 <g id="node69" class="node">
 <title>mit_rail_sim.validation.combined_query</title>
 <polygon fill="none" stroke="black" points="3493.16,-756 3253.66,-756 3253.66,-720 3493.16,-720 3493.16,-756"/>
 <text text-anchor="middle" x="3373.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.combined_query</text>
 </g>
-<!-- mit_rail_sim.validation.combined_query&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.combined_query&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge96" class="edge">
 <title>mit_rail_sim.validation.combined_query&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M3493.55,-755.07C3496.53,-755.4 3499.49,-755.7 3502.41,-756 3728.49,-778.85 3787.4,-760.31 4012.41,-792 4016.37,-792.56 4020.42,-793.2 4024.51,-793.9"/>
 <polygon fill="black" stroke="black" points="4034.13,-795.65 4023.49,-798.29 4030.41,-794.97 4024.29,-793.86 4024.29,-793.86 4024.29,-793.86 4030.41,-794.97 4025.1,-789.43 4034.13,-795.65"/>
 </g>
-<!-- mit_rail_sim.validation.cpc_record_processing -->
+<!-- transit_lab_simmetro.validation.cpc_record_processing -->
 <g id="node70" class="node">
 <title>mit_rail_sim.validation.cpc_record_processing</title>
 <polygon fill="none" stroke="black" points="4964.66,-36 4692.16,-36 4692.16,0 4964.66,0 4964.66,-36"/>
 <text text-anchor="middle" x="4828.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.cpc_record_processing</text>
 </g>
-<!-- mit_rail_sim.validation.cta_avl_raw -->
+<!-- transit_lab_simmetro.validation.cta_avl_raw -->
 <g id="node71" class="node">
 <title>mit_rail_sim.validation.cta_avl_raw</title>
 <polygon fill="none" stroke="black" points="3725.41,-756 3511.41,-756 3511.41,-720 3725.41,-720 3725.41,-756"/>
 <text text-anchor="middle" x="3618.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.cta_avl_raw</text>
 </g>
-<!-- mit_rail_sim.validation.cta_avl_raw&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.cta_avl_raw&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge97" class="edge">
 <title>mit_rail_sim.validation.cta_avl_raw&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M3725.84,-754.81C3728.72,-755.21 3731.59,-755.61 3734.41,-756 3857.83,-773.03 3889.6,-771.03 4012.41,-792 4016.35,-792.67 4020.39,-793.4 4024.46,-794.17"/>
 <polygon fill="black" stroke="black" points="4034.07,-796.04 4023.4,-798.55 4030.36,-795.32 4024.26,-794.13 4024.26,-794.13 4024.26,-794.13 4030.36,-795.32 4025.12,-789.71 4034.07,-796.04"/>
 </g>
-<!-- mit_rail_sim.validation.dwell_estimate -->
+<!-- transit_lab_simmetro.validation.dwell_estimate -->
 <g id="node72" class="node">
 <title>mit_rail_sim.validation.dwell_estimate</title>
 <polygon fill="none" stroke="black" points="3973.66,-756 3743.16,-756 3743.16,-720 3973.66,-720 3973.66,-756"/>
 <text text-anchor="middle" x="3858.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.dwell_estimate</text>
 </g>
-<!-- mit_rail_sim.validation.dwell_estimate&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.dwell_estimate&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge98" class="edge">
 <title>mit_rail_sim.validation.dwell_estimate&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M3916.85,-756.48C3949.73,-766.32 3990.92,-778.64 4025.14,-788.88"/>
 <polygon fill="black" stroke="black" points="4034.35,-791.63 4023.48,-793.08 4030.73,-790.55 4024.77,-788.77 4024.77,-788.77 4024.77,-788.77 4030.73,-790.55 4026.06,-784.45 4034.35,-791.63"/>
 </g>
-<!-- mit_rail_sim.validation.dwell_run_time_diff -->
+<!-- transit_lab_simmetro.validation.dwell_run_time_diff -->
 <g id="node73" class="node">
 <title>mit_rail_sim.validation.dwell_run_time_diff</title>
 <polygon fill="none" stroke="black" points="4340.66,-684 4080.16,-684 4080.16,-648 4340.66,-648 4340.66,-684"/>
 <text text-anchor="middle" x="4210.41" y="-660.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.dwell_run_time_diff</text>
 </g>
-<!-- mit_rail_sim.validation.dwell_run_time_diff&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.dwell_run_time_diff&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge99" class="edge">
 <title>mit_rail_sim.validation.dwell_run_time_diff&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M4079.93,-666.85C3728.69,-667.09 2786.52,-672.2 2740.41,-720 2729.3,-731.52 2729.26,-744.53 2740.41,-756 2789.68,-806.69 3942.21,-783.62 4012.41,-792 4016.38,-792.47 4020.44,-793.05 4024.53,-793.7"/>
 <polygon fill="black" stroke="black" points="4034.17,-795.36 4023.55,-798.1 4030.44,-794.72 4024.32,-793.66 4024.32,-793.66 4024.32,-793.66 4030.44,-794.72 4025.08,-789.23 4034.17,-795.36"/>
 </g>
-<!-- mit_rail_sim.validation.dwell_run_time_diff&#45;&gt;mit_rail_sim.validation.validation_dash -->
+<!-- transit_lab_simmetro.validation.dwell_run_time_diff&#45;&gt;transit_lab_simmetro.validation.validation_dash -->
 <g id="edge100" class="edge">
 <title>mit_rail_sim.validation.dwell_run_time_diff&#45;&gt;mit_rail_sim.validation.validation_dash</title>
 <path fill="none" stroke="black" d="M4340.79,-668C4579.12,-670.75 5101.21,-681 5550.41,-719.78"/>
 <polygon fill="black" stroke="black" points="5560.13,-720.63 5549.78,-724.24 5556.36,-720.3 5550.17,-719.76 5550.17,-719.76 5550.17,-719.76 5556.36,-720.3 5550.56,-715.28 5560.13,-720.63"/>
 </g>
-<!-- mit_rail_sim.validation.dwell_val -->
+<!-- transit_lab_simmetro.validation.dwell_val -->
 <g id="node74" class="node">
 <title>mit_rail_sim.validation.dwell_val</title>
 <polygon fill="none" stroke="black" points="4193.03,-756 3991.78,-756 3991.78,-720 4193.03,-720 4193.03,-756"/>
 <text text-anchor="middle" x="4092.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.dwell_val</text>
 </g>
-<!-- mit_rail_sim.validation.dwell_val&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.dwell_val&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge101" class="edge">
 <title>mit_rail_sim.validation.dwell_val&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M4092.41,-756.3C4092.41,-763.68 4092.41,-772.48 4092.41,-780.75"/>
 <polygon fill="black" stroke="black" points="4092.41,-790.68 4087.91,-780.68 4092.41,-786.9 4092.41,-780.68 4092.41,-780.68 4092.41,-780.68 4092.41,-786.9 4096.91,-780.68 4092.41,-790.68"/>
 </g>
-<!-- mit_rail_sim.validation.join_and_clean -->
+<!-- transit_lab_simmetro.validation.join_and_clean -->
 <g id="node75" class="node">
 <title>mit_rail_sim.validation.join_and_clean</title>
 <polygon fill="none" stroke="black" points="5213.66,-36 4983.16,-36 4983.16,0 5213.66,0 5213.66,-36"/>
 <text text-anchor="middle" x="5098.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.join_and_clean</text>
 </g>
-<!-- mit_rail_sim.validation.new_slow_zones -->
+<!-- transit_lab_simmetro.validation.new_slow_zones -->
 <g id="node76" class="node">
 <title>mit_rail_sim.validation.new_slow_zones</title>
 <polygon fill="none" stroke="black" points="4451.53,-756 4211.28,-756 4211.28,-720 4451.53,-720 4451.53,-756"/>
 <text text-anchor="middle" x="4331.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.new_slow_zones</text>
 </g>
-<!-- mit_rail_sim.validation.new_slow_zones&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.new_slow_zones&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge102" class="edge">
 <title>mit_rail_sim.validation.new_slow_zones&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M4271.71,-756.48C4237.76,-766.43 4195.12,-778.92 4159.95,-789.22"/>
 <polygon fill="black" stroke="black" points="4150.46,-792 4158.79,-784.87 4154.08,-790.94 4160.05,-789.19 4160.05,-789.19 4160.05,-789.19 4154.08,-790.94 4161.32,-793.51 4150.46,-792"/>
 </g>
-<!-- mit_rail_sim.validation.query_control_center_records -->
+<!-- transit_lab_simmetro.validation.query_control_center_records -->
 <g id="node77" class="node">
 <title>mit_rail_sim.validation.query_control_center_records</title>
 <polygon fill="none" stroke="black" points="5541.41,-36 5231.41,-36 5231.41,0 5541.41,0 5541.41,-36"/>
 <text text-anchor="middle" x="5386.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.query_control_center_records</text>
 </g>
-<!-- mit_rail_sim.validation.query_train_tracker_event -->
+<!-- transit_lab_simmetro.validation.query_train_tracker_event -->
 <g id="node78" class="node">
 <title>mit_rail_sim.validation.query_train_tracker_event</title>
 <polygon fill="none" stroke="black" points="5849.66,-36 5559.16,-36 5559.16,0 5849.66,0 5849.66,-36"/>
 <text text-anchor="middle" x="5704.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.query_train_tracker_event</text>
 </g>
-<!-- mit_rail_sim.validation.query_train_tracker_headway -->
+<!-- transit_lab_simmetro.validation.query_train_tracker_headway -->
 <g id="node79" class="node">
 <title>mit_rail_sim.validation.query_train_tracker_headway</title>
 <polygon fill="none" stroke="black" points="6177.03,-36 5867.78,-36 5867.78,0 6177.03,0 6177.03,-36"/>
 <text text-anchor="middle" x="6022.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.query_train_tracker_headway</text>
 </g>
-<!-- mit_rail_sim.validation.run&#45;times -->
+<!-- transit_lab_simmetro.validation.run&#45;times -->
 <g id="node80" class="node">
 <title>mit_rail_sim.validation.run&#45;times</title>
 <polygon fill="none" stroke="black" points="6395.66,-36 6195.16,-36 6195.16,0 6395.66,0 6395.66,-36"/>
 <text text-anchor="middle" x="6295.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.run&#45;times</text>
 </g>
-<!-- mit_rail_sim.validation.run_id_matching -->
+<!-- transit_lab_simmetro.validation.run_id_matching -->
 <g id="node81" class="node">
 <title>mit_rail_sim.validation.run_id_matching</title>
 <polygon fill="none" stroke="black" points="4710.91,-756 4469.91,-756 4469.91,-720 4710.91,-720 4710.91,-756"/>
 <text text-anchor="middle" x="4590.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.run_id_matching</text>
 </g>
-<!-- mit_rail_sim.validation.run_id_matching&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.run_id_matching&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge103" class="edge">
 <title>mit_rail_sim.validation.run_id_matching&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M4469.54,-755.99C4372.48,-769.63 4239.72,-788.29 4160.36,-799.45"/>
 <polygon fill="black" stroke="black" points="4150.73,-800.8 4160.01,-794.95 4154.48,-800.28 4160.64,-799.41 4160.64,-799.41 4160.64,-799.41 4154.48,-800.28 4161.26,-803.87 4150.73,-800.8"/>
 </g>
-<!-- mit_rail_sim.validation.string_charts -->
+<!-- transit_lab_simmetro.validation.string_charts -->
 <g id="node82" class="node">
 <title>mit_rail_sim.validation.string_charts</title>
 <polygon fill="none" stroke="black" points="4946.28,-756 4728.53,-756 4728.53,-720 4946.28,-720 4946.28,-756"/>
 <text text-anchor="middle" x="4837.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.string_charts</text>
 </g>
-<!-- mit_rail_sim.validation.string_charts&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.string_charts&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge104" class="edge">
 <title>mit_rail_sim.validation.string_charts&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M4728.14,-755.09C4725.54,-755.4 4722.96,-755.71 4720.41,-756 4517.11,-779.33 4275.68,-796.86 4160.34,-804.61"/>
 <polygon fill="black" stroke="black" points="4150.46,-805.27 4160.14,-800.11 4154.23,-805.02 4160.44,-804.6 4160.44,-804.6 4160.44,-804.6 4154.23,-805.02 4160.74,-809.09 4150.46,-805.27"/>
 </g>
-<!-- mit_rail_sim.validation.string_charts_color_by_run_id -->
+<!-- transit_lab_simmetro.validation.string_charts_color_by_run_id -->
 <g id="node83" class="node">
 <title>mit_rail_sim.validation.string_charts_color_by_run_id</title>
 <polygon fill="none" stroke="black" points="5278.66,-756 4964.16,-756 4964.16,-720 5278.66,-720 5278.66,-756"/>
 <text text-anchor="middle" x="5121.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.string_charts_color_by_run_id</text>
 </g>
-<!-- mit_rail_sim.validation.string_charts_color_by_run_id&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.string_charts_color_by_run_id&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge105" class="edge">
 <title>mit_rail_sim.validation.string_charts_color_by_run_id&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M4963.71,-755.31C4960.92,-755.54 4958.15,-755.78 4955.41,-756 4659.78,-780.21 4306.35,-798.62 4160.49,-805.76"/>
 <polygon fill="black" stroke="black" points="4150.74,-806.24 4160.51,-801.26 4154.51,-806.05 4160.73,-805.75 4160.73,-805.75 4160.73,-805.75 4154.51,-806.05 4160.94,-810.25 4150.74,-806.24"/>
 </g>
-<!-- mit_rail_sim.validation.track_circuit_level_query -->
+<!-- transit_lab_simmetro.validation.track_circuit_level_query -->
 <g id="node84" class="node">
 <title>mit_rail_sim.validation.track_circuit_level_query</title>
 <polygon fill="none" stroke="black" points="6700.78,-36 6414.03,-36 6414.03,0 6700.78,0 6700.78,-36"/>
 <text text-anchor="middle" x="6557.41" y="-12.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.track_circuit_level_query</text>
 </g>
-<!-- mit_rail_sim.validation.travel_times_dash -->
+<!-- transit_lab_simmetro.validation.travel_times_dash -->
 <g id="node85" class="node">
 <title>mit_rail_sim.validation.travel_times_dash</title>
 <polygon fill="none" stroke="black" points="5543.91,-756 5296.91,-756 5296.91,-720 5543.91,-720 5543.91,-756"/>
 <text text-anchor="middle" x="5420.41" y="-732.95" font-family="Times,serif" font-size="14.00">mit_rail_sim.validation.travel_times_dash</text>
 </g>
-<!-- mit_rail_sim.validation.travel_times_dash&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.travel_times_dash&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge106" class="edge">
 <title>mit_rail_sim.validation.travel_times_dash&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M5296.55,-755.17C5293.47,-755.46 5290.42,-755.74 5287.41,-756 4859.53,-792.77 4343.15,-804.72 4160.46,-807.95"/>
 <polygon fill="black" stroke="black" points="4150.64,-808.12 4160.56,-803.45 4154.42,-808.06 4160.64,-807.95 4160.64,-807.95 4160.64,-807.95 4154.42,-808.06 4160.72,-812.45 4150.64,-808.12"/>
 </g>
-<!-- mit_rail_sim.validation.validation_dash&#45;&gt;mit_rail_sim.utils -->
+<!-- transit_lab_simmetro.validation.validation_dash&#45;&gt;transit_lab_simmetro.utils -->
 <g id="edge107" class="edge">
 <title>mit_rail_sim.validation.validation_dash&#45;&gt;mit_rail_sim.utils</title>
 <path fill="none" stroke="black" d="M5561.34,-755.28C5558.67,-755.53 5556.03,-755.78 5553.41,-756 5018.3,-801.98 4369.59,-808.16 4160.7,-808.92"/>

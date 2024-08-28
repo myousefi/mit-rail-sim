@@ -3,11 +3,11 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 pio.templates.default = "simple_white"
 
-from mit_rail_sim.utils.db_con import engine, text
+from transit_lab_simmetro.utils.db_con import engine, text
 
 query_text = text(
     """

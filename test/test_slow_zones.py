@@ -2,7 +2,7 @@ import json
 import unittest
 from typing import List
 
-from mit_rail_sim.simulation_engine.infrastructure import SlowZone
+from transit_lab_simmetro.simulation_engine.infrastructure import SlowZone
 
 
 def write_slow_zones_to_json(slow_zones: List[SlowZone], file_path: str) -> None:

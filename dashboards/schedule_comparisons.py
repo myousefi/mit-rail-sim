@@ -7,8 +7,8 @@ from sqlalchemy import text
 
 import re
 
-from mit_rail_sim.utils import find_free_port
-from mit_rail_sim.utils.db_con import engine
+from transit_lab_simmetro.utils import find_free_port
+from transit_lab_simmetro.utils.db_con import engine
 
 # pio.templates.default = "simple_white"
 

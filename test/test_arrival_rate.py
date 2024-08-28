@@ -1,5 +1,5 @@
 import pytest
-from mit_rail_sim.simulation_engine.passenger.arrival_rate import ArrivalRate
+from transit_lab_simmetro.simulation_engine.passenger.arrival_rate import ArrivalRate
 import os
 
 
@@ -50,7 +50,7 @@ def test_get_smoothed_rate(sample_arrival_rate):
 
 
 import pytest
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 
 @pytest.fixture

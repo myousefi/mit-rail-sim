@@ -2,7 +2,7 @@
 import pandas as pd
 from sqlalchemy import text
 
-from mit_rail_sim.utils.db_con import engine
+from transit_lab_simmetro.utils.db_con import engine
 
 OUTPUT_DIRECTORY = "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
 

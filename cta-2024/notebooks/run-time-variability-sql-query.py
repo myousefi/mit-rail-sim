@@ -2,7 +2,7 @@
 import pandas as pd
 
 
-from mit_rail_sim.utils.db_con import engine, text
+from transit_lab_simmetro.utils.db_con import engine, text
 
 STATION_BLOCK_SB = {
     "O-Hare": "nwd720t",

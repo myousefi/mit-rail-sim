@@ -2,7 +2,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 import json
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 import plotly.io as pio
 
 pio.templates.default = "simple_white"

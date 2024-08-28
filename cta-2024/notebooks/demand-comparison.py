@@ -6,8 +6,8 @@ import plotly.io as pio
 from pandas.tseries.holiday import USFederalHolidayCalendar
 from sqlalchemy import text
 
-from mit_rail_sim.utils.db_con import engine
-from mit_rail_sim.utils.root_path import project_root
+from transit_lab_simmetro.utils.db_con import engine
+from transit_lab_simmetro.utils.root_path import project_root
 
 pio.templates.default = "simple_white"
 
@@ -17,7 +17,7 @@ def load_data(start_date, end_date):
     # Load stations data
     station_df = pd.read_csv(
         project_root
-        / "mit_rail_sim"
+        / "transit_lab_simmetro"
         / "cta-data-queries"
         / "odx_arrival"
         / "data"

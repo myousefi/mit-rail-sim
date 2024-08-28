@@ -3,31 +3,31 @@ import unittest
 from random import randint
 from typing import List
 
-from mit_rail_sim.simulation_engine.infrastructure import (
+from transit_lab_simmetro.simulation_engine.infrastructure import (
     Block,
     Path,
     SignalControlCenter,
     SlowZone,
     Station,
 )
-from mit_rail_sim.simulation_engine.infrastructure.path import ShortTurningPath
-from mit_rail_sim.simulation_engine.passenger import ArrivalRate
-from mit_rail_sim.simulation_engine.schedule import (
+from transit_lab_simmetro.simulation_engine.infrastructure.path import ShortTurningPath
+from transit_lab_simmetro.simulation_engine.passenger import ArrivalRate
+from transit_lab_simmetro.simulation_engine.schedule import (
     EmpiricalSchedule,
     OHareEmpiricalSchedule,
 )
-from mit_rail_sim.simulation_engine.simulation import ReplicationManager
-from mit_rail_sim.simulation_engine.utils import (
+from transit_lab_simmetro.simulation_engine.simulation import ReplicationManager
+from transit_lab_simmetro.simulation_engine.utils import (
     LoggerContext,
     PassengerLogger,
     TrainLogger,
 )
-from mit_rail_sim.simulation_engine.utils.logger_utils import (
+from transit_lab_simmetro.simulation_engine.utils.logger_utils import (
     BlockActivationLogger,
     SimulationLogger,
     StationLogger,
 )
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 
 def read_slow_zones_from_json(file_path: str) -> List[SlowZone]:
@@ -38,7 +38,7 @@ def read_slow_zones_from_json(file_path: str) -> List[SlowZone]:
 
 class CTABlueLineTestCase(unittest.TestCase):
     def setUp(self):
-        log_folder_path = "mit_rail_sim/validation/simulation_results/"
+        log_folder_path = "transit_lab_simmetro/validation/simulation_results/"
         self.train_logger = TrainLogger(
             log_file_path=log_folder_path + "/train_test.csv",
             log_interval=50,
@@ -63,7 +63,7 @@ class CTABlueLineTestCase(unittest.TestCase):
         )
 
         self.arrival_rates = ArrivalRate(
-            filename="mit_rail_sim/odx_arrival/data/arrival_rates_April_May.csv"
+            filename="transit_lab_simmetro/odx_arrival/data/arrival_rates_April_May.csv"
         )
 
     def test_simulation_with_real_data_from_file(self):

@@ -16,4 +16,4 @@ jobs:
         registry: docker.pkg.github.com
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        image_name: ${{ github.repository }}/mit_rail_sim
+        image_name: ${{ github.repository }}/transit_lab_simmetro
