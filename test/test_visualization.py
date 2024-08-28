@@ -7,7 +7,7 @@ import plotly.io as pio
 from plotly.subplots import make_subplots
 from typing_extensions import Protocol
 
-from mit_rail_sim.simulation_engine.infrastructure import Path
+from transit_lab_simmetro.simulation_engine.infrastructure import Path
 
 pio.templates["sophisticated"] = go.layout.Template(
     layout=go.Layout(colorway=["#91393D", "#DEDC83", "#DE6D72", "#57ADDE", "#407491"])

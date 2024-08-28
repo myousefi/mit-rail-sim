@@ -359,7 +359,7 @@ cta_experiments_jan/*
 .git.old/
 cta-travel-time-master/*
 holding-experiments/*
-mit_rail_sim/simulation_runner/outputs/*
+transit_lab_simmetro/simulation_runner/outputs/*
 *.db
 *.db-wal
 *.db-shm

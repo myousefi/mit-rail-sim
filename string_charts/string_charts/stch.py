@@ -6,7 +6,7 @@ import click
 import pandas as pd
 import plotly.graph_objects as go
 
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 # pio.templates.default = "simple_white"
 

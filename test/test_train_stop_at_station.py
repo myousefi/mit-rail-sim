@@ -3,13 +3,13 @@ from test.base_test_case import TrainMovementVisualizationMixin
 from unittest.mock import MagicMock
 
 
-from mit_rail_sim.simulation_engine.infrastructure import (
+from transit_lab_simmetro.simulation_engine.infrastructure import (
     Block,
     Path,
     SignalControlCenter,
     Station,
 )
-from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
+from transit_lab_simmetro.simulation_engine.train import Train, TrainSpeedRegulator
 
 
 class TestTrainStopatStation(unittest.TestCase, TrainMovementVisualizationMixin):

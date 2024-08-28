@@ -50,7 +50,7 @@ fig.update_layout(
 
 # %%
 
-from mit_rail_sim.utils.db_con import text, engine
+from transit_lab_simmetro.utils.db_con import text, engine
 
 # Query to fetch headway data for Harlem (Forest Park Branch)
 query_text = text(

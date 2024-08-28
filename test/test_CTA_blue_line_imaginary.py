@@ -7,7 +7,7 @@ from test.base_test_case import TrainMovementVisualizationMixin
 from typing import List
 
 
-from mit_rail_sim.simulation_engine.infrastructure import (
+from transit_lab_simmetro.simulation_engine.infrastructure import (
     Block,
     MovingBlock,
     MovingBlockControl,
@@ -16,25 +16,25 @@ from mit_rail_sim.simulation_engine.infrastructure import (
     SlowZone,
     Station,
 )
-from mit_rail_sim.simulation_engine.passenger import ArrivalRate
-from mit_rail_sim.simulation_engine.schedule import (
+from transit_lab_simmetro.simulation_engine.passenger import ArrivalRate
+from transit_lab_simmetro.simulation_engine.schedule import (
     EmpiricalSchedule,
     Schedule,
 )
-from mit_rail_sim.simulation_engine.simulation import (
+from transit_lab_simmetro.simulation_engine.simulation import (
     ReplicationManager,
     SimulationContext,
 )
-from mit_rail_sim.simulation_engine.simulation.simulation import Simulation
-from mit_rail_sim.simulation_engine.utils import (
+from transit_lab_simmetro.simulation_engine.simulation.simulation import Simulation
+from transit_lab_simmetro.simulation_engine.utils import (
     LoggerContext,
     PassengerLogger,
 )
-from mit_rail_sim.simulation_engine.utils.logger_utils import (
+from transit_lab_simmetro.simulation_engine.utils.logger_utils import (
     SimulationLogger,
     StationLogger,
 )
-from mit_rail_sim.utils import project_root
+from transit_lab_simmetro.utils import project_root
 
 
 def read_slow_zones_from_json(file_path: str) -> List[SlowZone]:

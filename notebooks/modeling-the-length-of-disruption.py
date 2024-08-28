@@ -2,7 +2,7 @@
 import pandas as pd
 import plotly.express as px
 
-from mit_rail_sim.utils.db_con import engine, text
+from transit_lab_simmetro.utils.db_con import engine, text
 
 import plotly.io as pio
 

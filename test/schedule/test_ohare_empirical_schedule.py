@@ -1,9 +1,9 @@
-from mit_rail_sim.simulation_engine.schedule_refactored.ohare_empirical_schedule import (
+from transit_lab_simmetro.simulation_engine.schedule_refactored.ohare_empirical_schedule import (
     OHareEmpiricalSchedule,
     OHareEmpiricalDispatchStrategy,
 )
 
-from mit_rail_sim.utils.root_path import project_root
+from transit_lab_simmetro.utils.root_path import project_root
 
 FILE_PATH = project_root / "inputs" / "schedules" / "empirical_schedule_81.json"
 START_TIME_OF_DAY = 36000  # 10:00 AM in seconds

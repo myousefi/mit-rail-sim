@@ -2,18 +2,18 @@ import unittest
 
 from matplotlib import pyplot as plt
 
-from mit_rail_sim.simulation_engine.infrastructure import (
+from transit_lab_simmetro.simulation_engine.infrastructure import (
     Block,
     Path,
     SignalControlCenter,
     Station,
 )
-from mit_rail_sim.simulation_engine.train import Train, TrainSpeedRegulator
-from mit_rail_sim.simulation_engine.train.train_speed_regulator_state import (
+from transit_lab_simmetro.simulation_engine.train import Train, TrainSpeedRegulator
+from transit_lab_simmetro.simulation_engine.train.train_speed_regulator_state import (
     BrakeNormalToStationState,
     KeepingTheSpeedUptoCodeState,
 )
-from mit_rail_sim.simulation_engine.utils import TrainLogger
+from transit_lab_simmetro.simulation_engine.utils import TrainLogger
 
 
 class BaseTestCase(unittest.TestCase):

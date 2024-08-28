@@ -2,8 +2,8 @@
 import pandas as pd
 import plotly.io as pio
 
-from mit_rail_sim.utils import project_root
-from mit_rail_sim.utils.db_con import engine, text
+from transit_lab_simmetro.utils import project_root
+from transit_lab_simmetro.utils.db_con import engine, text
 
 pio.templates.default = "simple_white"
 

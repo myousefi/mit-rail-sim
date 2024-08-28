@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
 
-from mit_rail_sim.simulation_engine.infrastructure import (
+from transit_lab_simmetro.simulation_engine.infrastructure import (
     Block,
     Path,
     SignalControlCenter,

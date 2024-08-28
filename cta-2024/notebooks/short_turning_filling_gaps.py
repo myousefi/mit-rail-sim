@@ -6,7 +6,7 @@ import plotly.express as px
 # from dotenv import find_dotenv, load_dotenv
 # from sqlalchemy import create_engine, text
 
-from mit_rail_sim.utils.db_con import text, engine
+from transit_lab_simmetro.utils.db_con import text, engine
 # load_dotenv(find_dotenv())
 
 OUTPUT_DIRECTORY = "/Users/moji/Library/CloudStorage/OneDrive-NortheasternUniversity/Presentations/CTA-Dry-Run-May-2024/artifacts/"
