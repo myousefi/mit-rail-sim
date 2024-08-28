@@ -20,7 +20,7 @@ sqlalchemy = "*"
 python-dotenv = "*"
 psycopg2-binary = "*"
 sqlalchemy-redshift = "*"
-mit-rail-sim = {editable = true, path = "."}
+transit-lab-simmetro = {editable = true, path = "."}
 pathlib = "*"
 string-charts = {file = "string_charts", editable = true}
 folium = "*"
